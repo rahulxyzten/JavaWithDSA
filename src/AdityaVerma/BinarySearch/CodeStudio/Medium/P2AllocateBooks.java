@@ -1,0 +1,60 @@
+package AdityaVerma.BinarySearch.CodeStudio.Medium;
+//Question
+/*
+https://www.naukri.com/code360/problems/allocate-books_1090540
+ */
+//Allocate Books
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+
+public class P2AllocateBooks {
+    public static void main(String[] args) {
+        ArrayList<Integer> arr = new ArrayList<>(Arrays.asList(12, 34, 67, 90));
+        int n = 4;
+        int m = 2;//no of student
+        int ans = findPages(arr, n, m);
+        System.out.println("The answer is: " + ans);
+
+    }
+
+    public static int findPages(ArrayList<Integer> arr, int n, int m) {
+        if (m > n) return -1;
+        int start = Collections.max(arr);
+        int end = arr.stream().mapToInt(Integer::intValue).sum();
+        int result = -1;
+        while (start <= end) {
+            int mid = start + (end - start) / 2;
+            if (isValid(arr, n, m, mid)){
+                result = mid;
+                end = mid - 1;
+            }
+            else start = mid + 1;
+        }
+        return result;
+    }
+
+    static boolean isValid(ArrayList<Integer> arr, int n, int m, int maxele) {
+        int student = 1;
+        int sum = 0;
+        for (int i = 0; i < n; i++) {
+            sum = sum + arr.get(i);
+            if (sum > maxele) {
+                student++;
+                sum = arr.get(i);
+            }
+            if (student > m) return false;
+        }
+        return true;
+    }
+    //T(C) & S(C)
+    /*
+    Time Complexity: O(N * log(sum(arr[])-max(arr[])+1)), where N = size of the array, sum(arr[]) = sum of all array elements,
+     max(arr[]) = maximum of all array elements.
+    Reason: We are applying binary search on [max(arr[]), sum(arr[])]. Inside the loop, we are calling the countStudents() function
+    for the value of ‘mid’. Now, inside the countStudents() function, we are using a loop that runs for N times.
+
+     Space Complexity:  O(1) as we are not using any extra space to solve this problem.
+     */
+}
