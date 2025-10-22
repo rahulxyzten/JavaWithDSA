@@ -1,4 +1,5 @@
-//HCF or GCD Of Two Numbers Program
+// HCF or GCD Of Two Numbers Program
+// Highest Common Factor or Greatest Common Divisor
 package KunalKushwaha.Cp2ConditonalsLoop;
 
 import java.util.Scanner;

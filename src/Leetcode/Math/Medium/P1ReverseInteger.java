@@ -33,39 +33,26 @@ Constraints:
 
 public class P1ReverseInteger {
     public static void main(String[] args) {
-//        int x = -123;
-        int x = 120;
+        int x = -121;
+//        int x = 120;
         System.out.println(reverse(x));
     }
 
-    //Runtime 1 ms and Memory 39.3 MB
+
+    //Time Complexity: O(log10N + 1) In while loop we divide N by 10 until it becomes 0 which takes log10N iterations.
+    //Space Complexity: O(1)
     public static int reverse(int x) {
-
-        long reversedx = 0;
-        int remainder;
-
-        int temp = x;
-
-        while (temp != 0) {
-            remainder = temp % 10;
-            reversedx = (reversedx * 10) + remainder;
-            temp /= 10;
+        long rem, rev = 0;
+        // long because in the time of rev * 10 if the number is big then it exceeds the limit of int
+        while (x != 0) {
+            // Here you can't do x > 0 because the x can be a negative number also
+            // if the number is -123 and after -123/10 -12 then it doesn't go further -12
+            rem = x % 10;
+            rev = (rev * 10) + rem;
+            x /= 10;
         }
-        if (reversedx > Integer.MAX_VALUE || reversedx < Integer.MIN_VALUE)
-            return 0;
-        //versing x causes the value to go outside the signed 32-bit integer range [-231, 231 - 1], then return 0
-        return (int) reversedx;
-    }
+        if (rev > Integer.MAX_VALUE || rev < Integer.MIN_VALUE) return 0;
 
-    //Runtime 1 ms and Memory 40 MB
-//    public int reverse(int x) {
-//        long rev= 0;
-//        while( x != 0){
-//            rev= rev*10 + x % 10;
-//            x= x/10;
-//            if( rev > Integer.MAX_VALUE || rev < Integer.MIN_VALUE)
-//                return 0;
-//        }
-//        return (int) rev;
-//    }
+        return (int) rev;
+    }
 }

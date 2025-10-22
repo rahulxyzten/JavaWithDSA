@@ -1,4 +1,4 @@
-//LCM Of Two Numbers
+//LCM (Least Common Multiple) Of Two Numbers
 // LCM × GCD = Product of the two numbers
 package KunalKushwaha.Cp2ConditonalsLoop;
 
