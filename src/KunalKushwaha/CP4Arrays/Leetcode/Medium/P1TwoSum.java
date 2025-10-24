@@ -46,13 +46,39 @@ public class P1TwoSum {
         int target = 9;
 
         System.out.println(Arrays.toString(twoSum(nums, target)));
-        System.out.println(twoSumm(nums,target));
+        System.out.println(twoSumm(nums, target));
     }
 
 
-//    /*Optimal Solution when it asks for index*/ (Using Hashing)
-//    //T(C) = O(N)
-//    //S(C) = O(N) as we use the map data structure
+    /*Optimal Solution when it doesn't ask for index it only ask for yes or no*/
+    //(using two-pointer):
+    //T(C) =  O(N) + O(N*logN), where N = size of the array
+    //S(C) = O(1)
+    public static String twoSumm(int[] nums, int target) {
+        Arrays.sort(nums);
+        int n = nums.length;
+        int left = 0, right = n - 1;
+        while (left < right) {
+            int sum = nums[left] + nums[right];
+            if (sum == target) return "YES";
+            else if (sum < target) left++;
+            else right--;
+        }
+        return "N0";
+    }
+
+
+    // Optimal Solution when it asks for index and Better Solution when it asks for Yes or No(Using Hashing)
+    //T(C) = O(N) where N = size of the array.
+    // Reason: The loop runs N times in the worst case and searching
+    // in a hashmap takes O(1) generally. So the time complexity is O(N).
+
+    // Note: In the worst case(which rarely happens), the unordered_map takes O(N)
+    // to find an element. In that case, the time complexity will be O(N^2).
+    // If we use map instead of unordered_map, the time complexity will be O(N* logN)
+    // as the map data structure takes logN time to find an element.
+
+    //S(C) = O(N) as we use the map data structure
     public static int[] twoSum(int[] nums, int target) {
         int[] ans = {-1, -1};
         int n = nums.length;
@@ -70,24 +96,6 @@ public class P1TwoSum {
         return ans;
     }
 
-    /*Optimal Solution when it not asks for index it ony ask for yes or no*/
-    //T(C) =  O(N) + O(N*logN), where N = size of the array
-    //S(C) = O(1)
-    public static String twoSumm(int[] nums, int target) {
-        Arrays.sort(nums);
-        int n = nums.length;
-        int left = 0, right = n - 1;
-        while (left < right){
-            int sum = nums[left] + nums[right];
-            if (sum == target) return "YES";
-            else if (sum < target) left ++;
-            else right --;
-        }
-        return "N0";
-    }
-
-
-
 //    /*Brute Force (Best Solution)*/
 //    //T(C) = O(N^2) & S(C) = O(1)
 //    public static int[] twoSum(int[] nums, int target) {
@@ -103,18 +111,18 @@ public class P1TwoSum {
 //
 //
 //        /*Brute Force (My solution) */
-////        int[] arr = new int[2];
-////        int n = nums.length;
-////        for (int i = 0; i < n - 1; i++) {
-////            for (int j = i + 1; j < n; j++) {
-////                if (nums[i] + nums[j] == target) {
-////                    arr[0] = i;
-////                    arr[1] = j;
-////                    return arr;
-////                }
-////            }
-////        }
-////        return arr; // No solution found empty array
+//        int[] arr = new int[2];
+//        int n = nums.length;
+//        for (int i = 0; i < n - 1; i++) {
+//            for (int j = i + 1; j < n; j++) {
+//                if (nums[i] + nums[j] == target) {
+//                    arr[0] = i;
+//                    arr[1] = j;
+//                    return arr;
+//                }
+//            }
+//        }
+//        return arr; // No solution found empty array
 //
 //    }
 

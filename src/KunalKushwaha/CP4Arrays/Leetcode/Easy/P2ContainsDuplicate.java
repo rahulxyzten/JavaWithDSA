@@ -39,8 +39,8 @@ public class P2ContainsDuplicate {
     /* Type Best T(C) = O(N) S(C) = O(N) */
     public static boolean containsDuplicate(int[] nums) {
         HashMap<Integer, Integer> seen = new HashMap<>();
-        for (int num: nums){
-            if (seen.containsKey(num) && seen.get(num) >= 1) return true;
+        for (int num : nums) {
+            if (seen.containsKey(num)) return true;
             seen.put(num, seen.getOrDefault(num, 0) + 1);
         }
         return false;
