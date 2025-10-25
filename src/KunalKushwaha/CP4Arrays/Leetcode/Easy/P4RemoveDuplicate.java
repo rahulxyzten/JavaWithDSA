@@ -68,12 +68,12 @@ public class P4RemoveDuplicate {
     public static int removeDuplicates(int[] nums) {
         int i = 0;
         for (int j = 0; j < nums.length; j++) {
-            if (nums[i] != nums[j]){
+            if (nums[i] != nums[j]) {
                 i++;
                 nums[i] = nums[j];
             }
         }
-        return i+1;
+        return i + 1;
     }
 
 //    public static int removeDuplicates(int[] nums) {
@@ -85,7 +85,7 @@ public class P4RemoveDuplicate {
 //            }
 //        }
 //        //Here how many times the new element occurs that many times index is increment
-//        //which is initially 1
+//        //which is initially 1 ( which is holds the first element which index is 0 )
 //
 //        return index;
 //    }

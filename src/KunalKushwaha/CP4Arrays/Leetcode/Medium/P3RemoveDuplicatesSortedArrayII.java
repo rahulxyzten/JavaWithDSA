@@ -50,7 +50,7 @@ nums is sorted in non-decreasing order.
  */
 //This is question level 1 Remove Duplicates sorted Array I is on easy folder
 
-import java.util.Arrays;
+import java.util.*;
 
 public class P3RemoveDuplicatesSortedArrayII {
     public static void main(String[] args) {
@@ -73,4 +73,28 @@ public class P3RemoveDuplicatesSortedArrayII {
         System.out.println(Arrays.toString(nums));
         return i;
     }
+
+    /*Brute Force Approach (Using Hashing) */
+    //T(C) = O(2N) & S(C) = O(2N)
+//    public static int removeDuplicates(int[] nums) {
+//        Map<Integer, Integer> map = new HashMap<>();
+//        List<Integer> list = new ArrayList<>();
+//
+//        for (int num: nums) {
+//            if (map.containsKey(num) && map.get(num) < 2){
+//                map.put(num, map.get(num) + 1);
+//                list.add(num);
+//            } else if (!map.containsKey(num)) {
+//                map.put(num, 1);
+//                list.add(num);
+//            }
+//        }
+//
+//        for (int i = 0; i < list.size(); i++) {
+//            nums[i] = list.get(i);
+//        }
+//
+//        System.out.println(list);
+//        return list.size();
+//    }
 }

@@ -33,9 +33,7 @@ Constraints:
 Follow up: Could you solve the problem in linear time and in O(1) space?
  */
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class P7MajorityElement2 {
     public static void main(String[] args) {
@@ -82,37 +80,28 @@ public class P7MajorityElement2 {
     }
 
 
-    //Better Approach (O(N*logN)time & O(N)space)
+    //Better Approach (O(N*logN)time & O(N)space) (Using Hashing)
     /*
     We are using a map data structure. Insertion in the map takes logN time. And we are doing it for N elements. So,
     it results in the first term O(N*logN).
     If we use unordered_map instead, the first term will be O(N) for the best and average case and for the worst case,
     it will be O(N2).
     */
-//    public static List<Integer> majorityElement(int []v) {
-//        int n = v.length; //size of the array
-//        List<Integer> ls = new ArrayList<>(); // list of answers
+//    public static List<Integer> majorityElement(int []nums) {
+//        int n = nums.length;
+//        Map<Integer, Integer> map = new HashMap<>();
+//        List<Integer> list = new ArrayList<>();
+//        int min = (n / 3) + 1;
 //
-//        //declaring a map:
-//        HashMap<Integer, Integer> mpp = new HashMap<>();
+//        for (int num: nums){
+//            int val = map.getOrDefault(num, 0);
+//            map.put(num, val + 1);
 //
-//        // least occurrence of the majority element:
-//        int mini = (int)(n / 3) + 1;
-//
-//        //storing the elements with its occurnce:
-//        for (int i = 0; i < n; i++) {
-//            int value = mpp.getOrDefault(v[i], 0);
-//            mpp.put(v[i], value + 1);
-//
-//            //checking if v[i] is
-//            // the majority element:
-//            if (mpp.get(v[i]) == mini) {
-//                ls.add(v[i]);
-//            }
-//            if (ls.size() == 2) break;
+//            if (map.get(num) == min) list.add(num);
+//            if (list.size() == 2) return list;
 //        }
 //
-//        return ls;
+//        return list;
 //    }
 
     //Brute Force Approach (O(N^2)time O(1)space)

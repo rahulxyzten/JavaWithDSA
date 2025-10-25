@@ -41,6 +41,8 @@ Output: 2
  */
 
 
+import java.util.HashMap;
+
 public class P6MajorityElement {
     public static void main(String[] args) {
 //        int[] nums = {2, 2, 1, 1, 1, 2, 2};
@@ -54,41 +56,41 @@ public class P6MajorityElement {
     public static int majorityElement(int[] nums) {
         int n = nums.length;
         int count = 0;
-        int element = Integer.MIN_VALUE;
-//        int element = 0;
-        for (int i = 0; i < n; i++) {
+        int ele = Integer.MIN_VALUE;
+//        int ele = 0;
+
+        for (int num : nums) {
             if (count == 0) {
+                ele = num;
                 count = 1;
-                element = nums[i];
-            } else if (element == nums[i]) count++;
+            } else if (num == ele) count++;
             else count--;
         }
+
         int count1 = 0;
         for (int num : nums) {
-            if (element == num) count1++;
+            if (num == ele) count1++;
         }
-        if (count1 > n / 2) return element;
+
+        if (count1 > n / 2) return ele;
+
         return -1;
     }
 
 
-    /* Better Approach (Using hash function) ( O(N)time complexity & O(N) space complexity )  */
+    /* Better Approach (Using hash function) ( O(NlogN) + O(N) time complexity & O(N) space complexity )  */
 //    public static int majorityElement(int[] nums) {
 //        int n = nums.length;
+//        HashMap<Integer, Integer> map = new HashMap<>();
 //
-//        HashMap<Integer, Integer> mpp = new HashMap<>();
+//        for (int num : nums) {
+//            int value = map.getOrDefault(num, 0);
+//            map.put(num, value + 1);
 //
-//        for (int i = 0; i < n; i++) {
-//            int value = mpp.getOrDefault(nums[i], 0);
-//            mpp.put(nums[i], value + 1);
+//            if (map.get(num) > n / 2) return num;
 //        }
-//        for (Map.Entry<Integer, Integer> it : mpp.entrySet()) {
-//            if (it.getValue() > (n / 2)) {
-//                return it.getKey();
-//            }
-//        }
+//
 //        return -1;
-//
 //    }
 
 
