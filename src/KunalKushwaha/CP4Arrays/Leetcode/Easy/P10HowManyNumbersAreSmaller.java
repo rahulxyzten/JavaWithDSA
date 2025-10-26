@@ -43,7 +43,8 @@ public class P10HowManyNumbersAreSmaller {
     }
 
 
-    //Optimal approach T(C) = O(N) and S(C) = O(1)
+    // Optimal approach (Using Bucket Sort and Prefix sum)
+    // T(C) = O(N) and S(C) = O(1) (bucket size is fixed = 101)
     public static int[] smallerNumbersThanCurrent(int[] nums) {
         int[] bucket = new int[101];
         for (int num : nums) {
@@ -55,11 +56,14 @@ public class P10HowManyNumbersAreSmaller {
         for (int i = 0; i < nums.length; i++) {
             int pos = nums[i];
             nums[i] = pos == 0 ? 0 : bucket[pos - 1];
+            // we do pos == 0 ? 0 because 0 is the smallest element in the array
+            // So the count of element less than 0 is 0
+            // If we don't write this, and we do nums[i] = bucket[pos-1] so for
+            // post zero it gives error bucket[0-1] = bucket[-1]
         }
 
         return nums;
     }
-
 
     //Brute force approach T(C) = O(N^2) and S(C) = O(1)
 //    public static int[] smallerNumbersThanCurrent(int[] nums) {

@@ -65,25 +65,18 @@ public class P12MatchingItems {
     }
 
 
-    /* Runtime 3ms  Memory 50.75MB */
+    // T(C) = O(N) and S(C) = O(1)
     public static int countMatches(List<List<String>> items, String ruleKey, String ruleValue) {
-        int index = 0;
-        int count = 0;
-        if (ruleKey.equals("color"))
-            index = 1;
-        else if (ruleKey.equals("name"))
-            index = 2;
+        int index = 0, count = 0;
+        if (ruleKey.equals("color")) index = 1;
+        else if (ruleKey.equals("name")) index = 2;
 
         for (List<String> item : items) {
-            if (item.get(index).equals(ruleValue)) {
-                count++;
-            }
+            if (item.get(index).equals(ruleValue)) count++;
         }
+
         return count;
     }
-
-
-
 
 
     /* Runtime 6ms  Memory 47.3MB */

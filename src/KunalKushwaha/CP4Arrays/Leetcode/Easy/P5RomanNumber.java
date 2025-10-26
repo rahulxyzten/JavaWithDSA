@@ -59,6 +59,7 @@ public class P5RomanNumber {
 
 
     /* Best Solution (in terms of time and space) */
+    // T(C) = O(N) and S(C) = O(1)
     public static int romanToInt(String s) {
         int ans = 0, num = 0, prev = 0;
         for (int i = s.length() - 1; i >= 0; i--) {

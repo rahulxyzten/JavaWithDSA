@@ -49,27 +49,47 @@ public class P11StringPangram {
 
 
     /*Below code for applicable for if the string in small letters*/
+    // If it also tells for the capital letter then we have to increase the size of
+    //  the array to 56 and do some modification to solve the problem
+    // T(C) = O(N) and S(C) = O(1)
+
     public static boolean checkIfPangram(String sentence) {
-        int[] a = new int[26];  // An array to keep track of each letter's occurrence
+        int[] ans = new int[26];
 
-        for (char c : sentence.toCharArray()) {
-            int index = c - 'a';  // Calculate the index corresponding to the current character
-            a[index] = 1;         // Mark the letter as encountered
+        for (int i = 0; i < sentence.length(); i++) {
+            int index = sentence.charAt(i) - 'a';
+            ans[index] = 1;
         }
 
-        // Check if all 26 letters have been encountered
-        for (int i = 0; i < 26; i++) {
-            if (a[i] == 0) {
-                return false;  // If any letter is missing, return false
-            }
+        for (int num : ans) {
+            if (num == 0) return false;
         }
 
-        return true;  // All 26 letters have been encountered, return true
+        return true;
     }
 
+//    public static boolean checkIfPangram(String sentence) {
+//        int[] a = new int[26];  // An array to keep track of each letter's occurrence
+//
+//        for (char c : sentence.toCharArray()) {
+//            int index = c - 'a';  // Calculate the index corresponding to the current character
+//            a[index] = 1;         // Mark the letter as encountered
+//        }
+//
+//        // Check if all 26 letters have been encountered
+//        for (int i = 0; i < 26; i++) {
+//            if (a[i] == 0) {
+//                return false;  // If any letter is missing, return false
+//            }
+//        }
+//
+//        return true;  // All 26 letters have been encountered, return true
+//    }
 
 
-    //    public static boolean checkIfPangram(String sentence) {
+    /*Below code for applicable for if the string in small letters or capital letters*/
+    // T((C) = O(N) and S(C) = O(N)
+//        public static boolean checkIfPangram(String sentence) {
 //        Set<Character> hset = new HashSet<>();
 //
 //        for (char ch : sentence.toCharArray())

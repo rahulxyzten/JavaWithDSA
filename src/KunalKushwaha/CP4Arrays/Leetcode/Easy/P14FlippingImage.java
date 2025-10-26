@@ -43,30 +43,37 @@ public class P14FlippingImage {
         System.out.println(Arrays.deepToString(flipAndInvertImage(arr)));
     }
 
-
+    // T(C) = O(M*N) S(C) = O(1)
     public static int[][] flipAndInvertImage(int[][] image) {
-
         for (int i = 0; i < image.length; i++) {
-            for (int j = 0; j < image[i].length / 2; j++) {
-                // Swap the elements at index j and index length - 1 - j
-                int temp = image[i][j];
-                image[i][j] = image[i][image[i].length - 1 - j];
+            for (int j = 0; j < (image[i].length + 1) / 2; j++) {
+                // See the image[i].length + 1 because here we do both flipping and inverting
+                // so if the length is odd then the middle element will not flip or invert
+                // in the image[i].length so that what we do image[i].length+1
+                int temp = 1 - image[i][j];
+                image[i][j] = 1 - image[i][image[i].length - 1 - j];
                 image[i][image[i].length - 1 - j] = temp;
             }
         }
-        for (int i = 0; i < image.length; i++) {
-            for (int j = 0; j < image[0].length; j++) {
-                image[i][j] = image[i][j] == 1 ? 0 : 1;
-
-            }
-        }
-        for (int i = 0; i < image.length; i++) {
-            for (int j = 0; j < image[0].length; j++) {
-                System.out.print(image[i][j]);
-
-            }
-            System.out.println();
-        }
         return image;
     }
+
+//    public static int[][] flipAndInvertImage(int[][] image) {
+//        for (int i = 0; i < image.length; i++) {
+//            for (int j = 0; j < image[i].length / 2; j++) {
+//                // Swap the elements at index j and index length - 1 - j
+//                int temp = image[i][j];
+//                image[i][j] = image[i][image[i].length - 1 - j];
+//                image[i][image[i].length - 1 - j] = temp;
+//            }
+//        }
+//        for (int i = 0; i < image.length; i++) {
+//            for (int j = 0; j < image[0].length; j++) {
+//                image[i][j] = image[i][j] == 1 ? 0 : 1;
+//
+//            }
+//        }
+//        return image;
+//    }
+
 }

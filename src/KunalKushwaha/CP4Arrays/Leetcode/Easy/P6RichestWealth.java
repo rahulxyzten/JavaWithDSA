@@ -40,18 +40,32 @@ n == accounts[i].length
 public class P6RichestWealth {
     public static void main(String[] args) {
 //        int[][] accounts = {{1, 2, 3}, {3, 2, 1}};
-        int[][] accounts = {{1,5}, {7,3},{3,5}};
+        int[][] accounts = {{1, 5}, {7, 3}, {3, 5}};
         System.out.println(maximumWealth(accounts));
     }
 
+//    public static int maximumWealth(int[][] accounts) {
+//        int wealth = 0;
+//        for (int i = 0; i < accounts.length; i++) {
+//            int rsum = 0;
+//            for (int j = 0; j < accounts[i].length; j++) {
+//                rsum = rsum + accounts[i][j];
+//            }
+//            wealth = Math.max(wealth, rsum);
+//        }
+//        return wealth;
+//    }
+
+    // T(C) = O(M*N) M = number of rows and N = number of columns
+    // S(C) = O(1)
     public static int maximumWealth(int[][] accounts) {
         int wealth = 0;
-        for (int i = 0; i < accounts.length; i++) {
+        for (int[] account : accounts) {
             int rsum = 0;
-            for (int j = 0; j < accounts[i].length; j++) {
-                rsum = rsum + accounts[i][j];
+            for (int num : account) {
+                rsum += num;
             }
-            wealth = Math.max(wealth,rsum);
+            wealth = Math.max(wealth, rsum);
         }
         return wealth;
     }

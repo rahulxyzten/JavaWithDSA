@@ -42,17 +42,13 @@ public class P13HighestAltitude {
 
     }
 
+    // T(C) = O(N) and S(C) = O(1)
     public static int largestAltitude(int[] gain) {
         int maxaltitude = 0;
-        //maxaltitude is 0 in the starting u have to see
-        //if a number is greater than max u change the maxaltitude
-        int altitude = 0;
-        for (int i = 0; i < gain.length; i++) {
-            altitude += gain[i];
-//            if(altitude > maxaltitude){
-//                maxaltitude = altitude;
-//            }
-            maxaltitude = Math.max(maxaltitude, altitude);
+        int currentaltitude = 0;
+        for (int num : gain) {
+            currentaltitude += num;
+            maxaltitude = Math.max(maxaltitude, currentaltitude);
         }
         return maxaltitude;
     }

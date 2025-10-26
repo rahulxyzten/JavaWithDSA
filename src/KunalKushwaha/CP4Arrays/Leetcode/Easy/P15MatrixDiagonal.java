@@ -43,6 +43,7 @@ public class P15MatrixDiagonal {
     }
 
     /* BEST TYPE */
+    // T(C) = O(N) and S(C) = O(1)
     public static int diagonalSum(int[][] mat) {
         int n = mat.length;
         int mid = n / 2;
@@ -57,6 +58,7 @@ public class P15MatrixDiagonal {
         return sum;
     }
 
+    // T(C) = (N*N) and S(C) = O(1)
 //    public static int diagonalSum(int[][] mat) {
 //        int pDiagonal = 0;
 //        int sDiagonal = 0;

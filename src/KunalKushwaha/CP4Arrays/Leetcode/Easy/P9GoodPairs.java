@@ -31,6 +31,7 @@ Constraints:
  */
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class P9GoodPairs {
     public static void main(String[] args) {

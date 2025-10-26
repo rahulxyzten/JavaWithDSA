@@ -41,6 +41,8 @@ public class P7ShuffleArray {
     }
 
 
+    // T(C) = O(n) not the size of the array given n
+    // S(C) = O(N) size fo the array
     public static int[] shuffle(int[] nums, int n) {
         int[] result = new int[nums.length];
         int j = 0; // Index for the second half of the array
