@@ -56,11 +56,12 @@ public class P19LuckyNumberMatrix {
     }
 
     /*More efficient in memory and runtime */
+    // T(C) = O(M * (N^2)) and S(C) = O(1)
     public static List<Integer> luckyNumbers(int[][] matrix) {
         List<Integer> result = new ArrayList<Integer>();
 
         for (int row = 0; row < matrix.length; row++) {
-            int minCol = minColInRow(matrix, row);
+            int minCol = minColInRow(matrix[row]);
             int value = matrix[row][minCol];
             if (checkIfMaxInCol(matrix, minCol, value)) {
                 result.add(value);
@@ -69,11 +70,11 @@ public class P19LuckyNumberMatrix {
         return result;
     }
 
-    private static int minColInRow(int[][] matrix, int row) {
-        int minIndex = 0, min = matrix[row][minIndex];
-        for (int col = 1; col < matrix[row].length; col++) {
-            if (matrix[row][col] < min) {
-                min = matrix[row][col];
+    private static int minColInRow(int[] row) {
+        int minIndex = 0, min = row[0];
+        for (int col = 1; col < row.length; col++) {
+            if (row[col] < min) {
+                min = row[col];
                 minIndex = col;
             }
         }
@@ -84,7 +85,6 @@ public class P19LuckyNumberMatrix {
         for (int row = 0; row < matrix.length; row++) {
             if (matrix[row][col] > value) return false;
         }
-
         return true;
     }
 

@@ -48,6 +48,7 @@ public class P21PlusOne {
         System.out.println(Arrays.toString(plusOne(digits)));
     }
 
+    // T(C) = O(N) and S(C) = O(1)
     public static int[] plusOne(int[] digits) {
         for (int i = digits.length - 1; i >= 0; i--) {
             if (digits[i] < 9) {
@@ -56,6 +57,7 @@ public class P21PlusOne {
             }
             digits[i] = 0;
         }
+        // Below case is only if in the array only 9 are present
         digits = new int[digits.length + 1];
         digits[0] = 1;
         return digits;

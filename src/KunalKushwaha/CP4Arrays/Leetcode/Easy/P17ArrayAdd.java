@@ -25,6 +25,7 @@ Explanation: 215 + 806 = 1021
  */
 
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -32,44 +33,45 @@ public class P17ArrayAdd {
     public static void main(String[] args) {
 //        int[] num = {1,2,0,0};
 //        int k = 34;
-        int[] num = {2,1,5};
+        int[] num = {2, 1, 5};
         int k = 806;
-        System.out.println(addToArrayForm(num,k));
+        System.out.println(addToArrayForm(num, k));
     }
 
+    // T((C) = O(n + log10 k)
+    // O(n + d) extra space where n = num.length and d = number of digits in k (the output size). More simply O(n + log10 k). The returned list stores the sum digits; additional auxiliary space is O(1)
     public static List<Integer> addToArrayForm(int[] num, int k) {
+        List<Integer> result = new ArrayList<>();
 
-        LinkedList<Integer> result = new LinkedList<>();
         int len = num.length - 1;
-
-        //Both the condition are required becz after adding k with number if len is going to zero also but
-        //there are some K values which is going to execute till k != 0
-        //if not understand then take the below example and do dry run
-        //Input: num = [2,1,5], k = 806
-        //Output: [1,0,2,1]
-        while(len >= 0 || k != 0){
-
-            if(len >= 0){
+        while (len >= 0 || k != 0) {
+            if (len >= 0) {
                 k += num[len--];
             }
 
-            result.addFirst(k % 10);
+            result.add(0, k % 10);
             k /= 10;
         }
 
         return result;
-
     }
-//    public static LinkedList<Integer> addToArrayForm(int[] num, int k) {
+
+//    public static List<Integer> addToArrayForm(int[] num, int k) {
 //        LinkedList<Integer> result = new LinkedList<>();
-//        int len = num.length;
+//        int len = num.length - 1;
 //
-//        while (len >=0 || k!=0){
-//            if (len>=0){
-//                k += num[len];
-//                len--;
+//        //Both the condition are required becz after adding k with number if len is going to zero also but
+//        //there are some K values which is going to execute till k != 0
+//        //if not understand then take the below example and do dry run
+//        //Input: num = [2,1,5], k = 806
+//        //Output: [1,0,2,1]
+//        while(len >= 0 || k != 0){
+//
+//            if(len >= 0){
+//                k += num[len--];
 //            }
-//            result.addFirst(k%10);
+//
+//            result.addFirst(k % 10);
 //            k /= 10;
 //        }
 //

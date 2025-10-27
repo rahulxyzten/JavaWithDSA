@@ -37,33 +37,26 @@ public class P16EvenNumberDigits {
         System.out.println(findNumbers(nums));
     }
 
+    // T(C) = O(N) * log10M  (M is the largest number of the array)
+    // S(C) = O(1)
     public static int findNumbers(int[] nums) {
         int count = 0;
         for (int num : nums) {
-            if (even(num)) count++;
+            if (digits(num) % 2 == 0) count++;
         }
         return count;
-
-    }
-
-    private static boolean even(int num) {
-        int noOfDigits = digits(num);
-        return noOfDigits % 2 == 0;
     }
 
     private static int digits(int num) {
-        if (num < 0) {
-            num = num * -1;
-        }
+        if (num < 0) num = -(num);
         if (num == 0) return 1;
-
         int count = 0;
         while (num > 0) {
             count++;
-            num = num / 10;
+            num /= 10;
         }
         return count;
-//        return (int)(Math.log10(num)) + 1;
+        //        return (int)(Math.log10(num)) + 1;
     }
 
 //    public static int findNumbers(int[] nums) {
