@@ -73,18 +73,17 @@ we need to shift one tower to other tower . so take minimum of both tower which 
 
 public class P23MinimumCostChips {
     public static void main(String[] args) {
-        int[] position = {2,2,2,3,3};
+        int[] position = {2, 2, 2, 3, 3};
         System.out.println(minCostToMoveChips(position));
     }
+
+    // T(C) = O(N) and S(C) = O(1)
     public static int minCostToMoveChips(int[] position) {
         int evenPosTowerChips = 0;
         int oddPosTowerChips = 0;
         for (int i : position) {
-            if (i % 2 == 0) {
-                evenPosTowerChips++;
-            } else {
-                oddPosTowerChips++;
-            }
+            if (i % 2 == 0) evenPosTowerChips++;
+            else oddPosTowerChips++;
         }
         return Math.min(oddPosTowerChips, evenPosTowerChips);
     }

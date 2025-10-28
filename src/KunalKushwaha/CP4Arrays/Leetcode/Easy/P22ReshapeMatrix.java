@@ -1,6 +1,8 @@
 package KunalKushwaha.CP4Arrays.Leetcode.Easy;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 //question
 /*
 566. Reshape the Matrix
@@ -73,21 +75,23 @@ public class P22ReshapeMatrix {
     public static void main(String[] args) {
         int[][] mat = {{1, 2}, {3, 4}};
         int r = 1, c = 4;
-        System.out.println(Arrays.deepToString(matrixReshape(mat,r,c)));
+        System.out.println(Arrays.deepToString(matrixReshape(mat, r, c)));
     }
 
-    /* BEST SOLUTION */
+    /* BEST SOLUTION (Remember KC) */
+    // T(C) = O(n*m)
+    // S(C) = O(n*m) or O(1) if we remove the output matrix
     public static int[][] matrixReshape(int[][] mat, int r, int c) {
         int n = mat.length;
         int m = mat[0].length;
-        int mul = n*m;
-        if (r*c != mul) return mat;
+        int mul = n * m;
+        if (r * c != mul) return mat;
         int[][] result = new int[r][c];
         int k = 0;
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
                 //remember the below line ( KC )
-                result[k/c][k%c] = mat[i][j];
+                result[k / c][k % c] = mat[i][j];
                 k++;
             }
         }
@@ -95,41 +99,29 @@ public class P22ReshapeMatrix {
         return result;
     }
 
-}
-
-
-//My Solution (WRONG)
-//public class ReshapeMatrix {
-//    public static void main(String[] args) {
-//        int[][] mat = {{1, 2}, {3, 4}};
-//        int r = 1, c = 4;
-//
-//        matrixReshape(mat,r,c);
-//    }
-//
+    // Brute Force Approach
+    // T(C) = O(2 (n*m)) = O(n*m) because the n*m == r*c
+    // S(C) = O(2 (n*m)) = O(n*m) because in the temp and result same number of elements are stored
 //    public static int[][] matrixReshape(int[][] mat, int r, int c) {
-//        int[][] result = new int[r][c];
-//        for (int i = 0; i < mat.length; i++) {
-//            for (int j = 0; j < mat[i].length; j++) {
-//                result[r][c] = mat[i][j];
-//                c--;
-//            }
-//
-//        }
 //        int n = mat.length;
-//        int m = mat.length;
-//        for (int i = 0; i < r; i++) {
-//            for (int j = 0; j < c; j++) {
-//                result[i][j] = mat[i][j];
+//        int m = mat[0].length;
+//        if (n*m != r*c) return mat;
+//
+//        List<Integer> temp = new ArrayList<>();
+//        int[][] result = new int[r][c];
+//        for (int i = 0; i < n; i++) {
+//            for (int j = 0; j < m; j++) {
+//                temp.add(mat[i][j]);
 //            }
 //        }
+//
+//        int index = 0;
 //        for (int i = 0; i < r; i++) {
 //            for (int j = 0; j < c; j++) {
-//                System.out.print(result[i][j]+" ");
+//               result[i][j] = temp.get(index++);
 //            }
 //        }
 //
 //        return result;
 //    }
-//
-//}
+}

@@ -38,19 +38,22 @@ public class P24MaximumPopulation {
         System.out.println(maximumPopulation(logs));
     }
 
+    // T(C) = O(n)
+//    O(N) for looping through all the logs (N = logs.length, up to 100).
+//    O(R) for looping through all the possible years (from 1950 to 2050 → 101 iterations).
+//    Since both are small, overall: O(N + R) ≈ O(N)
+    // S(C) = O(R) where R = 2051 (constant size)
     public static int maximumPopulation(int[][] logs) {
         int[] year = new int[2051];
-        // O(n) -> n is log.length
 
         for (int[] log : logs) {
-            year[log[0]] = year[log[0]] + 1;
-            year[log[1]] = year[log[1]] - 1;
+            year[log[0]] += 1;
+            year[log[1]] -= 1;
         }
 
         int maxNum = year[1950], maxYear = 1950;
-        // O(100) -> 2050 - 1950 = 100
 
-        for (int i = 1951; i < year.length; i++) {
+        for (int i = 1951; i < 2051; i++) {
             year[i] = year[i] + year[i - 1];// Generating Prefix Sum
             if (year[i] > maxNum) {
                 maxNum = year[i];
@@ -59,5 +62,4 @@ public class P24MaximumPopulation {
         }
         return maxYear;
     }
-
 }
