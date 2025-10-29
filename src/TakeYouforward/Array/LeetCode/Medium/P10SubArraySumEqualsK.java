@@ -37,6 +37,9 @@ public class P10SubArraySumEqualsK {
         System.out.println(subarraySum(nums, k));
     }
 
+    // Optimal Solution
+    // T(C) = O(N)
+    // S(C) = O(N)
     public static int subarraySum(int[] nums, int k) {
         int n = nums.length;
         Map<Integer, Integer> mpp = new HashMap();

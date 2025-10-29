@@ -11,24 +11,21 @@ public class P9MaximumSubArrayFollowup {
 //        int[] nums = {-2, -1, -3, -4, -1, -2, -1, -5, -4};
         System.out.println(maxSubArray(nums));
     }
+
+    // T(C) = O(N) and S(C) = O(1)
     public static long maxSubArray(int[] arr) {
         int n = arr.length;
-        long maxi = Long.MIN_VALUE;
-        long sum = 0;
+        long maxi = Long.MIN_VALUE, sum = 0;
+        int start = 0, ansStart = -1, ansEnd = -1;
 
-        int start = 0;
-        int ansStart = -1, ansEnd = -1;
         for (int i = 0; i < n; i++) {
             if (sum == 0) start = i; // starting index
             sum += arr[i];
-
             if (sum > maxi) {
                 maxi = sum;
                 ansStart = start;
                 ansEnd = i;
             }
-
-            // If sum < 0: discard the sum calculated
             if (sum < 0) {
                 sum = 0;
             }
@@ -37,10 +34,9 @@ public class P9MaximumSubArrayFollowup {
         // To consider the sum of the empty subarray
         // uncomment the following check:
         if (maxi < 0) maxi = 0;
-        if (maxi == 0){
-            int[] arr1 = {};
-            System.out.println(Arrays.toString(arr1));
-        }else {
+        if (maxi == 0) {
+            System.out.println(Arrays.toString(new int[]{}));
+        } else {
             //printing the subarray:
             System.out.print("The subarray is: [");
             for (int i = ansStart; i <= ansEnd; i++) {

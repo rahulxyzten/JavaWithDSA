@@ -65,7 +65,7 @@ public class P8MaximumSubArray {
     public static void main(String[] args) {
 //        int[] nums = {-2, 1, -3, 4, -1, 2, 1, -5, 4};
 //        int[] nums = {-2, -1, -3, -4, -1, -2, -1, -5, -4};
-        int[] nums = {5,4,2,6,3,8,9,7,4,7,3,6,9,8,2,4,6,8,6,2,3,4,5,1,4,2};
+        int[] nums = {5, 4, 2, 6, 3, 8, 9, 7, 4, 7, 3, 6, 9, 8, 2, 4, 6, 8, 6, 2, 3, 4, 5, 1, 4, 2};
         System.out.println(maxSubArray(nums));
     }
 
@@ -91,5 +91,15 @@ public class P8MaximumSubArray {
         return maxi;
     }
 
-
+    // Leetcode one (no need for the condition of the negative one)
+//    public static int maxSubArray(int[] nums) {
+//        int sum = 0, maxi = Integer.MIN_VALUE;
+//        for (int num : nums) {
+//            sum += num;
+//            maxi = Math.max(sum, maxi);
+//            if (sum < 0)
+//                sum = 0;
+//        }
+//        return maxi;
+//    }
 }
