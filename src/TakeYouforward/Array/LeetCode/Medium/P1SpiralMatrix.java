@@ -33,23 +33,27 @@ public class P1SpiralMatrix {
         System.out.println(spiralOrder(matrix));
     }
 
+    // T(C) = O(M*N)
+    // S(C) = O(M*N) or O(1) If we remove the asked output list.
     public static List<Integer> spiralOrder(int[][] matrix) {
         List<Integer> ans = new ArrayList<>();
         int n = matrix.length;
         int m = matrix[0].length;
-
         int top = 0, bottom = n - 1;
         int left = 0, right = m - 1;
+
         while (top <= bottom && left <= right) {
             for (int i = left; i <= right; i++) {
                 ans.add(matrix[top][i]);
             }
             top++;
             //Ena dhekbu jen to constant rahuchhe seta ++ ki -- heuchhe jenta upre top to constand acce to seta ++ heuchhe
+
             for (int i = top; i <= bottom; i++) {
                 ans.add(matrix[i][right]);
             }
             right--;
+
             //Here I again check the condition because in above top is changed
             if (top <= bottom) {
                 for (int i = right; i >= left; i--) {
@@ -57,6 +61,7 @@ public class P1SpiralMatrix {
                 }
                 bottom--;
             }
+
             //Here I again check the condition because in above right is changed
             if (left <= right) {
                 for (int i = bottom; i >= top; i--) {
@@ -65,7 +70,7 @@ public class P1SpiralMatrix {
                 left++;
             }
         }
+
         return ans;
     }
-
 }
