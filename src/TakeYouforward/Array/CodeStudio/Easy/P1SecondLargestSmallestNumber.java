@@ -19,10 +19,12 @@ public class P1SecondLargestSmallestNumber {
 //    Space Complexity: O(1)
     public static int[] getSecondOrderElements(int n, int[] a) {
         if (n < 2) return new int[]{-1, -1};
+
         int max = Integer.MIN_VALUE;
         int sMax = Integer.MIN_VALUE;
         int min = Integer.MAX_VALUE;
         int sMin = Integer.MAX_VALUE;
+
         for (int i = 0; i < n; i++) {
             if (a[i] < min) {
                 sMin = min;
@@ -31,17 +33,17 @@ public class P1SecondLargestSmallestNumber {
                 sMin = a[i];
             }
         }
+
         //For dry run [1,2,4,7,7,5]
         for (int i = 0; i < n; i++) {
             if (a[i] > max) {
                 sMax = max;
                 max = a[i];
-            }
-            //This && is used to handle the duplicate dry run above example
-            else if (a[i] > sMax && a[i] != max) {
+            } else if (a[i] > sMax && a[i] != max) {
                 sMax = a[i];
             }
         }
+
         return new int[]{sMax, sMin};
     }
 
@@ -55,14 +57,17 @@ public class P1SecondLargestSmallestNumber {
 //        int sMax = Integer.MIN_VALUE;
 //        int min = Integer.MAX_VALUE;
 //        int sMin = Integer.MAX_VALUE;
+//
 //        for (int i = 0; i < n; i++) {
 //            max = Math.max(max, a[i]);
 //            min = Math.min(min, a[i]);
 //        }
+//
 //        for (int i = 0; i < n; i++) {
 //            if (a[i] > sMax && a[i] != max) sMax = a[i];
 //            if (a[i] < sMin && a[i] != min) sMin = a[i];
 //        }
+//
 //        return new int[]{sMax, sMin};
 //    }
 }
