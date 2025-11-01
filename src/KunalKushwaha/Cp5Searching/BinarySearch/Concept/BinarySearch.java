@@ -34,6 +34,8 @@ public class BinarySearch {
 
     // T(C) = O(logn)
     // S(C) = O(1)
+    // It might be possible that (start + end) exceeds the range of int in Java,
+    // so that's why we don’t do mid = (start + end) / 2
     static int binarySearch(int[] arr, int target) {
         int start = 0;
         int end = arr.length - 1;

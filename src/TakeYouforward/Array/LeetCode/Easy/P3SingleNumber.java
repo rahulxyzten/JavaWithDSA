@@ -40,6 +40,7 @@ public class P3SingleNumber {
     //T(C) = O(N) and S(C) = O(1)
     public static int singleNumber(int[] nums) {
         int xor = 0;
+        // See xor = 0 from start
         for (int num : nums) {
             xor = xor ^ num;
         }
