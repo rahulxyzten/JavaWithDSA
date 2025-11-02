@@ -6,10 +6,11 @@ public class P5FloorCeilSortedArray {
         int[] arr = {1, 2, 3, 4, 8, 10, 10, 12, 19};
         int element = 9;
         System.out.println(floor(arr, element));
-        System.out.println(ceil(arr,element));
+        System.out.println(ceil(arr, element));
     }
 
-
+    // T(C) = O(logn)
+    // S(C) = O(1)
     public static int floor(int[] arr, int element) {
         int start = 0, end = arr.length - 1, result = -1;
         while (start <= end) {
@@ -19,13 +20,15 @@ public class P5FloorCeilSortedArray {
             } else if (arr[mid] < element) {
                 result = arr[mid];
                 start = mid + 1;
-            }
-            else {
+            } else {
                 end = mid - 1;
             }
         }
         return result;
     }
+
+    // T(C) = O(logn)
+    // S(C) = O(1)
     public static int ceil(int[] arr, int element) {
         int start = 0, end = arr.length - 1, result = -1;
         while (start <= end) {
@@ -35,8 +38,7 @@ public class P5FloorCeilSortedArray {
             } else if (arr[mid] > element) {
                 result = arr[mid];
                 end = mid - 1;
-            }
-            else if (arr[mid] < element) {
+            } else if (arr[mid] < element) {
                 start = mid + 1;
             }
         }

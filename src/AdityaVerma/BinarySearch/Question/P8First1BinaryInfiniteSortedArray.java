@@ -8,6 +8,8 @@ public class P8First1BinaryInfiniteSortedArray {
         System.out.println(infiniteSorted(arr));
     }
 
+    // T(C) = O(logn) + O(logn) = O(2long)
+    // S(C) = O(1)
     public static int infiniteSorted(int[] arr) {
         int start = 0;
         int end = 1;

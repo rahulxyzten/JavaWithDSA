@@ -27,10 +27,13 @@ public class P1LowerBound {
         System.out.println(lowerBound(arr, n, x));
     }
 
+    // T(C) = O(logn)
+    // S(C) = O(1)
     public static int lowerBound(int[] arr, int n, int x) {
         int start = 0;
         int end = n - 1;
         int result = n;
+
         while (start <= end) {
             int mid = start + (end - start) / 2;
             if (arr[mid] >= x) {

@@ -8,9 +8,12 @@ public class P6NextAlphabetSortedArray {
         System.out.println(nextAlphabet(arr, key));
     }
 
+    // T(C) = O(logn)
+    // S(C) = O(1)
     public static char nextAlphabet(char[] arr, char key) {
         char result = '#';
         int start = 0, end = arr.length - 1;
+
         while (start <= end) {
             int mid = start + (end - start) / 2;
             if (arr[mid] == key) {
@@ -22,6 +25,7 @@ public class P6NextAlphabetSortedArray {
                 start = mid + 1;
             }
         }
+
         return result;
     }
 }

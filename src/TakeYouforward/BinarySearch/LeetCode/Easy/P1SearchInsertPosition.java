@@ -45,10 +45,13 @@ public class P1SearchInsertPosition {
 
     }
 
+    // T(C) = O(logn)
+    // S(C) = O(1)
     public static int searchInsert(int[] nums, int target) {
         int n = nums.length;
         int start = 0, end = n - 1;
         int result = n;
+
         while (start <= end) {
             int mid = start + (end - start) / 2;
             if (nums[mid] >= target) {
@@ -58,8 +61,10 @@ public class P1SearchInsertPosition {
                 start = mid + 1;
             }
         }
+
         return result;
     }
+
 
 //Problem in below code
 /*

@@ -20,14 +20,17 @@ public class P2UpperBound {
         int x = 1;
 
         int n = arr.length;
-        System.out.println(upperBound(arr,x,n));
+        System.out.println(upperBound(arr, x, n));
     }
 
     /*Best Code */
+    // T(C) = O(logn)
+    // S(C) = O(1)
     public static int upperBound(int[] arr, int x, int n) {
         int start = 0;
         int end = n - 1;
         int result = n;
+
         while (start <= end) {
             int mid = start + (end - start) / 2;
             if (arr[mid] > x) {

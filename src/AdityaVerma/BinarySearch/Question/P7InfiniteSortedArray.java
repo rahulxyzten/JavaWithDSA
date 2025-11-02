@@ -17,32 +17,36 @@ public class P7InfiniteSortedArray {
 
 
     //Right code (Kunal Kushwaha Code)
+    // T(C) = O(logn) + O(logn) = O(2long)
+    // S(C) = O(1)
     public static int infiniteSorted(long[] arr, long target) {
         long start = 0L;
         long end = 1L;
         long n = arr.length;
+
         while (end < n && target > arr[(int) end]) {
             //Array is long but the array indexes is integer,
             start = end + 1;
-            end = end  * 2;
+            end = end * 2;
         }
-        return binarySearch(arr, start, Math.min(n-1, end), target);
+
+        return binarySearch(arr, start, Math.min(n - 1, end), target);
     }
 
     static int binarySearch(long[] arr, long start, long end, long target) {
         while (start <= end) {
             long mid = start + (end - start) / 2;
-            if (target == arr[(int)mid]) {
+            if (target == arr[(int) mid]) {
                 return (int) mid;
             } else if (target > arr[(int) mid]) {
                 start = mid + 1;
             } else {
-                end = mid - 1; ;
+                end = mid - 1;
             }
         }
+
         return -1;
     }
-
 
 
 //    public static int infiniteSorted(int[] arr, int target) {

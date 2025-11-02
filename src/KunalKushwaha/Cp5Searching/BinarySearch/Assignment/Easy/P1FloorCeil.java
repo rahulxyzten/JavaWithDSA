@@ -12,8 +12,10 @@ public class P1FloorCeil {
         System.out.println(ceilingInSortedArray(arr.length, target, arr));
     }
 
-//    //This is for returning the floor and ceil not as index
-//    //otherwise return the index as -1
+    //This is for returning the floor and ceil not as index
+//  otherwise return the index as -1
+// T(C) = O(2logn)
+// S(C) = O(1)
     public static int ceilingInSortedArray(int n, int x, int[] arr) {
         Arrays.sort(arr);
         int floor = floor(arr, x);
@@ -36,7 +38,7 @@ public class P1FloorCeil {
                 return arr[mid];
             }
         }
-        if(end >= 0) return arr[end];
+        if (end >= 0) return arr[end];
         else return -1;
     }
 
