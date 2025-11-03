@@ -33,13 +33,17 @@ public class P1SingleElementSortedArray {
 
     }
 
-    //Optimal Solution
+    // Optimal Solution
+    // T(C) = O(logn)
+    // S(C) = O(1)
     public static int singleNonDuplicate(int[] nums) {
         int n = nums.length;
         if (n == 1) return nums[0];
         if (nums[0] != nums[1]) return nums[0];
         if (nums[n - 1] != nums[n - 2]) return nums[n - 1];
+
         int start = 1, end = n - 2;
+        // See start and end initial value
         while (start <= end) {
             int mid = start + (end - start) / 2;
             if (nums[mid] != nums[mid + 1] && nums[mid] != nums[mid - 1]) return nums[mid];
@@ -49,12 +53,9 @@ public class P1SingleElementSortedArray {
                 end = mid - 1;
             }
         }
+
         return -1;
     }
-//    Time Complexity: O(logN), N = size of the given array.
-//            Reason: We are basically using the Binary Search algorithm.
-//
-//    Space Complexity: O(1) as we are not using any extra space.
 
 
     //Brute force solution

@@ -2,10 +2,7 @@ package TakeYouforward.BinarySearch.LeetCode.Medium;
 //Question
 /*
 81. Search in Rotated Sorted Array II
-Medium
-7.7K
-961
-Companies
+
 There is an integer array nums sorted in non-decreasing order (not necessarily with distinct values).
 
 Before being passed to your function, nums is rotated at an unknown pivot index k (0 <= k < nums.length) such that the resulting array is [nums[k], nums[k+1], ..., nums[n-1], nums[0], nums[1], ..., nums[k-1]] (0-indexed). For example, [0,1,2,4,4,4,5,6,6,7] might be rotated at pivot index 5 and become [4,5,6,6,7,0,1,2,4,4].
@@ -46,14 +43,17 @@ public class P3SearchInRotatedSortedArray2 {
         System.out.println(search(arr, target));
     }
 
+    // T(C) = O(logn)
+    // S(C) = O(1)
     public static int search(int[] nums, int target) {
         int start = 0, end = nums.length - 1;
+
         while (start <= end) {
             int mid = start + (end - start) / 2;
             if (target == nums[mid]) return mid;
             else if (nums[start] == nums[mid] && nums[mid] == nums[end]) {
-                start = start + 1;
-                end = end - 1;
+                start++;
+                end--;
             } else if (nums[start] <= nums[mid]) {
                 if (nums[start] <= target && target <= nums[mid]) end = mid - 1;
                 else start = mid + 1;
@@ -62,6 +62,7 @@ public class P3SearchInRotatedSortedArray2 {
                 else end = mid - 1;
             }
         }
+
         return -1;
     }
 }
