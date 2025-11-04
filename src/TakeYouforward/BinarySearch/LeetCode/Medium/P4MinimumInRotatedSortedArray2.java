@@ -2,10 +2,7 @@ package TakeYouforward.BinarySearch.LeetCode.Medium;
 //Problem
 /*
 154. Find Minimum in Rotated Sorted Array II
-Hard
-4.3K
-449
-Companies
+
 Suppose an array of length n sorted in ascending order is rotated between 1 and n times. For example, the array nums = [0,1,4,4,5,6,7] might become:
 
 [4,5,6,7,0,1,4] if it was rotated 4 times.
@@ -47,32 +44,23 @@ public class P4MinimumInRotatedSortedArray2 {
     public static void main(String[] args) {
 //        int[] nums = {4,5,1,2,3};
 //        int[] nums = {2, 2, 2, 0, 1};
-        int[] nums = {3,3,3,1};
+        int[] nums = {3, 3, 3, 1};
 //        int[] nums = {3, 3, 3, 3, 3, 3, 4, 1, 2, 3};
         System.out.println(findMin(nums));
     }
 
+    // T(C) = O(logn)
+    // S(C) = O(1)
     public static int findMin(int[] nums) {
-        int start = 0;
-        int end = nums.length - 1;
+        int start = 0, end = nums.length - 1;
 
         while (start < end) {
             int mid = start + (end - start) / 2;
-
-            if (nums[mid] < nums[end]) {
-                // The right half is sorted, minimum is in the left half
-                end = mid;
-                //here u can't write end = mid - 1 because int[] nums = {4,5,1,2,3}; here mid = 1 and
-                //the right part is sorted, so it eliminate the right side with the minimum element 1
-                //after eliminating
-            } else if (nums[mid] > nums[end]) {
-                // The left half is sorted, minimum is in the right half
-                start = mid + 1;
-            } else {
-                // Handle duplicates, decrement end since we know nums[mid] == nums[end]
-                end--;
-            }
+            if (nums[mid] < nums[end]) end = mid;
+            else if (nums[mid] > nums[end]) start = mid + 1;
+            else end--;  // Handle duplicates, decrement end since we know nums[mid] == nums[end]
         }
+
         return nums[start];
     }
 }

@@ -9,16 +9,20 @@ public class P3SortedArrayRoted {
     }
 
     //TUF Code (BEST)
+    // T(C) = O(logn)
+    // S(C) = O(1)
     static int arrayRotated(int[] arr) {
         int start = 0;
         int end = arr.length - 1;
         if (arr[start] < arr[end]) return 0;
-        //The above line going to be wrong if the array contains duplicate
+        // The above line is going to be wrong if the array contains duplicates
+
         while (start < end) {
             int mid = start + (end - start) / 2;
             if (arr[mid] < arr[end]) end = mid;
             else start = mid + 1;
         }
+
         if (start != 0) return start;
         return 0;
     }
