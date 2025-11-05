@@ -2,10 +2,7 @@ package KunalKushwaha.Cp5Searching.BinarySearch.LeetCode.Medium;
 //Problem
 /*
 852. Peak Index in a Mountain Array
-Medium
-6.7K
-1.9K
-Companies
+
 An array arr is a mountain if the following properties hold:
 
 arr.length >= 3
@@ -45,16 +42,20 @@ public class P2PeakIndexMountainArray {
         System.out.println(peakIndexInMountainArray(arr));
     }
 
+
+    // T(C) = O(logn)
+    // S(C) = O(1)
     public static int peakIndexInMountainArray(int[] arr) {
         int n = arr.length;
         if (n == 1) return 0;
         int start = 0, end = n - 1;
+
         while (start < end) {
             int mid = start + (end - start) / 2;
-            if (arr[mid] > arr[mid+1]) end = mid;
+            if (arr[mid] > arr[mid + 1]) end = mid;
             else start = mid + 1;
         }
+
         return start;
     }
-
 }

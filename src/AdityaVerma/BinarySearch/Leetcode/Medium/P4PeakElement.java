@@ -2,10 +2,7 @@ package AdityaVerma.BinarySearch.Leetcode.Medium;
 //Problem
 /*
 162. Find Peak Element
-Medium
-10.3K
-4.4K
-Companies
+
 A peak element is an element that is strictly greater than its neighbors.
 
 Given a 0-indexed integer numsay nums, find a peak element, and return its index. If the numsay contains multiple peaks, return the index to any of the peaks.

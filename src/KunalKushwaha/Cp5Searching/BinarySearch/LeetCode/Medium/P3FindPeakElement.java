@@ -2,10 +2,7 @@ package KunalKushwaha.Cp5Searching.BinarySearch.LeetCode.Medium;
 //Problem
 /*
 162. Find Peak Element
-Medium
-10.3K
-4.4K
-Companies
+
 A peak element is an element that is strictly greater than its neighbors.
 
 Given a 0-indexed integer array nums, find a peak element, and return its index. If the array contains multiple peaks, return the index to any of the peaks.
@@ -38,19 +35,24 @@ nums[i] != nums[i + 1] for all valid i.
 public class P3FindPeakElement {
     public static void main(String[] args) {
 //        int nums[] = {1,2,1,3,5,6,4};
-        int[] nums= {1,2,3};
+        int[] nums = {1, 2, 3};
 //        int[] nums = {1};
         System.out.println(findPeakElement(nums));
     }
+
+    // T(C) = O(logn)
+    // S(C) = O(1)
     public static int findPeakElement(int[] nums) {
         int n = nums.length;
         if (n == 1) return 0;
         int start = 0, end = n - 1;
+
         while (start < end) {
             int mid = start + (end - start) / 2;
-            if (nums[mid] > nums[mid+1]) end = mid;
+            if (nums[mid] > nums[mid + 1]) end = mid;
             else start = mid + 1;
         }
+
         return start;
     }
 }
