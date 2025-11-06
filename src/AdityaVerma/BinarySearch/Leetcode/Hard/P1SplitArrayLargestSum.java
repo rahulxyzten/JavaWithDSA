@@ -38,28 +38,16 @@ public class P1SplitArrayLargestSum {
         System.out.println(splitArray(nums, k));
     }
 
-    //Just change leads to 0ms runtime (Beats 100.00%of users with Java) & 39.77 MB memory
-    // int start =  0;
-    //        int end =  0;
-    //        for (int num : nums) {
-    //            start = Math.max(start, num);
-    //            end += num;
-    //        }
-
-    //Otherwise if this leads to 2ms runtime and 40.4 mb memory
-    //int start = Arrays.stream(nums).max().getAsInt();
-    //int end = Arrays.stream(nums).sum();
-
     public static int splitArray(int[] nums, int k) {
         int n = nums.length;
         if (k > n) return -1;
-        int start =  0;
-        int end =  0;
+        int start = Integer.MIN_VALUE, end = 0;
         for (int num : nums) {
             start = Math.max(start, num);
             end += num;
         }
         int result = -1;
+
         while (start <= end) {
             int mid = start + (end - start) / 2;
             if (isValid(nums, n, k, mid)) {
@@ -69,33 +57,34 @@ public class P1SplitArrayLargestSum {
                 start = mid + 1;
             }
         }
+
         return result;
     }
 
-    public static boolean isValid(int[] arr, int n, int k, int max) {
-        int student = 1;
-        int sum = 0;
+    public static boolean isValid(int[] nums, int n, int k, int maxEle) {
+        int countSubarray = 1, sum = 0;
         for (int i = 0; i < n; i++) {
-            sum = sum + arr[i];
-            if (sum > max) {
-                student++;
-                sum = arr[i];
+            sum += nums[i];
+            if (sum > maxEle) {
+                countSubarray++;
+                sum = nums[i];
             }
-            if (student > k) {
-                return false;
-            }
+            if (countSubarray > k) return false;
         }
+
         return true;
     }
 
     //T(C) & S(C)
     /*
-    Time Complexity: O(N * log(sum(arr[])-max(arr[])+1)), where N = size of the array, sum(arr[]) = sum of all array elements,
-     max(arr[]) = maximum of all array elements.
-    Reason: We are applying binary search on [max(arr[]), sum(arr[])]. Inside the loop, we are calling the countStudents() function
-    for the value of ‘mid’. Now, inside the countStudents() function, we are using a loop that runs for N times.
+    Time Complexity: O(N * log(sum(arr[])-max(arr[])+1))
+    where N = size of the array,
+    sum(arr[]) = sum of all array elements,
+    max(arr[]) = maximum of all array elements.
+    Reason: We are applying binary search on [max(arr[]), sum(arr[])]. Inside the loop, we are calling the isValid() function
+    for the value of ‘mid’. Now, inside the isValid() function, we are using a loop that runs for N times.
 
-     Space Complexity:  O(1) as we are not using any extra space to solve this problem.
+    Space Complexity: O(1) as we are not using any extra space to solve this problem.
      */
 
 

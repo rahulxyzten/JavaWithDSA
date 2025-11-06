@@ -21,40 +21,50 @@ public class P2AllocateBooks {
 
     public static int findPages(ArrayList<Integer> arr, int n, int m) {
         if (m > n) return -1;
-        int start = Collections.max(arr);
-        int end = arr.stream().mapToInt(Integer::intValue).sum();
+        int start = Integer.MIN_VALUE, end = 0;
+        for (int num : arr) {
+            start = Math.max(start, num);
+            end += num;
+        }
         int result = -1;
+
         while (start <= end) {
             int mid = start + (end - start) / 2;
-            if (isValid(arr, n, m, mid)){
+            if (isValid(arr, n, m, mid)) {
                 result = mid;
                 end = mid - 1;
+            } else {
+                start = mid + 1;
             }
-            else start = mid + 1;
         }
+
         return result;
     }
 
-    static boolean isValid(ArrayList<Integer> arr, int n, int m, int maxele) {
-        int student = 1;
-        int sum = 0;
+    public static boolean isValid(ArrayList<Integer> arr, int n, int m, int maxEle) {
+        int student = 1, sum = 0;
         for (int i = 0; i < n; i++) {
-            sum = sum + arr.get(i);
-            if (sum > maxele) {
+            sum += arr.get(i);
+            if (sum > maxEle) {
                 student++;
                 sum = arr.get(i);
             }
             if (student > m) return false;
         }
+
         return true;
     }
+
+
     //T(C) & S(C)
     /*
-    Time Complexity: O(N * log(sum(arr[])-max(arr[])+1)), where N = size of the array, sum(arr[]) = sum of all array elements,
-     max(arr[]) = maximum of all array elements.
-    Reason: We are applying binary search on [max(arr[]), sum(arr[])]. Inside the loop, we are calling the countStudents() function
-    for the value of ‘mid’. Now, inside the countStudents() function, we are using a loop that runs for N times.
+    Time Complexity: O(N * log(sum(arr[])-max(arr[])+1))
+    where N = size of the array,
+    sum(arr[]) = sum of all array elements,
+    max(arr[]) = maximum of all array elements.
+    Reason: We are applying binary search on [max(arr[]), sum(arr[])]. Inside the loop, we are calling the isValid() function
+    for the value of ‘mid’. Now, inside the isValid() function, we are using a loop that runs for N times.
 
-     Space Complexity:  O(1) as we are not using any extra space to solve this problem.
+    Space Complexity: O(1) as we are not using any extra space to solve this problem.
      */
 }
