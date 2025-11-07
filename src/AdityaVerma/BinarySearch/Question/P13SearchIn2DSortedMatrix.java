@@ -11,6 +11,9 @@ public class P13SearchIn2DSortedMatrix {
         System.out.println(Arrays.toString(searchIn2DSortedMatrix(matrix, target)));
     }
 
+    // T(C) = O(log(NxM)), where N = given row number, M = given column number.
+    //Reason: We are applying binary search on the imaginary 1D array of size NxM.
+    // S(C) = O(1)
     static int[] searchIn2DSortedMatrix(int[][] matrix, int target) {
         int[] ans = new int[2];
         int n = matrix.length;

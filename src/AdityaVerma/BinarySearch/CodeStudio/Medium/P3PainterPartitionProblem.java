@@ -61,6 +61,8 @@ public class P3PainterPartitionProblem {
     where N = size of the array,
     sum(arr[]) = sum of all array elements,
     max(arr[]) = maximum of all array elements.
+    Why + 1? start = 40 and end = 100, here the total element 60 to 100 which is 61 element(include 60 also)
+    is log(n) = log(61) = log(100-40) + 1
     Reason: We are applying binary search on [max(arr[]), sum(arr[])]. Inside the loop, we are calling the isValid() function
     for the value of ‘mid’. Now, inside the isValid() function, we are using a loop that runs for N times.
 

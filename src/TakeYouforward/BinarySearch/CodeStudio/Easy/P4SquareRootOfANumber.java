@@ -2,11 +2,7 @@ package TakeYouforward.BinarySearch.CodeStudio.Easy;
 //Problem
 /*
  Square Root of a number
-Easy
-0/40
-Average time to solve is 15m
-375 upvotes
-Asked in companies
+
 Problem statement
 You are given a positive integer ‘n’.
 
@@ -55,17 +51,20 @@ public class P4SquareRootOfANumber {
     //Optimal Solution T(C) = logn & S(C) = O(1)
     public static int sqrtN(long N) {
         long start = 1, end = N;
-        int result = 0;
-        while (start <= end){
+        long result = 0; //0 <= n <= 10 ^ 9
+
+        while (start <= end) {
             long mid = start + (end - start) / 2;
             long val = mid * mid;
-            if (val <= N){
-                result  = (int) mid;
+            if (val == N) return (int) mid;
+            else if (val < N) {
+                result = mid;
                 start = mid + 1;
-            }else {
+            } else {
                 end = mid - 1;
             }
         }
-        return result;
+
+        return (int) result;
     }
 }

@@ -44,11 +44,13 @@ public class P7FindSmallestDivisorThreshold {
     public static int smallestDivisor(int[] nums, int threshold) {
         int n = nums.length;
         if (n > threshold) return -1;
-        int start = 1, end = 0;
-        int result = -1;
+        int start = 1, end = Integer.MIN_VALUE;
         for (int num : nums) {
             end = Math.max(end, num);
         }
+        int result = end;
+        // nums.length <= threshold <= 10^6
+
         while (start <= end) {
             int mid = start + (end - start) / 2;
             if (sumByMid(nums, mid) <= threshold) {
@@ -56,6 +58,7 @@ public class P7FindSmallestDivisorThreshold {
                 end = mid - 1;
             } else start = mid + 1;
         }
+
         return result;
     }
 
@@ -64,6 +67,18 @@ public class P7FindSmallestDivisorThreshold {
         for (int num : nums) {
             sum += Math.ceil((double) num / (double) mid);
         }
+
         return sum;
     }
+
+    //T(C) & S(C)
+    /*
+    Time Complexity: O(N * log(max(a[]))), where max(a[]) is the maximum element in the array and N = size of the array.
+    Reason: We are applying Binary search for the range [1, max(a[])],
+    for [0->n-1] = total element (ex 0-4 = 5 elements)  => O(logn)
+    for [1->max(a[])] = total element (ex 1-5 = 5 elements) => O(log(max(a[])))
+    and for every value of ‘mid’, we are traversing the entire array inside the function named calculateTotalHours() or isValid().
+
+    Space Complexity: O(1) as we are not using any extra space to solve this problem.
+    */
 }

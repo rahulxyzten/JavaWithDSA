@@ -2,11 +2,7 @@ package TakeYouforward.BinarySearch.CodeStudio.Easy;
 //Problem
 /*
 Find Nth Root Of M
-Easy
-0/40
-Average time to solve is 10m
-Contributed by
-450 upvotes
+
 Asked in companies
 Problem statement
 You are given two positive integers 'n' and 'm'. You have to return the 'nth' root of 'm', i.e. 'm(1/n)'. If the 'nth root is not an integer, return -1.
@@ -73,7 +69,9 @@ public class P5FindNthRootOfM {
     }
 
 
-    //Optimal Solution T(C) = O(logn) & S(C) = O(1)
+    // Optimal Solution T(C) = O(logM) & S(C) = O(1)
+    // for [0->n-1] = total element (ex 0-4 = 5 elements)  => O(logn)
+    // for [1->M] = total element (ex 1-5 = 5 elements) => O(logM)
     public static int NthRoot(int n, int m) {
         int start = 1, end = m;
         while (start <= end) {
@@ -87,17 +85,18 @@ public class P5FindNthRootOfM {
                 end = mid - 1;
             }
         }
+
         return -1;
     }
 
     public static int func(int mid, int n, int m) {
         long ans = 1;
-        for (int i = 1; i <= n; i++) {
+        for (int i = 0; i < n; i++) {
             ans = ans * mid;
             if (ans > m) return 2;
         }
         if (ans == m) return 1;
+
         return 0;
     }
-
 }

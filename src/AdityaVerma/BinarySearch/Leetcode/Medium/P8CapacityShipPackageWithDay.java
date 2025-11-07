@@ -65,6 +65,7 @@ public class P8CapacityShipPackageWithDay {
             end += num;
         }
         int result = -1;
+
         while (start <= end) {
             int mid = start + (end - start) / 2;
             if (isValid(weights, n, days, mid)) {
@@ -78,18 +79,30 @@ public class P8CapacityShipPackageWithDay {
     }
 
     public static boolean isValid(int[] arr, int n, int givenDay, int max) {
-        int days = 1;
-        int sum = 0;
+        int days = 1, sum = 0;
         for (int i = 0; i < n; i++) {
-            sum = sum + arr[i];
+            sum += arr[i];
             if (sum > max) {
                 days++;
                 sum = arr[i];
             }
-            if (days > givenDay) {
-                return false;
-            }
+            if (days > givenDay) return false;
         }
+
         return true;
     }
+
+    //T(C) & S(C)
+    /*
+    Time Complexity: O(N * log(sum(arr[])-max(arr[])+1))
+    where N = size of the array,
+    sum(arr[]) = sum of all array elements,
+    max(arr[]) = maximum of all array elements.
+    Why + 1? start = 40 and end = 100, here the total element 60 to 100 which is 61 element(include 60 also)
+    is log(n) = log(61) = log(100-40) + 1
+    Reason: We are applying binary search on [max(arr[]), sum(arr[])]. Inside the loop, we are calling the isValid() function
+    for the value of ‘mid’. Now, inside the isValid() function, we are using a loop that runs for N times.
+
+    Space Complexity: O(1) as we are not using any extra space to solve this problem.
+     */
 }

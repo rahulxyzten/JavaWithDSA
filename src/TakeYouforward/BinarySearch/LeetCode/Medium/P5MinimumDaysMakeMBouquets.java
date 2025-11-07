@@ -50,38 +50,41 @@ public class P5MinimumDaysMakeMBouquets {
     public static void main(String[] args) {
 //        int[] bloomDay = {1, 10, 3, 10, 2};
 //        int m = 3, k = 1;
-        int[] bloomDay = {7,7,7,7,12,7,7};
+        int[] bloomDay = {7, 7, 7, 7, 12, 7, 7};
         int m = 2, k = 3;
         System.out.println(minDays(bloomDay, m, k));
 
     }
 
-    //T(C) = O(log(max(arr[])-min(arr[])+1) * N)
-    //S(C) = 1
-
+    // T(C) = O(log(max(arr[])-min(arr[])+1) * N)
+    // for [0->n-1] = total element (ex 0-4 = 5)  => O(logn)
+    // for {2, 3, 4, 5, 6, 7, 8, 9, 10} start = 2 and end = 10
+    // n = 9 that's why 10 - 2 + 1 = 9
+    // S(C) = O(1)
     public static int minDays(int[] bloomDay, int m, int k) {
         int n = bloomDay.length;
         if (((long) m * k) > n) return -1;
-        int start = Integer.MAX_VALUE;
-        int end = Integer.MIN_VALUE;
+        int start = Integer.MAX_VALUE, end = Integer.MIN_VALUE;
         int result = -1;
+
         for (int num : bloomDay) {
             start = Math.min(start, num);
             end = Math.max(end, num);
         }
+
         while (start <= end) {
             int mid = start + (end - start) / 2;
-            if (isValid(bloomDay, m, k, mid)) {
+            if (isPossible(bloomDay, m, k, mid)) {
                 result = mid;
                 end = mid - 1;
             } else start = mid + 1;
         }
+
         return result;
     }
 
-    public static boolean isValid(int[] bloomDay, int m, int k, int day) {
-        int count = 0;
-        int noOfB = 0;
+    public static boolean isPossible(int[] bloomDay, int m, int k, int day) {
+        int count = 0, noOfB = 0;
         for (int num : bloomDay) {
             if (num <= day) {
                 count++;
@@ -92,6 +95,6 @@ public class P5MinimumDaysMakeMBouquets {
         }
         noOfB += (count / k);
 
-        return (noOfB >= m);
+        return noOfB >= m;
     }
 }

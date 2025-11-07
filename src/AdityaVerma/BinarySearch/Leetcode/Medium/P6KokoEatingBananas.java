@@ -2,10 +2,7 @@ package AdityaVerma.BinarySearch.Leetcode.Medium;
 //Problem
 /*
 875. Koko Eating Bananas
-Medium
-9K
-439
-Companies
+
 Koko loves to eat bananas. There are n piles of bananas, the ith pile has piles[i] bananas. The guards have gone and will come back in h hours.
 
 Koko can decide her bananas-per-hour eating speed of k. Each hour, she chooses some pile of bananas and eats k bananas from that pile. If the pile has less than k bananas, she eats all of them instead and will not eat any more bananas during this hour.
@@ -47,11 +44,26 @@ public class P6KokoEatingBananas {
     }
 
     /* Optimal Solution */
+    //T(C) & S(C)
+    /*
+    Time Complexity: O(N * log(max(a[]))), where max(a[]) is the maximum element in the array and N = size of the array.
+    Reason: We are applying Binary search for the range [1, max(a[])],
+    for [0->n-1] = total element (ex 0-4 = 5 elements)  => O(logn)
+    for [1->max(a[])] = total element (ex 1-5 = 5 elements) => O(log(max(a[])))
+    and for every value of ‘mid’, we are traversing the entire array inside the function named calculateTotalHours() or isValid().
+
+    Space Complexity: O(1) as we are not using any extra space to solve this problem.
+    */
     public static int minEatingSpeed(int[] piles, int h) {
         int start = 1;
-        int end = findMax(piles); //less time complexity
-//        int end = Arrays.stream(piles).max().orElse(-1); //more time complexity
-        int result = 1;
+        int end = Integer.MIN_VALUE;
+        for (int num : piles) {
+            end = Math.max(end, num);
+        }
+        int result = end;
+        // maximum in the array
+        // because it has given piles.length <= h <= 109
+
         while (start <= end) {
             int mid = start + (end - start) / 2;
             if (isValid(piles, mid, h)) {
@@ -59,39 +71,33 @@ public class P6KokoEatingBananas {
                 end = mid - 1;
             } else start = mid + 1;
         }
-        return result;
-//        return start;
-    }
 
-    public static int findMax(int[] v) {
-        int maxi = Integer.MIN_VALUE;
-        for (int j : v) {
-            maxi = Math.max(maxi, j);
-        }
-        return maxi;
+        return result;
     }
 
     public static boolean isValid(int[] arr, int k, int h) {
         int totalH = 0;
-        for (int j : arr) {
-            //totalH = totalH + Math.ceil(j / k);
-            //above line don't work because
-            //if 5/2 it gives a 2(int) ceil is 2 because j and k is int, but we need 3, so we have to type cast j and k to double
-            // so wright is (double)5/(double)2 it gives 2.5(double) ceil is 3 which is our required element
-
-            totalH +=  Math.ceil((double) j / (double) k);
+        for (int num : arr) {
+            totalH += Math.ceil((double) num / (double) k);
             if (totalH > h) return false;
-
         }
-//        return totalH <= h; //This line write if the if condition is not written above
-                return true;
-    }
-}
-//T(C) & S(C)
-/*
-Time Complexity: O(N * log(max(a[]))), where max(a[]) is the maximum element in the array and N = size of the array.
-Reason: We are applying Binary search for the range [1, max(a[])], and for every value of ‘mid’, we are
- traversing the entire array inside the function named calculateTotalHours().
 
-Space Complexity: O(1) as we are not using any extra space to solve this problem.
-*/
+        return true;
+    }
+
+//    public static boolean isValid(int[] arr, int k, int h) {
+//        int totalH = 0;
+//        for (int j : arr) {
+//            //totalH = totalH + Math.ceil(j / k);
+//            //above line don't work because
+//            //if 5/2 it gives a 2(int) ceil is 2 because j and k is int, but we need 3, so we have to type cast j and k to double
+//            // so wright is (double)5/(double)2 it gives 2.5(double) ceil is 3 which is our required element
+//
+//            totalH += Math.ceil((double) j / (double) k);
+//            if (totalH > h) return false;
+//
+//        }
+////        return totalH <= h; //This line write if the if condition is not written above
+//        return true;
+//    }
+}

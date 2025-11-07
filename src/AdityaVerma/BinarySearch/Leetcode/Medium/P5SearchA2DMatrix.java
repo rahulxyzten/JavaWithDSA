@@ -2,10 +2,7 @@ package AdityaVerma.BinarySearch.Leetcode.Medium;
 //Question
 /*
 74. Search a 2D Matrix
-Medium
-14.2K
-375
-Companies
+
 You are given an m x n integer matrix matrix with the following two properties:
 
 Each row is sorted in non-decreasing order.
@@ -42,15 +39,21 @@ public class P5SearchA2DMatrix {
         int target = 8;
         System.out.println(searchMatrix(matrix, target));
     }
+
+    // T(C) = O(log(NxM)), where N = given row number, M = given column number.
+    //Reason: We are applying binary search on the imaginary 1D array of size NxM.
+    // S(C) = O(1)
     public static boolean searchMatrix(int[][] matrix, int target) {
         int i = 0, j = matrix[0].length - 1;
         while (i < matrix.length && j >= 0) {
             if (matrix[i][j] == target) return true;
-            else if (matrix[i][j] > target) j--;
-            else i++;
+            else if (target > matrix[i][j]) i++;
+            else j--; // target < matrix[i][j]
         }
+
         return false;
     }
+
 //    public static boolean searchMatrix(int[][] matrix, int target) {
 //        int n = matrix.length;
 //        int m = matrix[0].length;
