@@ -39,22 +39,22 @@ Constraints:
 public class P1CheckArraySortedRotated {
     public static void main(String[] args) {
 //        int[] nums = {3, 4, 5, 1, 2};
-        int[] nums = {2,1,3,4}; //op - false
+        int[] nums = {2, 1, 3, 4}; //op - false
         System.out.println(check(nums));
     }
 
+    // T(C) = O(N) and S(C) = O(1)
     public static boolean check(int[] nums) {
-        int length = nums.length;
+        int n = nums.length;
         boolean flag1 = false;
         int flag = 0;
-        if (nums[0] >= nums[nums.length - 1]) {
-            flag1 = true;
+
+        if (nums[0] >= nums[n - 1]) flag1 = true;
+        for (int i = 0; i < n - 1; i++) {
+            if (nums[i] > nums[i + 1]) flag++;
         }
-        for (int i = 0; i < length - 1; i++) {
-            if (nums[i] > nums[i + 1]) {
-                flag++;
-            }
-        }
-        return (flag1 && flag == 1) || flag == 0;
+
+        if ((flag1 && flag == 1) || (flag == 0)) return true;
+        return false;
     }
 }
