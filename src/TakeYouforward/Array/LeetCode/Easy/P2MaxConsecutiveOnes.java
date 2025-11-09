@@ -30,6 +30,7 @@ public class P2MaxConsecutiveOnes {
         System.out.println(findMaxConsecutiveOnes(nums));
     }
 
+
     //T(C) = O(N) and S(C) = O(1)
     public static int findMaxConsecutiveOnes(int[] nums) {
         int count = 0, maxCount = 0;
