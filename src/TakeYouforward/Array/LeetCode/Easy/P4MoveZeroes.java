@@ -2,10 +2,7 @@ package TakeYouforward.Array.LeetCode.Easy;
 //Problem
 /*
 283. Move Zeroes
-Easy
-Topics
-Companies
-Hint
+
 Given an integer array nums, move all 0's to the end of it while maintaining the relative order of the non-zero elements.
 
 Note that you must do this in-place without making a copy of the array.
@@ -72,18 +69,21 @@ public class P4MoveZeroes {
     //T(C) = O(2N) & S(C) = O(N)
 //    public static void moveZeroes(int[] nums) {
 //        int n = nums.length;
-//        ArrayList<Integer> arr = new ArrayList<>();
+//        ArrayList<Integer> list = new ArrayList<>();
+//
 //        for (int num : nums) {
 //            if (num != 0) {
-//                arr.add(num);
+//                list.add(num);
 //            }
 //        }
+//
 //        for (int i = 0; i < n; i++) {
-//            if (i < arr.size())
-//                nums[i] = arr.get(i);
+//            if (i < list.size())
+//                nums[i] = list.get(i);
 //            else
 //                nums[i] = 0;
 //        }
+//
 //        System.out.println(Arrays.toString(nums));
 //    }
 }

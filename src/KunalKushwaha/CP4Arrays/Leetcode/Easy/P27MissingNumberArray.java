@@ -37,22 +37,38 @@ import java.util.Arrays;
 
 public class P27MissingNumberArray {
     public static void main(String[] args) {
-        int[] nums = {3,0,1};
+        int[] nums = {3, 0, 1};
         System.out.println(missingNumber(nums));
     }
 
-    //BEST ONE
+    // Optimal Solution
+    // T(C) = O(N) and S(C) = O(1)
     public static int missingNumber(int[] nums) {
         int n = nums.length;
         int total = n * (n + 1) / 2;
-        //here is takes the sum of a continuous series (1,2,3 .... to N)
+        // here it takes the sum of a continuous series (1,2,3 .... to N)
         // that is n * (n + 1) / 2
+
         int sum = 0;
-        for(int num : nums) {
+        for (int num : nums) {
             sum += num;
         }
+
         return total - sum;
     }
+
+    // Optimal Solution (Using Bit Manipulation)
+    // T(C) = O(N) and S(C) = O(1)
+//    public static int missingNumber(int[] nums) {
+//        int n = nums.length;
+//        int xor = 0;
+//
+//        for (int i = 0; i < n; i++) {
+//            xor = xor ^ i ^ nums[i];
+//        }
+//
+//        return xor ^ n;
+//    }
 
 
 //    public static int missingNumber(int[] nums) {
