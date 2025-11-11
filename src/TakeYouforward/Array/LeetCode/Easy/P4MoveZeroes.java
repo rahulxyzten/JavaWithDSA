@@ -36,11 +36,12 @@ public class P4MoveZeroes {
         int[] nums = {0, 1, 0, 3, 12};
 //        int[] nums = {0};
         moveZeroes(nums);
+        System.out.println(Arrays.toString(nums));
     }
 
 
     //Optimal Solution (Two Pointer Approach)
-    //T(C) = O(2N) & S(C) = O(1)
+    //T(C) = O(N) & S(C) = O(1)
     public static void moveZeroes(int[] nums) {
         int n = nums.length;
         int j = -1;
@@ -51,7 +52,7 @@ public class P4MoveZeroes {
             }
         }
 
-        if (j==-1) return;
+        if (j == -1) return;
 
         for (int i = j + 1; i < n; i++) {
             if (nums[i] != 0) {
@@ -60,8 +61,6 @@ public class P4MoveZeroes {
                 j++;
             }
         }
-
-        System.out.println(Arrays.toString(nums));
     }
 
 

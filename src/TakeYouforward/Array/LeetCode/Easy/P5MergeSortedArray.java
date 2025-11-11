@@ -45,6 +45,7 @@ nums2.length == n
 
 Follow up: Can you come up with an algorithm that runs in O(m + n) time?
  */
+
 public class P5MergeSortedArray {
     public static void main(String[] args) {
 //        int[] nums1 = {1, 2, 3, 0, 0, 0};

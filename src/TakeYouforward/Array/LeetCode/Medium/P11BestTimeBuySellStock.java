@@ -40,10 +40,12 @@ public class P11BestTimeBuySellStock {
     public static int maxProfit(int[] prices) {
         int maxPro = 0;
         int minPrice = Integer.MAX_VALUE;
-        for (int i = 0; i < prices.length; i++) {
-            minPrice = Math.min(minPrice, prices[i]);
-            maxPro = Math.max(maxPro, prices[i] - minPrice);
+
+        for (int price : prices) {
+            minPrice = Math.min(minPrice, price);
+            maxPro = Math.max(maxPro, price - minPrice);
         }
+
         return maxPro;
     }
 
@@ -54,6 +56,7 @@ public class P11BestTimeBuySellStock {
 //    public static int maxProfit(int[] prices) {
 //        int maxPro = 0;
 //        int n = prices.length;
+//
 //        for (int i = 0; i < n; i++) {
 //            for (int j =  i + 1; j < n ; j++) {
 //                if (prices[j] > prices[i]){
@@ -61,6 +64,7 @@ public class P11BestTimeBuySellStock {
 //                }
 //            }
 //        }
+//
 //        return maxPro;
 //    }
 

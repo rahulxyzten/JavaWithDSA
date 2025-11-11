@@ -2,10 +2,7 @@ package TakeYouforward.Array.LeetCode.Medium;
 //Question
 /*
 73. Set Matrix Zeroes
-Medium
-12.9K
-646
-Companies
+
 Given an m x n integer matrix matrix, if an element is 0, set its entire row and column to 0's.
 
 You must do it in place.
@@ -55,13 +52,10 @@ public class P3SetMatrixZeroes {
         int col0 = 1;
 //        int[] col = new int[m]; -> matrix[0][....] column Array
 //        int[] row = new int[n]; -> matrix[....][0] row Array
+
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
                 if (matrix[i][j] == 0) {
-                    //mark 0 for row array.
-                    //row array condition is first because row matrix condition is for
-                    //all n and col array condition is for less than one element ( m - 1 )
-                    // means j = 0 belong to col0 in whatever value of i
                     matrix[i][0] = 0;
                     if (j != 0) {
                         matrix[0][j] = 0;
@@ -71,6 +65,7 @@ public class P3SetMatrixZeroes {
                 }
             }
         }
+
         for (int i = 1; i < n; i++) {
             for (int j = 1; j < m; j++) {
                 if (matrix[i][j] != 0) {
@@ -80,26 +75,30 @@ public class P3SetMatrixZeroes {
                 }
             }
         }
+
         if (matrix[0][0] == 0) {
             for (int j = 0; j < m; j++) {
                 matrix[0][j] = 0;
             }
         }
+
         if (col0 == 0) {
             for (int i = 0; i < n; i++) {
                 matrix[i][0] = 0;
             }
         }
+
         System.out.println(Arrays.deepToString(matrix));
     }
 
 
-    /* Better Approach T(C) = O(2*n*m) & S(C) = O(N)+O(M) */
+    /* Better Approach T(C) = O(2*n*m) & S(C) = O(n)+O(m) */
 //    public static void setZeroes(int[][] matrix) {
 //        int n = matrix.length;
 //        int m = matrix[0].length;
-//        int[] col = new int[m];
 //        int[] row = new int[n];
+//        int[] col = new int[m];
+//
 //        for (int i = 0; i < n; i++) {
 //            for (int j = 0; j < m; j++) {
 //                if (matrix[i][j] == 0) {
@@ -108,20 +107,22 @@ public class P3SetMatrixZeroes {
 //                }
 //            }
 //        }
+//
 //        for (int i = 0; i < n; i++) {
 //            for (int j = 0; j < m; j++) {
-//                if (row[i] == 1 || col[j] == 1){
+//                if (row[i] == 1 || col[j] == 1) {
 //                    matrix[i][j] = 0;
 //                }
 //            }
 //        }
+//
 //        System.out.println(Arrays.deepToString(matrix));
 //    }
 
 
-
-
     /* Brute Force Approach */
+    // T(C) = O((n*m) * (n+m) + (n*m))
+    // S(C) = O(1)
 //    public static void setZeroes(int[][] matrix) {
 //        int n = matrix.length;
 //        int m = matrix[0].length;
@@ -133,6 +134,7 @@ public class P3SetMatrixZeroes {
 //                }
 //            }
 //        }
+//
 //        for (int i = 0; i < n; i++) {
 //            for (int j = 0; j < m; j++) {
 //                if (matrix[i][j] == -1) {
@@ -140,6 +142,7 @@ public class P3SetMatrixZeroes {
 //                }
 //            }
 //        }
+//
 //        System.out.println(Arrays.deepToString(matrix));
 //    }
 //
@@ -148,7 +151,6 @@ public class P3SetMatrixZeroes {
 //            if (matrix[i][j] != 0) {
 //                matrix[i][j] = -1;
 //            }
-//
 //        }
 //    }
 //
@@ -157,7 +159,6 @@ public class P3SetMatrixZeroes {
 //            if (matrix[i][j] != 0) {
 //                matrix[i][j] = -1;
 //            }
-//
 //        }
 //    }
 }

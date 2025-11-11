@@ -2,10 +2,7 @@ package TakeYouforward.Array.LeetCode.Medium;
 //Problem
 /*
 75. Sort Colors
-Medium
-Topics
-Companies
-Hint
+
 Given an array nums with n objects colored red, white, or blue, sort them in-place so that objects of the same color are adjacent, with the colors in the order red, white, and blue.
 
 We will use the integers 0, 1, and 2 to represent the color red, white, and blue, respectively.
@@ -47,19 +44,21 @@ public class P13SortColors {
     // T(C) = O(N) & S(C) = O(1)
     public static void sortColors(int[] nums) {
         int n = nums.length;
-        int mid = 0, low = 0, high = n - 1;
-        while (mid <= high) {
+        int start = 0, mid = 0, end = n - 1;
+
+        while (mid <= end) {
             if (nums[mid] == 0) {
-                swap(nums, mid, low);
+                swap(nums, start, mid);
+                start++;
                 mid++;
-                low++;
             } else if (nums[mid] == 1) {
                 mid++;
             } else {
-                swap(nums, mid, high);
-                high--;
+                swap(nums, mid, end);
+                end--;
             }
         }
+
         System.out.println(Arrays.toString(nums));
     }
 
@@ -79,6 +78,7 @@ public class P13SortColors {
 //            if (num == 0) zeros++;
 //            else if (num == 1) ones++;
 //        }
+//
 //        for (int i = 0; i < n; i++) {
 //            if (zeros != 0) {
 //                nums[i] = 0;
@@ -88,6 +88,7 @@ public class P13SortColors {
 //                ones--;
 //            } else nums[i] = 2;
 //        }
+//
 //        System.out.println(Arrays.toString(nums));
 //    }
 

@@ -2,10 +2,7 @@ package TakeYouforward.Array.LeetCode.Medium;
 //Problem
 /*
 2149. Rearrange Array Elements by Sign
-Medium
-Topics
-Companies
-Hint
+
 You are given a 0-indexed integer array nums of even length consisting of an equal number of positive and negative integers.
 
 You should return the array of nums such that the the array follows the given conditions:
@@ -52,7 +49,7 @@ public class P12RearrangeArrayElementsSign {
     public static void main(String[] args) {
 //        int[] nums = {3, 1, -2, -5, 2, -4};
 
-        //follow-up questions positive and negative elements (not necessarily equal)
+        //follow-up questions Positive and negative elements (not necessarily in equal numbers)
         int[] nums = {1, 2, -4, -5, 3, 4, -7, -9, -11};
 
         System.out.println(Arrays.toString(rearrangeArray(nums)));
@@ -66,8 +63,8 @@ public class P12RearrangeArrayElementsSign {
         ArrayList<Integer> negative = new ArrayList<>();
 
         for (int num : nums) {
-            if (num > 0) positive.add(num);
-            else negative.add(num);
+            if (num < 0) negative.add(num);
+            else positive.add(num);
         }
 
         if (positive.size() < negative.size()) {
@@ -75,6 +72,7 @@ public class P12RearrangeArrayElementsSign {
                 nums[2 * i] = positive.get(i);
                 nums[2 * i + 1] = negative.get(i);
             }
+
             int index = positive.size() * 2;
             for (int i = positive.size(); i < negative.size(); i++) {
                 nums[index] = negative.get(i);
@@ -85,6 +83,7 @@ public class P12RearrangeArrayElementsSign {
                 nums[2 * i] = positive.get(i);
                 nums[2 * i + 1] = negative.get(i);
             }
+
             int index = negative.size() * 2;
             for (int i = negative.size(); i < positive.size(); i++) {
                 nums[index] = positive.get(i);
@@ -92,9 +91,9 @@ public class P12RearrangeArrayElementsSign {
             }
         }
 
-
         return nums;
     }
+
 
     //Optimal Approach
     //T(C) = O(N)
@@ -102,6 +101,7 @@ public class P12RearrangeArrayElementsSign {
 //    public static int[] rearrangeArray(int[] nums) {
 //        int[] result = new int[nums.length];
 //        int posIndex = 0, negIndex = 1;
+//
 //        for (int num : nums) {
 //            if (num > 0) {
 //                result[posIndex] = num;
@@ -126,6 +126,7 @@ public class P12RearrangeArrayElementsSign {
 //            if (num > 0) positive.add(num);
 //            else negative.add(num);
 //        }
+//
 //        for (int i = 0; i < nums.length / 2; i++) {
 //            nums[2 * i] = positive.get(i);
 //            nums[2 * i + 1] = negative.get(i);
