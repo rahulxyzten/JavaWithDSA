@@ -10,6 +10,8 @@ public class P7RecursiveInsertionSort {
         System.out.println(Arrays.toString(arr));
     }
 
+    // T(C) = O(n^2)
+    // S(C) = O(1)
     public static void insertionSort(int[] arr, int i, int n) {
         if (i == n) return;
         int j = i;
@@ -17,6 +19,7 @@ public class P7RecursiveInsertionSort {
             swap(arr, j - 1, j);
             j--;
         }
+
         insertionSort(arr, i + 1, n);
     }
 

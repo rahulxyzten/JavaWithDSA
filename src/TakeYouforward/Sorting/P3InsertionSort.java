@@ -13,8 +13,11 @@ public class P3InsertionSort {
                 j--;
             }
         }
+
         System.out.println(Arrays.toString(arr));
     }
+    // T(C) = O(n^2)
+    // S(C) = O(1)
 
     public static void swap(int[] arr, int i, int j) {
         int temp = arr[i];

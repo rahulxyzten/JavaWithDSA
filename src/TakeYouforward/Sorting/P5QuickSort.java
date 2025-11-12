@@ -10,9 +10,11 @@ public class P5QuickSort {
         System.out.println(Arrays.toString(arr));
     }
 
+    // T(C) = O(nlogn)
+    // S(C) = O(1)
     public static void quickSort(int[] arr, int start, int end) {
-        //not while (stat < end) because if is used for condition and while is for iteration and if you write while(start < end)
-        //then the start and end must be changes in the while condition but her no changes so write if condition
+        // not while (stat < end) because 'if' is used for condition and 'while' is for iteration and if you write while(start < end)
+        // then the start and end must be changes in the while body but here no changes so write if condition
         if (start < end) {
             int pIndex = partition(arr, start, end);
             quickSort(arr, start, pIndex - 1);
@@ -23,6 +25,7 @@ public class P5QuickSort {
     public static int partition(int[] arr, int start, int end) {
         int pivot = arr[start];
         int i = start, j = end;
+
         while (i < j) {
             while (arr[i] <= pivot && i < end) {
                 i++;
@@ -33,6 +36,7 @@ public class P5QuickSort {
             if (i < j) swap(arr, i, j);
         }
         swap(arr, start, j);
+
         return j;
     }
 
