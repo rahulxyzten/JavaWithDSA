@@ -43,11 +43,6 @@ Follow up: Could you solve this in O(n + m + indices.length) time with only O(n 
 https://www.youtube.com/watch?v=mC7tpRNR0_o
  */
 
-//Time small explanation
-//Count how many times each row and column is incremented using row and column array.
-//        Add row and col value to get corresponding array element value.
-//        If it's odd increment counter
-
 public class P25CellsOddValueMatrix {
     public static void main(String[] args) {
 //        int[][] indices = {{1, 1}, {0, 0}};
@@ -56,46 +51,83 @@ public class P25CellsOddValueMatrix {
         System.out.println(oddCells(m, n, indices));
     }
 
-    /* BEST CODE */
-    public static int oddCells(int n, int m, int[][] indices) {
-        int count = 0;
-        int[] row = new int[n];
-        int[] col = new int[m];
-        for (int[] x : indices) {
-            row[x[0]]++;
-            col[x[1]]++;
+    // Optimal Solution
+    // T(C) = O(k + n + m)
+    // S(C) = O(m+n)
+    public static int oddCells(int m, int n, int[][] indices) {
+        boolean[] row = new boolean[m];
+        boolean[] col = new boolean[n];
+
+        for (int[] index : indices) {
+            row[index[0]] = !row[index[0]];
+            col[index[1]] = !col[index[1]];
         }
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < m; j++) {
-                if ((row[i] + col[j]) % 2 != 0) {
-                    count++;
-                }
-            }
+
+        int oddRow = 0, evenRow = 0;
+        int oddCol = 0, evenCol = 0;
+
+        for (int i = 0; i < m; i++) {
+            if (row[i]) oddRow++;
+            else evenRow++;
         }
-        return count;
+
+        for (int j = 0; j < n; j++) {
+            if (col[j]) oddCol++;
+            else evenCol++;
+        }
+
+        return (oddRow * evenCol) + (oddCol * evenRow);
     }
 
+
+    // Better Approach
+    // T(C) = O(k + (n * m))
+    // S(C) = O(m+n)
+//    public static int oddCells(int m, int n, int[][] indices) {
+//        int count = 0;
+//        int[] row = new int[m];
+//        int[] col = new int[n];
+//
+//        for (int[] index : indices) {
+//            row[index[0]]++;
+//            col[index[1]]++;
+//        }
+//
+//        for (int i = 0; i < m; i++) {
+//            for (int j = 0; j < n; j++) {
+//                if ((row[i] + col[j]) % 2 != 0) count++;
+//            }
+//        }
+//
+//        return count;
+//    }
+
+
+    // Brute Force Approach
+    // T(C) = O(k * (m + n) + (m * n))
+    // S(C) = O(m+n)
 //    public static int oddCells(int m, int n, int[][] indices) {
 //        int[][] ans = new int[m][n];
-//        int k = indices.length;
-//        for (int i = 0; i < k; i++) {
+//
+//        for(int[] index: indices){
+//            // Here we increment the row elements
 //            for (int j = 0; j < n; j++) {
-//                ans[indices[i][0]][j]++;
+//                ans[index[0]][j]++;
 //            }
-//            //Kete ta column element(gure row ra sabu element) update heba n ta column element update heba for each value of i
-//            //For i = 0, i<k column 0 1 2 (size of column n = 3) os j<n ta column update heba
-//            for (int j = 0; j < m; j++) {
-//                ans[j][indices[i][1]]++;
+//
+//            // Here we increment the column elements
+//            for(int i = 0; i < m; i++){
+//                ans[i][index[1]]++;
 //            }
-//            //Kete ta row element(gute column re sabu element) update heba m ta row element update heba for each value of i
-//            //For i = 0, i<k column 0 1  (size of row m = 2) os j<m ta column update heba
 //        }
+//
 //        int count = 0;
 //        for (int[] arr: ans){
 //            for (int num: arr){
-//                if (num%2 != 0) count++;
+//                if (num % 2 != 0) count++;
 //            }
 //        }
+//
 //        return count;
 //    }
 }

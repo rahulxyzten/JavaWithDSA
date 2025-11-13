@@ -2,10 +2,7 @@ package KunalKushwaha.CP4Arrays.Leetcode.Medium;
 //Question
 /*
 238. Product of Array Except Self
-Medium
-19.6K
-1.1K
-Companies
+
 Given an integer array nums, return an array answer such that answer[i] is equal to the product of all the elements of nums except nums[i].
 
 The product of any prefix or suffix of nums is guaranteed to fit in a 32-bit integer.
@@ -95,23 +92,26 @@ public class P3ProductArrayExceptSelf {
     we can do all the approach discussed in method 3 directly onto our final answer array.
     The Time Complexity would be O(n) but now, the Auxiliary Space is O(1) (excluding the final answer array).
     */
-
+    // Optimal Solution
+    // Time Complexity: O(2N)
+    // Space Complexity: O(1)
     public static int[] productExceptSelf(int[] nums) {
         int n = nums.length;
-        int[] output = new int[n];
-
+        int[] ans = new int[n];
         int leftMul = 1, rightMul = 1;
-        for (int i = n - 1; i >= 0; i--) {
-            output[i] = rightMul;
-            rightMul = rightMul * nums[i];
-        }
-        for (int i = 0; i < n; i++) {
-            output[i] = output[i] * leftMul;
-            leftMul = leftMul * nums[i];
-        }
-        return output;
-    }
 
+        for (int i = 0; i < n; i++) {
+            ans[i] = leftMul;
+            leftMul *= nums[i];
+        }
+
+        for (int i = n - 1; i >= 0; i--) {
+            ans[i] = ans[i] * rightMul;
+            rightMul *= nums[i];
+        }
+
+        return ans;
+    }
 
 
     /* Approach 3 match the condition but in extra space of O(n) */
@@ -126,25 +126,29 @@ public class P3ProductArrayExceptSelf {
     //suffix of nums array is {24,12,4,1}
     //Calculating prefix (  pre[i] = pre[i - 1] * a[i - 1]  ) and the suffix
     //prefix of nums array is {1,1,2,6}
-
+    // Better Approach
+    // Time Complexity: O(3N)
+    // Space Complexity: O(2N)
 //    public static int[] productExceptSelf(int[] nums) {
 //        int n = nums.length;
-//        int pre[] = new int[n];
-//        int suff[] = new int[n];
+//        int[] pre = new int[n];
+//        int[] suff = new int[n];
 //        pre[0] = 1;
 //        suff[n - 1] = 1;
 //
 //        for (int i = 1; i < n; i++) {
 //            pre[i] = pre[i - 1] * nums[i - 1];
 //        }
+//
 //        for (int i = n - 2; i >= 0; i--) {
 //            suff[i] = suff[i + 1] * nums[i + 1];
 //        }
 //
-//        int ans[] = new int[n];
+//        int[] ans = new int[n];
 //        for (int i = 0; i < n; i++) {
 //            ans[i] = pre[i] * suff[i];
 //        }
+//
 //        return ans;
 //    }
 
@@ -166,34 +170,34 @@ public class P3ProductArrayExceptSelf {
 //     */
 //    public static int[] productExceptSelf(int[] nums) {
 //        int n = nums.length;
-//        int ans[] = new int[n];
+//        int[] ans = new int[n];
 //        int pro = 1;
-//        for (int i : nums) {
-//            pro *= i;
+//        for (int num : nums) {
+//            pro *= num;
 //        }
 //
 //        for (int i = 0; i < n; i++) {
 //            ans[i] = pro / nums[i];
 //        }
+//
 //        return ans;
-//
-//
 //    }
 
 
 
     /* Approach 1 didn't match the condition */
 
-//    //Below code give O(N^2) time complexity
+    //Below code give O(N^2) time complexity
 //    public static int[] productExceptSelf(int[] nums) {
 //        int[] arr = new int[nums.length];
 //        for (int i = 0; i < nums.length; i++) {
-//            int sum = 1;
+//            int pro = 1;
 //            for (int j = 0; j < nums.length; j++) {
-//                if (i != j) sum = sum * nums[j];
+//                if (i != j) pro = pro * nums[j];
 //            }
-//            arr[i] = sum;
+//            arr[i] = pro;
 //        }
+//
 //        return arr;
 //    }
 

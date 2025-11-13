@@ -2,10 +2,7 @@ package KunalKushwaha.CP4Arrays.Leetcode.Easy;
 //Problem
 /*
 1389. Create Target Array in the Given Order
-Easy
-1.8K
-1.7K
-Companies
+
 Given two arrays of integers nums and index. Your task is to create target array under the following rules:
 
 Initially target array is empty.
@@ -61,19 +58,22 @@ public class P26TargetArrayGivenOrder {
 //        int[] nums = {0,1,2,3,4};
 //        int[] index = {0,1,2,2,1};
 
-        int[] nums = {1,2,3,4,0};
-        int[] index = {0,1,2,3,0};
-        System.out.println(Arrays.toString(createTargetArray(nums,index)));
+        int[] nums = {1, 2, 3, 4, 0};
+        int[] index = {0, 1, 2, 3, 0};
+        System.out.println(Arrays.toString(createTargetArray(nums, index)));
     }
+
+    // T(C) = O(2N)
+    // S(C) = O(N)
     public static int[] createTargetArray(int[] nums, int[] index) {
-        ArrayList<Integer> arr = new ArrayList<>();
-        int[] ans = new int[nums.length];
+        ArrayList<Integer> list = new ArrayList<>();
         for (int i = 0; i < nums.length; i++) {
-            arr.add(index[i],nums[i]);
+            list.add(index[i], nums[i]);
         }
         for (int i = 0; i < nums.length; i++) {
-            ans[i] = arr.get(i);
+            nums[i] = list.get(i);
         }
-        return ans;
+
+        return nums;
     }
 }
