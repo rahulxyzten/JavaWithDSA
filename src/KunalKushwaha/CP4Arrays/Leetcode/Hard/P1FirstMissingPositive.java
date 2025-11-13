@@ -50,13 +50,14 @@ public class P1FirstMissingPositive {
         for (int i = 0; i < n; i++) {
             int element = nums[i];
             if (element >= 1 && element <= n) {
-                int chair = element - 1;
-                if (nums[chair] != element) {
-                    swap(i, chair, nums);
+                int correctPos = element - 1;
+                if (nums[correctPos] != element) {
+                    swap(nums, correctPos, i);
                     i--;
                 }
             }
         }
+
         for (int i = 0; i < n; i++) {
             if (nums[i] != i + 1) return i + 1;
         }
@@ -64,10 +65,10 @@ public class P1FirstMissingPositive {
         return n + 1;
     }
 
-    public static void swap(int i, int chair, int[] nums) {
+    public static void swap(int[] nums, int i, int j) {
         int temp = nums[i];
-        nums[i] = nums[chair];
-        nums[chair] = temp;
+        nums[i] = nums[j];
+        nums[j] = temp;
     }
 
 
