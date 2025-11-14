@@ -1,12 +1,9 @@
 package TakeYouforward.Recursion.CodeStudio.Easy;
+
 //problem
 /*
  Sum Of First N Numbers
-Easy
-0/40
-Average time to solve is 10m
-Contributed by
-83 upvotes
+
 Problem statement
 You are given an integer ‘n’.
 
@@ -56,9 +53,18 @@ public class P3SumOfFirstNNumbers {
         long n = 3L;
         System.out.println(sumFirstN(n));
     }
+
+    // T(C) = O(1)
+    // S(C) = O(1)
+//    public static long sumFirstN(long n) {
+//        return (n * (n+1)) / 2;
+//    }
+
+    // T(C) = O(n)
+    // S(C) = O(n) Stack space used for recursive calls.
     public static long sumFirstN(long n) {
-       if (n == 0) return 0L;
-       return n + sumFirstN(n-1);
+        if (n == 0) return 0L;
+        return n + sumFirstN(n - 1);
     }
 
 }

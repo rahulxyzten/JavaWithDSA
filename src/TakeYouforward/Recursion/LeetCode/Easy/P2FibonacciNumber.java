@@ -38,27 +38,27 @@ public class P2FibonacciNumber {
         System.out.println(fib(n));
     }
 
-    //Using Recursion
+    // Using Recursion
+    // T(C) = O(2^N)
+    // S(C) = O(N)
 //    public static int fib(int n) {
-//        if (n == 1 ) return 1;
 //        if (n == 0) return 0;
+//        if (n == 1) return 1;
 //        return fib(n - 1) + fib(n - 2);
 //    }
 
-
-//    BEST CODE
-//    T(C) = O(N)
-//    S(C) = O(1)
+    // T(C) = O(N)
+    // S(C) = O(1)
     public static int fib(int n) {
-        if (n < 2)
-            return n;
-        int prev = 0;
-        int curr = 1;
+        if (n < 2) return n;
+        int prev = 0, curr = 1;
+
         for (int i = 2; i <= n; i++) {
             int next = prev + curr;
             prev = curr;
             curr = next;
         }
+
         return curr;
     }
 }

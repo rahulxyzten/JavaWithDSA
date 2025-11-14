@@ -2,10 +2,7 @@ package TakeYouforward.Recursion.CodeStudio.Easy;
 //problem
 /*
  Print n times
-Easy
-0/40
-Contributed by
-100 upvotes
+
 Problem statement
 You are given an integer ‘n’.
 
@@ -67,6 +64,8 @@ public class P2Printntimes {
         System.out.println(printNtimes(n));
     }
 
+    // T(C) = O(N)
+    // S(C) = O(N), stack space used for recursive calls.
     public static List<String> printNtimes(int n) {
         List<String> ls = new ArrayList<>();
         print(ls, n);
@@ -75,11 +74,27 @@ public class P2Printntimes {
 
     //IBH method of Recursion (Aditya Verma)
     public static void print(List<String> ls, int n) {
-        if (n == 1){
+        if (n == 1) {
             ls.add("Coding Ninjas");
             return;
         }
-        print(ls, n -1);
         ls.add("Coding Ninjas");
+        print(ls, n - 1);
     }
+
+//    public static int[] printNos(int x) {
+//        int[] arr = new int[x];
+//        print(arr, x);
+//        return arr;
+//    }
+//
+//    //IBH method of Recursion (Aditya Verma)
+//    public static void print(int[] arr, int x) {
+//        if (x == 1){
+//            arr[x - 1] = x;
+//            return;
+//        }
+//        arr[x -1] = x;
+//        print(arr, x-1);
+//    }
 }

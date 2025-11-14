@@ -2,11 +2,7 @@ package TakeYouforward.Recursion.CodeStudio.Easy;
 //Problem
 /*
 1 to N Without Loop
-Easy
-0/40
-Average time to solve is 15m
-Contributed by
-255 upvotes
+
 Problem statement
 You are given an integer ‘n’.
 
@@ -51,19 +47,34 @@ public class P1Print1toNWithoutLoop {
         System.out.println(Arrays.toString(printNos(x)));
     }
 
+    // T(C) = O(N)
+    // S(C) = O(N), stack space used for recursive calls.
+    // Backtracking
     public static int[] printNos(int x) {
         int[] arr = new int[x];
         print(arr, x);
         return arr;
     }
 
-    //IBH method of Recursion (Aditya Verma)
     public static void print(int[] arr, int x) {
-        if (x == 1){
+        if (x == 1) {
             arr[x - 1] = x;
             return;
         }
-        print(arr, x-1);
-        arr[x -1] = x;
+        print(arr, x - 1);
+        arr[x - 1] = x;
     }
+
+    // Forward Recursion
+//    public static int[] printNos(int x) {
+//        int[] arr = new int[x];
+//        print(arr, 0, x);
+//        return arr;
+//    }
+//
+//    public static void print(int[] arr, int i, int n) {
+//        if (i == n) return;
+//        arr[i] = i + 1;
+//        print(arr, i + 1, n);
+//    }
 }

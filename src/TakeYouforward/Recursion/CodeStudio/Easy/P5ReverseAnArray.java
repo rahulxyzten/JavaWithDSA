@@ -2,12 +2,7 @@ package TakeYouforward.Recursion.CodeStudio.Easy;
 //problem
 /*
 Reverse an Array
-Easy
-0/40
-Average time to solve is 10m
-Contributed by
-84 upvotes
-Asked in company
+
 Problem statement
 Given an array 'arr' of size 'n'.
 
@@ -57,6 +52,8 @@ public class P5ReverseAnArray {
         System.out.println(Arrays.toString(nums));
     }
 
+    // T(C) = O(N)
+    // S(C) = O(N), stack space used for recursive calls.
     public static void reverseArray(int n, int[] nums) {
         int start = 0;
         int end = n - 1;
@@ -75,6 +72,25 @@ public class P5ReverseAnArray {
             swap(nums, start + 1, end - 1);
         }
     }
+
+//    public static int[] reverseArray(int n, int[] nums) {
+//        int start = 0;
+//        int end = n - 1;
+//        swap(nums, start, end);
+//
+//        return nums;
+//    }
+//
+//    public static void swap(int[] nums, int start, int end) {
+//        if (start >= end) return;
+//
+//        int temp = nums[start];
+//        nums[start] = nums[end];
+//        nums[end] = temp;
+//        swap(nums, start + 1, end - 1);
+//    }
+
+
     //Error
     /*
      public static void swap(int[] nums, int start, int end) {

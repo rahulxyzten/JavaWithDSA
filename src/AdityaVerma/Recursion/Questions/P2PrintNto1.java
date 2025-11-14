@@ -4,8 +4,11 @@ public class P2PrintNto1 {
     public static void main(String[] args) {
         print(5);
     }
-    public static void print(int n){
-        if (n == 1){
+
+    // T(C) = O(N)
+    // S(C) = O(N), stack space used for recursive calls.
+    public static void print(int n) {
+        if (n == 1) {
             System.out.println(n);
             return;
         }
