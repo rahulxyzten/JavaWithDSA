@@ -16,24 +16,25 @@ public class P6ReverseStack {
         System.out.println(stk);
     }
 
+    // T(C) = O(N^2)
+    // S(C) = O(N), stack space used for recursive calls.
     public static void reverse(Stack<Integer> stk) {
-        if (stk.size() == 1) {
-            return;
-        }
+        if (stk.size() == 1) return;
         int temp = stk.peek();
         stk.pop();
         reverse(stk);
         insert(stk, temp);
     }
 
-    public static void insert(Stack<Integer> stk, int temp) {
+    public static void insert(Stack<Integer> stk, int val) {
         if (stk.size() == 0) {
-            stk.push(temp);
+            stk.push(val);
             return;
         }
-        int val = stk.peek();
+
+        int temp = stk.peek();
         stk.pop();
-        insert(stk, temp);
-        stk.push(val);
+        insert(stk, val);
+        stk.push(temp);
     }
 }

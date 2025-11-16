@@ -40,38 +40,40 @@ public class P1ValidPalindrome {
     }
 
 
-    //using Recursion
+    // Using Recursion
+    // T(C) = O(N)
+    // S(C) = O(N), stack space used for recursive calls.
     public static boolean isPalindrome(String s) {
         s = s.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
-        //[^a-zA-Z0-9] mans all characters containing [^a-zA-Z0-9] is in the string and all
-        //other non-alphanumeric characters are set to ""
-        //after removing all uppercase are converted to lowercase
-
-        return check(s, 0);
+        // [^a-zA-Z0-9] means all characters containing (a–z, A–Z) or digit (0–9) is in the string and
+        // all other non-alphanumeric characters are set to ""
+        // after removing all uppercase are converted to lowercase
+        return check(s, 0, s.length());
     }
 
-    public static boolean check(String s, int i) {
-        int n = s.length();
+    public static boolean check(String s, int i, int n) {
         if (i >= n / 2) return true;
-        if (s.charAt(i) != s.charAt(n - i - 1)) return false;
-
-        return check(s, i + 1);
+        if (s.charAt(i) != s.charAt(n - 1 - i)) return false;
+        return check(s, i + 1, n);
     }
 
 
-//    Not using Recursion
+    // Not using Recursion
+    // T(C) = O(N)
+    // S(C) = O(1)
 //    public static boolean isPalindrome(String s) {
 //        int left = 0, right = s.length() - 1;
-//        while (left < right){
+//        while (left < right) {
 //            char l = s.charAt(left), r = s.charAt(right);
 //            if (!Character.isLetterOrDigit(l)) left++;
-//            else if(!Character.isLetterOrDigit(r)) right--;
-//            else if(Character.toLowerCase(l) != Character.toLowerCase(r)) return  false;
+//            else if (!Character.isLetterOrDigit(r)) right--;
+//            else if (Character.toLowerCase(l) != Character.toLowerCase(r)) return false;
 //            else { //this is condition if both are same
 //                left++;
 //                right--;
 //            }
 //        }
+//
 //        return true;
 //    }
 }

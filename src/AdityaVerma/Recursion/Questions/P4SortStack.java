@@ -11,26 +11,30 @@ public class P4SortStack {
         stk.push(5);
         stk.push(4);
         stk.push(2);
+        System.out.println(stk);
         sort(stk);
         System.out.println(stk);
     }
 
+    // T(C) = O(N^2)
+    // S(C) = O(N), stack space used for recursive calls.
     public static void sort(Stack<Integer> stk) {
         if (stk.size() == 1) return;
         int temp = stk.peek();
         stk.pop();
         sort(stk);
-        insetTemp(stk, temp);
+        inset(stk, temp);
     }
 
-    public static void insetTemp(Stack<Integer> stk, int temp) {
-        if (stk.size() == 0 || stk.peek() <= temp) {
-            stk.push(temp);
+    public static void inset(Stack<Integer> stk, int val) {
+        if (stk.size() == 0 || stk.peek() <= val) {
+            stk.push(val);
             return;
         }
-        int val = stk.peek();
+
+        int temp = stk.peek();
         stk.pop();
-        insetTemp(stk, temp);
-        stk.push(val);
+        inset(stk, val);
+        stk.push(temp);
     }
 }

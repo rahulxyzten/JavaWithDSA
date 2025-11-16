@@ -16,12 +16,13 @@ public class P5DeleteMiddleElementStack {
         System.out.println(stk);
     }
 
+    // T(C) = O(N)
+    // S(C) = O(N), stack space used for recursive calls.
     public static void deleteMiddleElementStack(Stack<Integer> stk) {
         int n = stk.size();
         if (n == 0) return;
 
         int k = (n / 2) + 1;
-
         solve(stk, k);
     }
 
@@ -30,6 +31,7 @@ public class P5DeleteMiddleElementStack {
             stk.pop();
             return;
         }
+
         int temp = stk.peek();
         stk.pop();
         solve(stk, k - 1);
