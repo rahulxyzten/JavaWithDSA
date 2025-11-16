@@ -43,47 +43,67 @@ public class P1Pow {
     //Optimal Solution using Recursion
     //T(C) = O(logn)
     //S(C) = O(logn) Recursive stack
-//    public static double myPow(double x, int n) {
-//        double ans = 1.0;
-//        long nn = n;
-//        if (nn < 0) nn = -1 * nn;
-//        double result = solve(ans, x, nn);
-//        if (n < 0) result = 1.0/result;
-//        return result;
-//    }
-//
-//    public static double solve(double ans, double x, long nn) {
-//        if (nn <= 0) return ans;
-//        if (nn % 2 == 1) {
-//            ans = ans * x;
-//            nn = nn - 1;
-//        } else {
-//            x = x * x;
-//            nn = nn / 2;
-//        }
-//        return solve(ans, x, nn);
-//    }
+    public static double myPow(double x, int n) {
+        long nn = n;
+        if (nn < 0) nn *= -1;
+        double ans = solve(1.0, x, nn);
 
+        if (n < 0) return 1.0 / ans;
+        return ans;
+    }
+
+    public static double solve(double ans, double x, long nn) {
+        if (nn <= 0) return ans;
+        if (nn % 2 != 0) {
+            ans = ans * x;
+            nn = nn - 1;
+        } else {
+            x = x * x;
+            nn = nn / 2;
+        }
+
+        return solve(ans, x, nn);
+    }
 
     //Optimal Solution not using Recursion
     //T(C) = O(logn)
     //S(C) = O(1)
-    public static double myPow(double x, int n) {
-        double ans = 1.0;
-        long nn = n;
-        if (nn < 0) {
-            nn = -1 * nn;
-        }
-        while (nn > 0) {
-            if (nn % 2 == 1) {
-                ans = ans * x;
-                nn = nn - 1;
-            } else {
-                x = x * x;
-                nn = nn / 2;
-            }
-        }
-        if (n < 0) ans = 1.0 / ans;
-        return ans;
-    }
+//    public static double myPow(double x, int n) {
+//        double ans = 1.0;
+//        long nn = n; // -231 <= n <= 231-1
+//        if (nn < 0) nn *= -1;
+//
+//        while (nn > 0) {
+//            if (nn % 2 != 0) {
+//                ans = ans * x;
+//                nn = nn - 1;
+//            } else {
+//                x = x * x;
+//                nn = nn / 2;
+//            }
+//        }
+//
+//        if (n < 0) return 1.0 / ans;
+//        return ans;
+//    }
+
+    // Brute Force Approach
+    // Time Limit Exceeded Error
+    // T(C) = O(n)
+    // S(C) = O(1)
+//    public static double myPow(double x, int n) {
+//        int sign = 1;
+//        if (n < 0) {
+//            sign = -1;
+//            n *= -1;
+//        }
+//
+//        double ans = 1.0;
+//        for (int i = 0; i < n; i++) {
+//            ans *= x;
+//        }
+//
+//        if (sign == -1) return (1 / ans);
+//        return ans;
+//    }
 }

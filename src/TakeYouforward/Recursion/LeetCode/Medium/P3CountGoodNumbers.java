@@ -44,31 +44,53 @@ public class P3CountGoodNumbers {
 
     //Optimal Solution
     //T(C) = O(logn)
-    //S(C) = O(1)
+    //S(C) = O(logn) Recursive stack
     public static int countGoodNumbers(long n) {
         long noOdd = n / 2;
         long noEven = (n / 2) + (n % 2);
-        return (int) ((pow(5, noEven, 1L) * pow(4, noOdd, 1L)) % MOD);
+
+        return (int) ((pow(4, noOdd, 1L) * pow(5, noEven, 1L)) % MOD);
         // Since the answer may be large, return it modulo 109 + 7 (Given)
-        //So when you think the ans is large then modulo the ans with MOD
+        // So when you think the ans is large then modulo the ans with MOD
     }
 
     public static long pow(long x, long n, long ans) {
         if (n <= 0) return ans % MOD;
-        if (n % 2 == 1) {
+
+        if (n % 2 != 0) {
             ans *= x;
             ans %= MOD;
-            //So when you think the ans is large then modulo the ans with MOD
-            //which is given
-            n = n - 1;
+            // So when you think the ans is large then modulo the ans with MOD
+            // which is given
+            n -= 1;
         } else {
             x *= x;
             x %= MOD;
-            //here also after some iteration x is large so modulo the x with MOD
-            //which is given
-            n = n / 2;
+            // here also after some iteration x is large so modulo the x with MOD
+            // which is given
+            n /= 2;
         }
+
         return pow(x, n, ans);
     }
 
+
+    // Brute Force Approach
+    // Time Limit Exceeded Error
+    // T(C) = O(n)
+    // S(C) = O(1)
+//    public static int countGoodNumbers(long n) {
+//        long ans = 1L;
+//        for (int i = 0; i < n; i++) {
+//            if (i % 2 != 0) {
+//                ans *= 4;
+//                ans %= MOD;
+//            } else {
+//                ans *= 5;
+//                ans %= MOD;
+//            }
+//        }
+//
+//        return (int) (ans % MOD);
+//    }
 }

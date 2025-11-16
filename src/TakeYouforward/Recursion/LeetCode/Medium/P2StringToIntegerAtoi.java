@@ -75,57 +75,82 @@ public class P2StringToIntegerAtoi {
         System.out.println(myAtoi(s));
     }
 
-    //Better Approach using Recursion
+    // Optimal Solution (Using Recursion)
+    // T(C) = O(N)
+    // S(C) = O(N), stack space used for recursive calls.
     public static int myAtoi(String s) {
-        if (s == null) return 0;
-        s = s.trim();
-        if (s.length() == 0) return 0;
-        int sign = +1;
-        long ans = 0;
-        if (s.charAt(0) == '-') sign = -1;
-        int max = Integer.MAX_VALUE, min = Integer.MIN_VALUE;
-        int i = (s.charAt(0) == '+' || s.charAt(0) == '-') ? 1 : 0;
-        long result = solve(s, i, ans, sign, min, max);
-        return (int) (sign * result);
+        int i = 0;
+        while (i < s.length() && s.charAt(i) == ' ') i++;
+
+        int sing = 1;
+        if (i < s.length() && (s.charAt(i) == '-' || s.charAt(i) == '+')) {
+            sing = (s.charAt(i) == '-') ? -1 : 1;
+            i++;
+        }
+
+        int min = Integer.MIN_VALUE, max = Integer.MAX_VALUE;
+        return (int) solve(s, i, 0L, sing, min, max);
     }
 
     public static long solve(String s, int i, long ans, int sign, int min, int max) {
-        if (i == s.length()) return ans;
-        if (s.charAt(i) == ' ' || !Character.isDigit(s.charAt(i))) return ans;
-        else ans = ans * 10 + s.charAt(i) - '0';
-        //when a character is - with '0' then it give integer
-        //int i = '1' - '0'; //op = 1 (integer)
-        if (sign == -1 && -1 * ans < min) return min;
+        if (i >= s.length() || !Character.isDigit(s.charAt(i))) return sign * ans;
+
+        ans = ans * 10 + (s.charAt(i) - '0');
+        if (sign == -1 && sign * ans < min) return min;
         if (sign == 1 && ans > max) return max;
+
         return solve(s, i + 1, ans, sign, min, max);
     }
 
-    //Better Approach using Loop
+
+    // Optimal Solution
+    // T(C) = O(N)
+    // S(C) = O(1)
 //    public static int myAtoi(String s) {
-//        if (s == null) return 0;
+//        int i = 0;
+//        // Skip Whitespaces
+//        while (i < s.length() && s.charAt(i) == ' ') i++;
 //
-//        s = s.trim();
-//
-//        if (s.length() == 0) return 0;
-//
-//        int sign = +1;
-//        long ans = 0;
-//        if (s.charAt(0) == '-') {
-//            sign = -1;
+//        // Handle Sign
+//        int sing = 1;
+//        if (i < s.length() && (s.charAt(i) == '-' || s.charAt(i) == '+')) {
+//            sing = (s.charAt(i) == '-') ? -1 : 1;
+//            i++;
 //        }
-//        int max = Integer.MAX_VALUE, min = Integer.MIN_VALUE;
-//        int i = (s.charAt(0) == '+' || s.charAt(0) == '-') ? 1 : 0;
 //
+//        int min = Integer.MIN_VALUE, max = Integer.MAX_VALUE;
+//        long ans = 0;
 //        while (i < s.length()) {
-//            if (s.charAt(i) == ' ' || !Character.isDigit(s.charAt(i))) break;
-//            ans = ans * 10 + s.charAt(i) - '0';
-//
-//            if (sign == -1 && -1 * ans < min) return min;
-//            if (sign == 1 && ans > max) return max;
+//            if (!Character.isDigit(s.charAt(i))) break;
+//            ans = ans * 10 + (s.charAt(i) - '0');
+//            if (sing == -1 && -1 * ans < min) return min;
+//            if (sing == 1 && ans > max) return max;
 //
 //            i++;
 //        }
 //
-//        return (int) (sign * ans);
+//        return (int) (sing * ans);
 //    }
+
+//    public static int myAtoi(String s) {
+//        s = s.trim();
+//        if (s.length() == 0) return 0;
+//
+//        int sing = (s.charAt(0) == '-') ? -1 : 1;
+//        int i = (s.charAt(0) == '-' || s.charAt(0) == '+') ? 1 : 0;
+//        int min = Integer.MIN_VALUE, max = Integer.MAX_VALUE;
+//        long ans = 0;
+//
+//        while (i < s.length()) {
+//            if (s.charAt(i) == ' ' || !Character.isDigit(s.charAt(i))) break;
+//            ans = ans * 10 + s.charAt(i) - '0';
+//            if (sing == -1 && -1 * ans < min) return min;
+//            if (sing == 1 && ans > max) return max;
+//
+//            i++;
+//        }
+//
+//        return (int) (sing * ans);
+//    }
+
 }
