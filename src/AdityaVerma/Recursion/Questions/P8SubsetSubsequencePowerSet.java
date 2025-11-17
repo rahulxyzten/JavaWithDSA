@@ -4,17 +4,20 @@ package AdityaVerma.Recursion.Questions;
 
 public class P8SubsetSubsequencePowerSet {
     public static void main(String[] args) {
-//        String ip = "abc";
-        String ip = "ab";
+        String ip = "abc";
+        // String ip = "ab";
         String op = "";
         solve(ip, op);
     }
 
+    // T(C) = O(2^N)
+    // S(C) = O(N), recursion depth and string length
     public static void solve(String ip, String op) {
         if (ip.length() == 0) {
             System.out.println(op);
             return;
         }
+
         String op1 = op;
         String op2 = op;
         op2 = op2 + ip.charAt(0);

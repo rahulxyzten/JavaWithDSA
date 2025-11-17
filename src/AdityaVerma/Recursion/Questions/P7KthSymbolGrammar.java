@@ -9,6 +9,8 @@ public class P7KthSymbolGrammar {
         System.out.println(solve(n, k));
     }
 
+    // T(C) = O(n)
+    // S(C) = O(n), stack space used for recursive calls.
     public static int solve(int n, int k) {
         if (n == 1 && k == 1) {
             return 0;

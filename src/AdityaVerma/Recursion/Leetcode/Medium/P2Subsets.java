@@ -37,29 +37,47 @@ public class P2Subsets {
         System.out.println(subsets(nums));
     }
 
-    //Best Code Love Babbar if the ip is given an array if
-    //the ip is given String go for Aditya verma Solution
-    // T(C) = O(O^2) and S(C) = O(N)
+    // Best Code Love Babbar if the ip is given an array if
+    // the ip is given String go for Aditya verma Solution
+    // T(C) = O(N * 2^N)
+    // S(C) = O(N * 2^N)
     public static List<List<Integer>> subsets(int[] nums) {
         List<List<Integer>> result = new ArrayList<>();
         List<Integer> op = new ArrayList<>();
+
         findSubsets(nums, 0, op, result);
         return result;
     }
 
     public static void findSubsets(int[] nums, int i, List<Integer> op, List<List<Integer>> result) {
         if (i == nums.length) {
-            result.add(op);
+            result.add(new ArrayList<>(op));
+            // In Java, when you add or remove elements from a list, you are modifying the
+            // original list so always take a new ArrayList and append op there
             return;
         }
+
         findSubsets(nums, i + 1, op, result);
         op.add(nums[i]);
-        findSubsets(nums, i + 1, new ArrayList<>(op), result);
-        // In Java, when you add or remove elements from a list, you are modifying the
-        // original list so always take a new ArrayList and append op there
+        findSubsets(nums, i + 1, op, result);
         op.remove(op.size() - 1);
-        return;
     }
+
+    /*
+    result.add(op);
+    Your solution fails because you're adding the same List reference (op) to result
+    every time, rather than adding a copy of the list. In Java, List objects are
+    passed by reference, so when you add op to result, you're storing a reference
+    to the same list object.
+
+    The Problem
+    When you do result.add(op), all entries in result point to the same op list object.
+    As recursion proceeds, and you modify op (by adding and removing elements),
+    all the references in result reflect these changes. By the time recursion completes,
+    op is empty, so all entries in result appear as empty lists.
+     */
+
+
 
 
     /*This code takes long time and long space

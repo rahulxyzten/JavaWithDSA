@@ -44,6 +44,8 @@ public class P1KthSymbolGrammar {
         System.out.println(kthGrammar(n, k));
     }
 
+    // T(C) = O(n)
+    // S(C) = O(n), stack space used for recursive calls.
     public static int kthGrammar(int n, int k) {
         if (n == 1 && k == 1) return 0;
         int mid = (int) Math.pow(2, n - 1) / 2;
