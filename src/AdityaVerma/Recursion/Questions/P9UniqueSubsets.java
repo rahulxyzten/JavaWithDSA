@@ -12,8 +12,10 @@ public class P9UniqueSubsets {
         System.out.println(result);
     }
 
-    // T(C) = O(2^N)
-    // S(C) = O(2^N * N), storing subsequences in HashSet + recursion stack
+    // T(C) = O(2^N * N) = O(2^N)
+    // total number of node O(2^N)
+    // work done by a node => substring, concatenation, & adding takes O(N)
+    // S(C) = O(2^N * N), storing subsequences in HashSet + recursion stack (depth of the recursion)
     public static void solve(String ip, String op, HashSet<String> result) {
         if (ip.length() == 0) {
             result.add(op);

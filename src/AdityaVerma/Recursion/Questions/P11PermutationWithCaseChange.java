@@ -8,11 +8,17 @@ public class P11PermutationWithCaseChange {
         solve(ip, op);
     }
 
+    // T(C) in recursive tree = work done by node * total number of node
+    // T(C) = O(2^N * N) = O(2^N)
+    // total number of node O(2^N)
+    // work done by a node => substring & concatenation takes O(N)
+    // S(C) = O(N), recursion stack (depth of the recursion) and intermediate string construction
     public static void solve(String ip, String op) {
         if (ip.length() == 0) {
             System.out.println(op);
             return;
         }
+
         String op1 = op;
         String op2 = op;
         op1 = op1 + ip.charAt(0);

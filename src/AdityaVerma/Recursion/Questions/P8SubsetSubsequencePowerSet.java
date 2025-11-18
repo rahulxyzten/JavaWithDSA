@@ -10,8 +10,11 @@ public class P8SubsetSubsequencePowerSet {
         solve(ip, op);
     }
 
-    // T(C) = O(2^N)
-    // S(C) = O(N), recursion depth and string length
+    // T(C) in recursive tree = work done by node * total number of node
+    // T(C) = O(2^N * N) = O(2^N)
+    // total number of node O(2^N)
+    // work done by a node => substring & concatenation takes O(N)
+    // S(C) = O(N), recursion stack (depth of the recursion) and intermediate string construction
     public static void solve(String ip, String op) {
         if (ip.length() == 0) {
             System.out.println(op);

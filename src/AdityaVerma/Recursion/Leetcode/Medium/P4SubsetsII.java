@@ -44,15 +44,20 @@ public class P4SubsetsII {
 
     //Optimal Solution
     //TUF Explanation
+    // T(C) = O(NlogN) + O(2^N * N) = O(2^N * N)
+    // S(C) = O(N) {recursion stack} + O(N) {op} + O(2^N * N) {result}
+    //      = O(2^N * N)
     public static List<List<Integer>> subsetsWithDup(int[] nums) {
         Arrays.sort(nums);
         List<List<Integer>> result = new ArrayList<>();
+
         solve(nums, 0, new ArrayList<>(), result);
         return result;
     }
 
     public static void solve(int[] nums, int ind, List<Integer> op, List<List<Integer>> result) {
         result.add(new ArrayList<>(op));
+
         for (int i = ind; i < nums.length; i++) {
             if (i != ind && nums[i] == nums[i - 1]) continue;
             op.add(nums[i]);
@@ -62,26 +67,28 @@ public class P4SubsetsII {
     }
 
 
-    //Brute Force Approach
+    // Brute Force Approach
+    // T(C) = O(NlogN) + O(2^N * N) = O(2^N * N)
+    // S(C) = O(N) {recursion stack} + O(N) {op} + O(2^N * N) {HashSet}+ O(2^N * N) {result}
+    //      = O(2^N * N)
 //    public static List<List<Integer>> subsetsWithDup(int[] nums) {
 //        Arrays.sort(nums);
 //        HashSet<List<Integer>> hs = new HashSet<>();
 //        List<Integer> op = new ArrayList<>();
-//        solve(nums, 0, op, hs);
 //
+//        solve(nums, 0, op, hs);
 //        return new ArrayList<>(hs);
 //    }
 //
 //    public static void solve(int[] nums, int i, List<Integer> op, HashSet<List<Integer>> hs) {
 //        if (i == nums.length) {
-//            hs.add(op);
+//            hs.add(new ArrayList<>(op));
 //            return;
 //        }
+//
 //        solve(nums, i + 1, op, hs);
 //        op.add(nums[i]);
-//        solve(nums, i + 1, new ArrayList<>(op), hs);
+//        solve(nums, i + 1, op, hs);
 //        op.remove(op.size() - 1);
 //    }
-
-
 }
