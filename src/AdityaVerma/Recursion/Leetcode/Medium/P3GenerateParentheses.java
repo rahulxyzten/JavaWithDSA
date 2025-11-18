@@ -28,11 +28,17 @@ public class P3GenerateParentheses {
         System.out.println(generateParenthesis(n));
     }
 
+    // T(C) = O(C(N) * N)
+    // C(N) is the N-th Catalan number = (2N)!/(N+1)!N!
+    // total number of node C(N)
+    // work done by a node => concatenation takes O(N)
+    // S(C) = O(C(N) * 2N) + O(2N) = O(C(N) * 2N)
+    // total number of String in List * length of each string + recursion stack (maximum depth of the recursion)
     public static List<String> generateParenthesis(int n) {
         List<String> ls = new ArrayList<>();
-        int open = n;
-        int close = n;
+        int open = n, close = n;
         String op = "";
+
         solve(ls, open, close, op);
         return ls;
     }
@@ -42,16 +48,19 @@ public class P3GenerateParentheses {
             ls.add(op);
             return;
         }
+
         if (open != 0) {
             String op1 = op;
             op1 = op1 + '(';
             solve(ls, open - 1, close, op1);
         }
+
         if (close > open) {
             String op2 = op;
-            op2 = op2 + ")";
+            op2 = op2 + ')';
             solve(ls, open, close - 1, op2);
         }
+
         return;
     }
 }

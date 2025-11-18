@@ -11,8 +11,9 @@ public class P12PermutationWithLetterCase {
 
     // T(C) = O(2^N * N) = O(2^N)
     // total number of node O(2^N)
-    // work done by a node => substring, concatenation, & adding takes O(N)
-    // S(C) = O(2^N * N), storing in Vector + recursion stack (depth of the recursion)
+    // work done by a node => substring & concatenation takes O(N)
+    // S(C) = O(2^N * N) + O(N) = O(2^N * N)
+    // total number of string in Vector * length of each string + recursion stack (depth of the recursion)
     public static Vector<String> find(String s) {
         Vector<String> result = new Vector<>();
         String ip = s;
