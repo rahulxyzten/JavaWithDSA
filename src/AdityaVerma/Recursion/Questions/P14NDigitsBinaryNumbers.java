@@ -1,7 +1,6 @@
 package AdityaVerma.Recursion.Questions;
 //Print N digits Binary Numbers having more or equals no of 1s then 0s (1s >= 0s) in all its prefix
 
-
 public class P14NDigitsBinaryNumbers {
     public static void main(String[] args) {
         int n = 3;
