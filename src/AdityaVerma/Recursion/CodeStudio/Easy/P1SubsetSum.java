@@ -49,28 +49,32 @@ import java.util.Collections;
 
 public class P1SubsetSum {
     public static void main(String[] args) {
-        int[] nums = {1,2,3};
+        int[] nums = {1, 2, 3};
         System.out.println(subsetSum(nums));
     }
+
+    // T(C) = O(2^N)
+    // total number of node O(2^N)
+    // work done by a node => O(1)
+    // If output is required in sorted manner then T(C) = O(2^N) + O(2^N log(2^N))
+    // S(C) = O(2^N) + O(N) = O(2^N)
+    // total number of integer in ArrayList + recursion stack (depth of the recursion)
     public static ArrayList<Integer> subsetSum(int num[]) {
         ArrayList<Integer> result = new ArrayList<>();
+
         solve(num, 0, 0, result);
         Collections.sort(result);
-        //If the output is required in sorted manner so add the above line
-        //T(c) = O(2^n)+O(2^n log(2^n))
-        //S(c) = O(2^n)
-        //If the output is not required in sorted manner so
-        //T(c) = (2^n) and S(c) = O(2^n)
         return result;
     }
-    public static void solve(int num[], int i, int sum, ArrayList<Integer> result){
-        if (i == num.length){
+
+    public static void solve(int[] num, int i, int sum, ArrayList<Integer> result) {
+        if (i == num.length) {
             result.add(sum);
             return;
         }
-        solve(num, i+1, sum, result);
+
+        solve(num, i + 1, sum, result);
         sum += num[i];
-        solve(num, i+1, sum, result);
-        return;
+        solve(num, i + 1, sum, result);
     }
 }

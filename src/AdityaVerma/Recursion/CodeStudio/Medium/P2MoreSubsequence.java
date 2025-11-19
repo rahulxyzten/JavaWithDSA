@@ -41,6 +41,10 @@ Constraints:
 Time Limit: 1 sec
  */
 
+////////////Do this problem later in DP so that all the test cases pass/////////////////////
+    /*This code works well for small inputs, but it shows a Time Limit Exceeded error for
+    large inputs. Therefore, for larger inputs, the Dynamic Programming (DP) approach is the best solution. */
+
 //Do this problem latter in DP or not using recursion in hash map so that all the test cases pass
 //because here the constraints of time limit not match with the solution
 //for some input it match but for a large input it's going to fail
@@ -58,9 +62,16 @@ public class P2MoreSubsequence {
         System.out.println(moreSubsequence(a.length(), b.length(), a, b));
     }
 
+    // T(C) = O(2^N * N) + O(2^M * M) = O((2^N + 2^M) * max(N,M))
+    // total number of node => O(2^N) and O(2^M)
+    // work done by a node => substring & concatenation takes O(N) and O(M)
+    // S(C) = O(2^N * N) + O(N) + O(2^M * M) + O(M) = O(2^N * N) + O(2^M * M)
+    // total number of subsequences in HashSet * maximum length of HashSet element + recursion stack (depth of the recursion)
     public static String moreSubsequence(int n, int m, String a, String b) {
-        HashSet<String> result1 = solve(a, "", new HashSet<>());
-        HashSet<String> result2 = solve(b, "", new HashSet<>());
+        HashSet<String> result1 = new HashSet<>();
+        solve(a, "", result1);
+        HashSet<String> result2 = new HashSet<>();
+        solve(b, "", result2);
         if (result1.size() >= result2.size()) {
             return a;
         } else {
@@ -68,10 +79,10 @@ public class P2MoreSubsequence {
         }
     }
 
-    public static HashSet<String> solve(String ip, String op, HashSet<String> result) {
+    public static void solve(String ip, String op, HashSet<String> result) {
         if (ip.length() == 0) {
             result.add(op);
-            return result;
+            return;
         }
         String op1 = op;
         String op2 = op;
@@ -79,6 +90,5 @@ public class P2MoreSubsequence {
         ip = ip.substring(1);
         solve(ip, op1, result);
         solve(ip, op2, result);
-        return result;
     }
 }

@@ -30,10 +30,10 @@ Constraints :
 Time Limit: 1 sec
  */
 
-//Do this problem latter in DP so that all the test cases pass
-//because this question is a DP question so in DP this problem time complexity is
-//good so if you do in another type then lot of test cases are failed
-//because this is not design for recursion or recursive tree IP and OP method
+////////////Do this problem later in DP so that all the test cases pass/////////////////////
+    /*This code works well for small inputs, but it shows a Time Limit Exceeded error for
+    large inputs because 1 ≤ N ≤ 10³. Therefore, for larger inputs,
+    the Dynamic Programming (DP) approach is the best solution. */
 
 public class P2SubsetSumBoolean {
     public static void main(String[] args) {
@@ -52,17 +52,49 @@ public class P2SubsetSumBoolean {
     //       int[] a = {22, 17, 19, 46, 48, 27, 22, 39, 20, 13, 18, 50, 36, 45, 4, 12, 23, 34, 24, 15, 42, 12, 4, 19, 48, 45, 13, 8, 38, 10, 24, 42, 30, 29, 17, 36, 41, 43, 39, 7, 41, 43, 15, 49, 47, 6, 41, 30, 21, 1, 7, 2, 44, 49, 30, 24, 35, 5, 7, 41, 17, 27, 32, 9, 45, 40, 27, 24, 38, 39, 19, 33, 30, 42, 34, 16, 40, 9, 5, 31, 28, 7, 24, 37, 22, 46, 25, 23, 21, 30, 28, 24, 48, 13};
     //So for this problem do th code in Dynamic Programing concept which is good for big output
     //and also the problem is DP problem
+
+    // T(C) = O(2^N)
+    // total number of node O(2^N)
+    // work done by a node => O(1)
+    // S(C) = O(N)
+    // recursion stack (depth of the recursion)
+
+    // Improvisation (avoiding unnecessary recursion)
     public static boolean isSubsetPresent(int n, int k, int[] a) {
-        return solve(a, 0, 0, k);
+
+        return solve(a, n, 0, k);
     }
 
-    public static boolean solve(int[] a, int i, int sum, int k) {
-        if (i == a.length) {
-            return sum == k;
+    public static boolean solve(int[] a, int n, int i, int k) {
+        if (k == 0) {
+            return true;
         }
-        boolean b1 = solve(a, i + 1, sum, k);
-        sum += a[i];
-        boolean b2 = solve(a, i + 1, sum, k);
+        if (k < 0) {
+            return false;
+        }
+        if (i == n) return false;
+
+        boolean b1 = solve(a, n, i + 1, k);
+        boolean b2 = solve(a, n, i + 1, k - a[i]);
+
         return b1 || b2;
     }
+
+
+//    public static boolean isSubsetPresent(int n, int k, int[] a) {
+//
+//        return solve(a, n, 0, 0, k);
+//    }
+//
+//    public static boolean solve(int[] a, int n, int i, int sum, int k) {
+//        if (i == n) {
+//            return sum == k;
+//        }
+//
+//        boolean b1 = solve(a, n, i + 1, sum, k);
+//        sum += a[i];
+//        boolean b2 = solve(a, n, i + 1, sum, k);
+//
+//        return b1 || b2;
+//    }
 }
