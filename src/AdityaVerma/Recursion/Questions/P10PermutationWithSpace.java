@@ -10,7 +10,7 @@ public class P10PermutationWithSpace {
         solve(ip, op);
     }
 
-    // T(C) in recursive tree = work done by node * total number of node
+    // T(C) in recursive tree = work done by a node * total number of node
     // T(C) = O(2^N * N) = O(2^N)
     // total number of node O(2^N)
     // work done by a node => substring & concatenation takes O(N)
