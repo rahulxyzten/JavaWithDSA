@@ -17,6 +17,10 @@ public class P15JosephusProblem {
         System.out.println(solve(v, k, index, ans));
     }
 
+    // T(C) = O(N * N) = O(N^2)
+    // N recursive calls, each call performs a remove() operation that takes O(N)
+    // S(C) = O(N) + O(N) = O(N)
+    // Size of Vector + recursion stack (depth of the recursion)
     public static int solve(Vector<Integer> v, int k, int index, int ans) {
         if (v.size() == 1) {
             ans = v.get(0);

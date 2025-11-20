@@ -40,7 +40,8 @@ Sample Output2
 1
  */
 
-import java.util.Vector;
+import java.util.ArrayList;
+import java.util.List;
 
 public class P4Josephus {
     public static void main(String[] args) {
@@ -48,23 +49,31 @@ public class P4Josephus {
         System.out.println(josephus(n, k));
     }
 
+    // T(C) = O(N * N) = O(N^2)
+    // N recursive calls, each call performs a remove() operation that takes O(N)
+    // S(C) = O(N) + O(N) = O(N)
+    // Size of the List + recursion stack (depth of the recursion)
     public static int josephus(int n, int k) {
-        Vector<Integer> v = new Vector<>();
+        List<Integer> person = new ArrayList<>();
         for (int i = 1; i <= n; i++) {
-            v.add(i);
+            person.add(i);
         }
         k = k - 1;
-        int index = 0, ans = -1;
-        return solve(v, k, index, ans);
+        int index = 0;
+        int[] result = {-1};
+
+        solve(person, k, index, result);
+        return result[0];
     }
 
-    public static int solve(Vector<Integer> v, int k, int index, int ans) {
-        if (v.size() == 1) {
-            ans = v.get(0);
-            return ans;
+    public static void solve(List<Integer> person, int k, int index, int[] result) {
+        if (person.size() == 1) {
+            result[0] = person.get(0);
+            return;
         }
-        index = (index + k) % v.size();
-        v.remove(index);
-        return solve(v, k, index, ans);
+
+        int killIndex = (index + k) % person.size();
+        person.remove(killIndex);
+        solve(person, k, killIndex, result);
     }
 }

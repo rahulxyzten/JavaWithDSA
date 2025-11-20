@@ -43,10 +43,16 @@ public class P3BinaryStringNoConsecutive1S {
         System.out.println(generateString(n));
     }
 
+    // T(C) in recursive tree = work done by a node * total number of node
+    // T(C) = O(2^N * N) = O(2^N)
+    // total number of node => O(2^N)
+    // work done by a node => concatenation takes O(N)
+    // S(C) = O(2^N * N) + O(N) = O(2^N * N)
+    // total number of String in List * maximum length of a String + recursion stack (depth of the recursion)
     public static List<String> generateString(int N) {
         List<String> result = new ArrayList<>();
-        String op = "";
-        solve(N, op, result);
+
+        solve(N, "", result);
         return result;
     }
 
@@ -55,14 +61,15 @@ public class P3BinaryStringNoConsecutive1S {
             result.add(op);
             return;
         }
+
         String op1 = op;
         op1 = op1 + '0';
         solve(n - 1, op1, result);
+
         if (op.length() == 0 || op.charAt(op.length() - 1) != '1') {
             String op2 = op;
             op2 = op2 + '1';
             solve(n - 1, op2, result);
         }
-        return;
     }
 }
