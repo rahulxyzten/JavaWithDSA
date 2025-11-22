@@ -36,30 +36,34 @@ public class P2PermutationsII {
         System.out.println(permuteUnique(nums));
     }
 
-
-//    time complexity of O(N * N!)
-//    space complexity is O(N * N!)
-
+    // time complexity of O(N! * N)
+    // space complexity is O(N! * N)
+    // T(C) = O(N! * N)
+    // total number of node => O(N!)
+    // work done by a node => HashSet add and contains takes O(1), swap operation takes O(1), copying Array to List takes O(N)
+    // S(C) = O(N! * N) + O(N) + O(N) + O(N) = O(N! * N)
+    // total number of List in List * each List length + HashSet length + intermediate op list +  recursion stack (depth of the recursion)
     public static List<List<Integer>> permuteUnique(int[] nums) {
         List<List<Integer>> result = new ArrayList<>();
-        permute(0, nums, result);
+        permute(nums, 0, nums.length, result);
         return result;
     }
 
-    public static void permute(int start, int[] nums, List<List<Integer>> result) {
-        if (start == nums.length - 1) {
+    public static void permute(int[] nums, int start, int n, List<List<Integer>> result) {
+        if (start == n - 1) {
             List<Integer> op = new ArrayList<>();
             for (int num : nums) {
                 op.add(num);
             }
             result.add(op);
         }
+
         HashSet<Integer> mpp = new HashSet<>();
-        for (int i = start; i < nums.length; i++) {
+        for (int i = start; i < n; i++) {
             if (!mpp.contains(nums[i])) {
                 mpp.add(nums[i]);
                 swap(i, start, nums);
-                permute(start + 1, nums, result);
+                permute(nums, start + 1, n, result);
                 swap(i, start, nums);
             }
         }

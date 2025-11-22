@@ -42,26 +42,31 @@ public class P1Permutations {
     /* Backtracking */
     public static List<List<Integer>> permute(int[] nums) {
         List<List<Integer>> result = new ArrayList<>();
-        btPermute(0, nums, result);
+        btPermute(nums, 0, nums.length, result);
         return result;
     }
 
-//    time complexity of O(N * N!)
-//    space complexity is O(N * N!)
-    public static void btPermute(int index, int[] nums, List<List<Integer>> result) {
-        if (index == nums.length) {
-            List<Integer> op = new ArrayList<>();
-            for (int num : nums) {
-                op.add(num);
-            }
-            result.add(new ArrayList<>(op));
-            return;
+    // time complexity of O(N! * N)
+    // space complexity is O(N! * N)
+    // T(C) = O(N! * N)
+    // total number of node => O(N!)
+    // work done by a node => swap operation takes O(1), copying Array to List takes O(N)
+    // S(C) = O(N! * N) + O(N) + O(N) = O(N! * N)
+    // total number of List in List * each List length + intermediate op list +  recursion stack (depth of the recursion)
+    public static void btPermute(int[] nums, int start, int n, List<List<Integer>> result) {
+        if (start == n - 1) {
+            ArrayList<Integer> op = new ArrayList<>();
+            for (int num : nums) op.add(num);
+            result.add(op);
         }
-        for (int i = index; i < nums.length; i++) {
-            swap(i, index, nums);
-            btPermute(index + 1, nums, result);
-            swap(i, index, nums);
+
+        for (int i = start; i < n; i++) {
+            swap(start, i, nums);
+            btPermute(nums, start + 1, n, result);
+            swap(start, i, nums);
         }
+
+        return;
     }
 
     public static void swap(int i, int j, int[] nums) {
@@ -82,7 +87,7 @@ public class P1Permutations {
 //    //space complexity is O(N * N!)
 //    //Although the space complexity is same but here it take a extra space of check array
 //    public static void btPermute(int[] nums, List<Integer> op, List<List<Integer>> result, boolean[] check) {
-//        if (op.size() == nums.length) {
+//        if (op.size() == nums.length - 1) {
 //            result.add(new ArrayList<>(op));
 //            return;
 //        }
