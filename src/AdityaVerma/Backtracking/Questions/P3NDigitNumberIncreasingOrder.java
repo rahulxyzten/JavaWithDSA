@@ -9,7 +9,11 @@ public class P3NDigitNumberIncreasingOrder {
         System.out.println(increasingNumbers(n));
     }
 
-    //T(C) = O(9^N) S(C) = O(9^N)
+    // T(C) = O(9^N * N)
+    // Total number of node => O(9^N)
+    // Work done by a node => Contracting the integer from ArrayList takes O(N)
+    // S(C) = O(9^N) + O(N) = O(9^N)
+    // Total number of integer in ArrayList +  recursion stack (depth of the recursion)
     public static ArrayList<Integer> increasingNumbers(int n) {
         ArrayList<Integer> result = new ArrayList<>();
         if (n == 1) {
@@ -18,6 +22,10 @@ public class P3NDigitNumberIncreasingOrder {
             }
             return result;
         }
+        // This base condition for n == 1 must need
+        // If not written then in solve function it add [1->9] to result
+        // The answer is [0->9]
+
         ArrayList<Integer> v = new ArrayList<>();
         solve(n, v, result);
         return result;
@@ -34,7 +42,7 @@ public class P3NDigitNumberIncreasingOrder {
         }
 
         for (int i = 1; i <= 9; i++) {
-            if ( v.size() == 0 || i > v.get(v.size() - 1)) {
+            if (v.size() == 0 || i > v.get(v.size() - 1)) {
                 v.add(i);
                 solve(n - 1, v, result);
                 v.remove(v.size() - 1);
