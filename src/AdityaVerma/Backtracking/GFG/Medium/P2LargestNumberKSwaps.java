@@ -1,54 +1,31 @@
-package AdityaVerma.Backtracking.Questions;
+package AdityaVerma.Backtracking.GFG.Medium;
+//problem
+/*
+Largest number in K swaps
 
-import java.util.Arrays;
+Given a number k and string s of digits denoting a positive integer, build the largest number possible by performing swap operations on the digits of s at most k times.
+
+Examples :
+
+Input: s = "1234567", k = 4
+Output: 7654321
+Explanation: Three swaps can make the input 1234567 to 7654321, swapping 1 with 7, 2 with 6 and finally 3 with 5.
+Input: s = "3435335", k = 3
+Output: 5543333
+Explanation: Three swaps can make the input 3435335 to 5543333, swapping 3 with 5, 4 with 5 and finally 3 with 4.
+Input: s = "1034", k = 2
+Output: 4301
+Explanation: Two swaps can make the input 1034 to 4301, swapping 1 with 4 and finally 0 with 3.
+Constraints:
+1 ≤ s.size() ≤ 15
+1 ≤ k ≤ 7
+ */
 
 public class P2LargestNumberKSwaps {
     public static void main(String[] args) {
-//        String s = "3435335";
-//        int k = 3;
         String s = "1234567";
         int k = 4;
-        System.out.println(findMaximumNum(s, k));
     }
-
-    public static String findMaximumNum(String str, int k) {
-        char[] charArray = str.toCharArray();
-        char[] res = Arrays.copyOf(charArray, charArray.length);
-        int start = 0;
-        solve(charArray, k, res, start);
-        return new String(res);
-    }
-
-    public static void solve(char[] str, int k, char[] res, int start) {
-        if (k == 0 || start == str.length - 1) return;
-
-        char maxVal = str[start];
-        for (int j = start + 1; j < str.length; j++) {
-            maxVal = (char) Math.max(maxVal, str[j]);
-        }
-
-        for (int i = start + 1; i < str.length; i++) {
-            if (str[start] < str[i] && str[i] == maxVal) {
-                swap(start, i, str);
-                if (new String(str).compareTo(new String(res)) > 0) {
-                    System.arraycopy(str, 0, res, 0, str.length);
-                }
-                solve(str, k - 1, res, start + 1);
-                swap(start, i, str);
-            }
-        }
-
-        //Horizontal Drifting
-        solve(str, k, res, start + 1);
-    }
-
-    public static void swap(int i, int j, char[] str) {
-        char temp = str[i];
-        str[i] = str[j];
-        str[j] = temp;
-    }
-}
-
 
     // C++ Code
     // In C++, strings are passed by reference,
@@ -97,3 +74,5 @@ public class P2LargestNumberKSwaps {
 //        solve(s, k, res, start);
 //        return res;
 //    }
+
+}
