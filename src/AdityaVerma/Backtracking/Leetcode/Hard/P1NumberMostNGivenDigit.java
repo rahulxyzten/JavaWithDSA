@@ -53,6 +53,38 @@ public class P1NumberMostNGivenDigit {
         System.out.println(atMostNGivenDigitSet(digits, n));
     }
 
+    public static int atMostNGivenDigitSet(String[] digits, int n) {
+        int m = digits.length;
+        String nStr = Integer.toString(n);
+        int noOfDigits = nStr.length();
+
+        int ans = 0;
+        for (int i = 1; i < noOfDigits; i++) {
+            ans += (int) Math.pow(m, i);
+        }
+
+        ans += solve(digits, m, nStr, noOfDigits, 0);
+        return ans;
+    }
+
+    public static int solve(String[] digits, int m, String nStr, int noOfDigits, int index) {
+        if (index >= noOfDigits) {
+            return 1;
+        }
+
+        int ans = 0;
+        for (int i = 0; i < m; i++) {
+            char ch = digits[i].charAt(0);
+            if (ch == nStr.charAt(index)) {
+                ans += solve(digits, m, nStr, noOfDigits, index + 1);
+            } else if (ch < nStr.charAt(index)) {
+                ans += (int) Math.pow(m, noOfDigits - index - 1);
+            }
+        }
+
+        return ans;
+    }
+
     // The code is works for small n, because the code correctly generates all possible
     // combinations of the given digits (1 <= n <= 10^9)
     // It hit TLE (Time Limit Exceeded) or StackOverflowError for very large inputs due to brute-force enumeration.
@@ -76,32 +108,4 @@ public class P1NumberMostNGivenDigit {
 //            solve(nums, n, temp, result);
 //        }
 //    }
-
-    public static int solve(String digits[], int m, String nstr, int noOfDigits, int index) {
-        if (index >= noOfDigits) {
-            return 1;
-        }
-        int ans = 0;
-        for (int i = 0; i < m; i++) {
-            char ch = digits[i].charAt(0);
-            if (ch == nstr.charAt(index)) {
-                ans += solve(digits, m, nstr, noOfDigits, index + 1);
-            } else if (ch < nstr.charAt(index)) {
-                ans += (int) Math.pow(m, noOfDigits - index - 1);
-            }
-        }
-        return ans;
-    }
-
-    public static int atMostNGivenDigitSet(String[] digits, int n) {
-        int m = digits.length;
-        String nstr = Integer.toString(n);
-        int noOfDigits = nstr.length();
-        int ans = 0;
-        for (int i = 1; i < noOfDigits; i++) {
-            ans += (int) Math.pow(m, i);
-        }
-        ans += solve(digits, m, nstr, noOfDigits, 0);
-        return ans;
-    }
 }

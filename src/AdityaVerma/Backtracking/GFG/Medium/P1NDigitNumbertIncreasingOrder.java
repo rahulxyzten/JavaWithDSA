@@ -38,7 +38,7 @@ import java.util.ArrayList;
 
 public class P1NDigitNumbertIncreasingOrder {
     public static void main(String[] args) {
-        System.out.println(increasingNumbers(1));
+        System.out.println(increasingNumbers(2));
     }
 
     // T(C) = O(9^N * N)
