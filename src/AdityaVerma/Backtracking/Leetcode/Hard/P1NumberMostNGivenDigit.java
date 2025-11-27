@@ -53,6 +53,11 @@ public class P1NumberMostNGivenDigit {
         System.out.println(atMostNGivenDigitSet(digits, n));
     }
 
+    // T(C) = O(M * N)
+    // M => Length of digits String array. (<= 9)
+    // N => Number of digits in n.
+    // S(C) = O(N) + O(N) = O(N)
+    // nStr length + recursion stack (depth of the recursion)
     public static int atMostNGivenDigitSet(String[] digits, int n) {
         int m = digits.length;
         String nStr = Integer.toString(n);
