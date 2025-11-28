@@ -50,12 +50,56 @@ public class P14NextPermutation {
     }
 
     // Optimal Solution
+    // T(C) = O(N + N + N) = O(N)
+    // S(C) = O(1)
     public static void nextPermutation(int[] nums) {
+        /* Step 1 */
+        int breakPointIndex = -1;
+        int n = nums.length;
+        for (int i = n - 2; i >= 0; i--) {
+            if (nums[i] < nums[i + 1]) {
+                breakPointIndex = i;
+                break;
+            }
+        }
 
+        // edge case
+        if (breakPointIndex == -1) {
+            reverse(nums, 0, n - 1);
+            return;
+        }
+
+        /* Step 2 */
+        for (int i = n - 1; i >= breakPointIndex; i--) {
+            if (nums[i] > nums[breakPointIndex]) {
+                swap(nums, breakPointIndex, i);
+                break;
+            }
+        }
+
+        /* Step 3 */
+        reverse(nums, breakPointIndex + 1, n - 1);
+        return;
     }
 
-    // Brute Force Approach,
-    // Approach give Time Limit Exceeded error 1 <= nums.length <= 100
+    public static void reverse(int[] nums, int start, int end) {
+        while (start < end) {
+            int temp = nums[start];
+            nums[start] = nums[end];
+            nums[end] = temp;
+            start++;
+            end--;
+        }
+    }
+
+    public static void swap(int[] nums, int i, int j) {
+        int temp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = temp;
+    }
+
+    // Brute Force Approach (Using Recursion)
+    // Approach gives Time Limit Exceeded error 1 <= nums.length <= 100
     // T(C) = O(N! * N^2 * logN) = O(N! * N^2)
     // S(C) = O(N! * N)
 //    public static void nextPermutation(int[] nums) {
