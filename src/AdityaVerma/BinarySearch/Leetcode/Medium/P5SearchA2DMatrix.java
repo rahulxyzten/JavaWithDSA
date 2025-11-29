@@ -40,8 +40,14 @@ public class P5SearchA2DMatrix {
         System.out.println(searchMatrix(matrix, target));
     }
 
-    // T(C) = O(log(NxM)), where N = given row number, M = given column number.
-    //Reason: We are applying binary search on the imaginary 1D array of size NxM.
+    // T(C) = O(N + M), where N = given row number, M = given column number.
+    /*
+    In each iteration of the while loop, we do i++ or j--;
+    Since:
+    i can increase at most n times (from 0 to n - 1),
+    j can decrease at most m times (from m - 1 to 0),
+    the loop runs at most n + m iterations → O(n + m) time.
+     */
     // S(C) = O(1)
     public static boolean searchMatrix(int[][] matrix, int target) {
         int i = 0, j = matrix[0].length - 1;
