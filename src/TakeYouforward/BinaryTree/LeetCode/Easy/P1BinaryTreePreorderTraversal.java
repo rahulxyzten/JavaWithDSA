@@ -51,12 +51,13 @@ public class P1BinaryTreePreorderTraversal {
             if (root.right != null) st.push(root.right);
             if (root.left != null) st.push(root.left);
         }
+
         return result;
     }
 
     //Recursive Solution
     //T(C) = O(N)
-    //S(C) = O(N)
+    //S(C) = O(N), Recursive stack
 //    public static List<Integer> preorderTraversal(TreeNode root) {
 //        List<Integer> result = new ArrayList<>();
 //        preOrder(root, result);

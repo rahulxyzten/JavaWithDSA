@@ -45,24 +45,25 @@ public class P2BinaryTreeInorderTraversal {
         List<Integer> result = new ArrayList<>();
         if (root == null) return result;
         Stack<TreeNode> st = new Stack<>();
-        TreeNode node = root;
+
         while (true) {
-            if (node != null) {
-                st.push(node);
-                node = node.left;
+            if (root != null) {
+                st.push(root);
+                root = root.left;
             } else {
                 if (st.isEmpty()) break;
-                node = st.pop();
+                TreeNode node = st.pop();
                 result.add(node.val);
-                node = node.right;
+                root = node.right;
             }
         }
+
         return result;
     }
 
-//    //Recursive Solution
-//    //T(C) = O(N)
-//    //S(C) = O(N)
+    //Recursive Solution
+    //T(C) = O(N)
+    //S(C) = O(N), Recursive Stack
 //    public static List<Integer> inorderTraversal(TreeNode root) {
 //        List<Integer> result = new ArrayList<>();
 //        inOrder(root, result);
