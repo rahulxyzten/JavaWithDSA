@@ -38,32 +38,35 @@ public class P4MaximumDepthOfBinaryTree {
 
     //Using Recursion
     //T(C) = O(N)
-    //S(C) = O(n)   (recursive stack)
+    //S(C) = O(N), recursive stack
     public int maxDepth(TreeNode root) {
         if (root == null) return 0;
         int left = maxDepth(root.left);
         int right = maxDepth(root.right);
+
         return 1 + Math.max(left, right);
     }
 
 
     //Using Level Order Traversal
     //T(C) = O(N)
-    //S(C) = O(n)
+    //S(C) = O(N)
 //    public int maxDepth(TreeNode root) {
 //        if (root == null) return 0;
 //        Queue<TreeNode> q = new LinkedList<>();
-//        q.add(root);
+//
 //        int level = 0;
+//        q.add(root);
 //        while (!q.isEmpty()) {
-//            int size = q.size();
-//            for (int i = 0; i < size; i++) {
+//            int levelTotalNode = q.size();
+//            for (int i = 0; i < levelTotalNode; i++) {
 //                TreeNode front = q.poll();
 //                if (front.left != null) q.add(front.left);
 //                if (front.right != null) q.add(front.right);
 //            }
 //            level++;
 //        }
+//
 //        return level;
 //    }
 }

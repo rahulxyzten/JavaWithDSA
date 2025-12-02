@@ -76,25 +76,21 @@ public class P1TreeTraversals {
     //T(C) = O(3N) = O(N)
     //S(C) = O(4N) = O(N)
     public static List<List<Integer>> getTreeTraversal(TreeNode root) {
-        List<Integer> inOrder = new ArrayList<>();
         List<Integer> preOrder = new ArrayList<>();
+        List<Integer> inOrder = new ArrayList<>();
         List<Integer> postOrder = new ArrayList<>();
         Stack<Pair> st = new Stack<>();
 
-        st.add(new Pair(root, 1));
+        st.push(new Pair(root, 1));
         while (!st.isEmpty()) {
             if (st.peek().num == 1) {
                 preOrder.add(st.peek().node.data);
-                st.peek().num += 1;
-                if (st.peek().node.left != null) {
-                    st.add(new Pair(st.peek().node.left, 1));
-                }
+                st.peek().num++;
+                if (st.peek().node.left != null) st.push(new Pair(st.peek().node.left, 1));
             } else if (st.peek().num == 2) {
                 inOrder.add(st.peek().node.data);
-                st.peek().num += 1;
-                if (st.peek().node.right != null) {
-                    st.add(new Pair(st.peek().node.right, 1));
-                }
+                st.peek().num++;
+                if (st.peek().node.right != null) st.push(new Pair(st.peek().node.right, 1));
             } else {
                 postOrder.add(st.peek().node.data);
                 st.pop();

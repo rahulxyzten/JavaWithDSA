@@ -38,7 +38,6 @@ public class P5BalancedBinaryTree {
     //S(C) = O(k) {Recursive stack}
     public boolean isBalanced(TreeNode root) {
         if (root == null) return true;
-
         return defHeight(root) != -1;
     }
 
@@ -52,7 +51,8 @@ public class P5BalancedBinaryTree {
         if (rightHeight == -1) return -1;
 
         if (Math.abs(leftHeight - rightHeight) > 1) return -1;
-        return Math.max(leftHeight, rightHeight) + 1;
+
+        return 1 + Math.max(leftHeight, rightHeight);
     }
 
 

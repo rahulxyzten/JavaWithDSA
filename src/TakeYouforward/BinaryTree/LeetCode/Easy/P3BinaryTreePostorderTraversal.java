@@ -43,6 +43,7 @@ public class P3BinaryTreePostorderTraversal {
         List<Integer> result = new ArrayList<>();
         if (root == null) return result;
         Stack<TreeNode> st = new Stack<>();
+
         TreeNode curr = root;
         while (curr != null || !st.isEmpty()) {
             if (curr != null) {
@@ -52,18 +53,19 @@ public class P3BinaryTreePostorderTraversal {
                 TreeNode temp = st.peek().right;
                 if (temp == null) {
                     temp = st.peek();
-                    st.pop();
                     result.add(temp.val);
+                    st.pop();
                     while (!st.isEmpty() && temp == st.peek().right) {
                         temp = st.peek();
-                        st.pop();
                         result.add(temp.val);
+                        st.pop();
                     }
                 } else {
                     curr = temp;
                 }
             }
         }
+
         return result;
     }
 
