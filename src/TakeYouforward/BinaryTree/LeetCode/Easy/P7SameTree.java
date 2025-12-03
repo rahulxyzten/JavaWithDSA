@@ -38,14 +38,14 @@ public class P7SameTree {
 
     }
 
-    //T(C) = O(N+M) where N is the number of nodes in the first Binary Tree and M is the number of nodes in the second Binary Tree.
-    //S(C) = O(1)
+    // T(C) = O(min(n,m)), n = no of nodes of Tree1 and m = no of nodes of Tree2
+    // S(C) = O(K), Recursive Stack
     public boolean isSameTree(TreeNode p, TreeNode q) {
         if (p == null && q == null) return true;
         //If both nodes are NULL
 
         if (p == null || q == null) return false;
-        // If only one of the nodes is NULL
+        // If only one of the nodes is NULL and another node has a value
 
         //Using recursive preOrder traversal
         return (p.val == q.val) && isSameTree(p.left , q.left) && isSameTree(p.right, q.right);

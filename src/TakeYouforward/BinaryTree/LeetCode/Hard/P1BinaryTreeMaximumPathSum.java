@@ -43,17 +43,18 @@ public class P1BinaryTreeMaximumPathSum {
         int[] sum = new int[1];
         sum[0] = Integer.MIN_VALUE;
         getHeight(root, sum);
+
         return sum[0];
     }
 
-    public int getHeight(TreeNode root, int[] sum) {
+    public static int getHeight(TreeNode root, int[] sum) {
         if (root == null) return 0;
+
         int left = Math.max(0, getHeight(root.left, sum));
         int right = Math.max(0, getHeight(root.right, sum));
 
-        sum[0] = Math.max(sum[0], left + right + root.val);
+        sum[0] = Math.max(sum[0], left + root.val + right);
 
         return root.val + Math.max(left, right);
     }
-
 }

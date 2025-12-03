@@ -41,21 +41,21 @@ public class P6DiameterOfBinaryTree {
     //S(C) = O(n) {Recursive Stack}
     public int diameterOfBinaryTree(TreeNode root) {
         int[] diameter = new int[1];
-//        diameter[0] = 0;
         getHeight(root, diameter);
+
         return diameter[0];
     }
 
-    public int getHeight(TreeNode root, int[] diameter) {
+    public static int getHeight(TreeNode root, int[] diameter) {
         if (root == null) return 0;
-        int left = getHeight(root.left, diameter);
-        int right = getHeight(root.right, diameter);
 
-        diameter[0] = Math.max(diameter[0], left + right);
+        int leftHeight = getHeight(root.left, diameter);
+        int rightHeight = getHeight(root.right, diameter);
 
-        return 1 + Math.max(left, right);
+        diameter[0] = Math.max(diameter[0], leftHeight + rightHeight);
+
+        return 1 + Math.max(leftHeight, rightHeight);
     }
-
 
     //Optimal Solution (using global variable)
     //T(C) = O(n)
