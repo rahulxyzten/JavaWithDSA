@@ -70,7 +70,7 @@ public class P1BoundaryTraversalOfBinaryTree {
 
         if (!isLeaf(root)) result.add(root.data);
         addLeftBoundary(root, result);
-        addLeafs(root, result);
+        addLeafsBoundary(root, result);
         addRightBoundary(root, result);
 
         return result;
@@ -82,6 +82,7 @@ public class P1BoundaryTraversalOfBinaryTree {
 
     public static void addLeftBoundary(TreeNode root, List<Integer> result) {
         TreeNode curr = root.left;
+
         while (curr != null) {
             if (!isLeaf(curr)) result.add(curr.data);
             if (curr.left != null) curr = curr.left;
@@ -89,26 +90,26 @@ public class P1BoundaryTraversalOfBinaryTree {
         }
     }
 
-    public static void addLeafs(TreeNode root, List<Integer> result) {
+    public static void addLeafsBoundary(TreeNode root, List<Integer> result) {
         if (isLeaf(root)) {
             result.add(root.data);
             return;
         }
-        if (root.left != null) addLeafs(root.left, result);
-        if (root.right != null) addLeafs(root.right, result);
+
+        if (root.left != null) addLeafsBoundary(root.left, result);
+        if (root.right != null) addLeafsBoundary(root.right, result);
     }
 
     public static void addRightBoundary(TreeNode root, List<Integer> result) {
-        TreeNode curr = root.right;
         List<Integer> temp = new ArrayList<>();
+        TreeNode curr = root.right;
+
         while (curr != null) {
             if (!isLeaf(curr)) temp.add(curr.data);
             if (curr.right != null) curr = curr.right;
             else curr = curr.left;
         }
-        for (int i = temp.size() - 1; i >= 0; i--) {
-            result.add(temp.get(i));
-        }
-    }
 
+        for (int i = temp.size() - 1; i >= 0; i--) result.add(temp.get(i));
+    }
 }

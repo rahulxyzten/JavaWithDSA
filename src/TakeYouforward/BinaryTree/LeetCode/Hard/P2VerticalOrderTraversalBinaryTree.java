@@ -71,44 +71,46 @@ public class P2VerticalOrderTraversalBinaryTree {
 
     }
 
-    //T(C) = O(N) + O(logn) + O(logn) + O(logn)
-    //insert operation in Map PriorityQueue is takes logn time
-    //S(C) = O(N) + O(N)
-
+    // T(C) = O(N) * (O(logN) + O(logN) + O(logN)) = O(N logN)
+    // insert operation in Map and PriorityQueue takes logn time
+    // S(C) = O(N) + O(N) + O(N) = O(N)
+    // Queue + TreeMap + Temp List
     public List<List<Integer>> verticalTraversal(TreeNode root) {
-        TreeMap<Integer, TreeMap<Integer, PriorityQueue<Integer>>> map = new TreeMap<>();
-        /*
-        Java TreeMap class is an efficient means of storing key-value pairs in sorted order.
-        Java TreeMap maintains ascending order.
-         */
-        Queue<Tuple> q = new LinkedList<>();
+        List<List<Integer>> result = new ArrayList<>();
+        if (root == null) return result;
 
-        q.offer(new Tuple(root, 0, 0));
-        while (!q.isEmpty()) {
-            Tuple tuple = q.poll();
+        TreeMap<Integer, TreeMap<Integer, PriorityQueue<Integer>>> map = new TreeMap<>();
+        Queue<Tuple> queue = new LinkedList<>();
+
+        queue.offer(new Tuple(root, 0, 0));
+        while (!queue.isEmpty()) {
+            Tuple tuple = queue.poll();
             TreeNode node = tuple.node;
             int x = tuple.vertical;
             int y = tuple.level;
 
-            if (!map.containsKey(x)) map.put(x, new TreeMap<>());
-            if (!map.get(x).containsKey(y)) map.get(x).put(y, new PriorityQueue<>());
+            if (!map.containsKey(x)) {
+                map.put(x, new TreeMap<>());
+            }
+            if (!map.get(x).containsKey(y)) {
+                map.get(x).put(y, new PriorityQueue<>());
+            }
             map.get(x).get(y).offer(node.val);
 
-            if (node.left != null) q.offer(new Tuple(node.left, x - 1, y + 1));
-            if (node.right != null) q.offer(new Tuple(node.right, x + 1, y + 1));
+            if (node.left != null) queue.offer(new Tuple(node.left, x - 1, y + 1));
+            if (node.right != null) queue.offer(new Tuple(node.right, x + 1, y + 1));
         }
 
-
-        List<List<Integer>> list = new ArrayList<>();
         for (TreeMap<Integer, PriorityQueue<Integer>> ys : map.values()) {
             List<Integer> temp = new ArrayList<>();
             for (PriorityQueue<Integer> pq : ys.values()) {
                 while (!pq.isEmpty()) {
-                   temp.add(pq.poll());
+                    temp.add(pq.poll());
                 }
             }
-            list.add(temp);
+            result.add(temp);
         }
-        return list;
+
+        return result;
     }
 }

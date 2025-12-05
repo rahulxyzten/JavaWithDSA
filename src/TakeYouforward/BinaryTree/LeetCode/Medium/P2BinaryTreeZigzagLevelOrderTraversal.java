@@ -33,8 +33,8 @@ public class P2BinaryTreeZigzagLevelOrderTraversal {
 
     }
 
-    //T(C) = O(N)
-    //S(C) = O(N)
+    // T(C) = O(N)
+    // S(C) = O(N)
     public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
         List<List<Integer>> result = new ArrayList<>();
         if (root == null) return result;
@@ -42,22 +42,57 @@ public class P2BinaryTreeZigzagLevelOrderTraversal {
         Queue<TreeNode> queue = new LinkedList<>();
         queue.offer(root);
         boolean leftToRight = true;
+
         while (!queue.isEmpty()) {
-            int size = queue.size();
-            List<Integer> row = new ArrayList<>();
-            for (int i = 0; i < size; i++) {
+            int levelSize = queue.size();
+            Integer[] temp = new Integer[levelSize];
+            // Here the data type of array
+
+            for (int i = 0; i < levelSize; i++) {
                 TreeNode node = queue.poll();
 
-                row.add(node.val);
+                int index = leftToRight ? i : levelSize - 1 - i;
+                temp[index] = node.val;
 
                 if (node.left != null) queue.offer(node.left);
                 if (node.right != null) queue.offer(node.right);
             }
-            if (!leftToRight) Collections.reverse(row);
-            result.add(row);
 
             leftToRight = !leftToRight;
+
+            // Arrays.asList() takes O(1) => It creates a wrapper around the existing array (no iteration, copying)
+            result.add(Arrays.asList(temp));
         }
+
         return result;
     }
+
+
+    //T(C) = O(N) + O(N) {Collections.reverse} = O(N)
+    //S(C) = O(N)
+//    public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
+//        List<List<Integer>> result = new ArrayList<>();
+//        if (root == null) return result;
+//
+//        Queue<TreeNode> queue = new LinkedList<>();
+//        queue.offer(root);
+//        boolean leftToRight = true;
+//        while (!queue.isEmpty()) {
+//            int size = queue.size();
+//            List<Integer> row = new ArrayList<>();
+//            for (int i = 0; i < size; i++) {
+//                TreeNode node = queue.poll();
+//
+//                row.add(node.val);
+//
+//                if (node.left != null) queue.offer(node.left);
+//                if (node.right != null) queue.offer(node.right);
+//            }
+//            if (!leftToRight) Collections.reverse(row);
+//            result.add(row);
+//
+//            leftToRight = !leftToRight;
+//        }
+//        return result;
+//    }
 }
