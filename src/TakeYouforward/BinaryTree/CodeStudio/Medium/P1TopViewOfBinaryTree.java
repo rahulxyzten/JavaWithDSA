@@ -80,18 +80,18 @@ public class P1TopViewOfBinaryTree {
 
     }
 
-    //T(C) == O(N)
+    //T(C) = O(N * (logN)) == O(nlogn)
     //S(C) = O(N) + O(N) == O(N)
     public static List<Integer> getTopView(TreeNode root) {
         List<Integer> result = new ArrayList<>();
         if (root == null) return result;
 
         TreeMap<Integer, Integer> map = new TreeMap<>();
-        Queue<Pair> q = new LinkedList<>();
+        Queue<Pair> queue = new LinkedList<>();
+        queue.offer(new Pair(root, 0));
 
-        q.offer(new Pair(root, 0));
-        while (!q.isEmpty()) {
-            Pair pair = q.poll();
+        while (!queue.isEmpty()) {
+            Pair pair = queue.poll();
             TreeNode node = pair.node;
             int vertical = pair.vertical;
 
@@ -99,13 +99,15 @@ public class P1TopViewOfBinaryTree {
                 map.put(vertical, node.data);
             }
 
-            if (node.left != null) q.offer(new Pair(node.left, vertical - 1));
-            if (node.right != null) q.offer(new Pair(node.right, vertical + 1));
+            if (node.left != null) queue.offer(new Pair(node.left, vertical - 1));
+            if (node.right != null) queue.offer(new Pair(node.right, vertical + 1));
         }
 
         for (int data : map.values()) {
             result.add(data);
         }
+        // result.addAll(map.values());
+
         return result;
     }
 }

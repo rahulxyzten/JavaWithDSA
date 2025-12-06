@@ -72,7 +72,7 @@ public class P2VerticalOrderTraversalBinaryTree {
     }
 
     // T(C) = O(N) * (O(logN) + O(logN) + O(logN)) = O(N logN)
-    // insert operation in Map and PriorityQueue takes logn time
+    // Insert operation & containsKey function in Map and PriorityQueue takes logn time
     // S(C) = O(N) + O(N) + O(N) = O(N)
     // Queue + TreeMap + Temp List
     public List<List<Integer>> verticalTraversal(TreeNode root) {
