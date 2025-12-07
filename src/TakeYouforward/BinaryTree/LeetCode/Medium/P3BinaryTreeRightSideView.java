@@ -35,9 +35,9 @@ public class P3BinaryTreeRightSideView {
 
     }
 
-    //Optimal Solution (Using Recursion)
-    //T(C) = O(N)
-    //S(C) = O(N)
+    // Optimal Solution (Using Recursion)
+    // T(C) = O(N)
+    // S(C) = O(N)
     public List<Integer> rightSideView(TreeNode root) {
         List<Integer> result = new ArrayList<>();
         if (root == null) return result;
@@ -45,55 +45,60 @@ public class P3BinaryTreeRightSideView {
         return result;
     }
 
-    //right View
+    // right View
     public void rightView(TreeNode node, int level, List<Integer> result) {
         if (node == null) return;
+
         if (level == result.size()) result.add(node.val);
+
         rightView(node.right, level + 1, result);
         rightView(node.left, level + 1, result);
     }
 
-    //left view
+    // left view
     public void leftView(TreeNode node, int level, List<Integer> result) {
         if (node == null) return;
+
         if (level == result.size()) result.add(node.val);
+
         leftView(node.left, level + 1, result);
         leftView(node.right, level + 1, result);
     }
 
 
-    //Brute Force Approach (Level Order Traversal) (Iterative Approach)
-    //T(C) = O(N) + O(logN) + O(N)
-    //S(C) = O(N) + O(N)
+    // Brute Force Approach (Level Order Traversal) (Iterative Approach)
+    // T(C) = O(N)
+    // S(C) = O(N) + O(N) == O(N)
 //    public List<Integer> rightSideView(TreeNode root) {
 //        List<Integer> result = new ArrayList<>();
 //        if (root == null) return result;
-//        Queue<TreeNode> q = new LinkedList<>();
-//        TreeMap<Integer, List<Integer>> map = new TreeMap<>();
-//        q.offer(root);
-//        int level = 1;
-//        while (!q.isEmpty()) {
-//            int size = q.size();
+//
+//        List<List<Integer>> levelOrder = new ArrayList<>();
+//        Queue<TreeNode> queue = new LinkedList<>();
+//        queue.offer(root);
+//
+//        while (!queue.isEmpty()) {
+//            int levelSize = queue.size();
 //            List<Integer> temp = new ArrayList<>();
-//            for (int i = 0; i < size; i++) {
-//                TreeNode node = q.poll();
+//            for (int i = 0; i < levelSize; i++) {
+//                TreeNode node = queue.poll();
 //                temp.add(node.val);
-//                if (node.left != null) q.add(node.left);
-//                if (node.right != null) q.add(node.right);
+//                if (node.left != null) queue.add(node.left);
+//                if (node.right != null) queue.add(node.right);
 //            }
-//            map.put(level, temp);
-//            level++;
+//            levelOrder.add(temp);
 //        }
 //
-//        //For Right View
-//        for (List<Integer> row : map.values()) {
-//            result.add(row.get(row.size() - 1));
-//        }
-//
-//        //For Left View
-////        for (List<Integer> row : map.values()) {
-////            result.add(row.get(1));
+//        // For Right View
+////        for (List<Integer> row : levelOrder) {
+////            result.add(row.get(row.size() - 1));
 ////        }
+//
+//        // For Left View
+//        for (List<Integer> row : levelOrder) {
+//            result.add(row.get(0));
+//        }
+//
 //        return result;
 //    }
 }

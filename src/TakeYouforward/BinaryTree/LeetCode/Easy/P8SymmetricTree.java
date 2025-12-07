@@ -33,11 +33,13 @@ public class P8SymmetricTree {
 
     }
 
-    //T(C) = O(N)
-    //S(C) = O(H) {Recursive stack}
+    // T(C) = O(N) {Total number of recursive calls}
+    // S(C) = O(H) {Recursive stack}
+    // Balanced tree: h=O(logn)
+    // Skewed tree: h=O(n)
     public boolean isSymmetric(TreeNode root) {
-        if (root ==null) return false;
-        return checkSymmetric(root.left , root.right);
+        if (root == null) return false;
+        return checkSymmetric(root.left, root.right);
     }
 
     public static boolean checkSymmetric(TreeNode node1, TreeNode node2) {
