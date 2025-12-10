@@ -2,12 +2,7 @@ package TakeYouforward.BinaryTree.CodeStudio.Medium;
 //Problem (Code studio)
 /*
 All Root to Leaf Paths In Binary Tree.
-Moderate
-0/80
-Average time to solve is 25m
-Contributed by
-79 upvotes
-Asked in companies
+
 Problem statement
 You are given an arbitrary binary tree consisting of 'N' nodes numbered from 1 to 'N'. Your task is to print all the root to leaf paths of the binary tree.
 
@@ -105,37 +100,78 @@ public class P3AllRootToLeafPathsInBinaryTree {
 
     }
 
-    //GFG
-    //T(C) == O(N) & S(C) = O(N) recursive stack
+    // GFG
+    // T(C) = O(N * H)
+    // Total number of recursive call O(N), N = Total number of nodes
+    // ArrayList copying O(H), path length up to height H
+
+    // S(C) = O(H) + O(H)
+    // recursive stack + temp list size
+//    public static ArrayList<ArrayList<Integer>> Paths(BinaryTreeNode root) {
+//        ArrayList<ArrayList<Integer>> result = new ArrayList<>();
+//        if (root == null) return result;
+//
+//        ArrayList<Integer> temp = new ArrayList<>();
+//        solveFunctionGFG(root, result, temp);
+//        return result;
+//    }
+//
+//    public static void solveFunctionGFG(BinaryTreeNode root, ArrayList<ArrayList<Integer>> result, ArrayList<Integer> temp) {
+//        if (root == null) return;
+//
+//        temp.add(root.data);
+//
+//        if (root.left == null && root.right == null) {
+//            result.add(new ArrayList<>(temp));
+//        } else {
+//            solveFunctionGFG(root.left, result, temp);
+//            solveFunctionGFG(root.right, result, temp);
+//        }
+//
+//        temp.remove(temp.size() - 1);
+//    }
+
+    // T(C) = O(N * H)
+    // Total number of recursive call O(N), N = Total number of nodes
+    // Path copying at leaves: O(H), path length up to height H
+
+    // S(C) = O(H) + O(H) + O(N)
+    // recursive stack + temp list size + path array size
     public static ArrayList<ArrayList<Integer>> Paths(BinaryTreeNode root) {
         ArrayList<ArrayList<Integer>> result = new ArrayList<>();
         if (root == null) return result;
+
         int[] path = new int[10000];
         solveFunctionGFG(root, path, 0, result);
         return result;
     }
 
-    public static void solveFunctionGFG(BinaryTreeNode root, int[] path, int pathLen, ArrayList<ArrayList<Integer>> result) {
+    public static void solveFunctionGFG(BinaryTreeNode root, int[] path, int pathIndex, ArrayList<ArrayList<Integer>> result) {
         if (root == null) return;
 
-        path[pathLen] = root.data;
-        pathLen++;
+        path[pathIndex] = root.data;
+        pathIndex++;
 
         if (root.left == null && root.right == null) {
             ArrayList<Integer> temp = new ArrayList<>();
-            for (int i = 0; i < pathLen; i++) {
+            for (int i = 0; i < pathIndex; i++) {
                 temp.add(path[i]);
             }
             result.add(temp);
         } else {
-            solveFunctionGFG(root.left, path, pathLen, result);
-            solveFunctionGFG(root.right, path, pathLen, result);
+            solveFunctionGFG(root.left, path, pathIndex, result);
+            solveFunctionGFG(root.right, path, pathIndex, result);
         }
     }
 
 
-    //Code studio
-    //T(C) = O(N) & S(C) = O(N) recursive stack
+    // Code studio
+    // T(C) = O(N * H)
+    // Total number of recursive call O(N), N = Total number of nodes
+    // Intermediate String concatenation O(H), path length up to height H
+
+    // S(C) = O(N * H)
+    // recursive stack * String length
     public static List<String> allRootToLeaf(BinaryTreeNode root) {
         List<String> result = new ArrayList<>();
         if (root == null) return result;
@@ -143,24 +179,23 @@ public class P3AllRootToLeafPathsInBinaryTree {
         return result;
     }
 
-    public static void solveFunction(BinaryTreeNode root, List<String> result, String curr) {
+    public static void solveFunction(BinaryTreeNode root, List<String> result, String op) {
         if (root == null) return;
 
-        curr += root.data + " ";
+        op = op + root.data;
 
         if (root.left == null && root.right == null) {
-            result.add(curr.trim());
+            result.add(op);
+        } else {
+            op = op + " ";
+            solveFunction(root.left, result, op);
+            solveFunction(root.right, result, op);
         }
-
-        if (root.left != null)
-            solveFunction(root.left, result, curr);
-        if (root.right != null)
-            solveFunction(root.right, result, curr);
     }
 
 
-    //Given question based on TUF
-    //T(C) = O(N) & S(C) = O(N) recursive stack
+    // Given question based on TUF
+    // T(C) = O(N) & S(C) = O(N), recursive stack
     public static List<Integer> allRootToLeafTuf(BinaryTreeNode root, int target) {
         ArrayList<Integer> result = new ArrayList<>();
         if (root == null) return result;
