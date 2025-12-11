@@ -2,10 +2,7 @@ package TakeYouforward.BinaryTree.LeetCode.Medium;
 //Problem
 /*
 662. Maximum Width of Binary Tree
-Solved
-Medium
-Topics
-Companies
+
 Given the root of a binary tree, return the maximum width of the given tree.
 
 The maximum width of a tree is the maximum width among all levels.
@@ -64,29 +61,32 @@ public class P5MaximumWidthBinaryTree {
     //T(C) = O(N) & S(C) = O(N)
     public int widthOfBinaryTree(TreeNode root) {
         if (root == null) return 0;
+
         int maxWidth = 0;
-        Queue<Pair> q = new LinkedList<>();
-        q.offer(new Pair(root, 0));
+        Queue<Pair> queue = new LinkedList<>();
+        queue.offer(new Pair(root, 0));
 
-        while (!q.isEmpty()) {
-            int size = q.size();
-            int minIndex = q.peek().index;
+        while (!queue.isEmpty()) {
+            int levelSize = queue.size();
+            int minIndex = queue.peek().index;
             int firstIndex = 0, lastIndex = 0;
-            for (int i = 0; i < size; i++) {
-                int currIndex = q.peek().index - minIndex;
-                TreeNode node = q.peek().node;
-                q.poll();
 
-                if (i == 0) firstIndex = currIndex;
-                if (i == size - 1) lastIndex = currIndex;
+            for (int i = 0; i < levelSize; i++) {
+                Pair pair = queue.poll();
+                int currentIndex = pair.index - minIndex;
 
-                if (node.left != null)
-                    q.offer(new Pair(node.left, currIndex * 2 + 1));
-                if (node.right != null)
-                    q.offer(new Pair(node.right, currIndex * 2 + 2));
+                if (i == 0) firstIndex = currentIndex;
+                if (i == levelSize - 1) lastIndex = currentIndex;
+
+                if (pair.node.left != null)
+                    queue.offer(new Pair(pair.node.left, 2 * currentIndex + 1));
+                if (pair.node.right != null)
+                    queue.offer(new Pair(pair.node.right, 2 * currentIndex + 2));
             }
+
             maxWidth = Math.max(maxWidth, lastIndex - firstIndex + 1);
         }
+
         return maxWidth;
     }
 }
