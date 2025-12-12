@@ -44,8 +44,8 @@ public class P7MaximumNestingDepthParentheses {
         System.out.println(maxDepth(s));
     }
 
-    //T(C) = O(N)
-    //S(C) = O(1)
+    // T(C) = O(N)
+    // S(C) = O(1)
     /*
     space used by the toCharArray() method, as it does not create a new array but simply
     returns a reference to the existing character array of the string.
@@ -55,11 +55,12 @@ public class P7MaximumNestingDepthParentheses {
      */
     public static int maxDepth(String s) {
         int depth = 0, open = 0;
-        for (char c : s.toCharArray()) {
-            if (c == '(') open++;
-            if (c == ')') open--;
+        for (char ch : s.toCharArray()) {
+            if (ch == '(') open++;
+            if (ch == ')') open--;
             depth = Math.max(depth, open);
         }
+
         return depth;
     }
 }

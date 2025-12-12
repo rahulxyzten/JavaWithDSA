@@ -44,44 +44,57 @@ s[i] is either '(' or ')'.
 s is a valid parentheses string.
  */
 
+import java.util.Stack;
+
 public class P1RemoveOutermostParentheses {
     public static void main(String[] args) {
         String s = "(()())(())";
         System.out.println(removeOuterParentheses(s));
     }
 
-    //BEST CODE T(C) = O(N) & S(C) = O(N)
+    // Optimal Solution
+    // T(C) = O(N)
+    // S(C) = O(N)
     public static String removeOuterParentheses(String s) {
         StringBuilder result = new StringBuilder();
         int count = 0;
-        for (char c : s.toCharArray()){
-            if (c == '('){
-                if (count > 0) result.append(c);
+
+        for (int i = 0; i < s.length(); i++) {
+            if (s.charAt(i) == '(') {
+                if (count > 0) {
+                    result.append('(');
+                }
                 count++;
-            }
-            else {
+            } else {
                 count--;
-                if (count > 0) result.append(c);
+                if (count > 0) {
+                    result.append(')');
+                }
             }
         }
+
         //The count is == 0 when it comes to outer parenthesis so in that
         //not insert the bracket and another time insert the bracket
         return result.toString();
     }
 
+    // Better Solution (Using Stack)
+    // T(C) = O(N)
+    // S(C) = O(2N)
 //    public static String removeOuterParentheses(String s) {
+//        Stack<Character> st = new Stack<>();
 //        StringBuilder result = new StringBuilder();
-//        int count = 0;
+//
 //        for (int i = 0; i < s.length(); i++) {
-//            if (s.charAt(i)== '('){
-//                if (count > 0){
-//                    result.append("(");
+//            if (s.charAt(i) == '(') {
+//                if (!st.isEmpty()) { // st.size() > 0
+//                    result.append('(');
 //                }
-//                count++;
-//            }else {
-//                count--;
-//                if (count > 0){
-//                    result.append(")");
+//                st.push('(');
+//            } else {
+//                st.pop();
+//                if (!st.isEmpty()) { // st.size() > 0
+//                    result.append(')');
 //                }
 //            }
 //        }
