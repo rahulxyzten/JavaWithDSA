@@ -34,45 +34,30 @@ public class P5RotateString {
         System.out.println(rotateString(s, goal));
     }
 
-    //OPTIMAL SOLUTION
-    //T(C) = O(N) and S(C) = O(2N)
-    /*
-    Time Complexity:
-    The StringBuilder append operation takes O(N), where N is the length of the goal string.
-    The indexOf operation on the StringBuilder also takes O(N).
-    Therefore, the overall time complexity is O(N), where N is the length of the input strings.
-    Space Complexity:
-    The StringBuilder is used to concatenate the goal string with itself,
-    resulting in a string of length 2N.
-     */
+    // Optimal Solution
+    //T(C) = O(N) and S(C) = O(2N) = O(N)
     public static boolean rotateString(String s, String goal) {
         if (s.length() != goal.length()) return false;
-        StringBuilder str = new StringBuilder(goal);
-        str = str.append(str);
-        //We observe that if we repeat the goal string twice then
-        //the start string is present inside it if it roted string
-        return (str.indexOf(s) != -1);
+
+        String doubledG = goal + goal;
+        // We observe that if we repeat the goal string twice, then
+        // the start string is present inside it, if it is a rotated string
+        return doubledG.contains(s);
     }
 
 
-    //My solution T(C) = O(N^2) and S(C) = O(N)
-    /*
-    Time Complexity:
-    The code uses a loop that iterates through each character in the string s.
-    Inside the loop, there are constant-time operations such as string manipulation
-    (charAt(), substring(), concatenation). The loop runs s.length() times. For each iteration,
-     the operations inside the loop take O(s) time complexity (substring operation).
-     Space Complexity:
-     The space complexity is O(s), where s is the length of the input string.
-     This is because in each iteration, a new string is created with a length of at most s.
-     */
+    // Brute Force Approach
+    // Try all possible rotations of s
+    // T(C) = O(N^2) and S(C) = O(N)
 //    public static boolean rotateString(String s, String goal) {
+//        if (s.length() != goal.length()) return false;
+//
 //        for (int i = 0; i < s.length(); i++) {
-//            if (goal.indexOf(s) == 0) return true;
-//            char temp = s.charAt(0);
-//            s = s.substring(1);
-//            s = s + temp;
+//            String rotated = s.substring(i) + s.substring(0, i);
+//            if (rotated.equals(goal)) return true;
 //        }
+//
 //        return false;
 //    }
+
 }

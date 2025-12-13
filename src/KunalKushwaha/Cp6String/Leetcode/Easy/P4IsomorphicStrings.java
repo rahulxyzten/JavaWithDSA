@@ -42,15 +42,16 @@ public class P4IsomorphicStrings {
 
 
     //T(C) = O(N) and S(C) = O(1)
-    //Because the size of mpp1 and mpp2 each of size 130.
+    // Because the size of mpp1 and mpp2 each of size 256.
     // The space required by these arrays is constant,
     // as it does not depend on the input size.
     public static boolean isIsomorphic(String s, String t) {
-        int[] mpp1 = new int[130];
-        int[] mpp2 = new int[130];
+        int[] mpp1 = new int[256];
+        int[] mpp2 = new int[256];
         for (int i = 0; i < s.length(); i++) {
             if (mpp1[s.charAt(i)] != mpp2[t.charAt(i)])
                 return false;
+
             mpp1[s.charAt(i)] = i + 1;
             mpp2[t.charAt(i)] = i + 1;
         }

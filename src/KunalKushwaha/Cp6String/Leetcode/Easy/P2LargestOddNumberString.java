@@ -40,15 +40,22 @@ public class P2LargestOddNumberString {
 
     //T(C) = O(N) & S(C) = O(1)
     public static String largestOddNumber(String num) {
-        if (num.charAt(num.length() - 1) % 2 == 1) return num;
-        //here the int precedence is grater then char, so it implicitly convert the char to int
-        //and the % is done of char and int
-        int i = num.length() - 2;
+        int n = num.length();
+        if (num.charAt(n - 1) % 2 != 0) return num;
+        // edge case (Why the above line not in while loop?)
+        // This is the because if we write this line in while loop,
+        // then in num.substring(0, i + 1), for n-1 it should be like num.substring(0, n)
+        // But we only allow to put valid index in substring method and if we put n
+        // in the second value then it gives "Index" error.
+
+        // here the int precedence is grater then char, so it implicitly convert the char to int
+        // and the % is done of char and int
+        int i = n - 2;
         while (i >= 0) {
-            int n = num.charAt(i);
-            if (n % 2 == 1) return num.substring(0, i + 1);
+            if (num.charAt(i) % 2 != 0) return num.substring(0, i + 1);
             i--;
         }
+
         return "";
     }
 

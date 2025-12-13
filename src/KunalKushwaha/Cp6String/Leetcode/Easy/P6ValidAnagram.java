@@ -40,34 +40,36 @@ public class P6ValidAnagram {
     //T(C) = O(N) and S(C) = O(1)
     public static boolean isAnagram(String s, String t) {
         if (s.length() != t.length()) return false;
-        int[] mpp1 = new int[130];
 
+        int[] mpp1 = new int[130];
         for (int i = 0; i < s.length(); i++) {
             mpp1[s.charAt(i)]++;
             mpp1[t.charAt(i)]--;
         }
 
         for (int count : mpp1) {
-            if (count != 0)
-                return false;
+            if (count != 0) return false;
         }
 
         return true;
     }
 
 
-    //My solution T(C) = O(N)
-    //but here 2 array are used so although the space complicity S(C) = (1)
-    //still it take more space so go for the above solution where
-    //only one array is taken
+    // Brute Force Approach
+    // T(C) = O(N)
+    // S(C) = O(1)
+    // But here, 2 arrays are used, although the space complexity S(C) = (1)
+    // Still, it takes more space
 //    public static boolean isAnagram(String s, String t) {
 //        if (s.length() != t.length()) return false;
+//
 //        int[] mpp1 = new int[130];
 //        int[] mpp2 = new int[130];
 //        for (int i = 0; i < s.length(); i++) {
 //            mpp1[s.charAt(i)]++;
 //            mpp2[t.charAt(i)]++;
 //        }
+//
 //        for (int i = 0; i < mpp1.length; i++) {
 //            if (mpp1[i] != mpp2[i])
 //                return false;
