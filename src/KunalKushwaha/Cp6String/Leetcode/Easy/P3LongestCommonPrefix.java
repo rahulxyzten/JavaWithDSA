@@ -27,6 +27,8 @@ Constraints:
 strs[i] consists of only lowercase English letters.
  */
 
+import java.util.Arrays;
+
 public class P3LongestCommonPrefix {
     public static void main(String[] args) {
         String[] strs = {"flower", "flow", "flight"};
@@ -36,40 +38,67 @@ public class P3LongestCommonPrefix {
         System.out.println(longestCommonPrefix(strs));
     }
 
-    //BEST Code (Optimal Code)
+    // Optimal Solution
+    // T(C) = O(N * logN) + O(M)
+    // N = number of strings
+    // M = minimum length of a string
+    // S(C) = O(M)
+    public static String longestCommonPrefix(String[] strs) {
+        Arrays.sort(strs);
+
+        String first = strs[0];
+        String last = strs[strs.length - 1];
+        StringBuilder result = new StringBuilder();
+
+        for (int i = 0; i < Math.min(first.length(), last.length()); i++) {
+            if (first.charAt(i) != last.charAt(i)) {
+                return result.toString();
+            } else {
+                result.append(first.charAt(i));
+            }
+        }
+
+        return result.toString();
+    }
+
+    // Brute Force Approach
+    // T(C) = O(strs.[0].length() * strs.length)
+    // S(C) = O(strs[0].length())
     /*
-   T(C) = O(n * m), where n is the number of strings in the array, and m is the length of the longest string.
+    i == strs[j].length() means any other sting is smaller than first sting
+    example ["flower","flow","flowht"]
+    The for break at when i == strs[1].length() then return "flow"
+     */
+//    public static String longestCommonPrefix(String[] strs) {
+//        for (int i = 0; i < strs[0].length(); i++) {
+//            for (int j = 1; j < strs.length; j++) {
+//                if (i == strs[j].length() || strs[j].charAt(i) != strs[0].charAt(i)) {
+//                    return strs[0].substring(0, i);
+//                }
+//            }
+//        }
+//
+//        return strs[0];
+//    }
+
+
+    // By using In-build function -> indexOf()
+    /*
+    T(C) = O(n * m), where n is the number of strings in the array, and m is the length of the longest string.
     S(C) = O(m), where m is the length of the longest string, as we store the prefix string.
      */
-    //Go for the dry run if not understand
+    // Go for the dry run if not understand
     /* DRY RUN
         Flower => prefix = Flower
         Flow => prefix = Flow
         Flight => prefix = Fl
         return Fl;
      */
-    public static String longestCommonPrefix(String[] strs) {
-        if (strs == null || strs.length == 0) return "";
-        String prefix = strs[0];
-        for (String s : strs)
-            while (s.indexOf(prefix) != 0)
-                prefix = prefix.substring(0, prefix.length() - 1);
-        return prefix;
-    }
-
-
-
-    /* T(C) = O(strs.[0].length() * strs.length) and S(C) = O(strs[0].length()) */
-
 //    public static String longestCommonPrefix(String[] strs) {
-//        if (strs.length == 0) return "";
-//        for (int i = 0; i < strs[0].length(); i++) {
-//            for (int j = 1; j < strs.length; j++) {
-//                if (i == strs[j].length() || strs[j].charAt(i) != strs[0].charAt(i))
-//                    return strs[0].substring(0, i);
-//            }
-//        }
-//
-//        return strs[0];
+//        String prefix = strs[0];
+//        for (String s : strs)
+//            while (s.indexOf(prefix) != 0)
+//                prefix = prefix.substring(0, prefix.length() - 1);
+//        return prefix;
 //    }
 }

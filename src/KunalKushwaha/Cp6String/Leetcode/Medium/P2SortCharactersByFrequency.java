@@ -35,44 +35,43 @@ Constraints:
 s consists of uppercase and lowercase English letters and digits.
  */
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class P2SortCharactersByFrequency {
     public static void main(String[] args) {
-        String s = "tree";
+//        String s = "tree";
+        String s = "Aabb";
         System.out.println(frequencySort(s));
     }
 
     //Optimal Solution (Bucket Sort)
-    //T(C) = O(n)
-    //S(C) = O(n)
+    //T(C) = O(n) + O(n) + O(n) = O(n)
+    //S(C) = O(n) + O(n) = O(n)
     public static String frequencySort(String s) {
         StringBuilder result = new StringBuilder();
 
+        // Step - 1
         HashMap<Character, Integer> mpp = new HashMap<>();
-        for (char c : s.toCharArray()) {
-            mpp.put(c, mpp.getOrDefault(c, 0) + 1);
+        for (int i = 0; i < s.length(); i++) {
+            mpp.put(s.charAt(i), mpp.getOrDefault(s.charAt(i), 0) + 1);
         }
 
+        // Step - 2
         List<Character>[] arr = new ArrayList[s.length() + 1];
-        //declares an array of lists. Each element of the array is a list that can hold Character objects.
-
-
-        for (char c : mpp.keySet()) {
-            if (arr[mpp.get(c)] == null) {
-                arr[mpp.get(c)] = new ArrayList<>();
+        // declares an array of lists. Each element of the array is a list that can hold (Character objects)
+        for (char ch : mpp.keySet()) {
+            if (arr[mpp.get(ch)] == null) {
+                arr[mpp.get(ch)] = new ArrayList<>();
             }
-            arr[mpp.get(c)].add(c);
+            arr[mpp.get(ch)].add(ch);
         }
 
+        // Step - 3
         for (int i = arr.length - 1; i > 0; i--) {
             if (arr[i] != null) {
-                for (Character c : arr[i]) {
+                for (char ch : arr[i]) {
                     for (int j = 0; j < i; j++) {
-                        result.append(c);
+                        result.append(ch);
                     }
                 }
             }
@@ -81,45 +80,69 @@ public class P2SortCharactersByFrequency {
         return result.toString();
     }
 
-    //BruteForce Approach (HashTable + Sort)
-    //T(C) = O(nlogn)
-    //S(C) = O(n)
+
+    // Brute Force Approach (HashTable + Sort)
+    // T(C) = O(n) + O(nlogn) + O(n) = O(n + nlogn)
+    // S(C) = O(n) + O(n) + O(n) = O(n)
 //    public static String frequencySort(String s) {
 //        StringBuilder result = new StringBuilder();
 //
 //        //Count the occurrence on each character
 //        HashMap<Character, Integer> mpp = new HashMap<>();
-//        for (char c : s.toCharArray()) {
-//            mpp.put(c, mpp.getOrDefault(c, 0) + 1);
+//        for (int i = 0; i < s.length(); i++) {
+//            mpp.put(s.charAt(i), mpp.getOrDefault(s.charAt(i), 0) + 1);
 //        }
 //
 //        //Sorting the keySet according to keyValue
 //        List<Character> chars = new ArrayList<>(mpp.keySet());
 //        Collections.sort(chars, (a, b) -> (mpp.get(b) - mpp.get(a)));
-//        /*
-//        The Collections.sort() method sorts the list chars using a comparator.
-//        In this case, a lambda expression (a, b) -> (mpp.get(b) - mpp.get(a)) is
-//        used as the comparator.
-//        Comparator Explanation: The lambda expression (a, b) -> (mpp.get(b) - mpp.get(a))
-//        compares two characters a and b based on their respective values in the mpp HashMap.
-//        Here's how it works:
-//        mpp.get(b) retrieves the value (occurrence count) associated with the character b in the mpp HashMap.
-//        mpp.get(a) retrieves the value (occurrence count) associated with the character a in the mpp HashMap.
-//        The result of (mpp.get(b) - mpp.get(a)) is then used for comparison.
-//        If the result is negative, it means b has a smaller occurrence count than a, so b should come before a in the sorted list.
-//        If the result is positive, it means b has a larger occurrence count than a, so b should come after a in the sorted list.
-//        If the result is zero, it means both a and b have the same occurrence count, so their relative order in the sorted list is not changed.
-//         */
 //
 //        //Build String
-//        for (char c : chars) {
-//            for (int i = 0; i < mpp.get(c); i++) {
-//                result.append(c);
+//        for (char ch : chars) {
+//            for (int i = 0; i < mpp.get(ch); i++) {
+//                result.append(ch);
 //            }
 //        }
 //
 //        return result.toString();
 //    }
-
-
 }
+
+
+// TUF Problem
+// Optimal Approach
+// T(C) = O(n) + O(nlogn) + O(n) = O(n + nlogn)
+// S(C) =  O(k), where k is the constant 26 for the frequency array.
+//class Pair {
+//    int freq;
+//    char ch;
+//
+//    Pair(int freq, char ch) {
+//        this.freq = freq;
+//        this.ch = ch;
+//    }
+//}
+//
+//    public List<Character> frequencySort(String s) {
+//        Pair[] freqArray = new Pair[26];
+//
+//        for (int i = 0; i < 26; i++) {
+//            freqArray[i] = new Pair(0, (char) ('a' + i));
+//        }
+//
+//        for (int i = 0; i < s.length(); i++) {
+//            freqArray[s.charAt(i) - 'a'].freq++;
+//        }
+//
+//        Arrays.sort(freqArray, (p1, p2) -> {
+//            if (p1.freq != p2.freq) return p2.freq - p1.freq;
+//            return p1.ch - p2.ch;
+//        });
+//
+//        List<Character> result = new ArrayList<>();
+//        for (Pair pair : freqArray) {
+//            if (pair.freq > 0) result.add(pair.ch);
+//        }
+//
+//        return result;
+//    }
