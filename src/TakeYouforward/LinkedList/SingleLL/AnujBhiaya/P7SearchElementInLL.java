@@ -1,5 +1,5 @@
 package TakeYouforward.LinkedList.SingleLL.AnujBhiaya;
-//Find the element in a Singly LinkedList or 1D LinkedList
+// Find the element in a Singly Linked List or 1D Linked List
 
 public class P7SearchElementInLL {
     public static void main(String[] args) {
@@ -17,7 +17,7 @@ public class P7SearchElementInLL {
         System.out.println(find(head, 25));
     }
 
-    //T(C) = O(N) and S(C) = O(1)
+    // T(C) = O(N) and S(C) = O(1)
     public static boolean find(Node head, int ele) {
         Node curr = head;
         while (curr != null) {
@@ -26,6 +26,7 @@ public class P7SearchElementInLL {
             }
             curr = curr.next;
         }
+
         return false;
     }
 }

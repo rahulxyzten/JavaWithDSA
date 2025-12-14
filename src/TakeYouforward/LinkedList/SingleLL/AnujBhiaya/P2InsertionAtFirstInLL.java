@@ -1,5 +1,5 @@
 package TakeYouforward.LinkedList.SingleLL.AnujBhiaya;
-//Insertion at first position in a Singly LinkedList or 1D LinkedList
+// Insertion at first position in a Singly Linked List or 1D Linked List
 
 public class P2InsertionAtFirstInLL {
     public static void main(String[] args) {
@@ -19,7 +19,7 @@ public class P2InsertionAtFirstInLL {
     }
 
 
-    //T(C) = O(1) and S(C) = O(1)
+    // T(C) = O(1) and S(C) = O(1)
     public static Node insert(int data, Node head) {
         Node toAdd = new Node(data);
         toAdd.next = head;

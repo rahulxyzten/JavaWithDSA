@@ -1,5 +1,5 @@
 package TakeYouforward.LinkedList.SingleLL.LeetCode.Medium;
-//Problem
+// Problem
 /*
 237. Delete Node in a Linked List
 
@@ -59,8 +59,8 @@ public class P1DeleteNodeInLinkedList {
         traverse(head);
     }
 
-    //Here the head or pos is not given only the node is give
-    //T(C) = O(1) & S(C) = O(1)
+    // Here the head or pos is not given only the node is given
+    // T(C) = O(1) & S(C) = O(1)
     public static void deleteNode(ListNode node) {
         node.val = node.next.val;
         node.next = node.next.next;

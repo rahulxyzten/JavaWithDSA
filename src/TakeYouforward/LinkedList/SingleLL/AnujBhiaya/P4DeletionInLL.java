@@ -1,5 +1,5 @@
 package TakeYouforward.LinkedList.SingleLL.AnujBhiaya;
-//Deletion in a Singly LinkedList or 1D LinkedList
+// Deletion in a Singly LinkedList or 1D Linked List
 
 public class P4DeletionInLL {
     public static void main(String[] args) {
@@ -20,19 +20,21 @@ public class P4DeletionInLL {
     }
 
 
-    //T(C) = O(N) and S(C) = O(1)
-    //because in the worst case it will ask to delete the last node of the linked list
-    //so the for loop run to n-1
+    // T(C) = O(N) and S(C) = O(1)
+    // because in the worst case it will ask to delete the last node of the linked list
+    // so the for loop runs 0 to n-1
     public static Node delete(Node head, int pos) {
         if (pos == 0) {
             head = head.next;
             return head;
         }
+
         Node prev = head;
         for (int i = 0; i < pos - 1; i++) {
             prev = prev.next;
         }
         prev.next = prev.next.next;
+
         return head;
     }
 

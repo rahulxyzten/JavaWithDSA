@@ -1,5 +1,5 @@
 package TakeYouforward.LinkedList.SingleLL.AnujBhiaya;
-//Insertion in a Singly LinkedList or 1D LinkedList
+// Insertion in a Singly Linked List or 1D Linked List
 
 
 public class P3InsertionInLL {
@@ -15,15 +15,15 @@ public class P3InsertionInLL {
         n3.next = n4;
         n4.next = n5;
         n5.next = null;
-//        head = insert(30, head, 0);
-        head = insert(30, head, 3);
+        head = insert(30, head, 0);
+//        head = insert(30, head, 3);
         traverse(head);
     }
 
 
-    //T(C) = O(N) and S(C) = O(1)
-    //because in the worst case it will ask to inset at last of the linked list
-    //so the for loop run to n-1
+    // T(C) = O(N) and S(C) = O(1)
+    // because in the worst case it will ask to inset at last of the linked list
+    // so the for loop runs 0 to n-1
     public static Node insert(int data, Node head, int pos) {
         Node toAdd = new Node(data);
         if (pos == 0) {
@@ -31,18 +31,14 @@ public class P3InsertionInLL {
             head = toAdd;
             return head;
         }
-        /*
-        However, when you reassign head within the insert function,
-        it only updates the local reference and does not affect the original
-        head in the main method.
-        so for pos 0 it not print the ll with insert the element at first
-         */
+
         Node prev = head;
         for (int i = 0; i < pos - 1; i++) {
             prev = prev.next;
         }
         toAdd.next = prev.next;
         prev.next = toAdd;
+
         return head;
     }
 

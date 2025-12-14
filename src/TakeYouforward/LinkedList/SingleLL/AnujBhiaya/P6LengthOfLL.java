@@ -1,5 +1,5 @@
 package TakeYouforward.LinkedList.SingleLL.AnujBhiaya;
-//Length of a Singly LinkedList or 1D LinkedList
+// Length of a Singly Linked List or 1D Linked List
 
 public class P6LengthOfLL {
     public static void main(String[] args) {
@@ -18,7 +18,7 @@ public class P6LengthOfLL {
     }
 
 
-    //T(C) = O(N) and S(C) = O(1)
+    // T(C) = O(N) and S(C) = O(1)
     public static int findLength(Node head) {
         int count = 0;
         Node curr = head;
@@ -26,6 +26,7 @@ public class P6LengthOfLL {
             count++;
             curr = curr.next;
         }
+
         return count;
     }
 }

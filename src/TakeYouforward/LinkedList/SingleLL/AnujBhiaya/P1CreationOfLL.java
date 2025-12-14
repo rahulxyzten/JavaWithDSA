@@ -1,5 +1,5 @@
 package TakeYouforward.LinkedList.SingleLL.AnujBhiaya;
-//Creation and Traverse of a Singly LinkedList or 1D LinkedList
+// Creation and Traverse of a Singly Linked List or 1D Linked List
 
 class Node {
     int data;
@@ -12,7 +12,7 @@ class Node {
 
 public class P1CreationOfLL {
     public static void main(String[] args) {
-        //creation of Linked-list
+        // creation of Linked-list
         Node n1 = new Node(10);
         Node n2 = new Node(20);
         Node n3 = new Node(30);
@@ -23,8 +23,8 @@ public class P1CreationOfLL {
         traverse(head);
     }
 
-    //Traverse of LinkedList
-    //T(C) = O(N) and S(C) = O(1)
+    // Traverse of LinkedList
+    // T(C) = O(N) and S(C) = O(1)
     public static void traverse(Node head) {
         Node curr = head;
         while (curr != null) {
