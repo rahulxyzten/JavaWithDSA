@@ -1,5 +1,5 @@
 package TakeYouforward.LinkedList.SingleLL.LeetCode.Easy;
-//problem
+// problem
 /*
 206. Reverse Linked List
 
@@ -58,6 +58,7 @@ public class P1ReverseLinkedList {
 //            prev = curr;
 //            curr = temp;
 //        }
+//
 //        return prev;
 //    }
 
@@ -66,6 +67,7 @@ public class P1ReverseLinkedList {
     recursion stack then it will be O(N) */
     public static ListNode reverseList(ListNode head) {
         if (head == null || head.next == null) return head;
+
         ListNode newHead = reverseList(head.next);
         ListNode headNext = head.next;
         headNext.next = head;
@@ -81,6 +83,4 @@ public class P1ReverseLinkedList {
             curr = curr.next;
         }
     }
-
-
 }

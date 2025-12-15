@@ -1,5 +1,5 @@
 package TakeYouforward.LinkedList.SingleLL.AnujBhiaya;
-//Reverse of Singly LinkedList or 1D LinkedList
+// Reverse of Singly LinkedList or 1D LinkedList
 
 
 public class P5ReverseOfLL {
@@ -30,6 +30,7 @@ public class P5ReverseOfLL {
             prev = curr;
             curr = temp;
         }
+
         return prev;
     }
 
@@ -39,6 +40,7 @@ public class P5ReverseOfLL {
 //        if (head == null || head.next == null) {
 //            return head;
 //        }
+
 //        Node newHead = reverse(head.next);
 //        Node headNext = head.next;
 //        headNext.next = head;

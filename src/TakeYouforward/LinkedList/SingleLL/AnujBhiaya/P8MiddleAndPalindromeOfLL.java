@@ -1,6 +1,6 @@
 package TakeYouforward.LinkedList.SingleLL.AnujBhiaya;
-//Find the middle element in a Singly LinkedList or 1D LinkedList
-//Check the Singly LinkedList or 1D LinkedList is Palindrome or not
+// Find the middle element in a Singly LinkedList or 1D LinkedList
+// Check the Singly LinkedList or 1D LinkedList is Palindrome or not
 
 public class P8MiddleAndPalindromeOfLL {
     public static void main(String[] args) {
@@ -29,6 +29,7 @@ public class P8MiddleAndPalindromeOfLL {
     public static boolean palindrome(Node head) {
         if (head == null) return true;
         Node mid = middle(head);
+
         Node last = reverse(mid);
         Node curr = head;
         while (last != null) {
@@ -36,22 +37,10 @@ public class P8MiddleAndPalindromeOfLL {
             last = last.next;
             curr = curr.next;
         }
+
         return true;
     }
 
-    //Below code work for odd and even, last = reverse(mid.next)
-//    public static Node middle(Node head) {
-//        Node slow = head;
-//        Node fast = head;
-//        while (fast.next != null && fast.next.next != null) {
-//            slow = slow.next;
-//            fast = fast.next.next;
-//        }
-//        return slow;
-//    }
-
-
-    //Below code is work for odd and even, last = reverse(mid);
     public static Node middle(Node head) {
         Node slow = head;
         Node fast = head;
@@ -59,6 +48,7 @@ public class P8MiddleAndPalindromeOfLL {
             slow = slow.next;
             fast = fast.next.next;
         }
+
         return slow;
     }
 
@@ -66,6 +56,7 @@ public class P8MiddleAndPalindromeOfLL {
         if (head == null || head.next == null) {
             return head;
         }
+
         Node newHead = reverse(head.next);
         Node nextHead = head.next;
         nextHead.next = head;

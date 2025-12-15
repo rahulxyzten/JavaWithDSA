@@ -1,5 +1,5 @@
 package TakeYouforward.LinkedList.SingleLL.LeetCode.Easy;
-//Problem
+// Problem
 /*
 234. Palindrome Linked List
 
@@ -44,17 +44,21 @@ public class P3PalindromeLinkedList {
         System.out.println(isPalindrome(head));
     }
 
-    //T(C) = O(2N) & S(C) = O(1)
+    // T(C) = O(N/2) + O(N/2) + O(N/2) = O(N)
+    // S(C) = O(1)
     public static boolean isPalindrome(ListNode head) {
         if (head == null || head.next == null) return true;
+
         ListNode mid = middleNode(head);
         ListNode last = reverse(mid);
+
         ListNode curr = head;
         while (last != null) {
             if (curr.val != last.val) return false;
             curr = curr.next;
             last = last.next;
         }
+
         return true;
     }
 
@@ -65,19 +69,21 @@ public class P3PalindromeLinkedList {
             slow = slow.next;
             fast = fast.next.next;
         }
+
         return slow;
     }
 
     public static ListNode reverse(ListNode head) {
-        if (head == null || head.next == null) {
-            return head;
+        ListNode curr = head;
+        ListNode prev = null;
+        while (curr != null) {
+            ListNode temp = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = temp;
         }
-        ListNode newHead = reverse(head.next);
-        ListNode headNext = head.next;
-        headNext.next = head;
-        head.next = null;
 
-        return newHead;
+        return prev;
     }
 
 }

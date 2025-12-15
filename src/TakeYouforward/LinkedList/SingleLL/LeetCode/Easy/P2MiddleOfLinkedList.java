@@ -1,5 +1,5 @@
 package TakeYouforward.LinkedList.SingleLL.LeetCode.Easy;
-//Problem
+// Problem
 /*
 876. Middle of the Linked List
 
@@ -44,8 +44,9 @@ public class P2MiddleOfLinkedList {
         System.out.println(mid.val);
     }
 
-    //Tortoise-Hare-Approach
-    //T(C) = O(N) and S(C) = O(1)
+    // Tortoise-Hare-Approach
+    // T(C) = O(N/2) = O(N)
+    // S(C) = O(1)
     public static ListNode middleNode(ListNode head) {
         ListNode slow = head;
         ListNode fast = head;
@@ -53,6 +54,7 @@ public class P2MiddleOfLinkedList {
             slow = slow.next;
             fast = fast.next.next;
         }
+
         return slow;
     }
 }
