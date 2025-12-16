@@ -1,5 +1,5 @@
 package TakeYouforward.LinkedList.SingleLL.LeetCode.Medium;
-//problem
+// problem
 /*
 142. Linked List Cycle II
 
@@ -42,6 +42,8 @@ Follow up: Can you solve it using O(1) (i.e. constant) memory?
  */
 
 
+import java.util.HashMap;
+
 public class P2LinkedListCycleII {
     public static void main(String[] args) {
         ListNode n1 = new ListNode(3);
@@ -58,9 +60,9 @@ public class P2LinkedListCycleII {
         else System.out.println("null");
     }
 
-    //Optimal Approach(Floyd's Cycle Detection Algorithm)
-    //T(C) = O(N)
-    //S(C) = O(1)
+    // Optimal Approach(Floyd's Cycle Detection Algorithm)
+    // T(C) = O(N)
+    // S(C) = O(1)
     public static ListNode detectFirstListNode(ListNode head) {
         ListNode meet = detectCycle(head);
         if (meet == null) return null;
@@ -75,13 +77,28 @@ public class P2LinkedListCycleII {
 
     public static ListNode detectCycle(ListNode head) {
         ListNode slow = head;
-        ListNode first = head;
-        while (first != null && first.next != null) {
+        ListNode fast = head;
+        while (fast != null && fast.next != null) {
             slow = slow.next;
-            first = first.next.next;
-            if (slow == first) return slow;
+            fast = fast.next.next;
+            if (slow == fast) return slow;
         }
 
         return null;
     }
+
+    // Brute Force Approach (Using HashMap)
+    // T(C) = O(N)
+    // S(C) = O(N)
+//    public static ListNode detectCycle(ListNode head) {
+//        HashMap<ListNode, Integer> visited = new HashMap<>();
+//        ListNode curr = head;
+//        while (curr != null) {
+//            if (visited.containsKey(curr)) return curr;
+//            visited.put(curr, 1);
+//            curr = curr.next;
+//        }
+//
+//        return null;
+//    }
 }

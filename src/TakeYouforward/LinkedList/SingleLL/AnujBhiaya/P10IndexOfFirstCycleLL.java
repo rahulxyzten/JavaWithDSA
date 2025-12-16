@@ -1,5 +1,5 @@
 package TakeYouforward.LinkedList.SingleLL.AnujBhiaya;
-//Detect a cycle in a Linked List and return the Node where the cycle start
+// Detect a cycle in a Linked List and return the Node where the cycle start
 
 public class P10IndexOfFirstCycleLL {
     public static void main(String[] args) {
@@ -12,16 +12,16 @@ public class P10IndexOfFirstCycleLL {
         head.next = n2;
         n2.next = n3;
         n3.next = n4;
-//        n4.next = n2;
+        n4.next = n2;
         Node result = detectFirstNode(head);
         if (result != null) System.out.println(result.data);
         else System.out.println("null");
 
     }
 
-    //Optimal Approach(Floyd's Cycle Detection Algorithm)
-    //T(C) = O(N)
-    //S(C) = O(1)
+    // Optimal Approach(Floyd's Cycle Detection Algorithm)
+    // T(C) = O(N)
+    // S(C) = O(1)
     public static Node detectFirstNode(Node head) {
         Node meet = detectCycle(head);
         if (meet == null) return null;
@@ -36,11 +36,11 @@ public class P10IndexOfFirstCycleLL {
 
     public static Node detectCycle(Node head) {
         Node slow = head;
-        Node first = head;
-        while (first != null && first.next != null) {
+        Node fast = head;
+        while (fast != null && fast.next != null) {
             slow = slow.next;
-            first = first.next.next;
-            if (slow == first) return slow;
+            fast = fast.next.next;
+            if (slow == fast) return slow;
         }
 
         return null;

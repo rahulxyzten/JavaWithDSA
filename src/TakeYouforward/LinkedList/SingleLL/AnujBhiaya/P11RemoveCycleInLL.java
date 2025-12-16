@@ -1,5 +1,5 @@
 package TakeYouforward.LinkedList.SingleLL.AnujBhiaya;
-//Remove cycle in a linked list
+// Remove cycle in a linked list
 
 public class P11RemoveCycleInLL {
     public static void main(String[] args) {
@@ -17,19 +17,20 @@ public class P11RemoveCycleInLL {
         traverse(head);
     }
 
+    // T(C) = O(N)
+    // S(C) = O(1)
     public static Node removeCycle(Node head) {
-        Node prev = detectPreviousFirstNode(head);
+        Node prev = getPreviousFirstNode(head);
         prev.next = null;
-        //here the question is says that the linked list must have a cycle
-        //so the prev is never have a null value or the meet is also never have a null value
+        // here the question is says that the linked list must have a cycle
+        // so the prev is never have a null value or the meet is also never have a null value
         return head;
     }
 
-    public static Node detectPreviousFirstNode(Node head) {
+    public static Node getPreviousFirstNode(Node head) {
         Node meet = detectCycle(head);
-        if (meet == null) return null;
-        Node prev = null;
         Node start = head;
+        Node prev = null;
         while (start != meet) {
             prev = meet;
             start = start.next;
@@ -41,11 +42,11 @@ public class P11RemoveCycleInLL {
 
     public static Node detectCycle(Node head) {
         Node slow = head;
-        Node first = head;
-        while (first != null && first.next != null) {
+        Node fast = head;
+        while (fast != null && fast.next != null) {
             slow = slow.next;
-            first = first.next.next;
-            if (slow == first) return slow;
+            fast = fast.next.next;
+            if (slow == fast) return slow;
         }
 
         return null;

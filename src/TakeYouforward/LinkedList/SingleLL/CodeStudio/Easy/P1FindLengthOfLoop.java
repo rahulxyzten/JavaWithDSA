@@ -1,5 +1,5 @@
 package TakeYouforward.LinkedList.SingleLL.CodeStudio.Easy;
-//Problem
+// Problem
 /*
 Find length of Loop
 
@@ -56,15 +56,16 @@ public class P1FindLengthOfLoop {
         n1.next = n2;
         n2.next = n3;
         n3.next = n4;
-//        n4.next = n2;
+        n4.next = n2;
         System.out.println(lengthOfLoop(head));
     }
 
-    //T(C) = O(N)
-    //S(C) = O(1)
+    // T(C) = O(N)
+    // S(C) = O(1)
     public static int lengthOfLoop(Node head) {
         Node firstNode = detectFirstNode(head);
         if (firstNode == null) return 0;
+
         Node curr = firstNode.next;
         int count = 1;
         while (curr != firstNode) {
@@ -78,6 +79,7 @@ public class P1FindLengthOfLoop {
     public static Node detectFirstNode(Node head) {
         Node meet = detectCycle(head);
         if (meet == null) return null;
+
         Node start = head;
         while (start != meet) {
             start = start.next;
@@ -89,11 +91,11 @@ public class P1FindLengthOfLoop {
 
     public static Node detectCycle(Node head) {
         Node slow = head;
-        Node first = head;
-        while (first != null && first.next != null) {
+        Node fast = head;
+        while (fast != null && fast.next != null) {
             slow = slow.next;
-            first = first.next.next;
-            if (slow == first) return slow;
+            fast = fast.next.next;
+            if (slow == fast) return slow;
         }
 
         return null;
