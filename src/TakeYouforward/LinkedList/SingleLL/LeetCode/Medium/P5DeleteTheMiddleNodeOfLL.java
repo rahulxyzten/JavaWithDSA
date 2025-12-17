@@ -1,5 +1,5 @@
 package TakeYouforward.LinkedList.SingleLL.LeetCode.Medium;
-//Problem
+// Problem
 /*
 2095. Delete the Middle Node of a Linked List
 
@@ -70,21 +70,57 @@ public class P5DeleteTheMiddleNodeOfLL {
         traverse(head);
     }
 
-
-    //T(C) = O(N) & S(C) = O(1)
+    // Optimal Solution
+    // Tortoise and Hare Algorithm
+    // T(C) = O(N) & S(C) = O(1)
     public static ListNode deleteMiddle(ListNode head) {
         if (head == null || head.next == null) return null;
+       // here we return null because if the Linked List one node return null means
+       // delete the current node and return new head which is null
+
         ListNode slow = head;
         ListNode fast = head;
         ListNode prev = slow;
+
         while (fast != null && fast.next != null) {
             prev = slow;
             slow = slow.next;
             fast = fast.next.next;
         }
         prev.next = prev.next.next;
+
         return head;
     }
+
+
+    // Brute Force Approach
+    // As we know, the mid is n/2 + 1, then the previous of mid will be n/2
+    // T(C) = O(N+N/2)
+    // S(C) = O(1)
+//    public static ListNode deleteMiddle(ListNode head) {
+//        if (head == null || head.next == null) return null;
+//        // here we return null because if the Linked List one node return null means
+//        // delete the current node and return new head which is null
+//
+//        ListNode curr = head;
+//        int count = 0;
+//        while (curr != null){
+//            count++;
+//            curr = curr.next;
+//        }
+//
+//        int prev = count / 2;
+//        curr = head;
+//
+//        while (curr != null){
+//            prev--;
+//            if (prev == 0) break;
+//            curr = curr.next;
+//        }
+//
+//        curr.next = curr.next.next;
+//        return head;
+//    }
 
     public static void traverse(ListNode head) {
         ListNode curr = head;

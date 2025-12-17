@@ -1,5 +1,5 @@
 package TakeYouforward.LinkedList.SingleLL.LeetCode.Medium;
-//Problem
+// Problem
 /*
 19. Remove Nth Node From End of List
 
@@ -56,40 +56,46 @@ public class P6RemoveNthNodeFromEndOfLL {
     }
 
 
-    //Optimal Solution
-    //T(C) = O(N)
-    //S(C) = O(1)
+    // Optimal Solution
+    // T(C) = O(N)
+    // S(C) = O(1)
     public static ListNode removeNthFromEnd(ListNode head, int n) {
         ListNode slow = head;
         ListNode fast = head;
+
         for (int i = 0; i < n; i++) {
             fast = fast.next;
         }
         if (fast == null) return head.next;
+
         while (fast.next != null) {
             fast = fast.next;
             slow = slow.next;
         }
+
         slow.next = slow.next.next;
         return head;
     }
 
 
-    //Brute Force Approach
-    //T(C) = O(N) + O(N-n)
-    //In worst cse T(C) = O(N) + O(N) = O(2N)
-    //S(C) = O(1)
+    // Brute Force Approach
+    // T(C) = O(N) + O(N-n)
+    // In worst case T(C) = O(N) + O(N) = O(2N)
+    // S(C) = O(1)
 //    public static ListNode removeNthFromEnd(ListNode head, int n) {
 //        int length = count(head);
 //        int pos = length - n;
+//
 //        if (pos == 0) {
 //            head = head.next;
 //            return head;
 //        }
+//
 //        ListNode prev = head;
-//        for (int i = 1; i < pos; i++) {
+//        for (int i = 0; i < pos - 1; i++) {
 //            prev = prev.next;
 //        }
+//
 //        prev.next = prev.next.next;
 //        return head;
 //    }

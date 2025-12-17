@@ -1,5 +1,5 @@
 package TakeYouforward.LinkedList.SingleLL.LeetCode.Medium;
-//Problem
+// Problem
 /*
 328. Odd Even Linked List
 
@@ -32,6 +32,7 @@ The number of nodes in the linked list is in the range [0, 104].
  */
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class P3OddEvenLinkedList {
     public static void main(String[] args) {
@@ -49,9 +50,10 @@ public class P3OddEvenLinkedList {
         traverse(head);
     }
 
-    //Optimal Approach
-    //T(C) = O(N/2 * 2) = O(N)
-    //S(C) = O(1)
+    // Optimal Approach
+    // T(C) = O(N/2) = O(N)
+    // S(C) = O(1)
+    // 1-based indexing
     public static ListNode oddEvenList(ListNode head) {
         if (head == null || head.next == null) return head;
 
@@ -63,48 +65,46 @@ public class P3OddEvenLinkedList {
             odd = odd.next;
             even = even.next;
         }
-        odd.next = evenHead;
 
+        odd.next = evenHead;
         return head;
     }
 
 
-    //Brute Force Approach
-    //T(C) = O( N/2 + N/2 + N) =  O(2N)
-    //S(C) = O(N)
+    // Brute Force Approach
+    // T(C) = O( N/2 + N/2 + N) =  O(2N)
+    // S(C) = O(N)
     /*You must solve the problem in O(1) extra space complexity and O(n) time complexity.*/
-
 //    public static ListNode oddEvenList(ListNode head) {
-//        if (head == null && head.next == null) return head;
+//        if (head == null || head.next == null) return head;
 //
-//        ArrayList<Integer> arr = new ArrayList<>();
+//        List<Integer> temp = new ArrayList<>();
 //
-//        //add the even index node value to arr
-//        ListNode temp = head;
-//        while (temp != null && temp.next != null) {
-//            arr.add(temp.val);
-//            temp = temp.next.next;
+//        // add the even index node value to arr
+//        ListNode curr = head;
+//        while (curr != null && curr.next != null) {
+//            temp.add(curr.val);
+//            curr = curr.next.next;
 //        }
-//        if (temp != null) arr.add(temp.val);
+//        if (curr != null) temp.add(curr.val);
 //
-//        //add the odd index node value to arr
-//        temp = head.next;
-//        while (temp != null && temp.next != null) {
-//            arr.add(temp.val);
-//            temp = temp.next.next;
+//        // add the odd index node value to arr
+//        curr = head.next;
+//        while (curr != null && curr.next != null) {
+//            temp.add(curr.val);
+//            curr = curr.next.next;
 //        }
-//        if (temp != null) arr.add(temp.val);
+//        if (curr != null) temp.add(curr.val);
 //
-//        //add the array which value which is in the form of first all even index element and
-//        //then all the odd index element
+//        // add the array which value which is in the form of first all even index element and
+//        // then all the odd index element
 //        int i = 0;
-//        temp = head;
-//        while (temp != null) {
-//            temp.val = arr.get(i);
+//        curr = head;
+//        while (curr != null) {
+//            curr.val = temp.get(i);
 //            i++;
-//            temp = temp.next;
+//            curr = curr.next;
 //        }
-//
 //
 //        return head;
 //    }
