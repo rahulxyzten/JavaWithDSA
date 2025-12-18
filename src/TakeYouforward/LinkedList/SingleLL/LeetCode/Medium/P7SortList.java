@@ -1,5 +1,5 @@
 package TakeYouforward.LinkedList.SingleLL.LeetCode.Medium;
-//Problem
+// Problem
 /*
 148. Sort List
 
@@ -47,18 +47,20 @@ public class P7SortList {
         traverse(head);
     }
 
-    //Optimal Solution (Merge Sort)
-    //T(C) = O(NlongN)
-    //S(C) = O(1)
+    // Optimal Solution (Merge Sort)
+    // T(C) = O(NlogN)
+    // S(C) = O(1)
     public static ListNode sortList(ListNode head) {
         if (head == null || head.next == null) return head;
-        ListNode middle = middleNode(head);
-        ListNode lefthead = head, righthead = middle.next;
-        middle.next = null;
-        lefthead = sortList(lefthead);
-        righthead = sortList(righthead);
 
-        return mergeTwoLists(lefthead, righthead);
+        ListNode middle = middleNode(head);
+        ListNode leftHead = head, rightHead = middle.next;
+        middle.next = null;
+
+        leftHead = sortList(leftHead);
+        rightHead = sortList(rightHead);
+
+        return mergeTwoLists(leftHead, rightHead);
     }
 
     public static ListNode middleNode(ListNode head) {
@@ -74,47 +76,50 @@ public class P7SortList {
     public static ListNode mergeTwoLists(ListNode list1, ListNode list2) {
         ListNode t1 = list1, t2 = list2;
         ListNode dNode = new ListNode(-1);
-        //dNode = dummy Node
-        ListNode temp = dNode;
+        // dNode = dummy Node
+
+        ListNode curr = dNode;
         while (t1 != null && t2 != null) {
             if (t1.val < t2.val) {
-                temp.next = t1;
-                temp = t1;
+                curr.next = t1;
+                curr = t1;
                 t1 = t1.next;
             } else {
-                temp.next = t2;
-                temp = t2;
+                curr.next = t2;
+                curr = t2;
                 t2 = t2.next;
             }
         }
-        if (t1 != null) temp.next = t1;
-        else temp.next = t2;
+
+        if (t1 != null) curr.next = t1;
+        else curr.next = t2;
 
         return dNode.next;
     }
 
 
-    //Brute Force Approach (Selection Sort)
-    //Not pass all the testcases because it's asking the T(C) = O(NlongN)
-    //T(C) = O(N^2)
-    //S(C) = O(1)
+    // Brute Force Approach (Selection Sort)
+    // Not pass all the testcases because it's asking the T(C) = O(NlongN)
+    // T(C) = O(N^2)
+    // S(C) = O(1)
 //    public static ListNode sortList(ListNode head) {
 //        if (head == null || head.next == null) return head;
-//        ListNode temp = head;
-//        while (temp != null) {
-//            ListNode prev = temp.next;
-//            ListNode curr = temp;
-//            while (curr != null) {
-//                if (curr.val < temp.val) {
-//                    int tempVal = curr.val;
-//                    curr.val = temp.val;
-//                    temp.val = tempVal;
-//                }
-//                curr = curr.next;
-//            }
-//            temp = prev;
-//        }
 //
+//        ListNode curr = head;
+//        while (curr != null) {
+//            ListNode temp = curr;
+//            while (temp != null) {
+//                if (temp.val < curr.val) {
+//                    int tempVal = temp.val;
+//                    temp.val = curr.val;
+//                    curr.val = tempVal;
+//                }
+//
+//                temp = temp.next;
+//            }
+//
+//            curr = curr.next;
+//        }
 //
 //        return head;
 //    }

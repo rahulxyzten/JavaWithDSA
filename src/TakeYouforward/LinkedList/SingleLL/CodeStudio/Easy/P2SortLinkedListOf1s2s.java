@@ -1,5 +1,5 @@
 package TakeYouforward.LinkedList.SingleLL.CodeStudio.Easy;
-//Problem
+// Problem
 /*
 Sort linked list of 0s 1s 2s
 
@@ -71,17 +71,17 @@ public class P2SortLinkedListOf1s2s {
     }
 
 
-    //Optimal Solution
-    //T(C) = O(N)
-    //S(C) = O(1)
+    // Optimal Solution
+    // T(C) = O(N)
+    // S(C) = O(1)
     public static Node sortList(Node head) {
         if (head == null || head.next == null) return head;
 
         Node zeroHead = new Node(-1);
         Node oneHead = new Node(-1);
         Node twoHead = new Node(-1);
-        Node zero = zeroHead, one = oneHead, two = twoHead;
 
+        Node zero = zeroHead, one = oneHead, two = twoHead;
         Node curr = head;
         while (curr != null) {
             if (curr.data == 0) {
@@ -94,18 +94,21 @@ public class P2SortLinkedListOf1s2s {
                 two.next = curr;
                 two = curr;
             }
+
             curr = curr.next;
         }
+
         zero.next = (oneHead.next != null) ? oneHead.next : twoHead.next;
         one.next = twoHead.next;
         two.next = null;
 
         return zeroHead.next;
+
     }
 
-    //Brute Force Approach
-    //T(C) = O(2N)
-    //S(C) = O(1)
+    // Brute Force Approach
+    // T(C) = O(2N)
+    // S(C) = O(1)
 //    public static Node sortList(Node head) {
 //        int count0 = 0, count1 = 0, count2 = 0;
 //        Node curr = head;
@@ -115,6 +118,7 @@ public class P2SortLinkedListOf1s2s {
 //            else count2++;
 //            curr = curr.next;
 //        }
+//
 //        curr = head;
 //        while (curr != null) {
 //            if (count0 != 0) {
@@ -126,6 +130,7 @@ public class P2SortLinkedListOf1s2s {
 //            } else {
 //                curr.data = 2;
 //            }
+//
 //            curr = curr.next;
 //        }
 //
