@@ -1,5 +1,5 @@
 package TakeYouforward.LinkedList.SingleLL.LeetCode.Easy;
-//Problem
+// Problem
 /*
 160. Intersection of Two Linked Lists
 
@@ -91,46 +91,49 @@ public class P6IntersectionOfTwoLinkedLists {
     }
 
 
-    //Optimal Approach
-    //T(C) = O(2M) = O(M)
-    //T(C) = O(2N) = O(N)
-    //M or N which have highest Node
-    //S(C) = O(1)
+    // Optimal Approach
+    // T(C) = O(2M) = O(M)
+    // T(C) = O(2N) = O(N)
+    // M or N which has the highest Node
+    // S(C) = O(1)
     public static ListNode getIntersectionNode(ListNode headA, ListNode headB) {
-        if (headA == null || headB == null)
-            return null;
+        if (headA == null || headB == null) return null;
+
         ListNode a = headA;
         ListNode b = headB;
         while (a != b) {
             a = (a == null) ? headB : a.next;
             b = (b == null) ? headA : b.next;
         }
+
         return a;
     }
 
 
-    //Better Approach
-    //T(C) = O(N+M) S(C) = O(N)
+    // Better Approach
+    // T(C) = O(N+M) S(C) = O(N)
 //    public static ListNode getIntersectionNode(ListNode headA, ListNode headB) {
-//        if (headA == null || headB == null)
-//            return null;
+//        if (headA == null || headB == null) return null;
 //        HashSet<ListNode> hs = new HashSet<>();
+//
 //        while (headA != null) {
 //            hs.add(headA);
 //            headA = headA.next;
 //        }
+//
 //        while (headB != null) {
 //            if (hs.contains(headB)) return headB;
 //            headB = headB.next;
 //        }
+//
 //        return null;
 //    }
 
-    //Brute Force Approach
-    //T(C) = O(N*M) S(C) = O(1)
+    // Brute Force Approach
+    // T(C) = O(N*M) S(C) = O(1)
 //    public static ListNode getIntersectionNode(ListNode headA, ListNode headB) {
-//        if (headA == null || headB == null)
-//            return null;
+//        if (headA == null || headB == null) return null;
+//
 //        while (headA != null) {
 //            ListNode temp = headB;
 //            while (temp != null) {
@@ -139,6 +142,7 @@ public class P6IntersectionOfTwoLinkedLists {
 //            }
 //            headA = headA.next;
 //        }
+//
 //        return null;
 //    }
 }
