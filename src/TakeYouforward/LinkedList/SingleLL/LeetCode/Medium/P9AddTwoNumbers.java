@@ -1,5 +1,5 @@
 package TakeYouforward.LinkedList.SingleLL.LeetCode.Medium;
-//Problem
+// Problem
 /*
 2. Add Two Numbers
 
@@ -53,30 +53,35 @@ public class P9AddTwoNumbers {
     }
 
 
-    //Optimal Solution
-    //T(C) = O(max(n1,n2))
-    //n1 = length of l1 and l2 = length of l2
-    //S(C) = O(max(n1,n2))
+    // Optimal Solution
+    // T(C) = O(max(n1,n2))
+    // n1 = length of l1 and l2 = length of l2
+    // S(C) = O(max(n1,n2))
     public static ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         ListNode t1 = l1, t2 = l2;
         ListNode dummyNode = new ListNode(-1);
         ListNode curr = dummyNode;
         int carry = 0;
+
         while (t1 != null || t2 != null) {
             int sum = carry;
             if (t1 != null) sum += t1.val;
             if (t2 != null) sum += t2.val;
+
             ListNode newNode = new ListNode(sum % 10);
             carry = sum / 10;
+
             curr.next = newNode;
-            curr = curr.next;
+            curr = newNode;
             if (t1 != null) t1 = t1.next;
             if (t2 != null) t2 = t2.next;
         }
+
         if (carry == 1) {
-            ListNode newNode = new ListNode(carry);
+            ListNode newNode = new ListNode(1);
             curr.next = newNode;
         }
+
         return dummyNode.next;
     }
 

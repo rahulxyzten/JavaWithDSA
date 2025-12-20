@@ -1,5 +1,5 @@
 package TakeYouforward.LinkedList.SingleLL.CodeStudio.Easy;
-//Problem
+// Problem
 /*
 Add one to a number represented as Linked List
 
@@ -88,11 +88,12 @@ public class P3AddOneToNumberRepresentLinkedList {
         traverse(head);
     }
 
-    //Recursive Approach
-    //T(C) = O(N)
-    //S(C) = O(N) recursive stack
+    // Recursive Approach
+    // T(C) = O(N)
+    // S(C) = O(N) recursive stack
     public static Node addOne(Node head) {
         if (head == null) return new Node(1);
+
         int carry = solveRecursive(head);
         if (carry == 1) {
             Node newNode = new Node(1);
@@ -102,22 +103,32 @@ public class P3AddOneToNumberRepresentLinkedList {
 
         return head;
     }
+
     public static int solveRecursive(Node temp) {
         if (temp == null) return 1;
+
         int carry = solveRecursive(temp.next);
-        temp.data = temp.data + carry;
-        if (temp.data < 10) return 0;
-        temp.data = 0;
-        return 1;
+
+//        temp.data = temp.data + carry;
+//        if (temp.data < 10) {
+//            return 0;
+//        }
+//        temp.data = 0;
+//        return 1;
+
+        int sum = temp.data + carry;
+        temp.data = sum % 10;
+        return sum / 10;
     }
 
 
-    //Iterative Approach
-    //T(C) = O(3N)
-    //S(C) = O(1)
+    // Iterative Approach
+    // T(C) = O(3N)
+    // S(C) = O(1)
 //    public static Node addOne(Node head) {
 //        if (head == null) return new Node(1);
 //        head = reverse(head);
+//
 //        Node temp = head;
 //        int carry = 1;
 //        while (temp != null) {
@@ -129,14 +140,15 @@ public class P3AddOneToNumberRepresentLinkedList {
 //                temp.data = 0;
 //                carry = 1;
 //            }
+//
 //            temp = temp.next;
 //        }
 //        if (carry == 1) {
 //            Node newNode = new Node(1);
-//            head = reverse(head);
 //            newNode.next = head;
 //            return newNode;
 //        }
+//
 //
 //        head = reverse(head);
 //        return head;
@@ -151,6 +163,7 @@ public class P3AddOneToNumberRepresentLinkedList {
 //            prev = curr;
 //            curr = temp;
 //        }
+//
 //        return prev;
 //    }
 
