@@ -1,5 +1,5 @@
 package TakeYouforward.LinkedList.SingleLL.LeetCode.Medium;
-//Problem
+// Problem
 /*
 61. Rotate List
 
@@ -43,36 +43,64 @@ public class P8RotateList {
         traverse(head);
     }
 
-    //Optimal Solution
-    //T(C) = O(N) + O(N - (k%N))
-    //S(C) = O(1)
+    // Optimal Solution
+    // T(C) = O(N) + O(N - (k%N))
+    // S(C) = O(1)
     public static ListNode rotateRight(ListNode head, int k) {
         if (head == null || head.next == null || k == 0) return head;
-        ListNode temp = head;
-        int length = 1;
-        //finding the length and tail of ll
-        while (temp.next != null) {
-            length++;
-            temp = temp.next;
+
+        ListNode curr = head;
+        int lenght = 1;
+        while (curr.next != null) {
+            lenght++;
+            curr = curr.next;
         }
-        temp.next = head;
-        k = k % length;
-        int end = length - k;
-        while (end != 0) {
+        curr.next = head; // Step 1 {tail.next = head}
+
+        k = k % lenght;
+        int end = lenght - k;
+        while (end != 0){
             end--;
-            temp = temp.next;
+            curr = curr.next;
         }
-        head = temp.next;
-        temp.next = null;
+        head =  curr.next; //Step 2
+        curr.next = null; //Step 3
 
         return head;
     }
 
-//    //Brute Force Approach
-//    //T(C) = O(K * N)
-//    //S(C) = O(1)
-//    //But the above approach shows "Time Limit Exceeded" Error
-//    //for some testcases like list = [1,2,3] and k = 2000000000
+    // Brute Force Approach (My solution)
+    // T(C) = O(K * N)
+    // S(C) = O(1)
+    // But the above approach shows "Time Limit Exceeded" Error
+    // for some testcases like list = [1,2,3] and k = 2000000000
+//    public static ListNode rotateRight(ListNode head, int k) {
+//        if (head == null || head.next == null || k == 0) return head;
+//        // Must have to need write this edge case otherwise need to change below code
+//
+//        ListNode newHead = head;
+//        while (k > 0) {
+//            ListNode curr = newHead;
+//            ListNode prev = null;
+//            while (curr.next != null) {
+//                prev = curr;
+//                curr = curr.next;
+//            }
+//            prev.next = null;
+//            curr.next = newHead;
+//            newHead = curr;
+//
+//            k--;
+//        }
+//
+//        return newHead;
+//    }
+
+    //Brute Force Approach
+    //T(C) = O(K * N)
+    //S(C) = O(1)
+    //But the above approach shows "Time Limit Exceeded" Error
+    //for some testcases like list = [1,2,3] and k = 2000000000
 //    public static ListNode rotateRight(ListNode head, int k) {
 //        if (head == null || head.next == null) return head;
 //        for (int i = 0; i < k; i++) {
@@ -84,29 +112,6 @@ public class P8RotateList {
 //            head = end;
 //        }
 //        return head;
-//    }
-
-    //Brute Force Approach (My solution)
-    //T(C) = O(K * N)
-    //S(C) = O(1)
-    //But the above approach shows "Time Limit Exceeded" Error
-    //for some testcases like list = [1,2,3] and k = 2000000000
-//    public static ListNode rotateRight(ListNode head, int k) {
-//        if (head == null || head.next == null) return head;
-//        ListNode newHead = head;
-//        while (k > 0) {
-//            ListNode curr = newHead;
-//            ListNode prev = null;
-//            while (curr.next != null) {
-//                 prev = curr;
-//                curr = curr.next;
-//            }
-//            prev.next = null;
-//            curr.next = newHead;
-//            newHead = curr;
-//            k--;
-//        }
-//       return newHead;
 //    }
 
     public static void traverse(ListNode head) {

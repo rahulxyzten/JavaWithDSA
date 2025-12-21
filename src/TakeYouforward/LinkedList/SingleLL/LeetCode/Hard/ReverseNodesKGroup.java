@@ -1,5 +1,5 @@
 package TakeYouforward.LinkedList.SingleLL.LeetCode.Hard;
-//Problem
+// Problem
 /*
 25. Reverse Nodes in k-Group
 
@@ -34,6 +34,8 @@ Follow-up: Can you solve the problem in O(1) extra memory space?
  */
 
 
+import java.util.List;
+
 public class ReverseNodesKGroup {
     public static void main(String[] args) {
         ListNode a1 = new ListNode(1);
@@ -51,40 +53,45 @@ public class ReverseNodesKGroup {
         traverse(head);
     }
 
-    //Optimal solution
-    //T(C) = O(N + N) = O(2N)
-    //S(C) = O(1)
+    // Optimal solution
+    // T(C) = O(N + N) = O(2N)
+    // S(C) = O(1)
     public static ListNode reverseKGroup(ListNode head, int k) {
-        ListNode temp = head;
-        ListNode nextNode, prevNode = null;
-        while (temp != null) {
-            ListNode kthNode = findKthNode(temp, k);
+        ListNode curr = head;
+        ListNode prevNode = null, nextNode;
+        while (curr != null) {
+            ListNode kthNode = findKthNode(curr, k);
             if (kthNode == null) {
-                if (prevNode != null) prevNode.next = temp;
+                if (prevNode != null) {
+                    prevNode.next = curr;
+                }
                 break;
             }
+
             nextNode = kthNode.next;
             kthNode.next = null;
-            reverseList(temp);
-            if (temp == head) {
+            reverseList(curr);
+            if (curr == head) {
                 head = kthNode;
             } else {
                 prevNode.next = kthNode;
             }
-            prevNode = temp;
-            temp = nextNode;
+
+            prevNode = curr;
+            curr = nextNode;
         }
 
         return head;
     }
 
-    public static ListNode findKthNode(ListNode temp, int k) {
+    public static ListNode findKthNode(ListNode curr, int k) {
         k = k - 1;
-        while (temp != null && k > 0) {
+        while (curr != null && k != 0) {
             k--;
-            temp = temp.next;
+            curr = curr.next;
         }
-        return temp;
+
+        return curr;
     }
     /* Below code show null pointer exception for some test cases
      * like if i/p = [1] and k = 4
@@ -97,13 +104,15 @@ public class ReverseNodesKGroup {
 //        return temp;
 //    }
 
-
     public static void reverseList(ListNode head) {
-        if (head == null || head.next == null) return;
-        reverseList(head.next);
-        ListNode headNext = head.next;
-        headNext.next = head;
-        head.next = null;
+        ListNode curr = head;
+        ListNode prev = null;
+        while (curr != null) {
+            ListNode temp = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = temp;
+        }
     }
 
     public static void traverse(ListNode head) {

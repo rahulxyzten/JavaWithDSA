@@ -1,5 +1,5 @@
 package TakeYouforward.LinkedList.SingleLL.LeetCode.Medium;
-//Problem
+// Problem
 /*
 138. Copy List with Random Pointer
 
@@ -44,6 +44,8 @@ Constraints:
 Node.random is null or is pointing to some node in the linked list.
  */
 
+import java.util.HashMap;
+
 public class P4CopyListRandomPointer {
     public static void main(String[] args) {
         Node n1 = new Node(7);
@@ -66,51 +68,127 @@ public class P4CopyListRandomPointer {
         traverse(head);
     }
 
-    //Optimal Solution
-    //T(C) = O(N + N + N) = O(N)
-    //S(C) = O(1)
+    // Optimal Solution
+    // T(C) = O(N + N + N) = O(N)
+    // S(C) = O(N), Answer space
     public static Node copyRandomList(Node head) {
+        if (head == null) return null;
+        /* This edge case is important otherwise need to change the below
+          code according to edge case if you not write edge case*/
+
+        /* Step 1 => Inserting new node in between */
         Node curr = head;
-//        while (curr != null) {
-//            Node temp = curr.next;
-//            curr.next = new Node(curr.val);
-//            curr.next.next = temp;
-//            curr = temp;
-//        }
-        //The above code going to be error because we not assign a next of original ll to a new Node
-        //first create the new node then ony assigning the next pointer of the original ll
         while (curr != null) {
-            Node newNode = new Node(curr.val);
             Node temp = curr.next;
+            Node newNode = new Node(curr.val);
             curr.next = newNode;
-            curr.next.next = temp;
+            newNode.next = temp;
             curr = temp;
         }
-        //the above code is necessary because otherwise it show below error
-        //"Next pointer of node with label 1 from the original list was modified."
-       curr = head;
+
+        /* Step 2 => Setting random pointer of newNode*/
+        curr = head;
         while (curr != null) {
-            if (curr.next != null) {
-                curr.next.random = (curr.random != null) ? curr.random.next : null;
-            }
+            curr.next.random = (curr.random != null) ? curr.random.next : null;
             curr = curr.next.next;
         }
 
-        Node orig = head;
-        Node copy = (head != null) ? head.next : null;
-        //Write the above line other than you will get the error of
-        //i/p = []
-        Node temp = copy;
-        while (orig != null) {
-            orig.next = orig.next.next;
+        /* Step 3 => Separating both Lined Lists */
+        curr = head;
+        Node copy = head.next;
+        Node copyHead = copy;
+        while (curr != null) {
+            curr.next = curr.next.next;
             copy.next = (copy.next != null) ? copy.next.next : null;
 
-            orig = orig.next;
+            curr = curr.next;
             copy = copy.next;
         }
 
-        return temp;
+        return copyHead;
     }
+
+
+    // Better Force Approach (Using HashMap)
+    // T(C) = O(N) + O(N) = O(N)
+    // S(C) = O(N) + O(N), HashMap + Answer Space
+//    public static Node copyRandomList(Node head) {
+//        if (head == null) return null;
+//
+//        HashMap<Node, Node> mpp = new HashMap<>();
+//        Node curr = head;
+//        while (curr != null) {
+//            Node newNode = new Node(curr.val);
+//            mpp.put(curr, newNode);
+//            curr = curr.next;
+//        }
+//
+//        curr = head;
+//        while (curr != null) {
+//            Node tempCopy = mpp.get(curr);
+//
+//            /* set next */
+//            tempCopy.next = mpp.get(curr.next);
+//
+//            /* set random */
+//            tempCopy.random = mpp.get(curr.random);
+//
+//            curr = curr.next;
+//        }
+//
+//        return mpp.get(head);
+//    }
+
+
+    // Brute Force Approach
+    // T(C) = O(N) + O(N^2) = O(N^2)
+    // S(C) = O(N), Answer space
+//    public static Node copyRandomList(Node head) {
+//        if (head == null) return null;
+//
+//        Node currOrg = head;
+//        Node dummyNode = new Node(-1);
+//        Node currCopy = dummyNode;
+//
+//        /* Step 1: Create deep copy of nodes with next pointers
+//        (handling values and 'next' pointers) */
+//        while (currOrg != null) {
+//            Node newNode = new Node(currOrg.val);
+//            currCopy.next = newNode;
+//            currCopy = newNode;
+//            currOrg = currOrg.next;
+//        }
+//        // temp.next = null;
+//        // Node need of this line => by default a node next is null
+//
+//        /* Step 2: Connect random pointers */
+//        currOrg = head;
+//        currCopy = dummyNode.next;
+//        while (currOrg != null) {
+//            Node random = currOrg.random;
+//            if (random != null) {
+//                Node tempOrg = head;
+//                int disRandom = 1;
+//                while (tempOrg != random) {
+//                    disRandom++;
+//                    tempOrg = tempOrg.next;
+//                }
+//
+//                Node tempCopy = dummyNode.next;
+//                disRandom--;
+//                while (disRandom != 0) {
+//                    disRandom--;
+//                    tempCopy = tempCopy.next;
+//                }
+//                currCopy.random = tempCopy;
+//            }
+//
+//            currCopy = currCopy.next;
+//            currOrg = currOrg.next;
+//        }
+//
+//        return dummyNode.next;
+//    }
 
     public static void traverse(Node head) {
         Node curr = head;
