@@ -82,35 +82,35 @@ public class P1ReverseWordsInString {
     // T(C) = O(N + M)
     // N is the length of the string, M is the number of words in the string.
     // S(C) = O(M + N)
-    public static String reverseWords(String s) {
-        ArrayList<String> words = new ArrayList<>();
-        int n = s.length();
-        int start, end;
-
-        int i = 0;
-        while (i < n) {
-            while (i < n && s.charAt(i) == ' ') i++;
-
-            if (i >= n) break;
-
-            start = i;
-
-            while (i < n && s.charAt(i) != ' ') i++;
-            end = i;
-
-            words.add(s.substring(start, end));
-        }
-
-
-        StringBuilder result = new StringBuilder();
-        for (int j = words.size() - 1; j >= 0; j--) {
-            result.append(words.get(j));
-
-            if (j != 0) result.append(" ");
-        }
-
-        return result.toString();
-    }
+//    public static String reverseWords(String s) {
+//        ArrayList<String> words = new ArrayList<>();
+//        int n = s.length();
+//        int start, end;
+//
+//        int i = 0;
+//        while (i < n) {
+//            while (i < n && s.charAt(i) == ' ') i++;
+//
+//            if (i >= n) break;
+//
+//            start = i;
+//
+//            while (i < n && s.charAt(i) != ' ') i++;
+//            end = i;
+//
+//            words.add(s.substring(start, end));
+//        }
+//
+//
+//        StringBuilder result = new StringBuilder();
+//        for (int j = words.size() - 1; j >= 0; j--) {
+//            result.append(words.get(j));
+//
+//            if (j != 0) result.append(" ");
+//        }
+//
+//        return result.toString();
+//    }
 
     // Direct Better Approach
 //    public static String reverseWords(String s) {
@@ -132,42 +132,42 @@ public class P1ReverseWordsInString {
     // T(C) = O(3N) + O(M)
     //  S(C) = O(2N) + O(M)
     // Extra time O(2N) and space O(N) for this s = s.trim().replaceAll("\\s+", " ");
-    public static String reverseWords(String s) {
-        s = s.trim().replaceAll("\\s+", " ");
-        // trim and split takes O(N)
-
-        ArrayList<String> ls = new ArrayList<>();
-        int start = 0;
-
-        for (int i = 0; i < s.length(); i++) {
-            if (s.charAt(i) == ' ') {
-                ls.add(s.substring(start, i));
-                start = i + 1;
-            }
-        }
-        ls.add(s.substring(start));
-
+//    public static String reverseWords(String s) {
+//        s = s.trim().replaceAll("\\s+", " ");
+//        // trim and split takes O(N)
+//
 //        ArrayList<String> ls = new ArrayList<>();
-//        StringBuilder words = new StringBuilder();
+//        int start = 0;
+//
 //        for (int i = 0; i < s.length(); i++) {
 //            if (s.charAt(i) == ' ') {
-//                ls.add(words.toString());
-//                words.setLength(0);
-//            } else {
-//                words.append(s.charAt(i));
+//                ls.add(s.substring(start, i));
+//                start = i + 1;
 //            }
 //        }
-//        ls.add(words.toString());
-
-        StringBuilder result = new StringBuilder();
-        for (int i = ls.size() - 1; i >= 0; i--) {
-            result.append(ls.get(i));
-
-            if (i != 0) result.append(" ");
-        }
-
-        return result.toString();
-    }
+//        ls.add(s.substring(start));
+//
+////        ArrayList<String> ls = new ArrayList<>();
+////        StringBuilder words = new StringBuilder();
+////        for (int i = 0; i < s.length(); i++) {
+////            if (s.charAt(i) == ' ') {
+////                ls.add(words.toString());
+////                words.setLength(0);
+////            } else {
+////                words.append(s.charAt(i));
+////            }
+////        }
+////        ls.add(words.toString());
+//
+//        StringBuilder result = new StringBuilder();
+//        for (int i = ls.size() - 1; i >= 0; i--) {
+//            result.append(ls.get(i));
+//
+//            if (i != 0) result.append(" ");
+//        }
+//
+//        return result.toString();
+//    }
 
     /*
     \s: This part represents a single whitespace character. Whitespace characters
