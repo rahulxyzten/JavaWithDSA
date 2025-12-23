@@ -1,6 +1,6 @@
 package TakeYouforward.LinkedList.SingleLL.CodeStudio.Medium;
-//TUF solution
-//Problem
+// TUF solution
+// Problem
 /*
 Flatten A Linked List
 
@@ -96,38 +96,42 @@ public class P1FlattenALinkedList {
 
     }
 
-    //Optimal solution
-    //T(C) = O(N)
-    //S(C) = O(1)
+    // Optimal solution
+    // T(C) = O(N x 2M) = O(2NM)
+    // N => Horizontal List (next pointers)
+    // M => Vertical List (child pointers)
+    // Single merge operation is proportional to O(2M), because it takes two vertical list
+    // And the merge operation is performed N number of times so T(C) = O(N x 2M)
+    // S(C) = O(N) {recursive stack}
     public static Node flattenLinkedList(Node head) {
-        if (head == null || head.next == null)
-            return head;
-       Node beforeHead = flattenLinkedList(head.next);
-        head = mergeTwoLists(head, beforeHead);
+        if (head == null || head.next == null) return head;
 
+        Node rootNext = flattenLinkedList(head.next);
+        head = mergeTwoLists(head, rootNext);
         return head;
     }
 
     public static Node mergeTwoLists(Node list1, Node list2) {
         Node t1 = list1, t2 = list2;
-        Node dNode = new Node(-1);
-        //dNode = dummy Node
-        Node temp = dNode;
+        Node dummyNode = new Node(-1);
+        Node curr = dummyNode;
+
         while (t1 != null && t2 != null) {
             if (t1.data < t2.data) {
-                temp.child = t1;
-                temp = t1;
+                curr.child = t1;
+                curr = t1;
                 t1 = t1.child;
             } else {
-                temp.child = t2;
-                temp = t2;
+                curr.child = t2;
+                curr = t2;
                 t2 = t2.child;
             }
         }
-        if (t1 != null) temp.child = t1;
-        else temp.child = t2;
 
-        return dNode.child;
+        if (t1 != null) curr.child = t1;
+        else curr.child = t2;
+
+        return dummyNode.child;
     }
 
 
