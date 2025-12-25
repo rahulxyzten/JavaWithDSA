@@ -90,7 +90,7 @@ Constraints:
 /*
 Children Sum Property
 
-Return true if all non-leaf nodes in a given binary tree have a value that is equal to the sum of their child nodes, otherwise return false..
+Return true if all non-leaf nodes in a given binary tree have a value that is equal to the sum of their child nodes, otherwise return false.
 
 
 
@@ -132,15 +132,15 @@ public class P2ChildrenSumProperty {
     }
 
     // TUF Version (CodeStudio 1) (Medium)
-    // Optimal Solution T(C) = O(N) & S(C) = O(H) Height of the Binary Tree OR O(N) if Binary Tree is a Skew Tree
+    // Optimal Solution T(C) = O(N) & S(C) = O(H), Height of the Binary Tree OR O(N) if Binary Tree is a Skew Tree
     public static void changeTree(Node root) {
         if (root == null) return;
-        int child = 0;
 
-        if (root.left != null) child += root.left.data;
-        if (root.right != null) child += root.right.data;
+        int childSum = 0;
+        if (root.left != null) childSum += root.left.data;
+        if (root.right != null) childSum += root.right.data;
 
-        if (child >= root.data) root.data = child;
+        if (childSum >= root.data) root.data = childSum;
         else {
             if (root.left != null) root.left.data = root.data;
             if (root.right != null) root.right.data = root.data;
@@ -152,11 +152,13 @@ public class P2ChildrenSumProperty {
         int tot = 0;
         if (root.left != null) tot += root.left.data;
         if (root.right != null) tot += root.right.data;
-        if (root.left != null || root.right != null) root.data = tot;
+        if (root.left != null || root.right != null) {
+            root.data = tot;
+        }
     }
 
     // GFG Version (Medium)
-    // BEST CODE T(C) = O(N) & S(C) = O(N) recursive stack or height of the Binary Tree
+    // BEST CODE T(C) = O(N) & S(C) = O(H), Height of the Binary Tree OR O(N) if Binary Tree is a Skew Tree
     public static int isSumProperty(Node root) {
         if (root == null || (root.left == null && root.right == null)) return 1;
 
@@ -173,7 +175,7 @@ public class P2ChildrenSumProperty {
 
 
     // Code studio 2 Version (Easy)
-    // BEST CODE T(C) = O(N) & S(C) = O(N) recursive stack or height of the Binary Tree
+    // BEST CODE T(C) = O(N) & S(C) = S(C) = O(H), Height of the Binary Tree OR O(N) if Binary Tree is a Skew Tree
     public static boolean isParentSum(Node root) {
         if (root == null || (root.left == null && root.right == null)) {
             return true;
@@ -190,8 +192,8 @@ public class P2ChildrenSumProperty {
     }
 
     // MY solution
+    // T(C) = O(N) & S(C) = O(H), Height of the Binary Tree OR O(N) if Binary Tree is a Skew Tree
 //    public static boolean isParentSum(Node root) {
-//
 //        // If node is null or a leaf node, return true (leaf nodes satisfy the condition)
 //        if (root == null || (root.left == null && root.right == null)) {
 //            return true;
@@ -205,6 +207,7 @@ public class P2ChildrenSumProperty {
 //        boolean currentCheck = (root.data == left + right);
 //
 //        // Recursively check left and right subtrees
+//        // Unnecessary steps => It should be controlled
 //        boolean leftCheck = isParentSum(root.left);
 //        boolean rightCheck = isParentSum(root.right);
 //
