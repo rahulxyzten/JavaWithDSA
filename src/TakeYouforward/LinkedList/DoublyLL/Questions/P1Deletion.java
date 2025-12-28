@@ -18,11 +18,12 @@ public class P1Deletion {
 //        head = deletionHead(head);
 //        head = deletionTail(head);
 //        head = deletionKthNode(head, 3);
-        deletionNode(head.next.next.next);
+        deletionNode(head.next.next);
         traverse(head);
     }
 
-    //the node is not head (given condition)
+    // the node is not head (given condition)
+    // T(C) = O(1) & S(C) = O(1)
     public static void deletionNode(Node node) {
         Node prev = node.back;
         Node front = node.next;
@@ -31,14 +32,17 @@ public class P1Deletion {
             node.back = null;
             return;
         }
+
         prev.next = front;
         front.back = prev;
         node.next = null;
         node.back = null;
     }
 
+    // T(C) = O(N) & S(C) = O(1)
     public static Node deletionKthNode(Node head, int k) {
         if (head == null) return null;
+
         Node kthNode = head;
         int count = 0;
         while (kthNode != null) {
@@ -46,10 +50,13 @@ public class P1Deletion {
             if (count == k) break;
             kthNode = kthNode.next;
         }
-        Node prev = kthNode.back, front = kthNode.next;
+
+        Node prev = kthNode.back;
+        Node front = kthNode.next;
         if (prev == null && front == null) return null;
         if (prev == null) return deletionHead(head);
         if (front == null) return deletionTail(head);
+
         prev.next = front;
         front.back = prev;
         kthNode.next = null;
@@ -60,22 +67,24 @@ public class P1Deletion {
 
     public static Node deletionTail(Node head) {
         if (head == null || head.next == null) return null;
+
         Node tail = head;
-        while (tail.next != null) {
-            tail = tail.next;
-        }
+        while (tail.next != null) tail = tail.next;
         Node prev = tail.back;
-        tail.back = null;
         prev.next = null;
+        tail.back = null;
+
         return head;
     }
 
     public static Node deletionHead(Node head) {
         if (head == null || head.next == null) return null;
+
         Node prev = head;
         head = head.next;
         head.back = null;
         prev.next = null;
+
         return head;
     }
 

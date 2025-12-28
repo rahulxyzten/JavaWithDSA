@@ -19,18 +19,21 @@ public class P3Reverse {
         traverse(head);
     }
 
-    public static Node reverse(Node head){
-        if (head == null || head.next == null){
+    // T(C) = O(N) & S(C) = O(1)
+    public static Node reverse(Node head) {
+        if (head == null || head.next == null) {
             return head;
         }
+
         Node prev = null;
         Node curr = head;
-        while (curr != null){
+        while (curr != null) {
             prev = curr.back;
             curr.back = curr.next;
             curr.next = prev;
             curr = curr.back;
         }
+
         return prev.back;
     }
 

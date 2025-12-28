@@ -15,14 +15,15 @@ public class P2Insertion {
         n3.next = n4;
         n4.back = n3;
         n4.next = null;
-        //head = insertHead(head);
-        //head = insertTail(null);
-       //head = insertBeforeKthNode(head, 4);
+//        head = insertHead(head);
+//        head = insertTail(head);
+//        head = insertBeforeKthNode(head, 3);
         insertBeforeNode(head.next.next);
         traverse(head);
     }
 
-    //Insert a node before node and node != head (given)
+    // Insert a node before node and node != head (given)
+    // T(C) = O(1) & S(C) = O(1)
     public static void insertBeforeNode(Node node) {
         if (node == null) return;
         Node prev = node.back;
@@ -31,14 +32,15 @@ public class P2Insertion {
         node.back = newNode;
     }
 
-    //Insert a node before kth node
+    // Insert a node before kth node
+    // T(C) = O(N) & S(C) = O(1)
     public static Node insertBeforeKthNode(Node head, int k) {
         if (head == null) {
-            return new Node(10, null, null);
+            return new Node(10);
         }
-        if (k == 1) {
-            return insertHead(head);
-        }
+
+        if (k == 1) return insertHead(head);
+
         Node kthNode = head;
         int count = 0;
         while (kthNode != null) {
@@ -46,26 +48,25 @@ public class P2Insertion {
             if (count == k) break;
             kthNode = kthNode.next;
         }
+
         Node prev = kthNode.back;
         Node newNode = new Node(10, kthNode, prev);
-        kthNode.back = newNode;
         prev.next = newNode;
+        kthNode.back = newNode;
 
         return head;
     }
 
-    //Insert a node before Tail
+    // Insert a node before Tail
     public static Node insertTail(Node head) {
         if (head == null) {
-            return new Node(10, null, null);
+            return new Node(10);
         }
-        if (head.next == null) {
-            return insertHead(head);
-        }
+
+        if (head.next == null) return insertHead(head);
+
         Node tail = head;
-        while (tail.next != null) {
-            tail = tail.next;
-        }
+        while (tail.next != null) tail = tail.next;
         Node prev = tail.back;
         Node newNode = new Node(10, tail, prev);
         prev.next = newNode;
@@ -74,13 +75,15 @@ public class P2Insertion {
         return head;
     }
 
-    //Insert a node before head
+    // Insert a node before head
     public static Node insertHead(Node head) {
         if (head == null) {
-            return new Node(10, null, null);
+            return new Node(10);
         }
+
         Node newHead = new Node(10, head, null);
         head.back = newHead;
+
         return newHead;
     }
 
