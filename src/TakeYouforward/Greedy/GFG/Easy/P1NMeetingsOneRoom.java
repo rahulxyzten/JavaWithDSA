@@ -59,12 +59,12 @@ public class P1NMeetingsOneRoom {
         }
         ls.sort((a, b) -> a.end - b.end);
 
-        int currentEnd = ls.get(0).end;
+        int lastEnd = ls.get(0).end;
         int count = 1;
         for (int i = 1; i < n; i++) {
-            if (ls.get(i).start > currentEnd) {
+            if (ls.get(i).start > lastEnd) {
                 count++;
-                currentEnd = ls.get(i).end;
+                lastEnd = ls.get(i).end;
             }
         }
 
