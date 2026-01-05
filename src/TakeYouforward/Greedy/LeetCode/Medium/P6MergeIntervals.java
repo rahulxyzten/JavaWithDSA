@@ -44,16 +44,16 @@ public class P6MergeIntervals {
         System.out.println(Arrays.deepToString(merge(intervals)));
     }
 
-    // Mine Optimal solution
-    // T(C) = O(N) + O(N) = O(N)
-    // S(C) = O(N) + O(N) = O(N)
+    // Optimal solution
+    // T(C) = O(N logN) + O(2N)
+    // S(C) = O(N) + O(N)
     public static int[][] merge(int[][] intervals) {
         Arrays.sort(intervals, ((a, b) -> a[0] - b[0]));
         List<int[]> ls = new ArrayList<>();
 
         int min = intervals[0][0], max = intervals[0][1];
         for (int i = 1; i < intervals.length; i++) {
-            if (intervals[i][0] <= max) {
+            if (max >= intervals[i][0]) { // see the >= here
                 min = Math.min(min, intervals[i][0]);
                 max = Math.max(max, intervals[i][1]);
             } else {
