@@ -44,6 +44,7 @@ public class P1NumberProvinces {
 
     // T(C) = O(N) + O(N^2) {creation of adj} + O(N) + O(N + 2E)
     // S(C) = O(N) + O(N) + O(N)
+    // 1 - based indexing
     public int findCircleNum(int[][] isConnected) {
         int n = isConnected.length;
         ArrayList<ArrayList<Integer>> adj = new ArrayList<>();
@@ -87,4 +88,34 @@ public class P1NumberProvinces {
             }
         }
     }
+
+    // 0 - based indexing
+//    public int findCircleNum(int[][] isConnected) {
+//        int n = isConnected.length;
+//        ArrayList<ArrayList<Integer>> adj = new ArrayList<>();
+//
+//        for (int i = 0; i < n; i++) {
+//            adj.add(new ArrayList<>());
+//        }
+//
+//        for (int i = 0; i < n; i++) {
+//            for (int j = 0; j < n; j++) {
+//                if (isConnected[i][j] == 1 && i != j) {
+//                    adj.get(i).add(j);
+//                    adj.get(j).add(i);
+//                }
+//            }
+//        }
+//
+//        int[] visited = new int[n];
+//        int count = 0;
+//        for (int i = 0; i < n; i++) {
+//            if (visited[i] == 0) {
+//                count++;
+//                dfs(i, visited, adj);
+//            }
+//        }
+//
+//        return count;
+//    }
 }
