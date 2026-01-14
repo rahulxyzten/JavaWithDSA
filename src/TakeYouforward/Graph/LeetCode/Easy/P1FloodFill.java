@@ -88,40 +88,39 @@ public class P1FloodFill {
 
         int n = image.length;
         int m = image[0].length;
+        int[] tempRow = {-1, 0, +1, 0};
+        int[] tempCol = {0, +1, 0, -1};
 
         while (!queue.isEmpty()) {
             int row = queue.peek().row;
             int col = queue.peek().col;
             queue.poll();
 
-            for (int tempRow = -1; tempRow <= 1; tempRow++) {
-                for (int tempCol = -1; tempCol <= 1; tempCol++) {
-                    if ((tempRow == tempCol) || (tempRow == -1 && tempCol == 1) || (tempRow == 1 && tempCol == -1)) {
-                        continue;
-                    }
-
-                    int n_row = row + tempRow;
-                    int n_col = col + tempCol;
-                    if (n_row >= 0 && n_row < n && n_col >= 0 && n_col < m && image[n_row][n_col] == initialColor && visited[n_row][n_col] == 0) {
-                        visited[n_row][n_col] = 1;
-                        image[n_row][n_col] = color;
-                        queue.add(new Pair(n_row, n_col));
-                    }
-                }
-            }
-
-//            int[] tempRow = {-1, 0, +1, 0};
-//            int[] tempCol = {0, +1, 0, -1};
+//            for (int tempRow = -1; tempRow <= 1; tempRow++) {
+//                for (int tempCol = -1; tempCol <= 1; tempCol++) {
+//                    if ((tempRow == tempCol) || (tempRow == -1 && tempCol == 1) || (tempRow == 1 && tempCol == -1)) {
+//                        continue;
+//                    }
 //
-//            for (int i = 0; i < 4; i++) {
-//                int n_row = row + tempRow[i];
-//                int n_col = col + tempCol[i];
-//                if (n_row >= 0 && n_row < n && n_col >= 0 && n_col < m && image[n_row][n_col] == initialColor && visited[n_row][n_col] == 0) {
-//                    visited[n_row][n_col] = 1;
-//                    image[n_row][n_col] = color;
-//                    queue.add(new Pair(n_row, n_col));
+//                    int n_row = row + tempRow;
+//                    int n_col = col + tempCol;
+//                    if (n_row >= 0 && n_row < n && n_col >= 0 && n_col < m && image[n_row][n_col] == initialColor && visited[n_row][n_col] == 0) {
+//                        visited[n_row][n_col] = 1;
+//                        image[n_row][n_col] = color;
+//                        queue.add(new Pair(n_row, n_col));
+//                    }
 //                }
 //            }
+
+            for (int i = 0; i < 4; i++) {
+                int n_row = row + tempRow[i];
+                int n_col = col + tempCol[i];
+                if (n_row >= 0 && n_row < n && n_col >= 0 && n_col < m && image[n_row][n_col] == initialColor && visited[n_row][n_col] == 0) {
+                    visited[n_row][n_col] = 1;
+                    image[n_row][n_col] = color;
+                    queue.add(new Pair(n_row, n_col));
+                }
+            }
         }
     }
 }
