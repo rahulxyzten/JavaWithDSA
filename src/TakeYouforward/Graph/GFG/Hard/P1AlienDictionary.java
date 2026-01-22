@@ -47,94 +47,16 @@ public class P1AlienDictionary {
 
     }
 
-//    public String findOrder(String[] words) {
-//        boolean[] exists = new boolean[26];
-//        for (String word : words) {
-//            for (int i = 0; i < word.length(); i++) {
-//                exists[word.charAt(i) - 'a'] = true;
-//            }
-//        }
-//
-//        int V = 26;
-//        ArrayList<ArrayList<Integer>> adj = new ArrayList<>();
-//        for (int i = 0; i < V; i++) {
-//            adj.add(new ArrayList<>());
-//        }
-//
-//        for (int i = 0; i < words.length - 1; i++) {
-//            String s1 = words[i];
-//            String s2 = words[i + 1];
-//            int len = Math.min(s1.length(), s2.length());
-//            boolean found = false;
-//
-//            for (int ptr = 0; ptr < len; ptr++) {
-//                if (s1.charAt(ptr) != s2.charAt(ptr)) {
-//                    adj.get(s1.charAt(ptr) - 'a').add(s2.charAt(ptr) - 'a');
-//                    found = true;
-//                    break;
-//                }
-//            }
-//
-//            // prefix case: longer word comes before its prefix -> invalid
-//            if (!found && s1.length() > s2.length()) {
-//                return "";
-//            }
-//        }
-//
-//        List<Integer> topo = topoSort(V, adj);
-//
-//        int countExists = 0;
-//        for (boolean exist : exists) {
-//            if (exist) countExists++;
-//        }
-//
-//        // cycle detected -> no valid ordering
-//        if (topo.size() != countExists) return "";
-//
-//        StringBuilder ans = new StringBuilder();
-//        for (int node : topo) {
-//            ans.append((char) (node + 'a'));
-//        }
-//
-//        return ans.toString();
-//    }
-//
-//    public ArrayList<Integer> topoSort(int V, ArrayList<ArrayList<Integer>> adj) {
-//        int[] indegree = new int[V];
-//        for (ArrayList<Integer> list : adj) {
-//            for (int num : list) {
-//                indegree[num]++;
-//            }
-//        }
-//
-//        Queue<Integer> queue = new LinkedList<>();
-//        for (int i = 0; i < V; i++) {
-//            if (indegree[i] == 0) {
-//                queue.add(i);
-//            }
-//        }
-//
-//        ArrayList<Integer> result = new ArrayList<>();
-//        while (!queue.isEmpty()) {
-//            int node = queue.poll();
-//            result.add(node);
-//
-//            ArrayList<Integer> neighbours = adj.get(node);
-//            for (int neighbour : neighbours) {
-//                indegree[neighbour]--;
-//                if (indegree[neighbour] == 0) queue.add(neighbour);
-//            }
-//        }
-//
-//        return result;
-//    }
-
+    // T(C) = O(N * len) + O(K + E)
+    // where N is the number of words in the dictionary
+    // ‘len’ is the length up to the index where the first inequality occurs
+    // K = no. of nodes, and E = no. of edges.
+    // S(C) = O(K) + O(K) + O(K) + O(K) == O(K) {K = number of nodes}
     public String findOrder(String[] words) {
-        // Track which characters exist
         boolean[] exists = new boolean[26];
         for (String word : words) {
-            for (char ch : word.toCharArray()) {
-                exists[ch - 'a'] = true;
+            for (int i = 0; i < word.length(); i++) {
+                exists[word.charAt(i) - 'a'] = true;
             }
         }
 
@@ -144,23 +66,21 @@ public class P1AlienDictionary {
             adj.add(new ArrayList<>());
         }
 
-        // Build graph
         for (int i = 0; i < words.length - 1; i++) {
             String s1 = words[i];
             String s2 = words[i + 1];
-
             int len = Math.min(s1.length(), s2.length());
             boolean found = false;
 
-            for (int j = 0; j < len; j++) {
-                if (s1.charAt(j) != s2.charAt(j)) {
-                    adj.get(s1.charAt(j) - 'a').add(s2.charAt(j) - 'a');
+            for (int ptr = 0; ptr < len; ptr++) {
+                if (s1.charAt(ptr) != s2.charAt(ptr)) {
+                    adj.get(s1.charAt(ptr) - 'a').add(s2.charAt(ptr) - 'a');
                     found = true;
                     break;
                 }
             }
 
-            // Invalid prefix case
+            // Edge Case 1
             if (!found && s1.length() > s2.length()) {
                 return "";
             }
@@ -169,46 +89,46 @@ public class P1AlienDictionary {
         List<Integer> topo = topoSort(adj, exists);
 
         int countExists = 0;
-        for (boolean b : exists) if (b) countExists++;
+        for (boolean exist : exists) {
+            if (exist) countExists++;
+        }
 
+        // Edge Case 2
         // Cycle detected
         if (topo.size() != countExists) return "";
 
         StringBuilder ans = new StringBuilder();
-        for (int ch : topo) {
-            ans.append((char) (ch + 'a'));
+        for (int node : topo) {
+            ans.append((char) (node + 'a'));
         }
 
         return ans.toString();
     }
 
-    private List<Integer> topoSort(ArrayList<ArrayList<Integer>> adj, boolean[] exists) {
-
+    public ArrayList<Integer> topoSort(ArrayList<ArrayList<Integer>> adj, boolean[] exists) {
         int[] indegree = new int[26];
-        for (int i = 0; i < 26; i++) {
-            for (int v : adj.get(i)) {
-                indegree[v]++;
+        for (ArrayList<Integer> list : adj) {
+            for (int num : list) {
+                indegree[num]++;
             }
         }
 
         Queue<Integer> queue = new LinkedList<>();
         for (int i = 0; i < 26; i++) {
-            if (exists[i] && indegree[i] == 0) {
-                queue.offer(i);
+            if (indegree[i] == 0 && exists[i]) {
+                queue.add(i);
             }
         }
 
-        List<Integer> result = new ArrayList<>();
-
+        ArrayList<Integer> result = new ArrayList<>();
         while (!queue.isEmpty()) {
             int node = queue.poll();
             result.add(node);
 
-            for (int nei : adj.get(node)) {
-                indegree[nei]--;
-                if (exists[nei] && indegree[nei] == 0) {
-                    queue.offer(nei);
-                }
+            ArrayList<Integer> neighbours = adj.get(node);
+            for (int neighbour : neighbours) {
+                indegree[neighbour]--;
+                if (indegree[neighbour] == 0 && exists[neighbour]) queue.add(neighbour);
             }
         }
 
