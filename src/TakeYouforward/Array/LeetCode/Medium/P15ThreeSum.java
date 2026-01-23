@@ -44,7 +44,8 @@ public class P15ThreeSum {
         System.out.println(threeSum(nums));
     }
 
-    // T(C) = O(N3 * log(no. of unique triplets)),
+    /* Brute Force Approach */
+    // T(C) = O(N^3 * log(no. of unique triplets)),
     // inserting triplets into the set takes O(log(no. of unique triplets))
     // Not considering the time complexity of sorting as we are just sorting 3 elements every time
     // S(C) =  O(2 * no. of the unique triplets)
