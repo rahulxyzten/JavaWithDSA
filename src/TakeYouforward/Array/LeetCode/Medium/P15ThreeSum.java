@@ -44,27 +44,83 @@ public class P15ThreeSum {
         System.out.println(threeSum(nums));
     }
 
-    /* Brute Force Approach */
-    // T(C) = O(N^3 * log(no. of unique triplets)),
-    // inserting triplets into the set takes O(log(no. of unique triplets))
-    // Not considering the time complexity of sorting as we are just sorting 3 elements every time
-    // S(C) =  O(2 * no. of the unique triplets)
+    /* Optimal Approach (Using Two Pointers) */
+    // T(C) = O(NlogN + N^2)
+    // S(C) = O(no. of the unique triplets)
     public static List<List<Integer>> threeSum(int[] nums) {
         int n = nums.length;
-        Set<List<Integer>> set = new HashSet<>();
+        Arrays.sort(nums);
+        List<List<Integer>> result = new ArrayList<>();
 
         for (int i = 0; i < n; i++) {
-            for (int j = i + 1; j < n; j++) {
-                for (int k = j + 1; k < n; k++) {
-                    if (nums[i] + nums[j] + nums[k] == 0) {
-                        List<Integer> temp = Arrays.asList(nums[i], nums[j], nums[k]);
-                        Collections.sort(temp);
-                        set.add(temp);
-                    }
-                }
+            // If i is not the first element then we need to skip the duplicates.
+            if (i > 0 && nums[i] == nums[i - 1]) continue;
+
+            int j = i + 1, k = n - 1;
+            while (j < k) {
+                int sum = nums[i] + nums[j] + nums[k];
+                if (sum == 0) {
+                    result.add(Arrays.asList(nums[i], nums[j], nums[k]));
+                    j++;
+                    k--;
+                    while (j < k && nums[j] == nums[j - 1]) j++;
+                    while (j < k && nums[k] == nums[k + 1]) k--;
+                } else if (sum < 0) j++;
+                else k--;
             }
         }
 
-        return new ArrayList<>(set);
+        return result;
     }
+
+
+    /* Better Approach (Hashing using HashSet) */
+    // T(C) = O(N^2 * log(no. of unique triplets))
+    // S(C) = O(2 * no. of the unique triplets) + O(N)
+//    public static List<List<Integer>> threeSum(int[] nums) {
+//        int n = nums.length;
+//        Set<List<Integer>> result = new HashSet<>();
+//
+//        for (int i = 0; i < n; i++) {
+//            Set<Integer> set = new HashSet<>();
+//            for (int j = i + 1; j < n; j++) {
+//                int sum = nums[i] + nums[j];
+//                int rem = -sum;
+//                if (set.contains(rem)) {
+//                    List<Integer> temp = Arrays.asList(nums[i], nums[j], rem);
+//                    Collections.sort(temp);
+//                    result.add(temp);
+//                }
+//
+//                set.add(nums[j]);
+//            }
+//        }
+//
+//        return new ArrayList<>(result);
+//    }
+
+
+    /* Brute Force Approach */
+    // T(C) = O(N^3 * log(no. of unique triplets))
+    // inserting triplets into the set takes O(log(no. of unique triplets))
+    // Not considering the time complexity of sorting as we are just sorting 3 elements every time
+    // S(C) =  O(2 * no. of the unique triplets)
+//    public static List<List<Integer>> threeSum(int[] nums) {
+//        int n = nums.length;
+//        Set<List<Integer>> set = new HashSet<>();
+//
+//        for (int i = 0; i < n; i++) {
+//            for (int j = i + 1; j < n; j++) {
+//                for (int k = j + 1; k < n; k++) {
+//                    if (nums[i] + nums[j] + nums[k] == 0) {
+//                        List<Integer> temp = Arrays.asList(nums[i], nums[j], nums[k]);
+//                        Collections.sort(temp);
+//                        set.add(temp);
+//                    }
+//                }
+//            }
+//        }
+//
+//        return new ArrayList<>(set);
+//    }
 }
