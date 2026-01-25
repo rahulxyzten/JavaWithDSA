@@ -63,10 +63,20 @@ public class P15ThreeSum {
                     result.add(Arrays.asList(nums[i], nums[j], nums[k]));
                     j++;
                     k--;
+                    // but it is necessary, if you don't do that then you get the same
+                    // triplets again and again
                     while (j < k && nums[j] == nums[j - 1]) j++;
                     while (j < k && nums[k] == nums[k + 1]) k--;
                 } else if (sum < 0) j++;
                 else k--;
+                // You can do this also, but not necessary T(C) is same only
+//                else if (sum < 0) {
+//                    j++;
+//                    while (j < k && nums[j] == nums[j - 1]) j++;
+//                } else {
+//                    k--;
+//                    while (j < k && nums[k] == nums[k + 1]) k--;
+//                }
             }
         }
 
