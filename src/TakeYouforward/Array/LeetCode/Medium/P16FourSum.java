@@ -33,40 +33,72 @@ import java.util.*;
 
 public class P16FourSum {
     public static void main(String[] args) {
-        int[] nums = {1, 0, -1, 0, -2, 2};
-        int target = 0;
+//        int[] nums = {1, 0, -1, 0, -2, 2};
+//        int target = 0;
 
-//        int[] nums = {2, 2, 2, 2, 2};
-//        int target = 8;
+        int[] nums = {2, 2, 2, 2, 2};
+        int target = 8;
         System.out.println(fourSum(nums, target));
+    }
+
+    /* Optimal Approach (Tow Pointer Approach) */
+    // T(C) = O(NlogN + N^3)
+    // S(C) =  O(no. of the unique quadruplets)
+    public static List<List<Integer>> fourSum(int[] nums, int target) {
+        int n = nums.length;
+        Arrays.sort(nums);
+        List<List<Integer>> result = new ArrayList<>();
+
+        for (int i = 0; i < n; i++) {
+            if (i > 0 && nums[i] == nums[i - 1]) continue;
+            for (int j = i + 1; j < n; j++) {
+                if (j > (i + 1) && nums[j] == nums[j - 1]) continue;
+
+                int k = j + 1, l = n - 1;
+                while (k < l) {
+                    long sum = (long) nums[i] + nums[j] + nums[k] + nums[l];
+                    // Type Conversion (long) must have done here only
+                    if (sum == target) {
+                        result.add(Arrays.asList(nums[i], nums[j], nums[k], nums[l]));
+                        k++;
+                        l--;
+                        while (k < l && nums[k] == nums[k - 1]) k++;
+                        while (k < l && nums[l] == nums[l + 1]) l--;
+                    } else if (sum < target) k++;
+                    else l--;
+                }
+            }
+        }
+
+        return result;
     }
 
     /* Better Approach (Hashing using HashSet) */
     // T(C) = O(N^3 * log(no. of unique quadruplets))
     // S(C) =  O(2 * no. of the unique quadruplets) + O(N)
-    public static List<List<Integer>> fourSum(int[] nums, int target) {
-        int n = nums.length;
-        Set<List<Integer>> set = new HashSet<>();
-
-        for (int i = 0; i < n; i++) {
-            for (int j = i + 1; j < n; j++) {
-                Set<Integer> seen = new HashSet<>();
-                for (int k = j + 1; k < n; k++) {
-                    long sum = nums[i] + nums[j] + nums[k];
-                    long rem = target - sum;
-                    if (seen.contains((int) rem)) {
-                        List<Integer> temp = Arrays.asList(nums[i], nums[j], nums[k], (int) rem);
-                        Collections.sort(temp);
-                        set.add(temp);
-                    }
-
-                    seen.add(nums[k]);
-                }
-            }
-        }
-
-        return new ArrayList<>(set);
-    }
+//    public static List<List<Integer>> fourSum(int[] nums, int target) {
+//        int n = nums.length;
+//        Set<List<Integer>> set = new HashSet<>();
+//
+//        for (int i = 0; i < n; i++) {
+//            for (int j = i + 1; j < n; j++) {
+//                Set<Integer> seen = new HashSet<>();
+//                for (int k = j + 1; k < n; k++) {
+//                    long sum = nums[i] + nums[j] + nums[k];
+//                    long rem = target - sum;
+//                    if (seen.contains((int) rem)) {
+//                        List<Integer> temp = Arrays.asList(nums[i], nums[j], nums[k], (int) rem);
+//                        Collections.sort(temp);
+//                        set.add(temp);
+//                    }
+//
+//                    seen.add(nums[k]);
+//                }
+//            }
+//        }
+//
+//        return new ArrayList<>(set);
+//    }
 
     /* Brute Force Approach */
     // T(C) = O(N^4 * log(no. of unique quadruplets))
