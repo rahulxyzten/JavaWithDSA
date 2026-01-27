@@ -40,7 +40,7 @@ nums1.length == m + n
 nums2.length == n
 0 <= m, n <= 200
 1 <= m + n <= 200
--109 <= nums1[i], nums2[j] <= 109
+-10^9 <= nums1[i], nums2[j] <= 10^9
 
 
 Follow up: Can you come up with an algorithm that runs in O(m + n) time?
@@ -64,7 +64,7 @@ public class P5MergeSortedArray {
     }
 
     //Optimal solution
-    //T(C) = O(n+m) and S(C) = O(n+m)
+    //T(C) = O(n+m) and S(C) = O(1)
     public static void merge(int[] nums1, int m, int[] nums2, int n) {
         if (n == 0) return;
         if (m == 0) {

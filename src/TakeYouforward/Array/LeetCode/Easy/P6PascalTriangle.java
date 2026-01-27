@@ -31,19 +31,27 @@ import java.util.List;
 
 public class P6PascalTriangle {
     public static void main(String[] args) {
-
+//        int numRows = 5;
+        int numRows = 1;
+        System.out.println(generate(numRows));
     }
 
+
+    /* Brute Force Approach */
     // T(C) = O(N^2)
-    // S(C) = O(N^2)
+    // S(C) = O(N^2) + O(N)
+    // result stores all n rows with total elements {n(n+1)} / 2 = O(n^2)
     public static List<List<Integer>> generate(int numRows) {
         List<List<Integer>> result = new ArrayList<>();
         for (int i = 0; i < numRows; i++) {
-            List<Integer> row = new ArrayList<>(Collections.nCopies(i + 1, 1));
-            for (int j = 1; j < i; j++) {
-                row.set(j, result.get(i - 1).get(j - 1) + result.get(i - 1).get(j));
+            List<Integer> temp = new ArrayList<>();
+            for (int j = 0; j <= i; j++) {
+                if (j == 0 || j == i) temp.add(1);
+                else {
+                    temp.add(result.get(i - 1).get(j - 1) + result.get(i - 1).get(j));
+                }
             }
-            result.add(row);
+            result.add(temp);
         }
 
         return result;
