@@ -37,23 +37,50 @@ public class P6PascalTriangle {
     }
 
 
-    /* Brute Force Approach */
+    /* Optimal Approach */
     // T(C) = O(N^2)
-    // S(C) = O(N^2) + O(N)
+    // S(C) = O(N^2)
     // result stores all n rows with total elements {n(n+1)} / 2 = O(n^2)
     public static List<List<Integer>> generate(int numRows) {
         List<List<Integer>> result = new ArrayList<>();
-        for (int i = 0; i < numRows; i++) {
-            List<Integer> temp = new ArrayList<>();
-            for (int j = 0; j <= i; j++) {
-                if (j == 0 || j == i) temp.add(1);
-                else {
-                    temp.add(result.get(i - 1).get(j - 1) + result.get(i - 1).get(j));
-                }
-            }
-            result.add(temp);
+        for (int i = 1; i <= numRows; i++) {
+            result.add(nthRow(i));
         }
 
         return result;
     }
+
+    public static List<Integer> nthRow(int n) {
+        List<Integer> row = new ArrayList<>();
+        long ans = 1;
+        row.add((int) ans);
+        for (int i = 1; i < n; i++) {
+            ans *= (n - i);
+            ans /= i;
+            row.add((int) ans);
+        }
+
+        return row;
+    }
+
+
+    /* Optimal Approach (Mine)*/
+    // T(C) = O(N^2)
+    // S(C) = O(N^2)
+    // result stores all n rows with total elements {n(n+1)} / 2 = O(n^2)
+//    public static List<List<Integer>> generate(int numRows) {
+//        List<List<Integer>> result = new ArrayList<>();
+//        for (int i = 0; i < numRows; i++) {
+//            List<Integer> temp = new ArrayList<>();
+//            for (int j = 0; j <= i; j++) {
+//                if (j == 0 || j == i) temp.add(1);
+//                else {
+//                    temp.add(result.get(i - 1).get(j - 1) + result.get(i - 1).get(j));
+//                }
+//            }
+//            result.add(temp);
+//        }
+//
+//        return result;
+//    }
 }
