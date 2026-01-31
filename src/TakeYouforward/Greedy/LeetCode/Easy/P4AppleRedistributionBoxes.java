@@ -48,8 +48,8 @@ public class P4AppleRedistributionBoxes {
 
     }
 
-    // Brute Force Approach
-    // T(C) = O(n) + O(mlogm) + O(m) + O(m)
+    // Greedy Approach
+    // T(C) = O(n) + O(mlogm) + O(m/2) + O(m)
     // S(C) = O(1)
     public static int minimumBoxes(int[] apple, int[] capacity) {
         int totApple = 0;
@@ -63,14 +63,27 @@ public class P4AppleRedistributionBoxes {
             capacity[i] = capacity[capacity.length - 1 - i];
             capacity[capacity.length - 1 - i] = temp;
         }
+        // Direct Reverse
+        // Integer[] capArray = new Integer[capacity.length];
+        // for (int i = 0; i < capacity.length; i++) {
+        //    capArray[i] = capacity[i];
+        // }
+        // Arrays.sort(capArray, Collections.reverseOrder());
 
-        int i = 0, m = capacity.length;
-        while (i < m) {
-            totApple -= capacity[i];
-            if (totApple <= 0) return i + 1;
-            i++;
+//        int i = 0, m = capacity.length;
+//        while (i < m) {
+//            totApple -= capacity[i];
+//            if (totApple <= 0) return i + 1;
+//            i++;
+//        }
+//        return m;
+
+        int need = 0;
+        while (totApple > 0) {
+            totApple -= capacity[need];
+            need += 1;
         }
 
-        return m;
+        return need;
     }
 }
