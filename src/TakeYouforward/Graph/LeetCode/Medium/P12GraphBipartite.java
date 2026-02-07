@@ -38,7 +38,7 @@ All the values of graph[u] are unique.
 If graph[u] contains v, then graph[v] contains u.
  */
 
-public class P11GraphBipartite {
+public class P12GraphBipartite {
     public static void main(String[] args) {
 
     }
