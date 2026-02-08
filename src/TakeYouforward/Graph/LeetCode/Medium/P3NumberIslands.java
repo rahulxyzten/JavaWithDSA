@@ -81,8 +81,8 @@ public class P3NumberIslands {
 
     }
 
-    // T(C) = O(N^2) + O(N^2) = O(N*M)
-    // S(C) = O(N^2) + O(N^2 * 9) {BFS} = O(N*M)
+    // T(C) = O(N^2) + O(N^2 * 9) {BFS} = O(N*M)
+    // S(C) = O(N^2) + O(N^2) = O(N*M)
     public int numIslands(char[][] grid) {
         int n = grid.length, m = grid[0].length;
         int[][] visited = new int[n][m];
