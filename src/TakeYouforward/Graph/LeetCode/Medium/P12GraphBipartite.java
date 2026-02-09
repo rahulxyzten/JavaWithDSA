@@ -38,14 +38,41 @@ All the values of graph[u] are unique.
 If graph[u] contains v, then graph[v] contains u.
  */
 
+import java.util.ArrayDeque;
+import java.util.Queue;
+
 public class P12GraphBipartite {
     public static void main(String[] args) {
 
     }
 
     public boolean isBipartite(int[][] graph) {
+        int n = graph.length;
+        int[] colour = new int[n];
 
+        for (int node = 0; node < n; node++) {
+            if (colour[node] != 0) {
+                continue;
+            }
 
-        return false;
+            Queue<Integer> q = new ArrayDeque<>();
+            q.add(node);
+            colour[node] = 1;
+
+            while (!q.isEmpty()) {
+                int cur = q.poll();
+
+                for (int ne : graph[cur]) {
+                    if (colour[ne] == 0) {
+                        colour[ne] = -colour[cur];
+                        q.add(ne);
+                    } else if (colour[ne] != -colour[cur]) {
+                        return false;
+                    }
+                }
+            }
+        }
+
+        return true;
     }
 }
