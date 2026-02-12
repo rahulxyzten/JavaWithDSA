@@ -36,20 +36,44 @@ Constraints:
 num consists of only 6 and 9 digits.
  */
 
+import java.util.Arrays;
+
 public class P5Maximum69Number {
     public static void main(String[] args) {
-
+        int num = 9669;
+        System.out.println(maximum69Number(num));
     }
 
+    // Optimal Approach
+    // T(C) = O(log10N + 1) & S(C) = O(1)
     public static int maximum69Number(int num) {
-        String s = num + "";
-        char[] digits = s.toCharArray();
-        for (int i = 0; i < digits.length; i++) {
-            if (digits[i] == '6') {
-                digits[i] = '9';
-                break;
+        int place = 1;
+        int temp = num;
+        int toAdd = 0;
+
+        while (temp > 0) {
+            if (temp % 10 == 6) {
+                toAdd = 3 * place;
             }
+            temp /= 10;
+            place *= 10;
         }
-        return Integer.parseInt(s);
+
+        return num + toAdd;
     }
+
+    // Brute Force Approach
+    // T(C) = O(N) & S(C) = O(N)
+//    public static int maximum69Number(int num) {
+//        String s = num + "";
+//        char[] digits = s.toCharArray();
+//        for (int i = 0; i < digits.length; i++) {
+//            if (digits[i] == '6') {
+//                digits[i] = '9';
+//                break;
+//            }
+//        }
+//
+//        return Integer.parseInt(new String(digits));
+//    }
 }
