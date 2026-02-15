@@ -38,31 +38,49 @@ public class P7ValidParenthesisString {
         String s = "()";
 //        String s = "(*)";
 //        String s = "(*))";
-        System.out.println(checkValidString(s));
+//        System.out.println(checkValidString(s));
     }
 
+    // Optimal Approach
+    // T(C) = O(N)
+    // S(C) = O(1)
     public static boolean checkValidString(String s) {
-        int low = 0;
-        int high = 0;
+        int min = 0, max = 0;
         for (int i = 0; i < s.length(); i++) {
             if (s.charAt(i) == '(') {
-                low++;
-                high++;
+                min = min + 1;
+                max = max + 1;
             } else if (s.charAt(i) == ')') {
-                if (low > 0) {
-                    low--;
-                }
-                high--;
+                min = min - 1;
+                max = max - 1;
             } else {
-                if (low > 0) {
-                    low--;
-                }
-                high++;
+                min = min - 1;
+                max = max + 1;
             }
-            if (high < 0) {
-                return false;
-            }
+
+            if (min < 0) min = 0;
+            if (max < 0) return false;
         }
-        return low == 0;
+
+        return min == 0;
     }
+
+    // Brute Force Approach
+    // Time Limit Exceeded 80 / 83 testcases passed
+    // T(C) = O(3^N)
+    // S(C) = O(N) {Recursive Stack)
+//    public static boolean checkValidString(String s) {
+//        return checkValid(s, 0, s.length(), 0);
+//    }
+//
+//    public static boolean checkValid(String s, int i, int n, int count) {
+//        if (count < 0) return false;
+//        if (i == n) return count == 0;
+//
+//        if (s.charAt(i) == '(') return checkValid(s, i + 1, n, count + 1);
+//        else if (s.charAt(i) == ')') return checkValid(s, i + 1, n, count - 1);
+//        else { // (s.charAt(i) == '*')
+//            return checkValid(s, i + 1, n, count + 1) || checkValid(s, i + 1, n, count - 1) || checkValid(s, i + 1, n, count);
+//        }
+//    }
 }
