@@ -33,26 +33,85 @@ n == ratings.length
 0 <= ratings[i] <= 2 * 10^4
  */
 
+import java.util.Arrays;
+
 public class P1Candy {
     public static void main(String[] args) {
-
+        int[] ratings = {1, 0, 2};
+        System.out.println(candy(ratings));
+        int[] ratings1 = {1, 2, 2};
+        System.out.println(candy(ratings1));
+        int[] ratings2 = {1, 3, 2, 2, 1};
+        System.out.println(candy(ratings2));
+        int[] ratings3 = {1, 2, 87, 87, 87, 2, 1};
+        System.out.println(candy(ratings3));
+        int[] ratings4 = {1, 3, 4, 5, 2};
+        System.out.println(candy(ratings4));
     }
 
+    // Better Approach
+    // T(C) = O(4N) == O(N)
+    // S(C) = O(N)
     public static int candy(int[] ratings) {
         int n = ratings.length;
-        int cnt = 0;
-        int[] candies = new int[n];
-        for (int i = 0; i < n; i++) candies[i] = 1;
+        if (n == 0) return 0;
+
+        int[] givenCandy = new int[n];
+        for (int i = 0; i < n; i++) givenCandy[i] = 1;
+
         for (int i = 1; i < n; i++) {
-            if (ratings[i] > ratings[i - 1])
-                candies[i] = candies[i - 1] + 1;
-        }
-        for (int i = n - 1; i > 0; i--) {
-            if (ratings[i - 1] > ratings[i])
-                candies[i - 1] = Math.max(candies[i] + 1, candies[i - 1]);
-            cnt += candies[i - 1];
+            if (ratings[i] > ratings[i - 1]) {
+                givenCandy[i] = givenCandy[i - 1] + 1;
+            }
         }
 
-        return cnt + candies[n - 1];
+        for (int i = n - 2; i >= 0; i--) {
+            if (ratings[i] > ratings[i + 1]) {
+                givenCandy[i] = Math.max(givenCandy[i], givenCandy[i + 1] + 1);
+            }
+        }
+
+        int total = 0;
+        for (int num : givenCandy) {
+            total += num;
+        }
+
+        return total;
     }
+
+    // Brute Force Approach
+    // T(C) = O(N) + O(N^2) + O(N) == O(N^2)
+    // S(C) = O(N)
+//    public static int candy(int[] ratings) {
+//        int n = ratings.length;
+//        if (n == 0) return 0;
+//
+//        int[] givenCandy = new int[n];
+//        for (int i = 0; i < n; i++) {
+//            givenCandy[i] = 1;
+//        }
+//
+//        for (int i = 1; i < n; i++) {
+//            if (ratings[i] > ratings[i - 1]) {
+//                givenCandy[i] = givenCandy[i - 1] + 1;
+//            } else if (ratings[i] == ratings[i - 1]) {
+//                continue;
+//            } else {
+//                int j = i;
+//                while (j > 0) {
+//                    if ((ratings[j - 1] > ratings[j]) && (givenCandy[j - 1] <= givenCandy[j])) {
+//                        givenCandy[j - 1] = givenCandy[j] + 1;
+//                    }
+//                    j--;
+//                }
+//            }
+//        }
+//
+//        int total = 0;
+//        for (int num : givenCandy) {
+//            total += num;
+//        }
+//
+//        return total;
+//    }
 }
