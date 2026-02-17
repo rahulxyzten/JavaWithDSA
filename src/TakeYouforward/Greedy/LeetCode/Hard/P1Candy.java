@@ -47,37 +47,71 @@ public class P1Candy {
         System.out.println(candy(ratings3));
         int[] ratings4 = {1, 3, 4, 5, 2};
         System.out.println(candy(ratings4));
+        int[] ratings5 = {0, 2, 4, 3, 2, 1, 1, 3, 5, 6, 4, 0, 0};
+        System.out.println(candy(ratings5));
     }
 
-    // Better Approach
-    // T(C) = O(4N) == O(N)
+    // Better Approach (BEST)
+    // T(C) = O(2N) == O(N)
     // S(C) = O(N)
     public static int candy(int[] ratings) {
         int n = ratings.length;
         if (n == 0) return 0;
 
-        int[] givenCandy = new int[n];
-        for (int i = 0; i < n; i++) givenCandy[i] = 1;
+        int[] left = new int[n];
+        left[0] = 1;
 
         for (int i = 1; i < n; i++) {
             if (ratings[i] > ratings[i - 1]) {
-                givenCandy[i] = givenCandy[i - 1] + 1;
+                left[i] = left[i - 1] + 1;
+            } else {
+                left[i] = 1;
             }
         }
 
+        int total = Math.max(left[n - 1], 1);
+        int right = 1;
         for (int i = n - 2; i >= 0; i--) {
             if (ratings[i] > ratings[i + 1]) {
-                givenCandy[i] = Math.max(givenCandy[i], givenCandy[i + 1] + 1);
+                right = right + 1;
+            } else {
+                right = 1;
             }
-        }
-
-        int total = 0;
-        for (int num : givenCandy) {
-            total += num;
+            total += Math.max(left[i], right);
         }
 
         return total;
     }
+
+    // Better Approach
+    // T(C) = O(4N) == O(N)
+    // S(C) = O(N)
+//    public static int candy(int[] ratings) {
+//        int n = ratings.length;
+//        if (n == 0) return 0;
+//
+//        int[] givenCandy = new int[n];
+//        for (int i = 0; i < n; i++) givenCandy[i] = 1;
+//
+//        for (int i = 1; i < n; i++) {
+//            if (ratings[i] > ratings[i - 1]) {
+//                givenCandy[i] = givenCandy[i - 1] + 1;
+//            }
+//        }
+//
+//        for (int i = n - 2; i >= 0; i--) {
+//            if (ratings[i] > ratings[i + 1]) {
+//                givenCandy[i] = Math.max(givenCandy[i], givenCandy[i + 1] + 1);
+//            }
+//        }
+//
+//        int total = 0;
+//        for (int num : givenCandy) {
+//            total += num;
+//        }
+//
+//        return total;
+//    }
 
     // Brute Force Approach
     // T(C) = O(N) + O(N^2) + O(N) == O(N^2)
