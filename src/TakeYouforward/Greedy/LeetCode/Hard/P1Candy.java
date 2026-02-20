@@ -51,37 +51,74 @@ public class P1Candy {
         System.out.println(candy(ratings5));
     }
 
-    // Better Approach (BEST)
-    // T(C) = O(2N) == O(N)
-    // S(C) = O(N)
+    // Optimal Approach (Using Slope)
+    // T(C) = O(N)
+    // S(C) = O(1)
     public static int candy(int[] ratings) {
         int n = ratings.length;
         if (n == 0) return 0;
 
-        int[] left = new int[n];
-        left[0] = 1;
+        int sum = 1, i = 1;
+        while (i < n) {
+            if (ratings[i] == ratings[i - 1]) {
+                sum += 1;
+                i++;
+                continue;
+            }
 
-        for (int i = 1; i < n; i++) {
-            if (ratings[i] > ratings[i - 1]) {
-                left[i] = left[i - 1] + 1;
-            } else {
-                left[i] = 1;
+            int peak = 1;
+            while (i < n && ratings[i] > ratings[i - 1]) {
+                peak += 1;
+                sum += peak;
+                i++;
+            }
+
+            int down = 1;
+            while (i < n && ratings[i] < ratings[i - 1]) {
+                sum += down;
+                i++;
+                down += 1;
+            }
+
+            if (down > peak) {
+                sum += (down - peak);
             }
         }
 
-        int total = Math.max(left[n - 1], 1);
-        int right = 1;
-        for (int i = n - 2; i >= 0; i--) {
-            if (ratings[i] > ratings[i + 1]) {
-                right = right + 1;
-            } else {
-                right = 1;
-            }
-            total += Math.max(left[i], right);
-        }
-
-        return total;
+        return sum;
     }
+
+    // Better Approach (BEST)
+    // T(C) = O(2N) == O(N)
+    // S(C) = O(N)
+//    public static int candy(int[] ratings) {
+//        int n = ratings.length;
+//        if (n == 0) return 0;
+//
+//        int[] left = new int[n];
+//        left[0] = 1;
+//
+//        for (int i = 1; i < n; i++) {
+//            if (ratings[i] > ratings[i - 1]) {
+//                left[i] = left[i - 1] + 1;
+//            } else {
+//                left[i] = 1;
+//            }
+//        }
+//
+//        int total = Math.max(left[n - 1], 1);
+//        int right = 1;
+//        for (int i = n - 2; i >= 0; i--) {
+//            if (ratings[i] > ratings[i + 1]) {
+//                right = right + 1;
+//            } else {
+//                right = 1;
+//            }
+//            total += Math.max(left[i], right);
+//        }
+//
+//        return total;
+//    }
 
     // Better Approach
     // T(C) = O(4N) == O(N)
