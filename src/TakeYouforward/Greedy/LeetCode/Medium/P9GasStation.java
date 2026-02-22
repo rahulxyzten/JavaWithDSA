@@ -49,11 +49,36 @@ public class P9GasStation {
         int[] gas = {1, 2, 3, 4, 5};
         int[] cost = {3, 4, 5, 1, 2};
         System.out.println(canCompleteCircuit(gas, cost));
+
+        int[] gas1 = {2, 3, 4};
+        int[] cost1 = {3, 4, 3};
+        System.out.println(canCompleteCircuit(gas1, cost1));
+
+        int[] gas2 = {5, 1, 2, 3, 4};
+        int[] cost2 = {4, 4, 1, 5, 1};
+        System.out.println(canCompleteCircuit(gas2, cost2));
     }
 
+    // Brute Force Approach (35 / 40 Time Limit Exceeded)
+    // T(C) = O(N^2)
+    // S(C) = O(1)
     public static int canCompleteCircuit(int[] gas, int[] cost) {
+        int n = gas.length;
 
+        for (int i = 0; i < n; i++) {
+            int tank = gas[i] - cost[i];
+            if (tank < 0) continue;
 
-        return 0;
+            int j = (i + 1) % n;
+            while (j != i) {
+                tank += gas[j] - cost[j];
+                if (tank < 0) break;
+                j = (j + 1) % n;
+            }
+
+            if (j == i) return i;
+        }
+
+        return -1;
     }
 }
