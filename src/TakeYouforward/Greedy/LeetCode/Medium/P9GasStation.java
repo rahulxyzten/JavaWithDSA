@@ -59,26 +59,72 @@ public class P9GasStation {
         System.out.println(canCompleteCircuit(gas2, cost2));
     }
 
-    // Brute Force Approach (35 / 40 Time Limit Exceeded)
-    // T(C) = O(N^2)
+    // Optimal Approach (Two Pointer)
+    // T(C) = O(N)
     // S(C) = O(1)
     public static int canCompleteCircuit(int[] gas, int[] cost) {
         int n = gas.length;
+        int start = n - 1, end = 0;
+        int tank = gas[start] - cost[start];
 
-        for (int i = 0; i < n; i++) {
-            int tank = gas[i] - cost[i];
-            if (tank < 0) continue;
-
-            int j = (i + 1) % n;
-            while (j != i) {
-                tank += gas[j] - cost[j];
-                if (tank < 0) break;
-                j = (j + 1) % n;
+        while (start > end) {
+            if (tank < 0) {
+                start--;
+                tank += gas[start] - cost[start];
+            } else {
+                tank += gas[end] - cost[end];
+                end++;
             }
-
-            if (j == i) return i;
         }
 
-        return -1;
+        return tank >= 0 ? start : -1;
     }
+
+    // Optimal Approach (Greedy)
+    // T(C) = O(3N) = O(N)
+    // S(C) = O(1)
+//    public static int canCompleteCircuit(int[] gas, int[] cost) {
+//        if (sumOfArray(gas) < sumOfArray(cost)) return -1;
+//
+//        int n = gas.length;
+//        int total = 0, result = 0;
+//        for (int i = 0; i < n; i++) {
+//            total += (gas[i] - cost[i]);
+//            if (total < 0) {
+//                total = 0;
+//                result = i + 1;
+//            }
+//        }
+//
+//        return result;
+//    }
+//
+//    public static int sumOfArray(int[] nums) {
+//        int sum = 0;
+//        for (int num : nums) sum += num;
+//        return sum;
+//    }
+
+    // Brute Force Approach (35 / 40 Time Limit Exceeded)
+    // T(C) = O(N^2)
+    // S(C) = O(1)
+//    public static int canCompleteCircuit(int[] gas, int[] cost) {
+//        int n = gas.length;
+//
+//        for (int i = 0; i < n; i++) {
+//            int tank = gas[i] - cost[i];
+//            if (tank < 0) continue;
+//
+//            int j = (i + 1) % n;
+//            while (j != i) {
+//                tank += gas[j] - cost[j];
+//                if (tank < 0) break;
+//                j = (j + 1) % n;
+//            }
+//
+//            if (j == i) return i;
+//        }
+//
+//        return -1;
+//    }
 }
