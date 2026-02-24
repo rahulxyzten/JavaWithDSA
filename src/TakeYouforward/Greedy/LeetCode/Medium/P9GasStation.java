@@ -59,25 +59,30 @@ public class P9GasStation {
         System.out.println(canCompleteCircuit(gas2, cost2));
     }
 
-    // Optimal Approach (Two Pointer)
+    // Optimal Approach (Greedy) (Single iteration)
     // T(C) = O(N)
     // S(C) = O(1)
     public static int canCompleteCircuit(int[] gas, int[] cost) {
         int n = gas.length;
-        int start = n - 1, end = 0;
-        int tank = gas[start] - cost[start];
+        int totGas = 0, totCost = 0;
+        int total = 0, result = 0;
 
-        while (start > end) {
-            if (tank < 0) {
-                start--;
-                tank += gas[start] - cost[start];
-            } else {
-                tank += gas[end] - cost[end];
-                end++;
+        for (int i = 0; i < n; i++) {
+            totGas += gas[i];
+            totCost += cost[i];
+
+            total += (gas[i] - cost[i]);
+            if (total < 0) {
+                total = 0;
+                result = i + 1;
             }
         }
 
-        return tank >= 0 ? start : -1;
+        if (totGas < totCost) {
+            return -1;
+        }
+
+        return result;
     }
 
     // Optimal Approach (Greedy)
