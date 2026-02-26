@@ -32,12 +32,35 @@ Constraints:
 Note: This question is the same as 1296: https://leetcode.com/problems/divide-array-in-sets-of-k-consecutive-numbers/
  */
 
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
 public class P10HandStraights {
     public static void main(String[] args) {
 
     }
 
+    // Brute Force Approach
+    // T(C) = O(n) + O(nlogn) + O(n)
+    // S(C) = O(n)
     public boolean isNStraightHand(int[] hand, int groupSize) {
+        if (hand.length % groupSize != 0) return false;
+
+        Map<Integer, Integer> mpp = new HashMap<>();
+        for (int num : hand) {
+            mpp.put(num, mpp.getOrDefault(num, 0) + 1);
+        }
+
+        Arrays.sort(hand);
+        for (int num : hand) {
+            if (mpp.get(num) > 0) {
+                for (int i = num; i < num + groupSize; i++) {
+                    if (mpp.getOrDefault(i, 0) == 0) return false;
+                    mpp.put(i, mpp.get(i) - 1);
+                }
+            }
+        }
 
         return true;
     }
