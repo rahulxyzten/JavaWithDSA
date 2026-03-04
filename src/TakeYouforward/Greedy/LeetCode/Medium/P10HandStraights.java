@@ -41,8 +41,8 @@ public class P10HandStraights {
 
     }
 
-    // Brute Force Approach
-    // T(C) = O(n) + O(nlogn) + O(n)
+    // Using HashMap
+    // T(C) = O(n) + O(n^2)
     // S(C) = O(n)
     public boolean isNStraightHand(int[] hand, int groupSize) {
         if (hand.length % groupSize != 0) return false;
@@ -52,16 +52,46 @@ public class P10HandStraights {
             mpp.put(num, mpp.getOrDefault(num, 0) + 1);
         }
 
-        Arrays.sort(hand);
         for (int num : hand) {
-            if (mpp.get(num) > 0) {
-                for (int i = num; i < num + groupSize; i++) {
-                    if (mpp.getOrDefault(i, 0) == 0) return false;
-                    mpp.put(i, mpp.get(i) - 1);
+            int start = num;
+            while (mpp.getOrDefault(start - 1, 0) > 0) start--;
+
+            while (start <= num) {
+                while (mpp.getOrDefault(start, 0) > 0) {
+                    for (int i = start; i < start + groupSize; i++) {
+                        if (mpp.getOrDefault(i, 0) == 0) return false;
+                        mpp.put(i, mpp.get(i) - 1);
+                    }
                 }
+                start++;
             }
         }
 
         return true;
     }
+
+
+    // Using Sorting
+    // T(C) = O(n) + O(nlogn) + O(n)
+    // S(C) = O(n)
+//    public boolean isNStraightHand(int[] hand, int groupSize) {
+//        if (hand.length % groupSize != 0) return false;
+//
+//        Map<Integer, Integer> mpp = new HashMap<>();
+//        for (int num : hand) {
+//            mpp.put(num, mpp.getOrDefault(num, 0) + 1);
+//        }
+//
+//        Arrays.sort(hand);
+//        for (int num : hand) {
+//            if (mpp.get(num) > 0) {
+//                for (int i = num; i < num + groupSize; i++) {
+//                    if (mpp.getOrDefault(i, 0) == 0) return false;
+//                    mpp.put(i, mpp.get(i) - 1);
+//                }
+//            }
+//        }
+//
+//        return true;
+//    }
 }
