@@ -44,11 +44,16 @@ public class P11DivideArrayConsecutive {
 
     }
 
+
+    // Using HashMap
+    // T(C) = O(n) + O(n^2)
+    // S(C) = O(n)
     public boolean isPossibleDivide(int[] nums, int k) {
         Map<Integer, Integer> map = new HashMap<>();
         for (int num : nums) {
             map.put(num, map.getOrDefault(num, 0) + 1);
         }
+
         while (!map.isEmpty()) {
             int first = Collections.min(map.keySet());
             for (int i = first; i < first + k; i++) {
