@@ -35,6 +35,7 @@ Constraints:
 Note: This question is the same as 846: https://leetcode.com/problems/hand-of-straights/
  */
 
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
@@ -44,28 +45,27 @@ public class P11DivideArrayConsecutive {
 
     }
 
-
-    // Using HashMap
-    // T(C) = O(n) + O(n^2)
+    // Using Sorting
+    // T(C) = O(n) + O(nlogn) + O(n)
     // S(C) = O(n)
     public boolean isPossibleDivide(int[] nums, int k) {
-        Map<Integer, Integer> map = new HashMap<>();
+        if (nums.length % k != 0) return false;
+
+        Map<Integer, Integer> mpp = new HashMap<>();
         for (int num : nums) {
-            map.put(num, map.getOrDefault(num, 0) + 1);
+            mpp.put(num, mpp.getOrDefault(num, 0) + 1);
         }
 
-        while (!map.isEmpty()) {
-            int first = Collections.min(map.keySet());
-            for (int i = first; i < first + k; i++) {
-                if (!map.containsKey(i)) {
-                    return false;
-                }
-                map.put(i, map.get(i) - 1);
-                if (map.get(i) == 0) {
-                    map.remove(i);
+        Arrays.sort(nums);
+        for (int num : nums) {
+            if (mpp.get(num) > 0) {
+                for (int i = num; i < num + k; i++) {
+                    if (mpp.getOrDefault(i, 0) == 0) return false;
+                    mpp.put(i, mpp.get(i) - 1);
                 }
             }
         }
+
         return true;
     }
 }
