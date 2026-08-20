@@ -1,4 +1,4 @@
-/*Take integer inputs till the user enters 0 and print the sum of all numbers (HINT: while loop) */
+/* Take integer inputs till the user enters 0 and print the sum of all numbers (HINT: while loop) */
 package KunalKushwaha.Cp2ConditonalsLoop;
 
 import java.util.Scanner;

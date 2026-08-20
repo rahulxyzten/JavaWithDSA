@@ -19,7 +19,7 @@ public class Prime {
             1 x 36
             2 x 18
             3 x 12
-            4×9
+            4 X 9
             6 x 6
             9 x 4 ( repeat )
             12 x 3
@@ -31,8 +31,8 @@ public class Prime {
 
     public static boolean isPrime(int n) {
         if (n <= 1) return false;
-//        for (int i = 2; i * i <= n; i++) {
-        for (int i = 2; i <= Math.sqrt(n); i++) {
+        for (int i = 2; i * i <= n; i++) {
+//        for (int i = 2; i <= Math.sqrt(n); i++) {
             if (n % i == 0) return false;
         }
 

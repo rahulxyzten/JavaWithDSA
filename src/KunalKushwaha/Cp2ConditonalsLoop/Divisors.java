@@ -34,7 +34,7 @@ public class Divisors {
         System.out.println(Arrays.toString(ans));
     }
 
-    //Brute Force Approach
+    // Brute Force Approach
 //     Time Complexity: O(N), we check for every number from 1 to N.
 //     Space Complexity: O(N), extra space used for storing divisors.
 //    public static int[] divisors(int n) {
@@ -56,8 +56,8 @@ public class Divisors {
 //    }
 
 
-    //Optimal Approach
-    //We can optimise the previous approach by using the property that for any
+    // Optimal Approach
+    // We can optimise the previous approach by using the property that for any
     // non-negative integer n, if d is a divisor of n then n/d is also a divisor
     // of n. This property is symmetric about the square root of N. Thus,
     // by traversing just the first half we can avoid redundant iteration and
@@ -66,7 +66,7 @@ public class Divisors {
             1 x 36
             2 x 18
             3 x 12
-            4×9
+            4 X 9
             6 x 6
             9 x 4 ( repeat )
             12 x 3

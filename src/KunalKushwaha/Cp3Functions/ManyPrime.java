@@ -1,4 +1,4 @@
-//The idea is to use the fact that even numbers (except 2) are not primes.
+// The idea is to use the fact that even numbers (except 2) are not primes.
 /* Time Complexity: O(N2), Where N is the difference between the range
         Auxiliary Space: O(1) */
 package KunalKushwaha.Cp3Functions;
@@ -10,14 +10,17 @@ public class ManyPrime {
         if (num == 0 || num == 1) {
             return false;
         }
+
         if (num == 2) {
             return true;
         }
+
         for (int j = 2; j * j <= num; j++) {
             if (num % j == 0) {
                 return false;
             }
         }
+
         return true;
     }
 
