@@ -50,10 +50,10 @@ public class P1TwoSum {
     }
 
 
-    /*Optimal Solution when it doesn't ask for index it only ask for yes or no*/
-    //(using two-pointer):
-    //T(C) =  O(N) + O(N*logN), where N = size of the array
-    //S(C) = O(1)
+    /* Optimal Solution when it doesn't ask for index it only ask for yes or no */
+    // using two-pointer
+    // T(C) =  O(N) + O(N*logN), where N = size of the array
+    // S(C) = O(1)
     public static String twoSumm(int[] nums, int target) {
         Arrays.sort(nums);
         int n = nums.length;
@@ -68,8 +68,9 @@ public class P1TwoSum {
     }
 
 
-    // Optimal Solution when it asks for index and Better Solution when it asks for Yes or No(Using Hashing)
-    //T(C) = O(N) where N = size of the array.
+    // Optimal Solution when it asks for index and Better Solution when it asks for Yes or No
+    // Using Hashing
+    // T(C) = O(N) where N = size of the array.
     // Reason: The loop runs N times in the worst case and searching
     // in a hashmap takes O(1) generally. So the time complexity is O(N).
 
@@ -78,7 +79,7 @@ public class P1TwoSum {
     // If we use map instead of unordered_map, the time complexity will be O(N* logN)
     // as the map data structure takes logN time to find an element.
 
-    //S(C) = O(N) as we use the map data structure
+    // S(C) = O(N) as we use the map data structure
     public static int[] twoSum(int[] nums, int target) {
         int[] ans = {-1, -1};
         int n = nums.length;
@@ -96,8 +97,8 @@ public class P1TwoSum {
         return ans;
     }
 
-//    /*Brute Force (Best Solution)*/
-//    //T(C) = O(N^2) & S(C) = O(1)
+//    /* Brute Force */
+//    // T(C) = O(N^2) & S(C) = O(1)
 //    public static int[] twoSum(int[] nums, int target) {
 //        int n = nums.length;
 //        for (int i = 0; i < n - 1; i++) {
@@ -108,22 +109,5 @@ public class P1TwoSum {
 //            }
 //        }
 //        return new int[]{}; // No solution found
-//
-//
-//        /*Brute Force (My solution) */
-//        int[] arr = new int[2];
-//        int n = nums.length;
-//        for (int i = 0; i < n - 1; i++) {
-//            for (int j = i + 1; j < n; j++) {
-//                if (nums[i] + nums[j] == target) {
-//                    arr[0] = i;
-//                    arr[1] = j;
-//                    return arr;
-//                }
-//            }
-//        }
-//        return arr; // No solution found empty array
-//
 //    }
-
 }

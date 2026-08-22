@@ -106,8 +106,6 @@ public class P1FaultyKeyboard {
 //        }
 //
 //        System.out.println(new String(result));
-
-
     }
 }
 
