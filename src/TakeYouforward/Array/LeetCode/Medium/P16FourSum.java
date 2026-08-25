@@ -41,7 +41,7 @@ public class P16FourSum {
         System.out.println(fourSum(nums, target));
     }
 
-    /* Optimal Approach (Tow Pointer Approach) */
+    /* Optimal Approach (Two Pointer Approach) */
     // T(C) = O(NlogN + N^3)
     // S(C) =  O(no. of the unique quadruplets)
     public static List<List<Integer>> fourSum(int[] nums, int target) {
@@ -49,23 +49,23 @@ public class P16FourSum {
         Arrays.sort(nums);
         List<List<Integer>> result = new ArrayList<>();
 
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < n - 3; i++) {
             if (i > 0 && nums[i] == nums[i - 1]) continue;
-            for (int j = i + 1; j < n; j++) {
+            for (int j = i + 1; j < n - 2; j++) {
                 if (j > (i + 1) && nums[j] == nums[j - 1]) continue;
 
                 int k = j + 1, l = n - 1;
                 while (k < l) {
                     long sum = (long) nums[i] + nums[j] + nums[k] + nums[l];
-                    // Type Conversion (long) must have done here only
+                    // Type Conversion (long) must be done here only
                     if (sum == target) {
                         result.add(Arrays.asList(nums[i], nums[j], nums[k], nums[l]));
                         k++;
                         l--;
                         while (k < l && nums[k] == nums[k - 1]) k++;
                         while (k < l && nums[l] == nums[l + 1]) l--;
-                    } else if (sum < target) k++;
-                    else l--;
+                    } else if (sum > target) l--;
+                    else k++;
                 }
             }
         }
@@ -78,26 +78,25 @@ public class P16FourSum {
     // S(C) =  O(2 * no. of the unique quadruplets) + O(N)
 //    public static List<List<Integer>> fourSum(int[] nums, int target) {
 //        int n = nums.length;
-//        Set<List<Integer>> set = new HashSet<>();
+//        HashSet<List<Integer>> result = new HashSet<>();
 //
 //        for (int i = 0; i < n; i++) {
 //            for (int j = i + 1; j < n; j++) {
-//                Set<Integer> seen = new HashSet<>();
+//                HashSet<Long> seen = new HashSet<>();
 //                for (int k = j + 1; k < n; k++) {
-//                    long sum = nums[i] + nums[j] + nums[k];
+//                    long sum = (long) nums[i] + nums[j] + nums[k];
 //                    long rem = target - sum;
-//                    if (seen.contains((int) rem)) {
+//                    if (seen.contains(rem)) {
 //                        List<Integer> temp = Arrays.asList(nums[i], nums[j], nums[k], (int) rem);
 //                        Collections.sort(temp);
-//                        set.add(temp);
+//                        result.add(temp);
 //                    }
-//
-//                    seen.add(nums[k]);
+//                    seen.add((long) nums[k]);
 //                }
 //            }
 //        }
 //
-//        return new ArrayList<>(set);
+//        return new ArrayList<>(result);
 //    }
 
     /* Brute Force Approach */

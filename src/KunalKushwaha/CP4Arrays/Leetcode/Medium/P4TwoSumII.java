@@ -65,7 +65,7 @@ public class P4TwoSumII {
     // S(C) = O(1)
     public int[] twoSum(int[] numbers, int target) {
         int n = numbers.length;
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < n - 1; i++) {
             int start = i + 1, end = n - 1;
             int rem = target - numbers[i];
             while (start <= end) {

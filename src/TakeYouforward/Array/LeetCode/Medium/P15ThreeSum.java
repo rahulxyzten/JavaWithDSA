@@ -52,7 +52,7 @@ public class P15ThreeSum {
         Arrays.sort(nums);
         List<List<Integer>> result = new ArrayList<>();
 
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < n - 2; i++) {
             // If i is not the first element then we need to skip the duplicates.
             if (i > 0 && nums[i] == nums[i - 1]) continue;
 
@@ -70,6 +70,7 @@ public class P15ThreeSum {
                 } else if (sum < 0) j++;
                 else k--;
                 // You can do this also, but not necessary T(C) is same only
+                // but the above while are necessary inorder to remove the duplicates triplets
 //                else if (sum < 0) {
 //                    j++;
 //                    while (j < k && nums[j] == nums[j - 1]) j++;
