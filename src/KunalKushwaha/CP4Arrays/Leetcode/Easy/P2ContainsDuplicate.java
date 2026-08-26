@@ -1,7 +1,7 @@
 package KunalKushwaha.CP4Arrays.Leetcode.Easy;
 
 import java.util.*;
-//Problem
+// Problem
 /*
 217. Contains Duplicate
 
@@ -43,6 +43,7 @@ public class P2ContainsDuplicate {
             if (seen.containsKey(num)) return true;
             seen.put(num, seen.getOrDefault(num, 0) + 1);
         }
+
         return false;
     }
 
@@ -52,6 +53,7 @@ public class P2ContainsDuplicate {
 //            if (hset.contains(num)) return true;
 //            else hset.add(num);
 //        }
+//
 //        return false;
 //    }
 
@@ -63,7 +65,7 @@ public class P2ContainsDuplicate {
 //            if (nums[i] == nums[i - 1])
 //                return true;
 //        }
+//
 //        return false;
 //    }
-
 }

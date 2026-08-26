@@ -1,8 +1,7 @@
 package KunalKushwaha.CP4Arrays.Leetcode.Easy;
-//Question
+// Question
 /*
 26. Remove Duplicates from Sorted Array
-Easy
 
 Given an integer array nums sorted in non-decreasing order, remove the duplicates in-place such that each unique element appears only once. The relative order of the elements should be kept the same. Then return the number of unique elements in nums.
 
@@ -43,7 +42,7 @@ It does not matter what you leave beyond the returned k (hence they are undersco
 
 Constraints:
 
-1 <= nums.length <= 3 * 104
+1 <= nums.length <= 3 * 10^4
 -100 <= nums[i] <= 100
 nums is sorted in non-decreasing order.
  */
