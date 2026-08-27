@@ -1,5 +1,5 @@
 package TakeYouforward.Array.LeetCode.Medium;
-//Question
+// Question
 
 /*
 169. Majority Element
@@ -51,13 +51,11 @@ public class P6MajorityElement {
     }
 
 
-    /*Optimal approach ( O(N)time complexity & O(1) space complexity )*/
-    /* Moore’s Voting Algorithm: */
+    /* Optimal approach ( O(N) time complexity & O(1) space complexity )*/
+    /* Moore’s Voting Algorithm */
     public static int majorityElement(int[] nums) {
-        int n = nums.length;
-        int count = 0;
-        int ele = Integer.MIN_VALUE;
-//        int ele = 0;
+        // int n = nums.length;
+        int ele = 0, count = 0;
 
         for (int num : nums) {
             if (count == 0) {
@@ -67,18 +65,21 @@ public class P6MajorityElement {
             else count--;
         }
 
-        int count1 = 0;
-        for (int num : nums) {
-            if (num == ele) count1++;
-        }
+        // // Verification no need here (You may assume that the majority element always exists in the array.)
+        // int count1 = 0;
+        // for (int num : nums) {
+        //     if (num == ele)
+        //         count1++;
+        // }
 
-        if (count1 > n / 2) return ele;
+        // if (count1 > n / 2)
+        //     return ele;
 
-        return -1;
+        return ele;
     }
 
 
-    /* Better Approach (Using hash function) ( O(NlogN) + O(N) time complexity & O(N) space complexity )  */
+    /* Better Approach (Using hashing) ( O(NlogN) == O(N) time complexity & O(N) space complexity )  */
 //    public static int majorityElement(int[] nums) {
 //        int n = nums.length;
 //        HashMap<Integer, Integer> map = new HashMap<>();
@@ -87,7 +88,8 @@ public class P6MajorityElement {
 //            int value = map.getOrDefault(num, 0);
 //            map.put(num, value + 1);
 //
-//            if (map.get(num) > n / 2) return num;
+//            if ((value + 1) > n / 2)
+//                return num;
 //        }
 //
 //        return -1;
@@ -115,58 +117,5 @@ public class P6MajorityElement {
 //        return nums[n / 2];
 //        //after array is sort the majority element present at index n/2
 //
-//    }
-
-
-    /* Brute force Approach (Find according to frequency) */
-//    public static int majorityElement(int[] nums) {
-//        int[] frequency = new int[nums.length];
-//        for (int i = 0; i < nums.length; i++) {
-//            for (int j = 0; j < nums.length; j++) {
-//                if (nums[i] == nums[j]) {
-//                    frequency[i]++;
-//                }
-//            }
-//        }
-//
-//        int maxIndex = 0;
-//        int maxElement = frequency[0];
-//        for (int i = 0; i < frequency.length; i++) {
-//            if (frequency[i] > maxElement) {
-//                maxElement = frequency[i];
-//                maxIndex = i;
-//            }
-//        }
-//
-//        return nums[maxIndex];
-
-    /*Using ArrayList*/
-//        ArrayList<Integer> list = new ArrayList<>();
-//        list.add(nums[0]);
-//        for (int i = 1; i < nums.length; i++) {
-//            if (!list.contains(nums[i])) {
-//                list.add(nums[i]);
-//            }
-//        }
-//        int[] frequency = new int[list.size()];
-//        for (int i = 0; i < list.size(); i++) {
-//            for (int j = 0; j < nums.length; j++) {
-//                if (list.get(i) == nums[j]) {
-//                    frequency[i]++;
-//                }
-//            }
-//        }
-//        int maxIndex = 0;
-//        int maxElement = frequency[0];
-//
-//        for (int i = 0; i < frequency.length; i++) {
-//            if (frequency[i] > maxElement) {
-//                maxElement = frequency[i];
-//                maxIndex = i;
-//            }
-//        }
-//
-//        return list.get(maxIndex);
-
 //    }
 }

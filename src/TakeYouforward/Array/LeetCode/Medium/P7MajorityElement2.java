@@ -1,11 +1,8 @@
 package TakeYouforward.Array.LeetCode.Medium;
-//Problem
+// Problem
 /*
 229. Majority Element II
-Medium
-8.1K
-359
-Companies
+
 Given an integer array of size n, find all elements that appear more than ⌊ n/3 ⌋ times.
 
 
@@ -45,48 +42,41 @@ public class P7MajorityElement2 {
         System.out.println(majorityElement(nums));
     }
 
-    //Optimal Approach T(C) = (O(N) + O(N) and S(C) = O(1)
+    // Optimal Approach T(C) = (O(N) + O(N) and S(C) = O(1)
     public static List<Integer> majorityElement(int[] nums) {
-        int n = nums.length;
-        List<Integer> ls = new ArrayList<>();
-        int count1 = 0, count2 = 0, ele1 = Integer.MIN_VALUE, ele2 = Integer.MIN_VALUE;
-        for (int i = 0; i < n; i++) {
-            if (count1 == 0 && nums[i] != ele2) {
-                count1 = 1;
-                ele1 = nums[i];
-            } else if (count2 == 0 && nums[i] != ele1) {
-                count2 = 1;
-                ele2 = nums[i];
-            } else if (ele1 == nums[i]) count1++;
-            else if (ele2 == nums[i]) count2++;
+        int ele1 = Integer.MIN_VALUE, cnt1 = 0, ele2 = Integer.MIN_VALUE, cnt2 = 0;
+
+        for (int num : nums) {
+            if (cnt1 == 0 && num != ele2) {
+                ele1 = num;
+                cnt1 = 1;
+            } else if (cnt2 == 0 && num != ele1) {
+                ele2 = num;
+                cnt2 = 1;
+            } else if (num == ele1) cnt1++;
+            else if (num == ele2) cnt2++;
             else {
-                count1--;
-                count2--;
+                cnt1--;
+                cnt2--;
             }
         }
-        int cnt1 = 0, cnt2 = 0;
+
+        int count1 = 0, count2 = 0;
         for (int num : nums) {
-            if (num == ele1) cnt1++;
-            if (num == ele2) cnt2++;
-        }
-        if (cnt1 > n / 3) ls.add(ele1);
-        if (cnt2 > n / 3) ls.add(ele2);
-
-        for (Integer element : ls) {
-            System.out.print(element + " ");
+            if (num == ele1) count1++;
+            else if (num == ele2) count2++;
         }
 
-        return ls;
+        int min = (nums.length / 3) + 1;
+        List<Integer> result = new ArrayList<>();
+        if (count1 >= min) result.add(ele1);
+        if (count2 >= min) result.add(ele2);
+
+        return result;
     }
 
 
-    //Better Approach (O(N*logN)time & O(N)space) (Using Hashing)
-    /*
-    We are using a map data structure. Insertion in the map takes logN time. And we are doing it for N elements. So,
-    it results in the first term O(N*logN).
-    If we use unordered_map instead, the first term will be O(N) for the best and average case and for the worst case,
-    it will be O(N2).
-    */
+    // Better Approach (O(N*logN) == O(N) time & O(N)space) (Using Hashing)
 //    public static List<Integer> majorityElement(int []nums) {
 //        int n = nums.length;
 //        Map<Integer, Integer> map = new HashMap<>();
@@ -97,14 +87,14 @@ public class P7MajorityElement2 {
 //            int val = map.getOrDefault(num, 0);
 //            map.put(num, val + 1);
 //
-//            if (map.get(num) == min) list.add(num);
+//            if ((val + 1) == min) list.add(num);
 //            if (list.size() == 2) return list;
 //        }
 //
 //        return list;
 //    }
 
-    //Brute Force Approach (O(N^2)time O(1)space)
+    // Brute Force Approach (O(N^2)time O(1)space)
 //    public static List<Integer> majorityElement(int[] nums) {
 //        int n = nums.length; //size of the array
 //        List<Integer> ls = new ArrayList<>(); // list of answers
