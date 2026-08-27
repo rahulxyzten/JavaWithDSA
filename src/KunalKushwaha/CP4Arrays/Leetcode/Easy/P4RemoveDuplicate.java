@@ -47,31 +47,25 @@ Constraints:
 nums is sorted in non-decreasing order.
  */
 
-/* Input: nums = [0,0,1,1,1,2,2,3,3,4]
-Output: 5, nums = [0,1,2,3,4,_,_,_,_,_]
-Input: nums = [1,1,2]
-Output: 2, nums = [1,2,_]
-*/
 public class P4RemoveDuplicate {
     public static void main(String[] args) {
         int[] nums = {1, 1, 2};
         System.out.println(removeDuplicates(nums));
     }
 
-    //Both the Code are Optimal because
-    //Both take T(C) = O(N)
-    //S(C) = O(1)
+    // Both Codes are Optimal because
+    // Both takes T(C) = O(N), S(C) = O(1)
 
-
-    //Two pointers
+    // Two pointers Approach
     public static int removeDuplicates(int[] nums) {
         int i = 0;
-        for (int j = 0; j < nums.length; j++) {
+        for (int j = 1; j < nums.length; j++) {
             if (nums[i] != nums[j]) {
                 i++;
                 nums[i] = nums[j];
             }
         }
+
         return i + 1;
     }
 
@@ -83,8 +77,8 @@ public class P4RemoveDuplicate {
 //                index++;
 //            }
 //        }
-//        //Here how many times the new element occurs that many times index is increment
-//        //which is initially 1 ( which is holds the first element which index is 0 )
+//        // Here, for how many times the new element occurs that many times index is increment
+//        // which is initially 1 ( which is holds the first element which index is 0 )
 //
 //        return index;
 //    }

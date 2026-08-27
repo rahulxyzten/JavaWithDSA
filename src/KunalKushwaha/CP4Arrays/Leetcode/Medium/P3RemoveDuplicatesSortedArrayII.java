@@ -1,5 +1,5 @@
 package KunalKushwaha.CP4Arrays.Leetcode.Medium;
-//problem
+// Problem
 /*
 80. Remove Duplicates from Sorted Array II
 
@@ -60,22 +60,33 @@ public class P3RemoveDuplicatesSortedArrayII {
     }
 
 
-    /*Optimal Solution (Two Pointer Method) */
-    //T(C) = O(N) & S(C) = O(1)
+    /* Optimal Solution (Two Pointer Method) */
+    // T(C) = O(N) & S(C) = O(1)
     public static int removeDuplicates(int[] nums) {
-        int i = 0;
-        for (int num : nums) {
-            if (i == 0 || i == 1 || nums[i - 2] != num) {
-                nums[i] = num;
+        int i = 2, n = nums.length;
+        for (int j = 2; j < n; j++) {
+            if (nums[i - 2] != nums[j]) {
+                nums[i] = nums[j];
                 i++;
             }
         }
-        System.out.println(Arrays.toString(nums));
+
         return i;
     }
+//    public static int removeDuplicates(int[] nums) {
+//        int i = 0;
+//        for (int num : nums) {
+//            if (i == 0 || i == 1 || nums[i - 2] != num) {
+//                nums[i] = num;
+//                i++;
+//            }
+//        }
+//
+//        return i;
+//    }
 
-    /*Brute Force Approach (Using Hashing) */
-    //T(C) = O(2N) & S(C) = O(2N)
+    /* Brute Force Approach (Using Hashing) */
+    // T(C) = O(2N) & S(C) = O(2N)
 //    public static int removeDuplicates(int[] nums) {
 //        Map<Integer, Integer> map = new HashMap<>();
 //        List<Integer> list = new ArrayList<>();
