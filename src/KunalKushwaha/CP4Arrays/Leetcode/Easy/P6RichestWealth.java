@@ -44,18 +44,6 @@ public class P6RichestWealth {
         System.out.println(maximumWealth(accounts));
     }
 
-//    public static int maximumWealth(int[][] accounts) {
-//        int wealth = 0;
-//        for (int i = 0; i < accounts.length; i++) {
-//            int rsum = 0;
-//            for (int j = 0; j < accounts[i].length; j++) {
-//                rsum = rsum + accounts[i][j];
-//            }
-//            wealth = Math.max(wealth, rsum);
-//        }
-//        return wealth;
-//    }
-
     // T(C) = O(M*N) M = number of rows and N = number of columns
     // S(C) = O(1)
     public static int maximumWealth(int[][] accounts) {
@@ -67,6 +55,7 @@ public class P6RichestWealth {
             }
             wealth = Math.max(wealth, rsum);
         }
+
         return wealth;
     }
 }

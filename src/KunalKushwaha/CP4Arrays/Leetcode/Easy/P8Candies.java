@@ -49,46 +49,19 @@ public class P8Candies {
         int[] candies = {2, 3, 5, 1, 3};
         int extraCandies = 3;
         System.out.println(kidsWithCandies(candies, extraCandies));
-
     }
 
     // T(C) = O(2N) and S(C) = O(N)
-//    public static List<Boolean> kidsWithCandies(int[] candies, int extraCandies) {
-//        List<Boolean> ans = new ArrayList<>();
-//        int max = 0;
-//        for(int candy: candies){
-//            max = Math.max(candy,max);
-//        }
-//        for(int candy: candies){
-//            ans.add(candy + extraCandies >= max);
-//        }
-//
-//        return ans;
-//    }
-
     public static List<Boolean> kidsWithCandies(int[] candies, int extraCandies) {
-        List<Boolean> result = new ArrayList<>();
-        int max = Integer.MIN_VALUE;
-        for (int num : candies) {
-            max = Math.max(max, num);
+        List<Boolean> ans = new ArrayList<>();
+        int max = 0;
+        for (int candy : candies) {
+            max = Math.max(candy, max);
         }
-        for (int num : candies) {
-            result.add((num + extraCandies) >= max);
+        for (int candy : candies) {
+            ans.add(candy + extraCandies >= max);
         }
-        return result;
+
+        return ans;
     }
-
-
-//    public static List<Boolean> kidsWithCandies(int[] candies, int extraCandies) {
-//        List<Boolean> stringList = new ArrayList<>();
-//        int maxElement = Arrays.stream(candies).max().getAsInt();
-//        for (int i = 0; i < candies.length; i++) {
-//            if (candies[i] + extraCandies >= maxElement){
-//                stringList.add(true);
-//            }else {
-//                stringList.add(false);
-//            }
-//        }
-//    return stringList;
-//    }
 }

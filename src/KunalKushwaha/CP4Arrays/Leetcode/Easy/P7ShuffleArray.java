@@ -41,8 +41,8 @@ public class P7ShuffleArray {
     }
 
 
-    // T(C) = O(n) not the size of the array given n
-    // S(C) = O(N) size fo the array
+    // T(C) = O(N)
+    // S(C) = O(N)
     public static int[] shuffle(int[] nums, int n) {
         int[] result = new int[nums.length];
         int j = 0; // Index for the second half of the array
@@ -51,42 +51,21 @@ public class P7ShuffleArray {
             result[j++] = nums[i]; // Store xi
             result[j++] = nums[i + n]; // Store yi
         }
-          // Pre incrementer a++ (first print then increment )
-         // 1st iteration j++ = 0 (j value is 0 then increment by 1) and j = 1 (j value is 1 then increment by 2 for the next iteration)
-         // 1st iteration j++ = 0 (j value is 2 then increment by 3) and j = 1 (j value is 3 then increment by 4 for the next iteration)
-         // 1st iteration j++ = 0 (j value is 4 then increment by 5) and j = 1 (j value is 5)
+
         return result;
     }
+
 //    public static int[] shuffle(int[] nums, int n) {
 //        int[] result = new int[nums.length];
-//        int j = 0; // Index for the second half of the array
+//        int index = 0;
 //
-//        for (int i = 0; i < n; i++) {
-//            result[j] = nums[i];
-//            result[j + 1] = nums[i + n]; // j + 1 means the original j is not increasing
-//            j = j + 2;
-//            // for i = 0 result[0] result[1]
-//            // for i = 1 result[2] result[3]
-//            // for i = 2 result[4] result[5]
+//        for (int i = 0; i < 2 * n; i += 2) {
+//            result[i] = nums[index];
+//            result[i + 1] = nums[index + n];
+//            index++;
 //        }
+//
 //        return result;
 //    }
-
-
-//    public static int[] shuffle(int[] nums, int n) {
-//        int[] result = new int[nums.length];
-//        int j = 0;
-//        for (int i = 0; i < nums.length; i++) {
-//            if (i % 2 == 0) {
-//                result[i] = nums[j];
-//                j++;
-//            } else {
-//                result[i] = nums[n];
-//                n++;
-//            }
-//        }
-//        return result;
-//    }
-
 }
 

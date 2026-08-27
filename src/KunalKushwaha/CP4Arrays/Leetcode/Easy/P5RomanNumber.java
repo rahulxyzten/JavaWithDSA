@@ -1,8 +1,8 @@
 package KunalKushwaha.CP4Arrays.Leetcode.Easy;
 
-import java.util.HashMap;
 //https://youtu.be/tsmrUi5M1JU
 
+// Problem
 /*
 13. Roman to Integer
 Roman numerals are represented by seven different symbols: I, V, X, L, C, D and M.
@@ -58,77 +58,27 @@ public class P5RomanNumber {
     }
 
 
-    /* Best Solution (in terms of time and space) */
+    /* Optimal Solution */
     // T(C) = O(N) and S(C) = O(1)
     public static int romanToInt(String s) {
-        int ans = 0, num = 0, prev = 0;
-        for (int i = s.length() - 1; i >= 0; i--) {
+        int ans = 0, curr = 0, prev = 0, n = s.length();
+        for (int i = n - 1; i >= 0; i--) {
             switch (s.charAt(i)) {
-                case 'I' -> num = 1;
-                case 'V' -> num = 5;
-                case 'X' -> num = 10;
-                case 'L' -> num = 50;
-                case 'C' -> num = 100;
-                case 'D' -> num = 500;
-                case 'M' -> num = 1000;
+                case 'I' -> curr = 1;
+                case 'V' -> curr = 5;
+                case 'X' -> curr = 10;
+                case 'L' -> curr = 50;
+                case 'C' -> curr = 100;
+                case 'D' -> curr = 500;
+                case 'M' -> curr = 1000;
             }
-            if (num < prev) {
-                ans -= num;
-            } else {
-                ans += num;
-            }
-            prev = num;
+
+            if (curr < prev) ans -= curr;
+            else ans += curr;
+            prev = curr;
         }
 
         return ans;
     }
-
-    /* Best Solution (in terms of time and space) */
-//    public static int romanToInt(String s) {
-//        int answer = 0, number = 0, prev = 0;
-//
-//        for (int j = s.length() - 1; j >= 0; j--) {
-//            switch (s.charAt(j)) {
-//                case 'M' -> number = 1000;
-//                case 'D' -> number = 500;
-//                case 'C' -> number = 100;
-//                case 'L' -> number = 50;
-//                case 'X' -> number = 10;
-//                case 'V' -> number = 5;
-//                case 'I' -> number = 1;
-//            }
-//            if (number < prev) {
-//                answer -= number;
-//            } else {
-//                answer += number;
-//            }
-//            prev = number;
-//        }
-//        return answer;
-//    }
-
-//    public static int romanToInt(String s) {
-//        HashMap<Character, Integer> roman = new HashMap<>();
-//        roman.put('I', 1);
-//        roman.put('V', 5);
-//        roman.put('X', 10);
-//        roman.put('L', 50);
-//        roman.put('C', 100);
-//        roman.put('D', 500);
-//        roman.put('M', 1000);
-//
-//        int total = 0;
-//        for (int i = 0; i < s.length() - 1; i++) {
-//            if (roman.get(s.charAt(i)) < roman.get(s.charAt(i + 1))) {
-//                total -= roman.get(s.charAt(i));
-//            } else {
-//                total += roman.get(s.charAt(i));
-//            }
-//        }
-//        return total + roman.get(s.charAt(s.length() - 1));
-//
-//
-//    }
-
 }
 
