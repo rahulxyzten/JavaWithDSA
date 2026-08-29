@@ -65,7 +65,7 @@ public class P10HowManyNumbersAreSmaller {
         return nums;
     }
 
-    //Brute force approach T(C) = O(N^2) and S(C) = O(1)
+    // Brute force approach T(C) = O(N^2) and S(C) = O(1)
 //    public static int[] smallerNumbersThanCurrent(int[] nums) {
 //        int[] result = new int[nums.length];
 //        for (int i = 0; i < nums.length; i++) {
