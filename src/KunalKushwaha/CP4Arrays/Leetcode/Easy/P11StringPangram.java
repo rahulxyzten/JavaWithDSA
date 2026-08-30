@@ -33,24 +33,27 @@ public class P11StringPangram {
     }
 
 
-    /* Memory more but time is 0ms */
+    /* applicable for if the string in small letters or capital letters  */
+    // T((C) = O(N) and S(C) = O(1)
 //    public static boolean checkIfPangram(String sentence) {
 //        if(sentence.length() < 26) {
 //            return false;
 //        }
+//
 //        String alphabets = "abcdefghijklmnopqrstuvwxyz";
 //        for(int i = 0; i < alphabets.length(); i++) {
 //            if(sentence.indexOf(alphabets.charAt(i)) == -1) {
 //                return false;
 //            }
 //        }
+//
 //        return true;
 //    }
 
 
-    /*Below code for applicable for if the string in small letters*/
+    /* Below code for applicable for if the string in small letters */
     // If it also tells for the capital letter then we have to increase the size of
-    //  the array to 56 and do some modification to solve the problem
+    // the array to 56 and do some modification to solve the problem
     // T(C) = O(N) and S(C) = O(1)
 
     public static boolean checkIfPangram(String sentence) {
@@ -87,7 +90,7 @@ public class P11StringPangram {
 //    }
 
 
-    /*Below code for applicable for if the string in small letters or capital letters*/
+    /* Below code for applicable for if the string in small letters or capital letters */
     // T((C) = O(N) and S(C) = O(N)
 //        public static boolean checkIfPangram(String sentence) {
 //        Set<Character> hset = new HashSet<>();

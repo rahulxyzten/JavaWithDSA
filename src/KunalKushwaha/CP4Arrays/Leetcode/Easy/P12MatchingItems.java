@@ -77,44 +77,4 @@ public class P12MatchingItems {
 
         return count;
     }
-
-
-    /* Runtime 6ms  Memory 47.3MB */
-    //If rule value is present more than one time then that function gives
-    //count of the rule value instate of giving the index of the rule value
-//    public static int countMatches(List<List<String>> items, String ruleKey, String ruleValue) {
-//        int res = 0;
-//
-//        for(int i = 0 ;i<items.size();i++){
-//            if(ruleKey.equals("type") && items.get(i).get(0).equals(ruleValue)) res++;
-//            if(ruleKey.equals("color") && items.get(i).get(1).equals(ruleValue)) res++;
-//            if(ruleKey.equals("name") && items.get(i).get(2).equals(ruleValue)) res++;
-//        }
-//
-//        return res;
-//
-//    }
-
-
-//    public static int countMatches(List<List<String>> items, String ruleKey, String ruleValue) {
-//        int a = 0;
-//        switch (ruleKey){
-//            case "type":
-//                a = 0;
-//                break;
-//            case "color":
-//                a = 1;
-//                break;
-//            case "name":
-//                a = 2;
-//                break;
-//        }
-//        int c = 0;
-//        for (int i = 0; i < items.size() ; i++) {
-//            if (Objects.equals(items.get(i).get(a), ruleValue)){
-//                    c = c + 1;
-//                }
-//        }
-//        return c;
-//    }
 }

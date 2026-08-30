@@ -50,6 +50,7 @@ public class P13HighestAltitude {
             currentaltitude += num;
             maxaltitude = Math.max(maxaltitude, currentaltitude);
         }
+
         return maxaltitude;
     }
 }

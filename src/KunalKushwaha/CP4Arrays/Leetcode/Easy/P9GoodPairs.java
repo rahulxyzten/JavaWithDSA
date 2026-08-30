@@ -40,9 +40,9 @@ public class P9GoodPairs {
 
     }
 
-    //Optimal approach T(C) = O(N) and S(C) = O(N)
-    //Explanation
-    /*Imagine this problem like, There is a gathering organized by some guy, the guest list is [1,2,3,1,1,3].
+    // Optimal approach T(C) = O(N) and S(C) = O(N)
+    // Explanation
+    /* Imagine this problem like, There is a gathering organized by some guy, the guest list is [1,2,3,1,1,3].
     The problem with the guest is they only handshake with like minded people. (Like minded here is basically the digit should be same ,
     for example, 1 will handshake with 1 only, 2 will handshake with 2 only and so on)
 
@@ -75,17 +75,18 @@ public class P9GoodPairs {
     therefore totalHandShake = 3(last handshake) + 1(3a-3b) = 4 */
     public static int numIdenticalPairs(int[] nums) {
         HashMap<Integer, Integer> mp = new HashMap<>();
-        int ans = 0;
+        int handshake = 0;
         for (int num : nums) {
             int count = mp.getOrDefault(num, 0);
-            ans += count;
+            handshake += count;
             mp.put(num, count + 1);
         }
-        return ans;
+
+        return handshake;
     }
 
 
-    //Brute force approach T(C) = O(N^2) and S(C) = O(1)
+    // Brute force approach T(C) = O(N^2) and S(C) = O(1)
 //    public static int numIdenticalPairs(int[] nums) {
 //        int c = 0;
 //        for (int i = 0; i < nums.length - 1; i++) {
