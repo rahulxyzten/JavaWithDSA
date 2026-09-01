@@ -32,32 +32,42 @@ public class P16EvenNumberDigits {
     public static void main(String[] args) {
         int[] nums = {12, 345, 2, 6, 7896};
 
-        //For the below input the out should be 3 but gives 2 (ERROR)
-//        int[] nums = {12, 345, 0002, 6, 7896};
+
+//        int[] nums = {12, 345, 2, 6, 7896};
         System.out.println(findNumbers(nums));
     }
 
-    // T(C) = O(N) * log10M  (M is the largest number of the array)
-    // S(C) = O(1)
+    /* Optimal Solution */
+    // T(C) = O(N) & S(C) = O(1)
     public static int findNumbers(int[] nums) {
         int count = 0;
         for (int num : nums) {
-            if (digits(num) % 2 == 0) count++;
+            if ((num > 9 && num < 100) || (num > 999 && num < 10000) || num == 100000) count++;
         }
         return count;
     }
 
-    private static int digits(int num) {
-        if (num < 0) num = -(num);
-        if (num == 0) return 1;
-        int count = 0;
-        while (num > 0) {
-            count++;
-            num /= 10;
-        }
-        return count;
-        //        return (int)(Math.log10(num)) + 1;
-    }
+    /* Brute Force Approach */
+    // T(C) = O(N) * log10M  (M is the largest number of the array)
+    // S(C) = O(1)
+//    public static int findNumbers(int[] nums) {
+//        int count = 0;
+//        for (int num : nums) {
+//            if (digits(num) % 2 == 0) count++;
+//        }
+//        return count;
+//    }
+//
+//    private static int digits(int num) {
+//        if (num == 0) return 1;
+//        int count = 0;
+//        while (num != 0) {
+//            count++;
+//            num /= 10;
+//        }
+//        return count;
+//        // return (int)(Math.log10(num)) + 1;
+//    }
 
 //    public static int findNumbers(int[] nums) {
 //        int count = 0;
@@ -69,34 +79,5 @@ public class P16EvenNumberDigits {
 //        }
 //        return count;
 //    }
-
-
 }
-
-
-//    public static int findNumbers(int[] nums) {
-//        int count=0;
-//        for(int i =0 ; i< nums.length; i++){
-//            if((nums[i]>9 && nums[i]<100) || (nums[i]>999 && nums[i]<10000) || nums[i]==100000){
-//                count++;
-//            }
-//        }
-//        return count;
-//
-//    }
-
-//    public static int findNumbers(int[] nums) {
-//        int c = 0;
-//        for (int i = 0; i < nums.length; i++) {
-//            int n = nums[i];
-//            int count = 0;
-//            while (n!=0){
-//                int rem = n % 10;
-//                count ++;
-//                n = n /10;
-//            }
-//            if (count % 2 == 0) c++;
-//        }
-//        return c;
-//    }
 

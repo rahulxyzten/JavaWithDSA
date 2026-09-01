@@ -42,7 +42,7 @@ public class P15MatrixDiagonal {
         System.out.println(diagonalSum(mat));
     }
 
-    /* BEST TYPE */
+    /* Optimal Solution */
     // T(C) = O(N) and S(C) = O(1)
     public static int diagonalSum(int[][] mat) {
         int n = mat.length;
@@ -55,9 +55,11 @@ public class P15MatrixDiagonal {
         if (n % 2 == 1) {
             sum -= mat[mid][mid];
         }
+
         return sum;
     }
 
+    /* Brute Force Approach */
     // T(C) = (N*N) and S(C) = O(1)
 //    public static int diagonalSum(int[][] mat) {
 //        int pDiagonal = 0;
@@ -89,6 +91,7 @@ public class P15MatrixDiagonal {
 //            }
 //            result = pDiagonal+sDiagonal - mat[mid][mid];
 //        }
+//
 //        return result;
 //    }
 }
