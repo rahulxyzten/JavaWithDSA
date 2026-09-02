@@ -1,11 +1,8 @@
 package KunalKushwaha.CP4Arrays.Leetcode.Medium;
-//Question
+// Question
 /*
 48. Rotate Image
-Medium
-15.8K
-692
-Companies
+
 
 You are given an n x n 2D matrix representing an image, rotate the image by 90 degrees (clockwise).
 
@@ -41,8 +38,8 @@ public class P2RotateMatrixImage {
         rotate(matrix);
     }
 
-    /* Best code with best time and space complexity */
-    //T(C) = O(N*N) + O(N*N) => One O(N*N) is for transposing the matrix and the other one is for reversing the matrix.
+    /* Best code */
+    //T(C) = O(N*N) + O(N*N) => O(N*N) is for transposing the matrix and the other one is for reversing the matrix.
     //S(C) = O(1)
     public static void rotate(int[][] matrix) {
         int n = matrix.length;
@@ -84,18 +81,5 @@ public class P2RotateMatrixImage {
 //        }
 //
 //        System.out.println(Arrays.deepToString(matrix));
-//    }
-
-
-    /* DO NOT allocate another 2D matrix and do the rotation. */
-//    public static void rotate(int[][] matrix) {
-//        int n = matrix.length;
-//        int[][] result = new int[n][n];
-//        for (int i = 0; i < n; i++) {
-//            for (int j = 0; j < n; j++) {
-//                result[i][j] = matrix[n - 1 - j][i];
-//            }
-//        }
-//        System.out.println(Arrays.deepToString(result));
 //    }
 }

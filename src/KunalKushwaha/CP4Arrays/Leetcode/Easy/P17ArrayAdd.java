@@ -38,17 +38,14 @@ public class P17ArrayAdd {
         System.out.println(addToArrayForm(num, k));
     }
 
-    // T((C) = O(n + log10 k)
-    // O(n + d) extra space where n = num.length and d = number of digits in k (the output size). More simply O(n + log10 k). The returned list stores the sum digits; additional auxiliary space is O(1)
+    // T(C) = O(n + log10k)
+    // S(C) = O(1)
     public static List<Integer> addToArrayForm(int[] num, int k) {
         List<Integer> result = new ArrayList<>();
 
         int len = num.length - 1;
         while (len >= 0 || k != 0) {
-            if (len >= 0) {
-                k += num[len--];
-            }
-
+            if (len >= 0) k += num[len--];
             result.add(0, k % 10);
             k /= 10;
         }
@@ -60,17 +57,13 @@ public class P17ArrayAdd {
 //        LinkedList<Integer> result = new LinkedList<>();
 //        int len = num.length - 1;
 //
-//        //Both the condition are required becz after adding k with number if len is going to zero also but
-//        //there are some K values which is going to execute till k != 0
-//        //if not understand then take the below example and do dry run
-//        //Input: num = [2,1,5], k = 806
-//        //Output: [1,0,2,1]
-//        while(len >= 0 || k != 0){
-//
-//            if(len >= 0){
-//                k += num[len--];
-//            }
-//
+//        // Both the condition are required becz after adding k with number if len is going to zero also but
+//        // there are some K values which is going to execute till k != 0
+//        // if not understand then take the below example and do dry run
+//        // Input: num = [2,1,5], k = 806
+//        // Output: [1,0,2,1]
+//        while (len >= 0 || k != 0) {
+//            if (len >= 0) k += num[len--];
 //            result.addFirst(k % 10);
 //            k /= 10;
 //        }
