@@ -1,7 +1,7 @@
 package TakeYouforward.Array.CodeStudio.Easy;
-//Question
-/*https://www.codingninjas.com/studio/problems/longest-subarray-with-sum-k_5713505 */
-//The Longest Sub array with sum K [Positives and Negatives]
+// Question
+/* https://www.codingninjas.com/studio/problems/longest-subarray-with-sum-k_5713505 */
+// The Longest Sub array with sum K [Positives and Negatives]
 
 import java.util.HashMap;
 import java.util.Map;
@@ -34,7 +34,7 @@ public class P3LongestSubArraySumKPositiveNegativeZero {
             long rem = sum - k;
             if (preSumMap.containsKey(rem)) {
                 int len = i - preSumMap.get(rem);
-                //not understand above line go to copy and dry run above condition
+                // not understand above line go to copy and dry run above condition
                 maxLen = Math.max(len, maxLen);
             }
 
@@ -42,6 +42,7 @@ public class P3LongestSubArraySumKPositiveNegativeZero {
                 preSumMap.put(sum, i);
             }
         }
+
         return maxLen;
     }
 
@@ -60,6 +61,7 @@ public class P3LongestSubArraySumKPositiveNegativeZero {
 //                }
 //            }
 //        }
+//
 //        return maxLen;
 //    }
 }

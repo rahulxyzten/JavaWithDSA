@@ -1,6 +1,6 @@
 package KunalKushwaha.CP4Arrays.Leetcode.Easy;
 
-//Question
+// Question
 /*
 1252. Cells with Odd Values in a Matrix
 
@@ -38,7 +38,7 @@ Constraints:
 Follow up: Could you solve this in O(n + m + indices.length) time with only O(n + m) extra space?
 */
 
-//Explanation
+// Explanation
 /*
 https://www.youtube.com/watch?v=mC7tpRNR0_o
  */
@@ -104,8 +104,8 @@ public class P25CellsOddValueMatrix {
 
 
     // Brute Force Approach
-    // T(C) = O(k * (m + n) + (m * n))
-    // S(C) = O(m+n)
+    // T(C) = O((k(m + n)) + (m * n))
+    // S(C) = O(m*n)
 //    public static int oddCells(int m, int n, int[][] indices) {
 //        int[][] ans = new int[m][n];
 //

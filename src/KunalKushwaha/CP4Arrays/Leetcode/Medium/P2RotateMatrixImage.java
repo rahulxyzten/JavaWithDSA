@@ -39,8 +39,8 @@ public class P2RotateMatrixImage {
     }
 
     /* Best code */
-    //T(C) = O(N*N) + O(N*N) => O(N*N) is for transposing the matrix and the other one is for reversing the matrix.
-    //S(C) = O(1)
+    // T(C) = O(N*N) + O(N*N) => O(N*N) is for transposing the matrix and the other one is for reversing the matrix.
+    // S(C) = O(1)
     public static void rotate(int[][] matrix) {
         int n = matrix.length;
         for (int i = 0; i < n; i++) {

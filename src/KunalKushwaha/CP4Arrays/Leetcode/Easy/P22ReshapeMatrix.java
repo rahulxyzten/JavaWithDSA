@@ -3,7 +3,7 @@ package KunalKushwaha.CP4Arrays.Leetcode.Easy;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-//question
+// question
 /*
 566. Reshape the Matrix
 
@@ -36,7 +36,7 @@ n == mat[i].length
 -1000 <= mat[i][j] <= 1000
 1 <= r, c <= 300
  */
-//Answer Explanation
+// Answer Explanation
 /*
  * To fill in the reshaped 'ret' matrix, this algorithm has two loops. The outer loop
  * iterates over the rows of mat; the inner loop iterates over the cols of mat.
@@ -88,10 +88,10 @@ public class P22ReshapeMatrix {
         if (r * c != mul) return mat;
         int[][] result = new int[r][c];
         int k = 0;
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < m; j++) {
-                //remember the below line ( KC )
-                result[k / c][k % c] = mat[i][j];
+        for (int[] row : mat) {
+            for (int num : row) {
+                // remember the below line ( KC )
+                result[k / c][k % c] = num;
                 k++;
             }
         }

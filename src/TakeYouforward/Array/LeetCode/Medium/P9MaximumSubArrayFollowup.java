@@ -2,8 +2,8 @@ package TakeYouforward.Array.LeetCode.Medium;
 
 import java.util.Arrays;
 /* Follow-up question */
-//There might be more than one sub array with the maximum sum.
-//We need to print any of them (Basically print the array with maximum sum)
+// There might be more than one sub array with the maximum sum.
+// We need to print any of them (Basically print the array with maximum sum)
 
 public class P9MaximumSubArrayFollowup {
     public static void main(String[] args) {
@@ -37,14 +37,14 @@ public class P9MaximumSubArrayFollowup {
         if (maxi == 0) {
             System.out.println(Arrays.toString(new int[]{}));
         } else {
-            //printing the subarray:
+            // printing the subarray:
             System.out.print("The subarray is: [");
             for (int i = ansStart; i <= ansEnd; i++) {
                 System.out.print(arr[i] + ", ");
             }
             System.out.println("]");
         }
+
         return maxi;
     }
-
 }

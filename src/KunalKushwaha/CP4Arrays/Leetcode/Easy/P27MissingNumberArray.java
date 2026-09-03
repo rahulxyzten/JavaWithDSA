@@ -1,5 +1,5 @@
 package KunalKushwaha.CP4Arrays.Leetcode.Easy;
-//Problem
+// Problem
 /*
 268. Missing Number
 
@@ -72,12 +72,14 @@ public class P27MissingNumberArray {
 
 
 //    public static int missingNumber(int[] nums) {
+//        int n = nums.length;
 //        Arrays.sort(nums);
-//        for (int i = 0; i < nums.length; i++) {
-//            if (i != nums[i]){
+//        for (int i = 0; i < n; i++) {
+//            if (i != nums[i]) {
 //                return i;
 //            }
 //        }
-//        return 0;
+//
+//        return n;
 //    }
 }

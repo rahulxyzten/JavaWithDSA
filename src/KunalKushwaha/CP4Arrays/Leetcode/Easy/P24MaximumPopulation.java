@@ -1,5 +1,5 @@
 package KunalKushwaha.CP4Arrays.Leetcode.Easy;
-//Question
+// Question
 /*
 1854. Maximum Population Year
 
@@ -60,6 +60,7 @@ public class P24MaximumPopulation {
                 maxYear = i;
             }
         }
+
         return maxYear;
     }
 }
