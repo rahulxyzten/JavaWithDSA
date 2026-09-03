@@ -36,17 +36,6 @@ n == mat[i].length
 1 <= matrix[i][j] <= 105.
 All elements in the matrix are distinct. */
 
-/*
-Input
-matrix =
-[[3,6],[7,1],[5,2],[4,8]]
-
-Use Testcase
-Output
-[4]
-Expected
-[]
- */
 public class P19LuckyNumberMatrix {
     public static void main(String[] args) {
 //        int[][] matrix = {{3, 7, 8}, {9, 11, 13}, {15, 16, 17}};
@@ -55,8 +44,8 @@ public class P19LuckyNumberMatrix {
         System.out.println(luckyNumbers(matrix));
     }
 
-    /*More efficient in memory and runtime */
-    // T(C) = O(M * (N^2)) and S(C) = O(1)
+    // T(C) = O(m * (n + m)) = 0(mn + m^2), m = number of rows & n = number of columns
+    // S(C) = O(1)
     public static List<Integer> luckyNumbers(int[][] matrix) {
         List<Integer> result = new ArrayList<Integer>();
 
@@ -87,32 +76,4 @@ public class P19LuckyNumberMatrix {
         }
         return true;
     }
-
-//    public static List<Integer> luckyNumbers(int[][] matrix) {
-//        int colMax = 0;
-//        List<Integer> list = new ArrayList<>();
-//        for (int i = 0; i < matrix.length; i++) {
-//            int rmin = matrix[i][0];
-//            int colIndex = 0;
-//            for (int j = 0; j < matrix[i].length; j++) {
-//                if (matrix[i][j] < rmin) {
-//                    rmin = matrix[i][j];
-//                    colIndex = j;
-//                }
-//            }
-//            boolean isLucky = true;
-//            for (int k = 0; k < matrix.length; k++) {
-//                if (matrix[k][colIndex] > rmin) {
-//                    isLucky = false;
-//                    break;
-//                }
-//            }
-//            if (isLucky) {
-//                list.add(rmin);
-//            }
-//        }
-//        return list;
-//    }
-    /*The problem(time and space is more) of above code is when if an in the first iteration
-     * if the lucky number is find then also it check all the iteration  */
 }

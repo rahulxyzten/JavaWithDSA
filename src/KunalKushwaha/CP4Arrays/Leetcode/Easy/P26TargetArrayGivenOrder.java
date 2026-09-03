@@ -1,5 +1,5 @@
 package KunalKushwaha.CP4Arrays.Leetcode.Easy;
-//Problem
+// Problem
 /*
 1389. Create Target Array in the Given Order
 
@@ -63,7 +63,7 @@ public class P26TargetArrayGivenOrder {
         System.out.println(Arrays.toString(createTargetArray(nums, index)));
     }
 
-    // T(C) = O(2N)
+    // T(C) = O(N^2) + O(N) == O(N^2) ,because insertion into an ArrayList may require
     // S(C) = O(N)
     public static int[] createTargetArray(int[] nums, int[] index) {
         ArrayList<Integer> list = new ArrayList<>();

@@ -1,5 +1,5 @@
 package KunalKushwaha.CP4Arrays.Leetcode.Easy;
-//Run the 2 code and check the text case if field then fix this
+
 /*
 1304. Find N Unique Integers Sum up to Zero
 
@@ -50,15 +50,4 @@ public class P20NUniqueIntegers {
 //      for n = 3
 //            0 -> 2 (3-1-0)
 //            loop break and at the 1 index 0 is already present.
-
-
-    //   //Wrong code//
-//    public static int[] sumZero(int n) {
-//        int[] result = new int[n];
-//        for (int i = 0; i < (n - 1)/2; i ++) {
-//            result[i] = i + 1;
-//            result[i+1] = -(i + 1);
-//        }
-//        return result;
-//    }
 }
