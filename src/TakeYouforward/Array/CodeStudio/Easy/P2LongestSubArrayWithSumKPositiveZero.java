@@ -18,14 +18,6 @@ public class P2LongestSubArrayWithSumKPositiveZero {
 
     // Optimal approach(Using Two Pointer)
     // T(C) = O(2*N), where N = size of the given array.
-    /*
-    Reason: The outer while loop i.e. the right pointer can move up to
-    index n-1(the last index). Now, the inner while loop i.e. the left pointer
-    can move up to the right pointer at most. So, every time the inner
-    loop does not run for n times rather it can run for n times in total.
-    So, the time complexity will be O(2N) instead of O(N2).
-    O(2*N) ≈ O(N)
-    Each element is visited at most twice — once by the right pointer and once by the left.*/
     // S(C) = O(1)
     public static int longestSubarrayWithSumK(int[] a, long k) {
         int n = a.length;
