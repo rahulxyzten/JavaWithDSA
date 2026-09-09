@@ -42,16 +42,18 @@ public class P10SubArraySumEqualsK {
     // S(C) = O(N)
     public static int subarraySum(int[] nums, int k) {
         int n = nums.length;
-        Map<Integer, Integer> mpp = new HashMap();
-        int preSum = 0, count = 0;
-        mpp.put(0, 1);
-        for (int i = 0; i < n; i++) {
-            preSum += nums[i];
-            int rem = preSum - k;
+        long preSum = 0L;
+        HashMap<Long, Integer> mpp = new HashMap<>();
+        mpp.put(0L, 1);
+        int count = 0;
+
+        for (int num : nums) {
+            preSum += num;
+            long rem = preSum - k;
             count += mpp.getOrDefault(rem, 0);
             mpp.put(preSum, mpp.getOrDefault(preSum, 0) + 1);
         }
+
         return count;
     }
-
 }

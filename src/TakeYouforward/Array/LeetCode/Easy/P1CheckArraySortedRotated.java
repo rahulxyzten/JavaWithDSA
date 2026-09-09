@@ -43,18 +43,28 @@ public class P1CheckArraySortedRotated {
         System.out.println(check(nums));
     }
 
+    // Optimal Approach
     // T(C) = O(N) and S(C) = O(1)
     public static boolean check(int[] nums) {
-        int n = nums.length;
-        boolean flag1 = false;
-        int flag = 0;
-
-        if (nums[0] >= nums[n - 1]) flag1 = true;
-        for (int i = 0; i < n - 1; i++) {
-            if (nums[i] > nums[i + 1]) flag++;
+        int n = nums.length, count = 0;
+        for (int i = 0; i < n; i++) {
+            if (nums[i] > nums[(i + 1) % n]) count++;
         }
 
-        if ((flag1 && flag == 1) || (flag == 0)) return true;
-        return false;
+        return count <= 1;
     }
+
+//    public static boolean check(int[] nums) {
+//        int n = nums.length;
+//        boolean flag1 = false;
+//        int flag2 = 0;
+//
+//        if (nums[0] >= nums[n - 1]) flag1 = true;
+//        for (int i = 0; i < n - 1; i++) {
+//            if (nums[i] > nums[i + 1]) flag2++;
+//        }
+//
+//        // flag2 == 0 covers both the case {1, 2, 3, 4, 5} or {3, 3, 3, 3, 3}
+//        return (flag2 == 0) || (flag1 && flag2 == 1);
+//    }
 }

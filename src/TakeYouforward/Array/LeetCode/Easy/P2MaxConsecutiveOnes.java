@@ -1,5 +1,5 @@
 package TakeYouforward.Array.LeetCode.Easy;
-//problem
+// problem
 /*
 485. Max Consecutive Ones
 
@@ -31,7 +31,7 @@ public class P2MaxConsecutiveOnes {
     }
 
 
-    //T(C) = O(N) and S(C) = O(1)
+    // T(C) = O(N) and S(C) = O(1)
     public static int findMaxConsecutiveOnes(int[] nums) {
         int count = 0, maxCount = 0;
         for (int num : nums) {
@@ -43,17 +43,4 @@ public class P2MaxConsecutiveOnes {
 
         return maxCount;
     }
-
-//    public static int findMaxConsecutiveOnes(int[] nums) {
-//        int count = 0, maxCount = 0;
-//        for (int i = 0; i < nums.length; i++) {
-//            if (nums[i] == 1) {
-//                count++;
-//            } else {
-//                count = 0;
-//            }
-//            maxCount = Math.max(count, maxCount);
-//        }
-//        return maxCount;
-//    }
 }

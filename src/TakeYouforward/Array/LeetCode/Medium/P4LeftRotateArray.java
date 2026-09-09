@@ -1,5 +1,5 @@
 package TakeYouforward.Array.LeetCode.Medium;
-//Left rotate an array by k places
+// Left rotate an array by k places
 
 import java.util.Arrays;
 

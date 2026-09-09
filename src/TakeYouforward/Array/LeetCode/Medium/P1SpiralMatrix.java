@@ -1,6 +1,6 @@
 package TakeYouforward.Array.LeetCode.Medium;
 
-//go for dry run if still confession
+// Go for dry run if still confession
 /*
 54. Spiral Matrix
 
@@ -36,41 +36,39 @@ public class P1SpiralMatrix {
     // T(C) = O(M*N)
     // S(C) = O(M*N) or O(1) If we remove the asked output list.
     public static List<Integer> spiralOrder(int[][] matrix) {
-        List<Integer> ans = new ArrayList<>();
-        int n = matrix.length;
-        int m = matrix[0].length;
-        int top = 0, bottom = n - 1;
-        int left = 0, right = m - 1;
+        int m = matrix.length, n = matrix[0].length;
+        int left = 0, right = n - 1, top = 0, bottom = m - 1;
+        List<Integer> result = new ArrayList<>();
 
         while (top <= bottom && left <= right) {
-            for (int i = left; i <= right; i++) {
-                ans.add(matrix[top][i]);
+            for (int col = left; col <= right; col++) {
+                result.add(matrix[top][col]);
             }
             top++;
-            //Ena dhekbu jen to constant rahuchhe seta ++ ki -- heuchhe jenta upre top to constand acce to seta ++ heuchhe
+            // Ena dhekbu jen to constant rahuchhe seta ++ ki -- heuchhe jenta upre top to constand acce to seta ++ heuchhe
 
-            for (int i = top; i <= bottom; i++) {
-                ans.add(matrix[i][right]);
+            for (int row = top; row <= bottom; row++) {
+                result.add(matrix[row][right]);
             }
             right--;
 
-            //Here I again check the condition because in above top is changed
+            // Here I again check the condition because in above top is changed
             if (top <= bottom) {
-                for (int i = right; i >= left; i--) {
-                    ans.add(matrix[bottom][i]);
+                for (int col = right; col >= left; col--) {
+                    result.add(matrix[bottom][col]);
                 }
                 bottom--;
             }
 
-            //Here I again check the condition because in above right is changed
+            // Here I again check the condition because in above right is changed
             if (left <= right) {
-                for (int i = bottom; i >= top; i--) {
-                    ans.add(matrix[i][left]);
+                for (int row = bottom; row >= top; row--) {
+                    result.add(matrix[row][left]);
                 }
                 left++;
             }
         }
 
-        return ans;
+        return result;
     }
 }

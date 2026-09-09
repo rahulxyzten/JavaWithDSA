@@ -2,7 +2,7 @@ package TakeYouforward.Array.LeetCode.Easy;
 
 import java.util.Arrays;
 
-//problem
+// problem
 /*
 88. Merge Sorted Array
 
@@ -63,8 +63,8 @@ public class P5MergeSortedArray {
         System.out.println(Arrays.toString(nums1));
     }
 
-    //Optimal solution
-    //T(C) = O(n+m) and S(C) = O(1)
+    // Optimal solution
+    // T(C) = O(n+m) and S(C) = O(1)
     public static void merge(int[] nums1, int m, int[] nums2, int n) {
         if (n == 0) return;
         if (m == 0) {

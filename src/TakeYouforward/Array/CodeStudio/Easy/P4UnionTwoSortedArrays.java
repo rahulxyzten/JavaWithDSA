@@ -1,5 +1,5 @@
 package TakeYouforward.Array.CodeStudio.Easy;
-//problem
+// problem
 /*
 Merge 2 Sorted Array
 
@@ -81,8 +81,8 @@ public class P4UnionTwoSortedArrays {
         System.out.println(sortedArray(a, b));
     }
 
-    //Optimal solution
-    //T(C) = O(n+m) and S(C) = O(n+m)
+    // Optimal solution
+    // T(C) = O(n+m) and S(C) = O(n+m)
     public static List<Integer> sortedArray(int[] a, int[] b) {
         List<Integer> union = new ArrayList<>();
         int n = a.length, m = b.length;

@@ -1,11 +1,8 @@
 package Leetcode.Math.Medium;
-//Problem
+// Problem
 /*
 7. Reverse Integer
-Medium
-11.6K
-12.8K
-Companies
+
 Given a signed 32-bit integer x, return x with its digits reversed. If reversing x causes the value to go outside the signed 32-bit integer range [-231, 231 - 1], then return 0.
 
 Assume the environment does not allow you to store 64-bit integers (signed or unsigned).
@@ -39,8 +36,8 @@ public class P1ReverseInteger {
     }
 
 
-    //Time Complexity: O(log10N + 1) In while loop we divide N by 10 until it becomes 0 which takes log10N iterations.
-    //Space Complexity: O(1)
+    // Time Complexity: O(log10N + 1) In while loop we divide N by 10 until it becomes 0 which takes log10N iterations.
+    // Space Complexity: O(1)
     public static int reverse(int x) {
         long rem, rev = 0;
         // long because in the time of rev * 10 if the number is big then it exceeds the limit of int

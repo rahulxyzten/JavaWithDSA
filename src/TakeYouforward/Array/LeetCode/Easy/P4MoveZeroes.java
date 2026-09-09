@@ -1,5 +1,5 @@
 package TakeYouforward.Array.LeetCode.Easy;
-//Problem
+// Problem
 /*
 283. Move Zeroes
 
@@ -40,11 +40,13 @@ public class P4MoveZeroes {
     }
 
 
-    //Optimal Solution (Two Pointer Approach)
-    //T(C) = O(N) & S(C) = O(1)
+    // Optimal Solution (Two Pointer Approach)
+    // T(C) = O(N) & S(C) = O(1)
     public static void moveZeroes(int[] nums) {
         int n = nums.length;
         int j = -1;
+
+        // Finding the first Zero's index
         for (int i = 0; i < n; i++) {
             if (nums[i] == 0) {
                 j = i;
@@ -53,7 +55,6 @@ public class P4MoveZeroes {
         }
 
         if (j == -1) return;
-
         for (int i = j + 1; i < n; i++) {
             if (nums[i] != 0) {
                 nums[j] = nums[i];
@@ -64,8 +65,26 @@ public class P4MoveZeroes {
     }
 
 
-    //My solution (Brute Force Approach)
-    //T(C) = O(2N) & S(C) = O(N)
+    // Brute Force Approach
+    // T(C) = O(2N) & S(C) = O(N)
+//    public int[] moveZeroes(int[] arr) {
+//        int[] temp = new int[arr.length];
+//
+//        int index = 0;
+//        for (int i = 0; i < arr.length; i++) {
+//            if (arr[i] != 0) {
+//                temp[index] = arr[i];
+//                index++;
+//            }
+//        }
+//
+//        for (int i = 0; i < arr.length; i++) {
+//            arr[i] = temp[i];
+//        }
+//
+//        return arr;
+//    }
+
 //    public static void moveZeroes(int[] nums) {
 //        int n = nums.length;
 //        ArrayList<Integer> list = new ArrayList<>();
