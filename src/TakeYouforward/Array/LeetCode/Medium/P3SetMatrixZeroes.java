@@ -1,5 +1,5 @@
 package TakeYouforward.Array.LeetCode.Medium;
-//Question
+// Question
 /*
 73. Set Matrix Zeroes
 
@@ -55,12 +55,19 @@ public class P3SetMatrixZeroes {
 
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
+//                if (matrix[i][j] == 0) {
+//                    matrix[i][0] = 0;
+//                    if (j != 0) {
+//                        matrix[0][j] = 0;
+//                    } else {
+//                        col0 = 0;
+//                    }
+//                }
                 if (matrix[i][j] == 0) {
-                    matrix[i][0] = 0;
-                    if (j != 0) {
+                    if (j == 0) col0 = 0;
+                    else {
+                        matrix[i][0] = 0;
                         matrix[0][j] = 0;
-                    } else {
-                        col0 = 0;
                     }
                 }
             }

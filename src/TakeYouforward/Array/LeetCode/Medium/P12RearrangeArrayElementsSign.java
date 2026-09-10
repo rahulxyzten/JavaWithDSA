@@ -1,5 +1,5 @@
 package TakeYouforward.Array.LeetCode.Medium;
-//Problem
+// Problem
 /*
 2149. Rearrange Array Elements by Sign
 
@@ -49,55 +49,89 @@ public class P12RearrangeArrayElementsSign {
     public static void main(String[] args) {
 //        int[] nums = {3, 1, -2, -5, 2, -4};
 
-        //follow-up questions Positive and negative elements (not necessarily in equal numbers)
+        // follow-up questions Positive and negative elements (not necessarily in equal numbers)
         int[] nums = {1, 2, -4, -5, 3, 4, -7, -9, -11};
 
         System.out.println(Arrays.toString(rearrangeArray(nums)));
     }
 
-    //Follow-up question
-    //T(C) = O(2N)
-    //S(C) = O(N)
+    // Follow-up question
+    // T(C) = O(2N)
+    // S(C) = O(N)
     public static int[] rearrangeArray(int[] nums) {
-        ArrayList<Integer> positive = new ArrayList<>();
-        ArrayList<Integer> negative = new ArrayList<>();
+        ArrayList<Integer> pos = new ArrayList<>();
+        ArrayList<Integer> neg = new ArrayList<>();
 
         for (int num : nums) {
-            if (num < 0) negative.add(num);
-            else positive.add(num);
+            if (num < 0) neg.add(num);
+            else pos.add(num);
         }
 
-        if (positive.size() < negative.size()) {
-            for (int i = 0; i < positive.size(); i++) {
-                nums[2 * i] = positive.get(i);
-                nums[2 * i + 1] = negative.get(i);
+        int n = pos.size(), m = neg.size();
+        int index = 0;
+        if (n < m) {
+            for (int i = 0; i < n; i++) {
+                nums[index++] = pos.get(i);
+                nums[index++] = neg.get(i);
             }
 
-            int index = positive.size() * 2;
-            for (int i = positive.size(); i < negative.size(); i++) {
-                nums[index] = negative.get(i);
-                index++;
+            for (int i = n; i < m; i++) {
+                nums[index++] = neg.get(i);
             }
         } else {
-            for (int i = 0; i < negative.size(); i++) {
-                nums[2 * i] = positive.get(i);
-                nums[2 * i + 1] = negative.get(i);
+            for (int i = 0; i < m; i++) {
+                nums[index++] = pos.get(i);
+                nums[index++] = neg.get(i);
             }
 
-            int index = negative.size() * 2;
-            for (int i = negative.size(); i < positive.size(); i++) {
-                nums[index] = positive.get(i);
-                index++;
+            for (int i = m; i < n; i++) {
+                nums[index++] = pos.get(i);
             }
         }
 
         return nums;
     }
 
+//    public static int[] rearrangeArray(int[] nums) {
+//        ArrayList<Integer> positive = new ArrayList<>();
+//        ArrayList<Integer> negative = new ArrayList<>();
+//
+//        for (int num : nums) {
+//            if (num < 0) negative.add(num);
+//            else positive.add(num);
+//        }
+//
+//        if (positive.size() < negative.size()) {
+//            for (int i = 0; i < positive.size(); i++) {
+//                nums[2 * i] = positive.get(i);
+//                nums[2 * i + 1] = negative.get(i);
+//            }
+//
+//            int index = positive.size() * 2;
+//            for (int i = positive.size(); i < negative.size(); i++) {
+//                nums[index] = negative.get(i);
+//                index++;
+//            }
+//        } else {
+//            for (int i = 0; i < negative.size(); i++) {
+//                nums[2 * i] = positive.get(i);
+//                nums[2 * i + 1] = negative.get(i);
+//            }
+//
+//            int index = negative.size() * 2;
+//            for (int i = negative.size(); i < positive.size(); i++) {
+//                nums[index] = positive.get(i);
+//                index++;
+//            }
+//        }
+//
+//        return nums;
+//    }
 
-    //Optimal Approach
-    //T(C) = O(N)
-    //S(C) = O(N)
+
+    // Optimal Approach
+    // T(C) = O(N)
+    // S(C) = O(N)
 //    public static int[] rearrangeArray(int[] nums) {
 //        int[] result = new int[nums.length];
 //        int posIndex = 0, negIndex = 1;
@@ -115,9 +149,9 @@ public class P12RearrangeArrayElementsSign {
 //        return result;
 //    }
 
-    //Brute force Approach
-    //T(C) = O(N + N/2)
-    //S(C) = O(N/2 + N/2) = O(N)
+    // Brute force Approach
+    // T(C) = O(N + N/2)
+    // S(C) = O(N/2 + N/2) = O(N)
 //    public static int[] rearrangeArray(int[] nums) {
 //        ArrayList<Integer> positive = new ArrayList<>();
 //        ArrayList<Integer> negative = new ArrayList<>();
@@ -131,8 +165,8 @@ public class P12RearrangeArrayElementsSign {
 //            nums[2 * i] = positive.get(i);
 //            nums[2 * i + 1] = negative.get(i);
 //        }
-//        //if arr.length = 6 then
-//        //0,1 >> 2,3 >> 4,5
+//        // if arr.length = 6 then
+//        // 0,1 >> 2,3 >> 4,5
 //
 //        return nums;
 //    }

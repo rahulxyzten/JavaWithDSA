@@ -1,5 +1,5 @@
 package TakeYouforward.Array.LeetCode.Medium;
-//Problem
+// Problem
 /*
 75. Sort Colors
 
@@ -42,9 +42,9 @@ public class P13SortColors {
 
     // Optimal Solution (Dutch National Flag Algorithm)
     // T(C) = O(N) & S(C) = O(1)
+
     public static void sortColors(int[] nums) {
-        int n = nums.length;
-        int start = 0, mid = 0, end = n - 1;
+        int start = 0, mid = 0, end = nums.length - 1;
 
         while (mid <= end) {
             if (nums[mid] == 0) {
@@ -53,7 +53,7 @@ public class P13SortColors {
                 mid++;
             } else if (nums[mid] == 1) {
                 mid++;
-            } else {
+            } else { // nums[mid] == 2
                 swap(nums, mid, end);
                 end--;
             }

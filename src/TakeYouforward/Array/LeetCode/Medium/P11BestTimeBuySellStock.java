@@ -1,5 +1,5 @@
 package TakeYouforward.Array.LeetCode.Medium;
-//problem
+// problem
 /*
 121. Best Time to Buy and Sell Stock
 
@@ -34,9 +34,8 @@ public class P11BestTimeBuySellStock {
         System.out.println(maxProfit(prices));
     }
 
-
-    /*Optimal Solution*/
-    //T(C) = O(n), S(C) = O(1)
+    /* Optimal Solution */
+    // T(C) = O(n), S(C) = O(1)
     public static int maxProfit(int[] prices) {
         int maxPro = 0;
         int minPrice = Integer.MAX_VALUE;
@@ -49,10 +48,25 @@ public class P11BestTimeBuySellStock {
         return maxPro;
     }
 
+//    public static int maxProfit(int[] prices) {
+//        int maxPro = 0;
+//        int minPrice = prices[0];
+//
+//        for (int i = 1; i < prices.length; i++) {
+//            if (prices[i] > minPrice) {
+//                maxPro = Math.max(maxPro, prices[i] - minPrice);
+//            } else {
+//                minPrice = prices[i];
+//            }
+//        }
+//
+//        return maxPro;
+//    }
 
-    /*Brute or Better Approach*/
-    //T(C) = O(n^2), S(C) = O(1)
-    //This code fails some test cases because it's T(C) = O(n^2)
+
+    /* Brute or Better Approach */
+    // T(C) = O(n^2), S(C) = O(1)
+    // This code fails some test cases because it's T(C) = O(n^2)
 //    public static int maxProfit(int[] prices) {
 //        int maxPro = 0;
 //        int n = prices.length;
