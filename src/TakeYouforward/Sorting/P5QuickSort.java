@@ -13,13 +13,10 @@ public class P5QuickSort {
     // T(C) = O(nlogn)
     // S(C) = O(1)
     public static void quickSort(int[] arr, int start, int end) {
-        // not while (stat < end) because 'if' is used for condition and 'while' is for iteration and if you write while(start < end)
-        // then the start and end must be changes in the while body but here no changes so write if condition
-        if (start < end) {
-            int pIndex = partition(arr, start, end);
-            quickSort(arr, start, pIndex - 1);
-            quickSort(arr, pIndex + 1, end);
-        }
+        if (start >= end) return;
+        int pIndex = partition(arr, start, end);
+        quickSort(arr, start, pIndex - 1);
+        quickSort(arr, pIndex + 1, end);
     }
 
     public static int partition(int[] arr, int start, int end) {

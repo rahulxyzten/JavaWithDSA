@@ -1,5 +1,5 @@
 package TakeYouforward.Sorting.Leetcode;
-//Problem
+// Problem
 /*
 912. Sort an Array
 
@@ -85,11 +85,10 @@ public class SortAnArray {
     // T(C) = O(nlogn)
     // S(C) = O(1)
 //    public static void quickSort(int[] nums, int start, int end) {
-//        if (start < end) {
-//            int pIndex = partition(nums, start, end);
-//            quickSort(nums, start, pIndex - 1);
-//            quickSort(nums, pIndex + 1, end);
-//        }
+//        if (start >= end) return;
+//        int pIndex = partition(nums, start, end);
+//        quickSort(nums, start, pIndex - 1);
+//        quickSort(nums, pIndex + 1, end);
 //    }
 //
 //    public static int partition(int[] nums, int start, int end) {

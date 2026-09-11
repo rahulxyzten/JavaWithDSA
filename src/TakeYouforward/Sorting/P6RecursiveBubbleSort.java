@@ -34,9 +34,9 @@ public class P6RecursiveBubbleSort {
         arr[j] = temp;
     }
 
-    //For BEST CASE T(C) = (N)
+    // For BEST CASE T(C) = (N)
     // if the array in the sorted order then the best case occurs
     // the code is word for unsorted array also but that is not Best Case
-    //Worst Case = Average case = T(C) (N^2)
-    //the small optimization is done using variable or checker didSwap
+    // Worst Case = Average case = T(C) (N^2)
+    // the small optimization is done using variable or checker didSwap
 }
