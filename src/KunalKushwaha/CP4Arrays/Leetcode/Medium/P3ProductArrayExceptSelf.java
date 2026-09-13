@@ -1,5 +1,5 @@
 package KunalKushwaha.CP4Arrays.Leetcode.Medium;
-//Question
+// Question
 /*
 238. Product of Array Except Self
 
@@ -31,7 +31,7 @@ The product of any prefix or suffix of nums is guaranteed to fit in a 32-bit int
 Follow up: Can you solve the problem in O(1) extra space complexity? (The output array does not count as extra space for space complexity analysis.)
  */
 
-//Detailed Explanation
+// Detailed Explanation
 /*
 https://leetcode.com/problems/product-of-array-except-self/solutions/1342916/3-minute-read-mimicking-an-interview/
 */
@@ -87,45 +87,46 @@ public class P3ProductArrayExceptSelf {
     division operation. */
 
     /* Approach 4 match all the condition with time complexity and space complexity */
-    /* 4. Directly store the product of prefix and suffix into the final answer array
-    The logic is, we don't actually need separate array to store prefix product and suffix products,
-    we can do all the approach discussed in method 3 directly onto our final answer array.
-    The Time Complexity would be O(n) but now, the Auxiliary Space is O(1) (excluding the final answer array).
-    */
     // Optimal Solution
     // Time Complexity: O(2N)
     // Space Complexity: O(1)
     public static int[] productExceptSelf(int[] nums) {
         int n = nums.length;
-        int[] ans = new int[n];
-        int leftMul = 1, rightMul = 1;
+        int[] result = new int[n];
+        result[0] = 1;
 
-        for (int i = 0; i < n; i++) {
-            ans[i] = leftMul;
-            leftMul *= nums[i];
+        for (int i = 1; i < n; i++) {
+            result[i] = result[i - 1] * nums[i - 1];
         }
 
-        for (int i = n - 1; i >= 0; i--) {
-            ans[i] = ans[i] * rightMul;
-            rightMul *= nums[i];
+        int rightMul = 1;
+        for (int i = n - 2; i >= 0; i--) {
+            rightMul *= nums[i + 1];
+            result[i] = result[i] * rightMul;
         }
 
-        return ans;
+        return result;
     }
+//    public static int[] productExceptSelf(int[] nums) {
+//        int n = nums.length;
+//        int[] ans = new int[n];
+//        int leftMul = 1, rightMul = 1;
+//
+//        for (int i = 0; i < n; i++) {
+//            ans[i] = leftMul;
+//            leftMul *= nums[i];
+//        }
+//
+//        for (int i = n - 1; i >= 0; i--) {
+//            ans[i] = ans[i] * rightMul;
+//            rightMul *= nums[i];
+//        }
+//
+//        return ans;
+//    }
 
 
     /* Approach 3 match the condition but in extra space of O(n) */
-    /*
-    Similar to finding Prefix Sum Array, here we would intend to find the Prefix Product Array and Suffix Product Array for our original array,
-    i.e. pre[i] = pre[i - 1] * a[i - 1] (yes, we multiply with a[i - 1] and not with a[i] on purpose) and similarly suff[i] = suff[i + 1] * a[i + 1].
-    Now, at any index i our final answer ans[i] would be given by ans[i] = pre[i] * suff[i]. Why? Because the pre[i] * suff[i] contains product
-    of every element before i and every element after i but not the element at index i (and that is the reson why we excluded a[i] in our prefix and suffix product).
-    The Time Complexity would be O(n), but we are now using Auxilary Space of O(n) (excluding the final answer array).
-     */
-    //Calculating suffix (  suff[i] = suff[i + 1] * a[i + 1]  )
-    //suffix of nums array is {24,12,4,1}
-    //Calculating prefix (  pre[i] = pre[i - 1] * a[i - 1]  ) and the suffix
-    //prefix of nums array is {1,1,2,6}
     // Better Approach
     // Time Complexity: O(3N)
     // Space Complexity: O(2N)
@@ -155,19 +156,17 @@ public class P3ProductArrayExceptSelf {
 
 
     /* Approach 2 didn't match the condition */
-
-//    //Below code gives O(n) time complexity but the code using the division operation
-//    /*
-//    What we would do is, we would find the product of all the numbers of our Array and then divide the product
-//    with each element of the array to get the new element for that position in our final answer array.
-//     */
-//    /* Problem */
-//    /*
-//    One major con in going with this method is when we have an element as 0 in our array.
-//    The problem is that, we can't perform a division by 0, as a result, we won't be able
-//    to get corresponding values in our final answer array for the indices having 0 in
-//    our initial array at that position.
-//     */
+    // Better Approach
+    // Time Complexity: O(2N)
+    // Space Complexity: O(1)
+    // Below code gives O(n) time complexity but the code using the division operation
+    /* Problem */
+    /*
+    One major con in going with this method is when we have an element as 0 in our array.
+    The problem is that, we can't perform a division by 0, as a result, we won't be able
+    to get corresponding values in our final answer array for the indices having 0 in
+    our initial array at that position.
+     */
 //    public static int[] productExceptSelf(int[] nums) {
 //        int n = nums.length;
 //        int[] ans = new int[n];
@@ -186,8 +185,10 @@ public class P3ProductArrayExceptSelf {
 
 
     /* Approach 1 didn't match the condition */
-
-    //Below code give O(N^2) time complexity
+    // Brute Force Approach
+    // Time Complexity: O(N^2)
+    // Space Complexity: O(1)
+    // Below code give O(N^2) time complexity
 //    public static int[] productExceptSelf(int[] nums) {
 //        int[] arr = new int[nums.length];
 //        for (int i = 0; i < nums.length; i++) {

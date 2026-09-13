@@ -1,5 +1,5 @@
 package KunalKushwaha.CP4Arrays.Leetcode.Hard;
-//Problem
+// Problem
 /*
 41. First Missing Positive
 
@@ -43,16 +43,17 @@ public class P1FirstMissingPositive {
         System.out.println(firstMissingPositive(nums));
     }
 
-    //Optimal Solution
-    //T(C) = O(N) and S(C) = O(1)
+    // Optimal Solution
+    // T(C) = O(N) and S(C) = O(1)
     public static int firstMissingPositive(int[] nums) {
         int n = nums.length;
+
         for (int i = 0; i < n; i++) {
             int element = nums[i];
             if (element >= 1 && element <= n) {
                 int correctPos = element - 1;
-                if (nums[correctPos] != element) {
-                    swap(nums, correctPos, i);
+                if (element != nums[correctPos]) {
+                    swap(nums, i, correctPos);
                     i--;
                 }
             }
@@ -72,18 +73,38 @@ public class P1FirstMissingPositive {
     }
 
 
-    /*Brute Force Approach T(C) = O(nlong + n) & S(C) = O(1) */
-//        public static int firstMissingPositive(int[] nums) {
+    /* Better Force Approach T(C) = O(nlong + n) & S(C) = O(1) */
+//    public static int firstMissingPositive(int[] nums) {
 //        Arrays.sort(nums);
 //        int smallestPositive = 1;
+//
 //        for (int num : nums) {
-//            if (num < 0) num *= -1;
-//            if (smallestPositive == num) {
-//                smallestPositive++;
-//            }
+//            if (num <= 0) continue;
+//
+//            if (num == smallestPositive) smallestPositive++;
+//            else if (num > smallestPositive) return smallestPositive;
 //        }
 //
 //        return smallestPositive;
 //    }
 
+    /* Brute Force Approach T(C) = O(n^2) & S(C) = O(1) */
+//    public static int firstMissingPositive(int[] nums) {
+//        int smallestPositive = 1;
+//
+//        while (true) {
+//            boolean isFound = false;
+//            for (int num : nums) {
+//                if (num == smallestPositive) {
+//                    smallestPositive++;
+//                    isFound = true;
+//                    break;
+//                }
+//            }
+//
+//            if (!isFound) break;
+//        }
+//
+//        return smallestPositive;
+//    }
 }
