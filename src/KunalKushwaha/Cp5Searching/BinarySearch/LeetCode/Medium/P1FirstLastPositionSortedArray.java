@@ -1,5 +1,5 @@
 package KunalKushwaha.Cp5Searching.BinarySearch.LeetCode.Medium;
-//Question
+// Question
 /*
 34. Find First and Last Position of Element in Sorted Array
 
@@ -49,6 +49,7 @@ public class P1FirstLastPositionSortedArray {
         if (ans[0] != -1) {
             ans[1] = search(nums, target, false);
         }
+
         return ans;
     }
 
@@ -72,6 +73,4 @@ public class P1FirstLastPositionSortedArray {
 
         return result;
     }
-
-
 }

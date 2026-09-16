@@ -52,8 +52,9 @@ public class P6PascalTriangle {
 
     public static List<Integer> nthRow(int n) {
         List<Integer> row = new ArrayList<>();
-        long ans = 1;
+        long ans = 1L;
         row.add((int) ans);
+
         for (int i = 1; i < n; i++) {
             ans *= (n - i);
             ans /= i;

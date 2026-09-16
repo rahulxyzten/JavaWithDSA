@@ -1,9 +1,9 @@
 package KunalKushwaha.Cp5Searching.BinarySearch.Concept;
 
-//It is for both ascending and descending sorted binary search
+// It is for both ascending and descending sorted binary search
 
-//Always target in left side
-//if target in right side then it fails the logic
+// Always target in left side
+// if target in right side then it fails the logic
 
 public class OrderAgnosticBS {
     public static void main(String[] args) {

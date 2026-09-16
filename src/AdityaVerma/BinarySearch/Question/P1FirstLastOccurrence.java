@@ -22,7 +22,7 @@ public class P1FirstLastOccurrence {
                 result = mid;
                 end = mid - 1;
             }
-            //Ena sadhabele aag aag k thelba nehita pachh pachh k thelba first aau last ta paibarlagai
+            // Ena sadhabele aag aag k thelba nehita pachh pachh k thelba first aau last ta paibarlagai
             else {
                 if (isAsc) {
                     if (element > arr[mid]) {
@@ -38,7 +38,7 @@ public class P1FirstLastOccurrence {
                     }
                 }
             }
-            //In above is else only one is executed
+            // In above is else only one is executed
         }
 
         return result;

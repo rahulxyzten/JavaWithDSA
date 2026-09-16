@@ -1,5 +1,5 @@
 package AdityaVerma.BinarySearch.Leetcode.Medium;
-//Question
+// Question
 /*
 34. Find First and Last Position of Element in Sorted Array
 
@@ -49,6 +49,7 @@ public class P3FirstLastPositionSortedArray {
         if (ans[0] != -1) {
             ans[1] = search(nums, target, false);
         }
+
         return ans;
     }
 
