@@ -1,9 +1,9 @@
 package TakeYouforward.BinarySearch.CodeStudio.Easy;
-//Question
+// Question
 /*
 https://www.naukri.com/code360/problems/implement-upper-bound_8165383
  */
-//Implement Upper Bound
+// Implement Upper Bound
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -23,7 +23,6 @@ public class P2UpperBound {
         System.out.println(upperBound(arr, x, n));
     }
 
-    /*Best Code */
     // T(C) = O(logn)
     // S(C) = O(1)
     public static int upperBound(int[] arr, int x, int n) {
@@ -43,26 +42,6 @@ public class P2UpperBound {
 
         return result;
     }
-
-
-//    public static int upperBound(int []arr, int x, int n){
-//        if (arr[0] > x) return 0;
-//        if (arr[n - 1] < x) return n;
-//        int start = 1;
-//        int end = n - 2;
-//        int result = n;
-//        //If in the first of while the condition is false, so it  return n (which is length of arr
-//        while (start <= end) {
-//            int mid = start + (end - start) / 2;
-//            if (arr[mid] > x) {
-//                result = mid;
-//                end = mid - 1;
-//            } else {
-//                start = mid + 1;
-//            }
-//        }
-//        return result;
-//    }
 
 
     public static class P1FindRowWithMaxNumOf1S {

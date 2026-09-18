@@ -1,5 +1,5 @@
 package AdityaVerma.BinarySearch.Question;
-//Find Floor and Ceil of an element in a Sorted Array
+// Find Floor and Ceil of an element in a Sorted Array
 
 public class P5FloorCeilSortedArray {
     public static void main(String[] args) {
@@ -24,6 +24,7 @@ public class P5FloorCeilSortedArray {
                 end = mid - 1;
             }
         }
+
         return result;
     }
 
@@ -42,6 +43,7 @@ public class P5FloorCeilSortedArray {
                 start = mid + 1;
             }
         }
+
         return result;
     }
 }

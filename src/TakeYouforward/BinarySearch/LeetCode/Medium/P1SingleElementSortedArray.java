@@ -1,5 +1,5 @@
 package TakeYouforward.BinarySearch.LeetCode.Medium;
-//Question
+// Question
 /*
 540. Single Element in a Sorted Array
 
@@ -43,11 +43,10 @@ public class P1SingleElementSortedArray {
         if (nums[n - 1] != nums[n - 2]) return nums[n - 1];
 
         int start = 1, end = n - 2;
-        // See start and end initial value
         while (start <= end) {
             int mid = start + (end - start) / 2;
-            if (nums[mid] != nums[mid + 1] && nums[mid] != nums[mid - 1]) return nums[mid];
-            else if ((mid % 2 == 1 && nums[mid] == nums[mid - 1]) || (mid % 2 == 0 && nums[mid] == nums[mid + 1])) {
+            if (nums[mid - 1] != nums[mid] && nums[mid] != nums[mid + 1]) return nums[mid];
+            else if ((mid % 2 == 0 && nums[mid] == nums[mid + 1]) || (mid % 2 == 1 && nums[mid] == nums[mid - 1])) {
                 start = mid + 1;
             } else {
                 end = mid - 1;
@@ -58,7 +57,7 @@ public class P1SingleElementSortedArray {
     }
 
 
-    //Brute force solution
+    // Brute force solution
 //    public static int singleNonDuplicate(int[] arr) {
 //        int n = arr.length; // Size of the array.
 //        if (n == 1)

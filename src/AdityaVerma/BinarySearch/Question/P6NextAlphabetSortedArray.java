@@ -1,5 +1,5 @@
 package AdityaVerma.BinarySearch.Question;
-//Find the next alphabet in sorted char array
+// Find the next alphabet in sorted char array
 
 public class P6NextAlphabetSortedArray {
     public static void main(String[] args) {
@@ -21,7 +21,7 @@ public class P6NextAlphabetSortedArray {
             } else if (arr[mid] > key) {
                 result = arr[mid];
                 end = mid - 1;
-            } else {//else if(arr[mid] < key){
+            } else { //else if(arr[mid] < key){
                 start = mid + 1;
             }
         }

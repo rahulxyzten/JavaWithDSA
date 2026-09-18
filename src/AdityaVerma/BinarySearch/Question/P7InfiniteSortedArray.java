@@ -1,22 +1,22 @@
 package AdityaVerma.BinarySearch.Question;
-//Find position of an element in an Infinite Sorted Array
+// Find position of an element in an Infinite Sorted Array
 
 public class P7InfiniteSortedArray {
     public static void main(String[] args) {
 //        int[] arr = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 19, 20, 22, 23, 80, 90, 100};
 //        int target = 90;
-        //This code for infinite sorted array if we check for 90
-        //Then after one of  the while condition end = 32 which is array index out of bound condition
-        //Otherwise code is perfect for infinite sorted array
+        // This code for infinite sorted array if we check for 90
+        // Then after one of  the while condition end = 32 which is array index out of bound condition
+        // Otherwise code is perfect for infinite sorted array
         /* IMPORTANT */
-        //For the above problem check the kunal Kushwaha Code (BEST CODE)
+        // For the above problem check the kunal Kushwaha Code (BEST CODE)
         long[] arr = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 19, 20, 22, 23, 80, 90, 100};
         long target = 90;
         System.out.println(infiniteSorted(arr, target));
     }
 
 
-    //Right code (Kunal Kushwaha Code)
+    // Right code (Kunal Kushwaha Code)
     // T(C) = O(logn) + O(logn) = O(2long)
     // S(C) = O(1)
     public static int infiniteSorted(long[] arr, long target) {
@@ -25,7 +25,7 @@ public class P7InfiniteSortedArray {
         long n = arr.length;
 
         while (end < n && target > arr[(int) end]) {
-            //Array is long but the array indexes is integer,
+            // Array is long but the array indexes is integer
             start = end + 1;
             end = end * 2;
         }
