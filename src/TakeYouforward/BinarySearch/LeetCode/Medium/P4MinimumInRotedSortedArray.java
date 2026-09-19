@@ -1,5 +1,5 @@
 package TakeYouforward.BinarySearch.LeetCode.Medium;
-//YouTube Solution
+// Problem
 /*
 153. Find Minimum in Rotated Sorted Array
 
@@ -41,6 +41,7 @@ nums is sorted and rotated between 1 and n times.
 
 public class P4MinimumInRotedSortedArray {
     public static void main(String[] args) {
+//        int[] nums = {9, 1, 2, 3};
         int[] nums = {11, 12, 15, 18, 2, 5, 6, 8};
 //        int[] nums = {4,5,6,7,0,1,2};
 //        int[] nums = {3,4,5,1,2};
@@ -54,7 +55,7 @@ public class P4MinimumInRotedSortedArray {
         int start = 0;
         int end = nums.length - 1;
         if (nums[start] < nums[end]) return nums[start];
-        // The above line is going to be wrong if the array contains duplicates
+        // The above line is unnecessary if the array contains duplicates
 
         while (start < end) {
             int mid = start + (end - start) / 2;
@@ -64,5 +65,4 @@ public class P4MinimumInRotedSortedArray {
 
         return nums[start];
     }
-
 }

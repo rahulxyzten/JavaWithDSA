@@ -1,6 +1,6 @@
 package AdityaVerma.BinarySearch.Question;
-//Number of times a Sorted array is rotated
-//This is for distinct elements
+// Number of times a Sorted array is rotated
+// This is for distinct elements
 
 public class P3SortedArrayRoted {
     public static void main(String[] args) {
@@ -8,14 +8,14 @@ public class P3SortedArrayRoted {
         System.out.println(arrayRotated(arr));
     }
 
-    //TUF Code (BEST)
+    // TUF Code (BEST)
     // T(C) = O(logn)
     // S(C) = O(1)
     static int arrayRotated(int[] arr) {
         int start = 0;
         int end = arr.length - 1;
         if (arr[start] < arr[end]) return 0;
-        // The above line is going to be wrong if the array contains duplicates
+        // The above line is unnecessary if the array contains duplicates
 
         while (start < end) {
             int mid = start + (end - start) / 2;
@@ -23,12 +23,11 @@ public class P3SortedArrayRoted {
             else start = mid + 1;
         }
 
-        if (start != 0) return start;
-        return 0;
+        return start;
     }
 
 
-    //Aditya Verma Code
+    // Aditya Verma Code
 //    static int arrayRotated(int[] arr){
 //        int start = 0;
 //        int end = arr.length - 1;

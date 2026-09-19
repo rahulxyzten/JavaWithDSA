@@ -1,5 +1,5 @@
 package TakeYouforward.BinarySearch.LeetCode.Medium;
-//Question
+// Question
 /*
 81. Search in Rotated Sorted Array II
 
@@ -33,8 +33,8 @@ nums is guaranteed to be rotated at some pivot.
 
 Follow up: This problem is similar to Search in Rotated Sorted Array, but nums may contain duplicates. Would this affect the runtime complexity? How and why?
  */
-//Imp
-/*not necessarily with distinct values*/
+// Imp
+/* not necessarily with distinct values */
 
 public class P3SearchInRotatedSortedArray2 {
     public static void main(String[] args) {
