@@ -1,5 +1,5 @@
 package AdityaVerma.BinarySearch.Question;
-//Find an element or searching an element in a Nearly Sorted array
+// Find an element or searching an element in a Nearly Sorted array
 
 public class P4SearchingNearlySortedArray {
     public static void main(String[] args) {

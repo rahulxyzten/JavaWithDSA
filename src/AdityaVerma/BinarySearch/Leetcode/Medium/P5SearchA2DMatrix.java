@@ -1,5 +1,5 @@
 package AdityaVerma.BinarySearch.Leetcode.Medium;
-//Question
+// Question
 /*
 74. Search a 2D Matrix
 
@@ -40,6 +40,25 @@ public class P5SearchA2DMatrix {
         System.out.println(searchMatrix(matrix, target));
     }
 
+    /* Optimal Solution */
+    // T(C) = O(log(n * m)) Asking Time Complexity
+    // S(C) = O(1)
+    public static boolean searchMatrix(int[][] matrix, int target) {
+        int m = matrix.length, n = matrix[0].length;
+        int start = 0, end = m * n - 1;
+
+        while (start <= end) {
+            int mid = start + (end - start) / 2;
+            int midEle = matrix[mid / n][mid % n];
+            if (target == midEle) return true;
+            else if (target > midEle) start = mid + 1;
+            else end = mid - 1;
+        }
+
+        return false;
+    }
+
+    /* Optimal Solution */
     // T(C) = O(N + M), where N = given row number, M = given column number.
     /*
     In each iteration of the while loop, we do i++ or j--;
@@ -49,28 +68,17 @@ public class P5SearchA2DMatrix {
     the loop runs at most n + m iterations → O(n + m) time.
      */
     // S(C) = O(1)
-    public static boolean searchMatrix(int[][] matrix, int target) {
-        int i = 0, j = matrix[0].length - 1;
-        while (i < matrix.length && j >= 0) {
-            if (matrix[i][j] == target) return true;
-            else if (target > matrix[i][j]) i++;
-            else j--; // target < matrix[i][j]
-        }
-
-        return false;
-    }
-
 //    public static boolean searchMatrix(int[][] matrix, int target) {
 //        int n = matrix.length;
 //        int m = matrix[0].length;
 //        int i = 0, j = m - 1;
-//        while (i >= 0 && i < n && j >= 0 && j < m) {
+//
+//        while (i < n && j >= 0) {
 //            if (matrix[i][j] == target) return true;
-//            else if (matrix[i][j] > target) j--;
-//            else if (matrix[i][j] < target) i++;
+//            else if (target > matrix[i][j]) i++;
+//            else j--; // target < matrix[i][j]
 //        }
+//
 //        return false;
 //    }
-
-
 }

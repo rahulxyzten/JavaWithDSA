@@ -1,5 +1,5 @@
 package AdityaVerma.BinarySearch.Question;
-//Minimum Difference Element in a Sorted Array
+// Minimum Difference Element in a Sorted Array
 
 public class P9MinimumDifferenceElementSortedArray {
     public static void main(String[] args) {

@@ -1,6 +1,6 @@
 package AdityaVerma.BinarySearch.Question;
-//Search in Row wise And Column wise Sorted Array
-//2D Binary Search on 2D array or Matrix
+// Search in Row wise And Column wise Sorted Array
+// 2D Binary Search on 2D array or Matrix
 
 import java.util.Arrays;
 
