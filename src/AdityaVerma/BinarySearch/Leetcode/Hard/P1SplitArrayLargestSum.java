@@ -1,6 +1,6 @@
 package AdityaVerma.BinarySearch.Leetcode.Hard;
 
-//Problem
+// Problem
 /*
 410. Split Array Largest Sum
 
@@ -75,7 +75,7 @@ public class P1SplitArrayLargestSum {
         return true;
     }
 
-    //T(C) & S(C)
+    // T(C) & S(C)
     /*
     Time Complexity: O(N * log(sum(arr[])-max(arr[])+1))
     where N = size of the array,
@@ -88,40 +88,4 @@ public class P1SplitArrayLargestSum {
 
     Space Complexity: O(1) as we are not using any extra space to solve this problem.
      */
-
-
-    /* T(C) = 2ms & S(C) = 40.4mb  */
-//    public static int splitArray(int[] nums, int k) {
-//        int n = nums.length;
-//        if (k > n) return -1;
-//        int start = Arrays.stream(nums).max().getAsInt();
-//        int end = Arrays.stream(nums).sum();
-//        int result = -1;
-//        while (start <= end) {
-//            int mid = start + (end - start) / 2;
-//            if (isValid(nums, n, k, mid)) {
-//                result = mid;
-//                end = mid - 1;
-//            } else {
-//                start = mid + 1;
-//            }
-//        }
-//        return result;
-//    }
-//
-//    public static boolean isValid(int[] arr, int n, int k, int max) {
-//        int student = 1;
-//        int sum = 0;
-//        for (int i = 0; i < n; i++) {
-//            sum = sum + arr[i];
-//            if (sum > max) {
-//                student++;
-//                sum = arr[i];
-//            }
-//            if (student > k) {
-//                return false;
-//            }
-//        }
-//        return true;
-//    }
 }

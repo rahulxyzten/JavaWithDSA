@@ -1,9 +1,9 @@
 package AdityaVerma.BinarySearch.CodeStudio.Medium;
-//Question
+// Question
 /*
 https://www.naukri.com/code360/problems/painter-s-partition-problem_1089557
  */
-//Painter's Partition Problem
+// Painter's Partition Problem
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -12,7 +12,7 @@ import java.util.Collections;
 public class P3PainterPartitionProblem {
     public static void main(String[] args) {
         ArrayList<Integer> arr = new ArrayList<>(Arrays.asList(10, 20, 30, 40));
-        int k = 2;//no of painter
+        int k = 2; // no of painter
         int ans = findLargestMinDistance(arr, k);
         System.out.println("The answer is: " + ans);
 
@@ -55,7 +55,7 @@ public class P3PainterPartitionProblem {
         return true;
     }
 
-    //T(C) & S(C)
+    // T(C) & S(C)
     /*
     Time Complexity: O(N * log(sum(arr[])-max(arr[])+1))
     where N = size of the array,

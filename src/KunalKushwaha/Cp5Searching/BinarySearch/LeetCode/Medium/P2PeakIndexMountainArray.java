@@ -1,5 +1,5 @@
 package KunalKushwaha.Cp5Searching.BinarySearch.LeetCode.Medium;
-//Problem
+// Problem
 /*
 852. Peak Index in a Mountain Array
 
@@ -38,7 +38,7 @@ arr is guaranteed to be a mountain array.
 
 public class P2PeakIndexMountainArray {
     public static void main(String[] args) {
-        int[] arr = {0, 2, 1, 0};
+        int[] arr = {0, 1, 0};
         System.out.println(peakIndexInMountainArray(arr));
     }
 

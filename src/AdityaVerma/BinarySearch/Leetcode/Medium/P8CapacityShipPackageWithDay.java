@@ -1,5 +1,5 @@
 package AdityaVerma.BinarySearch.Leetcode.Medium;
-//problem
+// problem
 /*
 1011. Capacity To Ship Packages Within D Days
 
@@ -75,6 +75,7 @@ public class P8CapacityShipPackageWithDay {
                 start = mid + 1;
             }
         }
+
         return result;
     }
 
@@ -92,7 +93,7 @@ public class P8CapacityShipPackageWithDay {
         return true;
     }
 
-    //T(C) & S(C)
+    // T(C) & S(C)
     /*
     Time Complexity: O(N * log(sum(arr[])-max(arr[])+1))
     where N = size of the array,

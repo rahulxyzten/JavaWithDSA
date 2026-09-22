@@ -1,6 +1,6 @@
 package AdityaVerma.BinarySearch.Question;
-//Allocate Minimum Number Of Pages
-//Allocate Pages of Books
+// Allocate Minimum Number Of Pages
+// Allocate Pages of Books
 
 import java.util.Arrays;
 
@@ -51,13 +51,10 @@ public class P14AllocatePagesOfBooks {
 
         return true;
     }
-    //T(C) & S(C)
+    // T(C) & S(C)
     /*
     Time Complexity: O(N * log(sum(arr[])-max(arr[])+1)), where N = size of the array, sum(arr[]) = sum of all array elements,
      max(arr[]) = maximum of all array elements.
-    Reason: We are applying binary search on [max(arr[]), sum(arr[])]. Inside the loop, we are calling the countStudents() function
-    for the value of ‘mid’. Now, inside the countStudents() function, we are using a loop that runs for N times.
-
      Space Complexity: O(1) as we are not using any extra space to solve this problem.
      */
 }

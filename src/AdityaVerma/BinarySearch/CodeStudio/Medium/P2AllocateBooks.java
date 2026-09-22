@@ -1,9 +1,9 @@
 package AdityaVerma.BinarySearch.CodeStudio.Medium;
-//Question
+// Question
 /*
 https://www.naukri.com/code360/problems/allocate-books_1090540
  */
-//Allocate Books
+// Allocate Books
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -56,7 +56,7 @@ public class P2AllocateBooks {
     }
 
 
-    //T(C) & S(C)
+    // T(C) & S(C)
     /*
     Time Complexity: O(N * log(sum(arr[])-max(arr[])+1))
     where N = size of the array,
