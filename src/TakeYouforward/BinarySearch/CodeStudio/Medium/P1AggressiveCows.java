@@ -72,7 +72,7 @@ public class P1AggressiveCows {
     // S(C) = O(1)
     public static int aggressiveCows(int[] stalls, int k) {
         int n = stalls.length;
-        if (k > n) return 0;
+        // if (k > n) return 0; // no need becz 2 <= 'k' <= n
 
         Arrays.sort(stalls);
         int start = 1;
@@ -100,8 +100,8 @@ public class P1AggressiveCows {
             if ((stalls[i] - lastPlace) >= distance) {
                 count++;
                 lastPlace = stalls[i];
+                if (count == cows) return true;
             }
-            if (count >= cows) return true;
         }
 
         return false;

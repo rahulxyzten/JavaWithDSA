@@ -1,5 +1,5 @@
 package AdityaVerma.BinarySearch.Leetcode.Medium;
-//problem
+// problem
 /*
 1283. Find the Smallest Divisor Given a Threshold
 
@@ -39,11 +39,11 @@ public class P7FindSmallestDivisorThreshold {
         System.out.println(smallestDivisor(nums, threshold));
     }
 
-    //T(C) = O( log( max(arr[]) ) * N )
-    //S(C) = O(1)
+    // T(C) = O( log( max(arr[]) ) * N )
+    // S(C) = O(1)
     public static int smallestDivisor(int[] nums, int threshold) {
         int n = nums.length;
-        if (n > threshold) return -1;
+        // if (n > threshold) return -1; // No need becz => nums.length <= threshold <= 10^6
         int start = 1, end = Integer.MIN_VALUE;
         for (int num : nums) {
             end = Math.max(end, num);
@@ -71,7 +71,7 @@ public class P7FindSmallestDivisorThreshold {
         return sum;
     }
 
-    //T(C) & S(C)
+    // T(C) & S(C)
     /*
     Time Complexity: O(N * log(max(a[]))), where max(a[]) is the maximum element in the array and N = size of the array.
     Reason: We are applying Binary search for the range [1, max(a[])],

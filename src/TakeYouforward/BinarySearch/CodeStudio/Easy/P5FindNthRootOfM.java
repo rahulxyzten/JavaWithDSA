@@ -1,9 +1,8 @@
 package TakeYouforward.BinarySearch.CodeStudio.Easy;
-//Problem
+// Problem
 /*
 Find Nth Root Of M
 
-Asked in companies
 Problem statement
 You are given two positive integers 'n' and 'm'. You have to return the 'nth' root of 'm', i.e. 'm(1/n)'. If the 'nth root is not an integer, return -1.
 
@@ -81,7 +80,7 @@ public class P5FindNthRootOfM {
                 return mid;
             } else if (mulOfMid == 0) {
                 start = mid + 1;
-            } else { //mulOfMid == 2
+            } else { // mulOfMid == 2
                 end = mid - 1;
             }
         }

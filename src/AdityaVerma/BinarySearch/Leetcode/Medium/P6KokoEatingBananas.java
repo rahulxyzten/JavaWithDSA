@@ -1,5 +1,5 @@
 package AdityaVerma.BinarySearch.Leetcode.Medium;
-//Problem
+// Problem
 /*
 875. Koko Eating Bananas
 
@@ -44,7 +44,7 @@ public class P6KokoEatingBananas {
     }
 
     /* Optimal Solution */
-    //T(C) & S(C)
+    // T(C) & S(C)
     /*
     Time Complexity: O(N * log(max(a[]))), where max(a[]) is the maximum element in the array and N = size of the array.
     Reason: We are applying Binary search for the range [1, max(a[])],
@@ -62,7 +62,7 @@ public class P6KokoEatingBananas {
         }
         int result = end;
         // maximum in the array
-        // because it has given piles.length <= h <= 109
+        // because it has given piles.length <= h <= 10^9
 
         while (start <= end) {
             int mid = start + (end - start) / 2;
@@ -84,20 +84,4 @@ public class P6KokoEatingBananas {
 
         return true;
     }
-
-//    public static boolean isValid(int[] arr, int k, int h) {
-//        int totalH = 0;
-//        for (int j : arr) {
-//            //totalH = totalH + Math.ceil(j / k);
-//            //above line don't work because
-//            //if 5/2 it gives a 2(int) ceil is 2 because j and k is int, but we need 3, so we have to type cast j and k to double
-//            // so wright is (double)5/(double)2 it gives 2.5(double) ceil is 3 which is our required element
-//
-//            totalH += Math.ceil((double) j / (double) k);
-//            if (totalH > h) return false;
-//
-//        }
-////        return totalH <= h; //This line write if the if condition is not written above
-//        return true;
-//    }
 }

@@ -1,7 +1,7 @@
 package TakeYouforward.BinarySearch.CodeStudio.Easy;
-//Problem
+// Problem
 /*
- Square Root of a number
+Square Root of a number
 
 Problem statement
 You are given a positive integer ‘n’.
@@ -48,10 +48,10 @@ public class P4SquareRootOfANumber {
         System.out.println(sqrtN(n));
     }
 
-    //Optimal Solution T(C) = logn & S(C) = O(1)
+    // Optimal Solution T(C) = logn & S(C) = O(1)
     public static int sqrtN(long N) {
         long start = 1, end = N;
-        long result = 0; //0 <= n <= 10 ^ 9
+        long result = 0; // 0 <= n <= 10 ^ 9
 
         while (start <= end) {
             long mid = start + (end - start) / 2;

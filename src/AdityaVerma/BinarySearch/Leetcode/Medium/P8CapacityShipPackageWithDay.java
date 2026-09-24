@@ -45,7 +45,7 @@ Constraints:
 1 <= days <= weights.length <= 5 * 104
 1 <= weights[i] <= 500
  */
-//problem is same as "allocate minimum number of pages"
+// problem is same as "allocate minimum number of pages"
 
 public class P8CapacityShipPackageWithDay {
     public static void main(String[] args) {
