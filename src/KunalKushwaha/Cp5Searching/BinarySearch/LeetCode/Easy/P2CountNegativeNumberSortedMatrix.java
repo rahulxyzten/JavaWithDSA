@@ -62,32 +62,27 @@ public class P2CountNegativeNumberSortedMatrix {
     }
 
     // Better Approach
-    // T(C) = O(n * 2logm) = O(n * logm)
+    // T(C) =  O(n * logm)
     // n = number of rows, m = number of columns
     // S(C) = O(1)
 //    public static int countNegatives(int[][] grid) {
 //        int count = 0;
+//        int m = grid[0].length;
 //        for (int[] arr : grid) {
-//            int firstIndex = search(arr, true);
-//            if (firstIndex != -1) {
-//                int lastIndex = search(arr, false);
-//                count += (lastIndex - firstIndex + 1);
-//            }
+//            count += (m - search(arr));
 //        }
-//
 //        return count;
 //    }
 //
-//    public static int search(int[] arr, boolean findStartIndex) {
+//    public static int search(int[] arr) {
 //        int start = 0, end = arr.length - 1;
-//        int result = -1;
+//        int result = arr.length;
 //
 //        while (start <= end) {
 //            int mid = start + (end - start) / 2;
 //            if (arr[mid] < 0) {
 //                result = mid;
-//                if (findStartIndex) end = mid - 1;
-//                else start = mid + 1;
+//                end = mid - 1;
 //            } else {
 //                start = mid + 1;
 //            }

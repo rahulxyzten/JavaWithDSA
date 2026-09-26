@@ -73,8 +73,8 @@ public class P6MagneticForceTwoBalls {
             if (position[i] - lastPos >= mid) {
                 count++;
                 lastPos = position[i];
+                if (count == m) return true;
             }
-            if (count >= m) return true;
         }
 
         return false;

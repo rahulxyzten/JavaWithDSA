@@ -86,6 +86,6 @@ public class P7MinimizedMaximumProductsStore {
             if (storeCount > n) return false;
         }
 
-        return storeCount <= n;
+        return true;
     }
 }

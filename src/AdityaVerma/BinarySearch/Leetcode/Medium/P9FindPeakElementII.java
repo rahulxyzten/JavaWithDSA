@@ -48,17 +48,18 @@ public class P9FindPeakElementII {
     // T(C) = O(nlogm)
     // S(C) = O(1)
     public static int[] findPeakGrid(int[][] mat) {
-        int n = mat.length;
-        int m = mat[0].length;
+        int n = mat.length, m = mat[0].length;
         int start = 0, end = m - 1;
+
         while (start <= end) {
             int mid = start + (end - start) / 2;
-            int row = maxInCol(mat, n, mid);
-            int left = mid - 1 >= 0 ? mat[row][mid - 1] : -1;
-            int right = mid + 1 < m ? mat[row][mid + 1] : -1;
+            int maxColIndex = maxInCol(mat, n, mid);
+            int maxColEle = mat[maxColIndex][mid];
+            int left = mid - 1 >= 0 ? mat[maxColIndex][mid - 1] : -1;
+            int right = mid + 1 < m ? mat[maxColIndex][mid + 1] : -1;
 
-            if (mat[row][mid] > left && mat[row][mid] > right) return new int[]{row, mid};
-            else if (left > mat[row][mid]) end = mid - 1;
+            if (left < maxColEle && maxColEle > right) return new int[]{maxColIndex, mid};
+            else if (left > maxColEle) end = mid - 1;
             else start = mid + 1;
         }
 
@@ -66,14 +67,14 @@ public class P9FindPeakElementII {
     }
 
     public static int maxInCol(int[][] mat, int n, int col) {
-        int max = 0, row = -1;
+        int max = 0, index = 0;
         for (int i = 0; i < n; i++) {
             if (mat[i][col] > max) {
-                row = i;
+                index = i;
                 max = mat[i][col];
             }
         }
 
-        return row;
+        return index;
     }
 }
