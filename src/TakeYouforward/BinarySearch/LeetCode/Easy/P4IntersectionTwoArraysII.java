@@ -36,8 +36,8 @@ public class P4IntersectionTwoArraysII {
     }
 
     // Using Sorting and Two Pointers
-    // T(C) = O(nlogn) + O(mlogm) + O(2 min(n,m))
-    // S(C) = O(2 min(n,m))
+    // T(C) = O(nlogn) + O(mlogm) + O(n+m) + O(min(n,m))
+    // S(C) = O(2min(n,m))
 //    public static int[] intersect(int[] nums1, int[] nums2) {
 //        Arrays.sort(nums1);
 //        Arrays.sort(nums2);
@@ -65,7 +65,7 @@ public class P4IntersectionTwoArraysII {
 
     // Optimal Approach
     // T(C) = O(N) + O(M) + O(min(N,M))
-    // S(C) = O(N) + O(2 min(N,M))
+    // S(C) = O(N) + O(2min(N,M))
     public static int[] intersect(int[] nums1, int[] nums2) {
         HashMap<Integer, Integer> mpp = new HashMap<>();
         for (int num : nums1) {

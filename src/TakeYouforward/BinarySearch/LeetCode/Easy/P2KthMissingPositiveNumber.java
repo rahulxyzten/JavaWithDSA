@@ -80,17 +80,12 @@ public class P2KthMissingPositiveNumber {
     // T(C) = O(N + K)
     // S(C) = O(1)
 //    public static int findKthPositive(int[] arr, int k) {
-//        int missingVal = 1;
-//        int i = 0;
+//        int missingVal = 1, i = 0;
 //
 //        while (k != 0) {
-//            if (i == arr.length || missingVal != arr[i]) {
-//                missingVal++;
-//                k--;
-//            } else {
-//                missingVal++;
-//                i++;
-//            }
+//            if (i == arr.length || missingVal != arr[i]) k--;
+//            else i++;
+//            missingVal++;
 //        }
 //
 //        return missingVal - 1;

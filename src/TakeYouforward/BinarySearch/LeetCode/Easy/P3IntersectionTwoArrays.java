@@ -24,10 +24,7 @@ Constraints:
 0 <= nums1[i], nums2[i] <= 1000
  */
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
+import java.util.*;
 
 public class P3IntersectionTwoArrays {
     public static void main(String[] args) {
@@ -35,55 +32,59 @@ public class P3IntersectionTwoArrays {
     }
 
     // Better Approach (using Sorting and Two Pointers)
-    // T(C) = O(nlogn) + O(mlogm) + O(2 min(n,m))
-    // S(C) = O(2 min(n,m))
-    public static int[] intersection(int[] nums1, int[] nums2) {
-        Arrays.sort(nums1);
-        Arrays.sort(nums2);
-        HashSet<Integer> set = new HashSet<>();
-
-        int n = nums1.length, m = nums2.length;
-        int i = 0, j = 0;
-        while (i < n && j < m) {
-            if (nums1[i] == nums2[j]) {
-                set.add(nums1[i]);
-                i++;
-                j++;
-            } else if (nums1[i] < nums2[j]) i++;
-            else j++;
-        }
-
-        int[] result = new int[set.size()];
-        int ind = 0;
-        for (int num : set) {
-            result[ind++] = num;
-        }
-
-        return result;
-    }
-
-    // Optimal Approach
-    // T(C) = O(N) + O(M) + O(M)
-    // S(C) = O(N) + O(M) + O(M)
+    // T(C) = O(nlogn) + O(mlogm) + O(n+m) + O(min(n,m))
+    // S(C) = O(2min(n,m))
 //    public static int[] intersection(int[] nums1, int[] nums2) {
-//        HashMap<Integer, Boolean> mpp = new HashMap<>();
-//        for (int num : nums1) {
-//            if (!mpp.containsKey(num)) mpp.put(num, true);
-//        }
-//
+//        Arrays.sort(nums1);
+//        Arrays.sort(nums2);
 //        HashSet<Integer> set = new HashSet<>();
-//        for (int num : nums2) {
-//            if (mpp.containsKey(num)) set.add(num);
+//
+//        int n = nums1.length, m = nums2.length;
+//        int i = 0, j = 0;
+//        while (i < n && j < m) {
+//            if (nums1[i] == nums2[j]) {
+//                set.add(nums1[i]);
+//                i++;
+//                j++;
+//            } else if (nums1[i] < nums2[j]) i++;
+//            else j++;
 //        }
 //
 //        int[] result = new int[set.size()];
-//        int i = 0;
+//        int ind = 0;
 //        for (int num : set) {
-//            result[i++] = num;
+//            result[ind++] = num;
 //        }
 //
 //        return result;
 //    }
+
+    // Optimal Approach
+    // T(C) = O(N) + O(M) + O(M)
+    // S(C) = O(N) + O(M) + O(M)
+    public static int[] intersection(int[] nums1, int[] nums2) {
+        HashMap<Integer, Integer> mpp = new HashMap<>();
+        List<Integer> temp = new ArrayList<>();
+
+        for (int num : nums1) {
+            if (!mpp.containsKey(num)) mpp.put(num, 1);
+        }
+
+        for (int num : nums2) {
+            if (mpp.containsKey(num) && mpp.get(num) == 1) {
+                temp.add(num);
+                mpp.put(num, 0);
+            }
+        }
+
+        int[] result = new int[temp.size()];
+        int i = 0;
+        for (int num : temp) {
+            result[i++] = num;
+        }
+
+        return result;
+    }
 
     // Brute Force Approach
     // T(C) = O(N*M) + O(M)
