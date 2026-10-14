@@ -55,14 +55,6 @@ public class P1MedianTwoSortedArrays {
             int mid1 = start + (end - start) / 2;
             int mid2 = leftHalf - mid1;
 
-            // int l1 = Integer.MIN_VALUE, l2 = Integer.MIN_VALUE;
-            // int r1 = Integer.MAX_VALUE, r2 = Integer.MAX_VALUE;
-
-            // if (mid1 < n1) r1 = nums1[mid1];
-            // if (mid2 < n2) r2 = nums2[mid2];
-            // if (mid1 - 1 >= 0) l1 = nums1[mid1 - 1];
-            // if (mid2 - 1 >= 0) l2 = nums2[mid2 - 1];
-
             int r1 = (mid1 == n1) ? Integer.MAX_VALUE : nums1[mid1];
             int r2 = (mid2 == n2) ? Integer.MAX_VALUE : nums2[mid2];
             int l1 = (mid1 == 0) ? Integer.MIN_VALUE : nums1[mid1 - 1];
@@ -78,89 +70,6 @@ public class P1MedianTwoSortedArrays {
         return 0.0;
     }
 
-    /* (Mine) (Long Length) */
-//    public static double findMedianSortedArrays(int[] nums1, int[] nums2) {
-//        int n1 = nums1.length, n2 = nums2.length;
-//        if (n1 == 0) {
-//            if (n2 % 2 == 1) return (double) nums2[n2 / 2];
-//            else return (nums2[n2 / 2] + nums2[(n2 / 2) - 1]) / 2.0;
-//        }
-//        if (n2 == 0) {
-//            if (n1 % 2 == 1) return (double) nums1[n1 / 2];
-//            else return (nums1[n1 / 2] + nums1[(n1 / 2) - 1]) / 2.0;
-//        }
-//
-//        int n = n1 + n2;
-//        int leftHalf;
-//        if (n % 2 == 0) {
-//            leftHalf = n / 2;
-//        } else {
-//            leftHalf = (n + 1) / 2;
-//        }
-//
-//        int start = 0, end = Math.min(n1, n2);
-//        int l1 = -1, l2 = -1, r1 = -1, r2 = -1;
-//
-//        while (start <= end) {
-//            int mid1 = start + (end - start) / 2;
-//            int mid2 = leftHalf - mid1;
-//
-//            if (n1 <= n2) {
-//                if (mid1 == 0) {
-//                    l1 = Integer.MIN_VALUE;
-//                    r1 = nums1[mid1];
-//                } else if (mid1 == n1) {
-//                    l1 = nums1[mid1 - 1];
-//                    r1 = Integer.MAX_VALUE;
-//                } else {
-//                    l1 = nums1[mid1 - 1];
-//                    r1 = nums1[mid1];
-//                }
-//
-//                if (mid2 == 0) {
-//                    l2 = Integer.MIN_VALUE;
-//                    r2 = nums2[mid2];
-//                } else if (mid2 == n2) {
-//                    l2 = nums2[mid2 - 1];
-//                    r2 = Integer.MAX_VALUE;
-//                } else {
-//                    l2 = nums2[mid2 - 1];
-//                    r2 = nums2[mid2];
-//                }
-//            } else {
-//                if (mid1 == 0) {
-//                    l1 = Integer.MIN_VALUE;
-//                    r1 = nums2[mid1];
-//                } else if (mid1 == n2) {
-//                    l1 = nums2[mid1 - 1];
-//                    r1 = Integer.MAX_VALUE;
-//                } else {
-//                    l1 = nums2[mid1 - 1];
-//                    r1 = nums2[mid1];
-//                }
-//
-//                if (mid2 == 0) {
-//                    l2 = Integer.MIN_VALUE;
-//                    r2 = nums1[mid2];
-//                } else if (mid2 == n1) {
-//                    l2 = nums1[mid2 - 1];
-//                    r2 = Integer.MAX_VALUE;
-//                } else {
-//                    l2 = nums1[mid2 - 1];
-//                    r2 = nums1[mid2];
-//                }
-//            }
-//
-//            if (l1 <= r2 && l2 <= r1) break;
-//
-//            if (l1 >= r2) end = mid1 - 1;
-//            if (l2 >= r1) start = mid1 + 1;
-//        }
-//
-//        if (n % 2 == 1) return (double) Math.max(l1, l2);
-//        else return (Math.max(l1, l2) + Math.min(r1, r2)) / 2.0;
-//    }
-
     // Better Approach
     // T(C) = O(N1+N2)
     // S(C) = O(1)
@@ -173,34 +82,34 @@ public class P1MedianTwoSortedArrays {
 //
 //        int i = 0, j = 0;
 //        int mid1el = -1, mid2el = -1;
-//        int count = 0;
-//        // count start from o only because merged array index is also start from 0
+//        int index = 0;
+//        // index start from o only because merged array index is also start from 0
 //
 //        while (i < n1 && j < n2) {
 //            if (nums1[i] < nums2[j]) {
-//                if (count == mid1) mid1el = nums1[i];
-//                if (count == mid2) mid2el = nums1[i];
+//                if (index == mid1) mid1el = nums1[i];
+//                if (index == mid2) mid2el = nums1[i];
 //                i++;
 //            } else {
-//                if (count == mid1) mid1el = nums2[j];
-//                if (count == mid2) mid2el = nums2[j];
+//                if (index == mid1) mid1el = nums2[j];
+//                if (index == mid2) mid2el = nums2[j];
 //                j++;
 //            }
-//            count++;
+//            index++;
 //        }
 //
 //        while (i < n1) {
-//            if (count == mid1) mid1el = nums1[i];
-//            if (count == mid2) mid2el = nums1[i];
+//            if (index == mid1) mid1el = nums1[i];
+//            if (index == mid2) mid2el = nums1[i];
 //            i++;
-//            count++;
+//            index++;
 //        }
 //
 //        while (j < n2) {
-//            if (count == mid1) mid1el = nums2[j];
-//            if (count == mid2) mid2el = nums2[j];
+//            if (index == mid1) mid1el = nums2[j];
+//            if (index == mid2) mid2el = nums2[j];
 //            j++;
-//            count++;
+//            index++;
 //        }
 //
 //        if (n % 2 == 1) return (double) mid2el;
