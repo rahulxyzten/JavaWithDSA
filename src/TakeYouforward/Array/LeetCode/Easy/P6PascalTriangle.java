@@ -1,87 +1,88 @@
 package TakeYouforward.Array.LeetCode.Easy;
 // Problem
 /*
-118. Pascal's Triangle
+161. Pascal's Triangle I (TUF)
+Given two integers r and c, return the value at the rth row and cth column (1-indexed) in a Pascal's Triangle.
 
-Given an integer numRows, return the first numRows of Pascal's triangle.
+In Pascal's triangle:
 
-In Pascal's triangle, each number is the sum of the two numbers directly above it as shown:
+The first row contains a single element 1.
+Each row has one more element than the previous row.
+Every row starts and ends with 1.
+For all interior elements (i.e., not at the ends), the value at position (r, c) is computed as the sum of the two elements directly above it from the previous row:
 
-
-
-
+Pascal[r][c]=Pascal[r−1][c−1]+Pascal[r−1][c]
+where indexing is 1-based
 Example 1:
+Input: r = 4, c = 2
 
-Input: numRows = 5
-Output: [[1],[1,1],[1,2,1],[1,3,3,1],[1,4,6,4,1]]
+Output: 3
+
+Explanation:
+
+The Pascal's Triangle is as follows:
+
+1
+
+1 1
+
+1 2 1
+
+1 3 3 1
+
+....
+
+Thus, value at row 4 and column 2 = 3
+
 Example 2:
+Input: r = 5, c = 3
 
-Input: numRows = 1
-Output: [[1]]
+Output: 6
+
+Explanation:
+
+The Pascal's Triangle is as follows:
+
+1
+
+1 1
+
+1 2 1
+
+1 3 3 1
+
+1 4 6 4 1
+
+....
+
+Thus, value at row 5 and column 3 = 6
 
 
 Constraints:
-
-1 <= numRows <= 30
+1 <= r, c <= 30
+c <= r
+All values will fit inside a 32-bit integer.
  */
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 public class P6PascalTriangle {
     public static void main(String[] args) {
-//        int numRows = 5;
-        int numRows = 1;
-        System.out.println(generate(numRows));
+//        int r = 4, c = 2;
+        int r = 30, c = 15;
+        System.out.println(pascalTriangleI(r, c));
     }
 
-
-    /* Optimal Approach */
-    // T(C) = O(N^2)
-    // S(C) = O(N^2)
-    // result stores all n rows with total elements {n(n+1)} / 2 = O(n^2)
-    public static List<List<Integer>> generate(int numRows) {
-        List<List<Integer>> result = new ArrayList<>();
-        for (int i = 1; i <= numRows; i++) {
-            result.add(nthRow(i));
+    // Optimal Approach
+    // T(C) = O(c)
+    // S(C) = O(1)
+    public static int pascalTriangleI(int r, int c) {
+        r--;
+        c--;
+        long res = 1;
+        for (int i = 0; i < c; i++) {
+            res *= (r - i);
+            res /= (i + 1);
         }
 
-        return result;
+        return (int) res;
     }
-
-    public static List<Integer> nthRow(int n) {
-        List<Integer> row = new ArrayList<>();
-        long ans = 1L;
-        row.add((int) ans);
-
-        for (int i = 1; i < n; i++) {
-            ans *= (n - i);
-            ans /= i;
-            row.add((int) ans);
-        }
-
-        return row;
-    }
-
-
-    /* Optimal Approach (Mine)*/
-    // T(C) = O(N^2)
-    // S(C) = O(N^2)
-    // result stores all n rows with total elements {n(n+1)} / 2 = O(n^2)
-//    public static List<List<Integer>> generate(int numRows) {
-//        List<List<Integer>> result = new ArrayList<>();
-//        for (int i = 0; i < numRows; i++) {
-//            List<Integer> temp = new ArrayList<>();
-//            for (int j = 0; j <= i; j++) {
-//                if (j == 0 || j == i) temp.add(1);
-//                else {
-//                    temp.add(result.get(i - 1).get(j - 1) + result.get(i - 1).get(j));
-//                }
-//            }
-//            result.add(temp);
-//        }
-//
-//        return result;
-//    }
 }
