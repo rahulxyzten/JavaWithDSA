@@ -1,4 +1,4 @@
-package TakeYouforward.BinarySearch.LeetCode.Easy;
+package TakeYouforward.Array.LeetCode.Easy;
 // Problem
 /*
 350. Intersection of Two Arrays II
@@ -30,14 +30,14 @@ What if elements of nums2 are stored on disk, and the memory is limited such tha
 
 import java.util.*;
 
-public class P4IntersectionTwoArraysII {
+public class P10IntersectionTwoArraysII {
     public static void main(String[] args) {
 
     }
 
     // Using Sorting and Two Pointers
-    // T(C) = O(nlogn) + O(mlogm) + O(n+m) + O(min(n,m))
-    // S(C) = O(2min(n,m))
+    // T(C) = O(nlogn) + O(mlogm) + O(n+m) + O(k) {K ≤ min(N,M)}
+    // S(C) = O(k)
 //    public static int[] intersect(int[] nums1, int[] nums2) {
 //        Arrays.sort(nums1);
 //        Arrays.sort(nums2);
@@ -64,8 +64,8 @@ public class P4IntersectionTwoArraysII {
 //    }
 
     // Optimal Approach
-    // T(C) = O(N) + O(M) + O(min(N,M))
-    // S(C) = O(N) + O(2min(N,M))
+    // T(C) = O(N) + O(M) + O(k)  {K ≤ min(N,M)}
+    // S(C) = O(N) + O(k)
     public static int[] intersect(int[] nums1, int[] nums2) {
         HashMap<Integer, Integer> mpp = new HashMap<>();
         for (int num : nums1) {
@@ -90,8 +90,8 @@ public class P4IntersectionTwoArraysII {
     }
 
     // Brute Force Approach
-    // T(C) = O(N) + O(M) + O(N) + O(min(N,M))
-    // S(C) = O(N) + O(M) + O(2 min(N,M))
+    // T(C) = O(N) + O(M) + O(N) + O(k)   {K ≤ min(N,M)}
+    // S(C) = O(N) + O(M) + O(k)
 //    public static int[] intersect(int[] nums1, int[] nums2) {
 //        HashMap<Integer, Integer> mpp1 = new HashMap<>();
 //        for (int num : nums1) {

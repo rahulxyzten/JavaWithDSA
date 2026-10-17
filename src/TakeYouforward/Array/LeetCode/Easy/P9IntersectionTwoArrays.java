@@ -1,4 +1,4 @@
-package TakeYouforward.BinarySearch.LeetCode.Easy;
+package TakeYouforward.Array.LeetCode.Easy;
 // Problem
 /*
 349. Intersection of Two Arrays
@@ -26,14 +26,14 @@ Constraints:
 
 import java.util.*;
 
-public class P3IntersectionTwoArrays {
+public class P9IntersectionTwoArrays {
     public static void main(String[] args) {
 
     }
 
     // Better Approach (using Sorting and Two Pointers)
-    // T(C) = O(nlogn) + O(mlogm) + O(n+m) + O(min(n,m))
-    // S(C) = O(2min(n,m))
+    // T(C) = O(nlogn) + O(mlogm) + O(n+m) + O(k) {K ≤ min(N,M)}
+    // S(C) = O(k)
 //    public static int[] intersection(int[] nums1, int[] nums2) {
 //        Arrays.sort(nums1);
 //        Arrays.sort(nums2);
@@ -60,8 +60,8 @@ public class P3IntersectionTwoArrays {
 //    }
 
     // Optimal Approach
-    // T(C) = O(N) + O(M) + O(M)
-    // S(C) = O(N) + O(M) + O(M)
+    // T(C) = O(N) + O(M) + O(k) {K ≤ min(N,M)}
+    // S(C) = O(N) + O(k)
     public static int[] intersection(int[] nums1, int[] nums2) {
         HashMap<Integer, Integer> mpp = new HashMap<>();
         List<Integer> temp = new ArrayList<>();
@@ -87,11 +87,10 @@ public class P3IntersectionTwoArrays {
     }
 
     // Brute Force Approach
-    // T(C) = O(N*M) + O(M)
-    // S(C) = O(2M)
+    // T(C) = O(N*M) + O(k) {K ≤ min(N,M)}
+    // S(C) = O(k)
 //    public static int[] intersection(int[] nums1, int[] nums2) {
 //        HashSet<Integer> set = new HashSet<>();
-//        int n = nums1.length, m = nums2.length;
 //        for (int i : nums1) {
 //            for (int j : nums2) {
 //                if (i == j) set.add(i);
