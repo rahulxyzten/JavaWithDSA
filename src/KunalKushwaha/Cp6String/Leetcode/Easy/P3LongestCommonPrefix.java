@@ -1,5 +1,5 @@
 package KunalKushwaha.Cp6String.Leetcode.Easy;
-//Problem
+// Problem
 /*
 14. Longest Common Prefix
 

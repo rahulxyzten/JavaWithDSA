@@ -1,5 +1,5 @@
 package KunalKushwaha.Cp6String.Leetcode.Medium;
-//Problem
+// Problem
 /*
 451. Sort Characters By Frequency
 
@@ -44,9 +44,9 @@ public class P2SortCharactersByFrequency {
         System.out.println(frequencySort(s));
     }
 
-    //Optimal Solution (Bucket Sort)
-    //T(C) = O(n) + O(n) + O(n) = O(n)
-    //S(C) = O(n) + O(n) = O(n)
+    // Optimal Solution (Bucket Sort)
+    // T(C) = O(n) + O(n) + O(n) = O(n)
+    // S(C) = O(n) + O(n) = O(n)
     public static String frequencySort(String s) {
         StringBuilder result = new StringBuilder();
 

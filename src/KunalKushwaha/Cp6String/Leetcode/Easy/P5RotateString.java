@@ -1,5 +1,5 @@
 package KunalKushwaha.Cp6String.Leetcode.Easy;
-//Problem
+// Problem
 /*
 796. Rotate String
 
@@ -35,7 +35,7 @@ public class P5RotateString {
     }
 
     // Optimal Solution
-    //T(C) = O(N) and S(C) = O(2N) = O(N)
+    // T(C) = O(N) and S(C) = O(2N) = O(N)
     public static boolean rotateString(String s, String goal) {
         if (s.length() != goal.length()) return false;
 
@@ -59,5 +59,4 @@ public class P5RotateString {
 //
 //        return false;
 //    }
-
 }

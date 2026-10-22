@@ -1,5 +1,5 @@
-package TakeYouforward.Recursion.LeetCode.Medium;
-//problem
+package KunalKushwaha.Cp6String.Leetcode.Medium;
+// problem
 /*
 8. String to Integer (atoi)
 
@@ -66,7 +66,7 @@ Constraints:
 s consists of English letters (lower-case and upper-case), digits (0-9), ' ', '+', '-', and '.'.
  */
 
-public class P2StringToIntegerAtoi {
+public class P3StringToIntegerAtoi {
     public static void main(String[] args) {
 //        String s = "42";
 //        String s = "   -42";
@@ -75,13 +75,15 @@ public class P2StringToIntegerAtoi {
         System.out.println(myAtoi(s));
     }
 
-    // Optimal Solution (Using Recursion)
+    // Optimal Solution
     // T(C) = O(N)
-    // S(C) = O(N), stack space used for recursive calls.
+    // S(C) = O(1)
     public static int myAtoi(String s) {
         int i = 0;
+        // Skip Whitespaces
         while (i < s.length() && s.charAt(i) == ' ') i++;
 
+        // Handle Sign
         int sing = 1;
         if (i < s.length() && (s.charAt(i) == '-' || s.charAt(i) == '+')) {
             sing = (s.charAt(i) == '-') ? -1 : 1;
@@ -89,48 +91,18 @@ public class P2StringToIntegerAtoi {
         }
 
         int min = Integer.MIN_VALUE, max = Integer.MAX_VALUE;
-        return (int) solve(s, i, 0L, sing, min, max);
+        long ans = 0;
+        while (i < s.length()) {
+            if (!Character.isDigit(s.charAt(i))) break;
+            ans = ans * 10 + (s.charAt(i) - '0');
+            if (sing == -1 && -1 * ans < min) return min;
+            if (sing == 1 && ans > max) return max;
+
+            i++;
+        }
+
+        return (int) (sing * ans);
     }
-
-    public static long solve(String s, int i, long ans, int sign, int min, int max) {
-        if (i >= s.length() || !Character.isDigit(s.charAt(i))) return sign * ans;
-
-        ans = ans * 10 + (s.charAt(i) - '0');
-        if (sign == -1 && sign * ans < min) return min;
-        if (sign == 1 && ans > max) return max;
-
-        return solve(s, i + 1, ans, sign, min, max);
-    }
-
-
-    // Optimal Solution
-    // T(C) = O(N)
-    // S(C) = O(1)
-//    public static int myAtoi(String s) {
-//        int i = 0;
-//        // Skip Whitespaces
-//        while (i < s.length() && s.charAt(i) == ' ') i++;
-//
-//        // Handle Sign
-//        int sing = 1;
-//        if (i < s.length() && (s.charAt(i) == '-' || s.charAt(i) == '+')) {
-//            sing = (s.charAt(i) == '-') ? -1 : 1;
-//            i++;
-//        }
-//
-//        int min = Integer.MIN_VALUE, max = Integer.MAX_VALUE;
-//        long ans = 0;
-//        while (i < s.length()) {
-//            if (!Character.isDigit(s.charAt(i))) break;
-//            ans = ans * 10 + (s.charAt(i) - '0');
-//            if (sing == -1 && -1 * ans < min) return min;
-//            if (sing == 1 && ans > max) return max;
-//
-//            i++;
-//        }
-//
-//        return (int) (sing * ans);
-//    }
 
 //    public static int myAtoi(String s) {
 //        s = s.trim();

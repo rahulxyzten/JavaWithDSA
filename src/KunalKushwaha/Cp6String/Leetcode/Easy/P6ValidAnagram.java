@@ -1,5 +1,5 @@
 package KunalKushwaha.Cp6String.Leetcode.Easy;
-//Problem
+// Problem
 /*
 242. Valid Anagram
 
@@ -36,8 +36,8 @@ public class P6ValidAnagram {
     }
 
 
-    //Optimal Solution
-    //T(C) = O(N) and S(C) = O(1)
+    // Optimal Solution
+    // T(C) = O(N) and S(C) = O(1)
     public static boolean isAnagram(String s, String t) {
         if (s.length() != t.length()) return false;
 

@@ -1,5 +1,5 @@
 package TakeYouforward.StackAndQueue.Leetcode.Easy;
-//Problem
+// Problem
 /*
 20. Valid Parentheses
 
@@ -51,9 +51,6 @@ public class P3ValidParentheses {
         /*
         space used by the toCharArray() method, as it does not create a new array but simply
         returns a reference to the existing character array of the string.
-
-        So, to clarify, the space complexity of the provided code is O(1) because the extra space used
-        by the algorithm does not scale with the input size. Therefore, it's constant space complexity.
          */
         for (int i = 0; i < s.length(); i++) {
             if (s.charAt(i) == '(' || s.charAt(i) == '[' || s.charAt(i) == '{') {

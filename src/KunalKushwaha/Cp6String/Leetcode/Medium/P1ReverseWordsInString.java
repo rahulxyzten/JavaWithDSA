@@ -1,5 +1,5 @@
 package KunalKushwaha.Cp6String.Leetcode.Medium;
-//Problem
+// Problem
 /*
 151. Reverse Words in a String
 
@@ -68,9 +68,7 @@ public class P1ReverseWordsInString {
 
             while (i >= 0 && s.charAt(i) != ' ') i--;
 
-            if (result.length() > 0) {
-                result.append(" ");
-            }
+            if (result.length() > 0) result.append(" ");
             result.append(s.substring(i + 1, end + 1));
         }
 
@@ -115,7 +113,7 @@ public class P1ReverseWordsInString {
     // Direct Better Approach
 //    public static String reverseWords(String s) {
 //        String[] str = s.trim().split("\\s+");
-//        //trim and split take O(N)
+//        // trim and split take O(N)
 //        StringBuilder out = new StringBuilder();
 //        for (int i = str.length - 1; i >= 0; i--) {
 //            if (i == 0) {
@@ -124,6 +122,7 @@ public class P1ReverseWordsInString {
 //                out.append(str[i]).append(" ");
 //            }
 //        }
+//
 //        return out.toString();
 //    }
 

@@ -1,5 +1,5 @@
 package KunalKushwaha.Cp6String.Leetcode.Easy;
-//Problem
+// Problem
 /*
 205. Isomorphic Strings
 
@@ -41,7 +41,7 @@ public class P4IsomorphicStrings {
     }
 
 
-    //T(C) = O(N) and S(C) = O(1)
+    // T(C) = O(N) and S(C) = O(1)
     // Because the size of mpp1 and mpp2 each of size 256.
     // The space required by these arrays is constant,
     // as it does not depend on the input size.

@@ -1,5 +1,5 @@
 package KunalKushwaha.Cp6String.Leetcode.Easy;
-//Problem
+// Problem
 /*
 1614. Maximum Nesting Depth of the Parentheses
 
@@ -49,9 +49,6 @@ public class P7MaximumNestingDepthParentheses {
     /*
     space used by the toCharArray() method, as it does not create a new array but simply
     returns a reference to the existing character array of the string.
-
-    So, to clarify, the space complexity of the provided code is O(1) because the extra space used
-    by the algorithm does not scale with the input size. Therefore, it's constant space complexity.
      */
     public static int maxDepth(String s) {
         int depth = 0, open = 0;

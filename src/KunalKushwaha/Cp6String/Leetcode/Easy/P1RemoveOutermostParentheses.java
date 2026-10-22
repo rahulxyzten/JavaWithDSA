@@ -1,5 +1,5 @@
 package KunalKushwaha.Cp6String.Leetcode.Easy;
-//Problem
+// Problem
 /*
 1021. Remove Outermost Parentheses
 
@@ -73,8 +73,8 @@ public class P1RemoveOutermostParentheses {
             }
         }
 
-        //The count is == 0 when it comes to outer parenthesis so in that
-        //not insert the bracket and another time insert the bracket
+        // The count is == 0 when it comes to outer parenthesis so in that
+        // not insert the bracket and another time insert the bracket
         return result.toString();
     }
 
