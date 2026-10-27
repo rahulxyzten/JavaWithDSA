@@ -1,5 +1,5 @@
 package TakeYouforward.BinarySearch.LeetCode.Hard;
-// Problem
+// Problem (GFG)
 /*
 Minimize Max Distance of Adjacent Gas Stations
 
@@ -21,7 +21,7 @@ Constraints:
 0 ≤ k ≤ 10^5
  */
 
-public class MinimizeMaxDistance {
+public class P2MinimizeMaxDistance {
     public static void main(String[] args) {
         int[] stations = {1, 2, 3, 4, 5};
         int k = 2;

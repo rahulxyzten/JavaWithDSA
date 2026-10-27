@@ -19,7 +19,7 @@ public class P10IndexOfFirstCycleLL {
 
     }
 
-    // Optimal Approach(Floyd's Cycle Detection Algorithm)
+    // Optimal Approach (Floyd's Cycle Detection Algorithm)
     // T(C) = O(N)
     // S(C) = O(1)
     public static Node detectFirstNode(Node head) {

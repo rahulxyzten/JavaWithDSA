@@ -87,17 +87,17 @@ public class P2SortCharactersByFrequency {
 //    public static String frequencySort(String s) {
 //        StringBuilder result = new StringBuilder();
 //
-//        //Count the occurrence on each character
+//        // Count the occurrence on each character
 //        HashMap<Character, Integer> mpp = new HashMap<>();
 //        for (int i = 0; i < s.length(); i++) {
 //            mpp.put(s.charAt(i), mpp.getOrDefault(s.charAt(i), 0) + 1);
 //        }
 //
-//        //Sorting the keySet according to keyValue
+//        // Sorting the keySet according to keyValue
 //        List<Character> chars = new ArrayList<>(mpp.keySet());
 //        Collections.sort(chars, (a, b) -> (mpp.get(b) - mpp.get(a)));
 //
-//        //Build String
+//        // Build String
 //        for (char ch : chars) {
 //            for (int i = 0; i < mpp.get(ch); i++) {
 //                result.append(ch);

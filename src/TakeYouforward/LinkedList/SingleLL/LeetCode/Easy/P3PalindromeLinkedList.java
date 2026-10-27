@@ -85,5 +85,4 @@ public class P3PalindromeLinkedList {
 
         return prev;
     }
-
 }

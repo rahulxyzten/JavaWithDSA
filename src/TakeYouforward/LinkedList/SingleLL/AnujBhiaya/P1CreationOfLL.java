@@ -4,7 +4,6 @@ package TakeYouforward.LinkedList.SingleLL.AnujBhiaya;
 class Node {
     int data;
     Node next;
-
     Node(int data) {
         this.data = data;
     }
@@ -32,5 +31,4 @@ public class P1CreationOfLL {
             curr = curr.next;
         }
     }
-
 }

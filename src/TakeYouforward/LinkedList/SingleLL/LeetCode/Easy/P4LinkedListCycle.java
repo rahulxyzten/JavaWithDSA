@@ -55,7 +55,7 @@ public class P4LinkedListCycle {
         System.out.println(hasCycle(head));
     }
 
-    // Optimal Approach(Floyd's Cycle Detection Algorithm)
+    // Optimal Approach (Floyd's Cycle Detection Algorithm)
     // T(C) = O(N)
     // S(C) = O(1)
     public static boolean hasCycle(ListNode head) {

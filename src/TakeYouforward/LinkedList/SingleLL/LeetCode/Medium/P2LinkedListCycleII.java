@@ -60,7 +60,7 @@ public class P2LinkedListCycleII {
         else System.out.println("null");
     }
 
-    // Optimal Approach(Floyd's Cycle Detection Algorithm)
+    // Optimal Approach (Floyd's Cycle Detection Algorithm)
     // T(C) = O(N)
     // S(C) = O(1)
     public static ListNode detectFirstListNode(ListNode head) {
