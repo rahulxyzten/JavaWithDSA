@@ -64,6 +64,7 @@ public class P7SortList {
     }
 
     public static ListNode middleNode(ListNode head) {
+        // See the changes in middle function
         ListNode slow = head;
         ListNode fast = head;
         while (fast.next != null && fast.next.next != null) {
@@ -80,7 +81,7 @@ public class P7SortList {
 
         ListNode curr = dNode;
         while (t1 != null && t2 != null) {
-            if (t1.val < t2.val) {
+            if (t1.val <= t2.val) {
                 curr.next = t1;
                 curr = t1;
                 t1 = t1.next;

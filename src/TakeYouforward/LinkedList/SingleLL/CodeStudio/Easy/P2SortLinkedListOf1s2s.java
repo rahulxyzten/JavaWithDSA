@@ -103,7 +103,6 @@ public class P2SortLinkedListOf1s2s {
         two.next = null;
 
         return zeroHead.next;
-
     }
 
     // Brute Force Approach

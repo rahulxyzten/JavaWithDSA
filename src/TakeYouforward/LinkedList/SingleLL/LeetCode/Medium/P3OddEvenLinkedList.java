@@ -80,7 +80,7 @@ public class P3OddEvenLinkedList {
 //
 //        List<Integer> temp = new ArrayList<>();
 //
-//        // add the even index node value to arr
+//        // add the even index node value to arrayList
 //        ListNode curr = head;
 //        while (curr != null && curr.next != null) {
 //            temp.add(curr.val);
@@ -88,7 +88,7 @@ public class P3OddEvenLinkedList {
 //        }
 //        if (curr != null) temp.add(curr.val);
 //
-//        // add the odd index node value to arr
+//        // add the odd index node value to arrayList
 //        curr = head.next;
 //        while (curr != null && curr.next != null) {
 //            temp.add(curr.val);
@@ -96,8 +96,6 @@ public class P3OddEvenLinkedList {
 //        }
 //        if (curr != null) temp.add(curr.val);
 //
-//        // add the array which value which is in the form of first all even index element and
-//        // then all the odd index element
 //        int i = 0;
 //        curr = head;
 //        while (curr != null) {

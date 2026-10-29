@@ -1,5 +1,5 @@
 package TakeYouforward.LinkedList.SingleLL.LeetCode.Easy;
-//Problem
+// Problem
 /*
 21. Merge Two Sorted Lists
 
@@ -54,26 +54,28 @@ public class P5MergeTwoSortedLists {
     }
 
 
-    //T(C) = O(N1 + N2)
-    //S(C) = O(1)
+    // T(C) = O(N1 + N2)
+    // S(C) = O(1)
     public static ListNode mergeTwoLists(ListNode list1, ListNode list2) {
         ListNode t1 = list1, t2 = list2;
         ListNode dNode = new ListNode(-1);
         //dNode = dummy Node
-        ListNode temp = dNode;
+
+        ListNode curr = dNode;
         while (t1 != null && t2 != null) {
-            if (t1.val < t2.val) {
-                temp.next = t1;
-                temp = t1;
+            if (t1.val <= t2.val) {
+                curr.next = t1;
+                curr = t1;
                 t1 = t1.next;
             } else {
-                temp.next = t2;
-                temp = t2;
+                curr.next = t2;
+                curr = t2;
                 t2 = t2.next;
             }
         }
-        if (t1 != null) temp.next = t1;
-        else temp.next = t2;
+
+        if (t1 != null) curr.next = t1;
+        else curr.next = t2;
 
         return dNode.next;
     }
@@ -85,5 +87,4 @@ public class P5MergeTwoSortedLists {
             curr = curr.next;
         }
     }
-
 }

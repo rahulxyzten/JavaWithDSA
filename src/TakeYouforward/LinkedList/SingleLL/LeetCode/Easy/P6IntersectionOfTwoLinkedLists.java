@@ -94,7 +94,7 @@ public class P6IntersectionOfTwoLinkedLists {
     // Optimal Approach
     // T(C) = O(2M) = O(M)
     // T(C) = O(2N) = O(N)
-    // M or N which has the highest Node
+    // M or N, whichever has the highest Node
     // S(C) = O(1)
     public static ListNode getIntersectionNode(ListNode headA, ListNode headB) {
         if (headA == null || headB == null) return null;
