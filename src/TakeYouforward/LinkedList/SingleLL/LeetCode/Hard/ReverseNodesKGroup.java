@@ -62,21 +62,15 @@ public class ReverseNodesKGroup {
         while (curr != null) {
             ListNode kthNode = findKthNode(curr, k);
             if (kthNode == null) {
-                if (prevNode != null) {
-                    prevNode.next = curr;
-                }
+                if (prevNode != null) prevNode.next = curr;
                 break;
             }
 
             nextNode = kthNode.next;
             kthNode.next = null;
             reverseList(curr);
-            if (curr == head) {
-                head = kthNode;
-            } else {
-                prevNode.next = kthNode;
-            }
-
+            if (curr == head) head = kthNode; // Creation of new Head
+            else prevNode.next = kthNode; // Joining the current group with previous group
             prevNode = curr;
             curr = nextNode;
         }

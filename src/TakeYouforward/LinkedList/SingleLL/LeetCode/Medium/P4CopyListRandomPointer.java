@@ -79,12 +79,19 @@ public class P4CopyListRandomPointer {
         /* Step 1 => Inserting new node in between */
         Node curr = head;
         while (curr != null) {
-            Node temp = curr.next;
             Node newNode = new Node(curr.val);
+            newNode.next = curr.next;
             curr.next = newNode;
-            newNode.next = temp;
-            curr = temp;
+            curr = curr.next.next;
         }
+//        Node curr = head;
+//        while (curr != null) {
+//            Node temp = curr.next;
+//            Node newNode = new Node(curr.val);
+//            curr.next = newNode;
+//            newNode.next = temp;
+//            curr = temp;
+//        }
 
         /* Step 2 => Setting random pointer of newNode*/
         curr = head;
@@ -100,7 +107,6 @@ public class P4CopyListRandomPointer {
         while (curr != null) {
             curr.next = curr.next.next;
             copy.next = (copy.next != null) ? copy.next.next : null;
-
             curr = curr.next;
             copy = copy.next;
         }
