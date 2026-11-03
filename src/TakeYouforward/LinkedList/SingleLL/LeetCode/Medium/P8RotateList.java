@@ -59,17 +59,17 @@ public class P8RotateList {
 
         k = k % lenght;
         int end = lenght - k;
-        while (end != 0){
+        while (end != 0) {
             end--;
             curr = curr.next;
         }
-        head =  curr.next; //Step 2
-        curr.next = null; //Step 3
+        head = curr.next; // Step 2
+        curr.next = null; // Step 3
 
         return head;
     }
 
-    // Brute Force Approach (My solution)
+    // Brute Force Approach
     // T(C) = O(K * N)
     // S(C) = O(1)
     // But the above approach shows "Time Limit Exceeded" Error
@@ -96,11 +96,7 @@ public class P8RotateList {
 //        return newHead;
 //    }
 
-    //Brute Force Approach
-    //T(C) = O(K * N)
-    //S(C) = O(1)
-    //But the above approach shows "Time Limit Exceeded" Error
-    //for some testcases like list = [1,2,3] and k = 2000000000
+
 //    public static ListNode rotateRight(ListNode head, int k) {
 //        if (head == null || head.next == null) return head;
 //        for (int i = 0; i < k; i++) {
@@ -111,6 +107,7 @@ public class P8RotateList {
 //            end.next = head;
 //            head = end;
 //        }
+//
 //        return head;
 //    }
 

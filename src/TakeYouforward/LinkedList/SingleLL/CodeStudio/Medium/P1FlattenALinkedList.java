@@ -107,8 +107,7 @@ public class P1FlattenALinkedList {
         if (head == null || head.next == null) return head;
 
         Node rootNext = flattenLinkedList(head.next);
-        head = mergeTwoLists(head, rootNext);
-        return head;
+        return mergeTwoLists(head, rootNext);
     }
 
     public static Node mergeTwoLists(Node list1, Node list2) {
@@ -133,6 +132,4 @@ public class P1FlattenALinkedList {
 
         return dummyNode.child;
     }
-
-
 }

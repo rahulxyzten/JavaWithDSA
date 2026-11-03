@@ -1,5 +1,5 @@
 package AdityaVerma.Heap.Leetcode.Hard;
-//Problem
+// Problem
 /*
 23. Merge k Sorted Lists
 
@@ -79,30 +79,72 @@ public class P3MergeKSortedLists {
     }
 
 
-    //T(C) =O(k log k ) + O((n*k) log k) = O((n*k) log k)
-    //S(C) = O(K)
+    // Optimal Solution
+    // T(C) = O(k log k ) + O((n*k) log k) = O((n*k) log k)
+    // S(C) = O(K)
+//    public static ListNode mergeKLists(ListNode[] lists) {
+//        if (lists.length == 0) return null;
+//        PriorityQueue<ListNode> minHeap = new PriorityQueue<>((a, b) -> a.val - b.val);
+//
+//        for (ListNode list : lists) {
+//            if (list != null) {
+//                minHeap.add(list);
+//            }
+//        }
+//
+//        ListNode dummy = new ListNode(-1);
+//        ListNode curr = dummy;
+//
+//        while (!minHeap.isEmpty()) {
+//            ListNode min = minHeap.poll();
+//            curr.next = min;
+//            curr = curr.next;
+//            if (min.next != null) {
+//                minHeap.add(min.next);
+//            }
+//        }
+//
+//        return dummy.next;
+//    }
+
+
+    // Using Flatten A Linked List logic
+    // T(C) = O(N x 2M) = O(2NM)
+    // N => Number of Lists
+    // M => Length of the longest Linked List
+    // S(C) = O(N) {recursive stack}
     public static ListNode mergeKLists(ListNode[] lists) {
-        if (lists.length == 0) return null;
-        PriorityQueue<ListNode> minHeap = new PriorityQueue<>((a, b) -> a.val - b.val);
+        if (lists == null || lists.length == 0) return null;
+        return merge(lists, lists.length, 0);
+    }
 
-        for (ListNode list : lists) {
-            if (list != null) {
-                minHeap.add(list);
+    public static ListNode merge(ListNode[] lists, int n, int i) {
+        if (i == (n - 1)) return lists[i];
+
+        ListNode rootNext = merge(lists, n, i + 1);
+        return mergeTwoLists(lists[i], rootNext);
+    }
+
+    public static ListNode mergeTwoLists(ListNode list1, ListNode list2) {
+        ListNode t1 = list1, t2 = list2;
+        ListNode dummyNode = new ListNode(-1);
+        ListNode curr = dummyNode;
+
+        while (t1 != null && t2 != null) {
+            if (t1.val < t2.val) {
+                curr.next = t1;
+                curr = t1;
+                t1 = t1.next;
+            } else {
+                curr.next = t2;
+                curr = t2;
+                t2 = t2.next;
             }
         }
 
-        ListNode dummy = new ListNode(-1);
-        ListNode curr = dummy;
+        if (t1 != null) curr.next = t1;
+        else curr.next = t2;
 
-        while (!minHeap.isEmpty()) {
-            ListNode min = minHeap.poll();
-            curr.next = min;
-            curr = curr.next;
-            if (min.next != null) {
-                minHeap.add(min.next);
-            }
-        }
-
-        return dummy.next;
+        return dummyNode.next;
     }
 }
