@@ -22,7 +22,7 @@ public class P1Deletion {
         traverse(head);
     }
 
-    // the node is not head (given condition)
+    // The given node is not head (given condition)
     // T(C) = O(1) & S(C) = O(1)
     public static void deletionNode(Node node) {
         Node prev = node.back;
@@ -80,12 +80,11 @@ public class P1Deletion {
     public static Node deletionHead(Node head) {
         if (head == null || head.next == null) return null;
 
-        Node prev = head;
-        head = head.next;
-        head.back = null;
-        prev.next = null;
+        Node newHead = head.next;
+        head.next = null;
+        newHead.back = null;
 
-        return head;
+        return newHead;
     }
 
     public static void traverse(Node head) {
