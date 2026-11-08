@@ -1,6 +1,6 @@
 package TakeYouforward.Recursion.CodeStudio.Easy;
 
-//problem
+// problem
 /*
  Sum Of First N Numbers
 
@@ -66,5 +66,4 @@ public class P3SumOfFirstNNumbers {
         if (n == 0) return 0L;
         return n + sumFirstN(n - 1);
     }
-
 }

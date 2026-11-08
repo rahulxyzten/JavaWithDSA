@@ -3,7 +3,7 @@ package TakeYouforward.Recursion.CodeStudio.Easy;
 import java.util.ArrayList;
 import java.util.List;
 
-//problem
+// problem
 /*
 Factorial Numbers Not Greater Than N
 
@@ -83,22 +83,5 @@ public class P4FactorialNotGreaterThanN {
         if (n == 0L) return 1L;
         return n * factN(n - 1);
     }
-
-//    public static void fact(List<Long> ls, long n) {
-//        for (int i = 1; i <= n; i++) {
-//            long num = factN(i);
-//            if (num <= n) ls.add(num);
-//            else break;
-//            //if for any i the if condition is fails then if you go forward i++
-//            //all the value of i is going to fail the if condition so is for some i
-//            //the if condition is fails then break the loop otherwise for a long value
-//            //of i it show the StackOverflowError error
-//            /*
-//                if some i the fact(i) is num and the num is >= n so if condition fails
-//                then if you go forward i++ then the face(i) which is num is always > n so give a break
-//                when the for an "i" value sum >= n
-//             */
-//        }
-//    }
 }
 

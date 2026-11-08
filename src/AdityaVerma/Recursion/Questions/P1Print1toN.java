@@ -6,7 +6,7 @@ public class P1Print1toN {
     }
 
 
-    //IBH method for Recursion
+    // IBH method for Recursion
     // T(C) = O(N)
     // S(C) = O(N), stack space used for recursive calls.
     public static void print(int n) {

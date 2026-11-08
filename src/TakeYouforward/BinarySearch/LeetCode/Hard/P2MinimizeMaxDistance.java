@@ -81,7 +81,7 @@ public class P2MinimizeMaxDistance {
 //        PriorityQueue<Pair> pq = new PriorityQueue<>((a, b) -> Double.compare(b.distance, a.distance));
 //
 //        for (int i = 0; i < (n - 1); i++) {
-//            int diff = stations[i + 1] - stations[i];
+//            double diff = stations[i + 1] - stations[i];
 //            pq.add(new Pair(diff, i));
 //        }
 //

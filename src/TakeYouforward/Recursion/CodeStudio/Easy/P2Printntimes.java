@@ -1,5 +1,5 @@
 package TakeYouforward.Recursion.CodeStudio.Easy;
-//problem
+// problem
 /*
  Print n times
 
@@ -72,7 +72,7 @@ public class P2Printntimes {
         return ls;
     }
 
-    //IBH method of Recursion (Aditya Verma)
+    // IBH method of Recursion (Aditya Verma)
     public static void print(List<String> ls, int n) {
         if (n == 1) {
             ls.add("Coding Ninjas");
@@ -88,7 +88,7 @@ public class P2Printntimes {
 //        return arr;
 //    }
 //
-//    //IBH method of Recursion (Aditya Verma)
+//    // IBH method of Recursion (Aditya Verma)
 //    public static void print(int[] arr, int x) {
 //        if (x == 1){
 //            arr[x - 1] = x;

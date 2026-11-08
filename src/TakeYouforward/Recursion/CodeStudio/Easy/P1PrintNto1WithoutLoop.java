@@ -1,5 +1,5 @@
 package TakeYouforward.Recursion.CodeStudio.Easy;
-//problem
+// problem
 /*
  N to 1 without loop
 
