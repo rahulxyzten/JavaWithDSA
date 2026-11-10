@@ -1,5 +1,5 @@
 package TakeYouforward.Recursion.LeetCode.Medium;
-//problem
+// problem
 /*
 50. Pow(x, n)
 
@@ -40,9 +40,9 @@ public class P1Pow {
         System.out.println(myPow(x, n));
     }
 
-    //Optimal Solution using Recursion
-    //T(C) = O(logn)
-    //S(C) = O(logn) Recursive stack
+    // Optimal Solution using Recursion
+    // T(C) = O(logn)
+    // S(C) = O(logn), Recursive stack
     public static double myPow(double x, int n) {
         long nn = n;
         if (nn < 0) nn *= -1;
@@ -65,26 +65,25 @@ public class P1Pow {
         return solve(ans, x, nn);
     }
 
-    //Optimal Solution not using Recursion
-    //T(C) = O(logn)
-    //S(C) = O(1)
+    // Optimal Solution not using Recursion
+    // T(C) = O(logn)
+    // S(C) = O(1)
 //    public static double myPow(double x, int n) {
-//        double ans = 1.0;
 //        long nn = n; // -231 <= n <= 231-1
-//        if (nn < 0) nn *= -1;
+//        double ans = 1.0;
+//        if (n < 0) nn = -1 * nn;
 //
-//        while (nn > 0) {
-//            if (nn % 2 != 0) {
-//                ans = ans * x;
-//                nn = nn - 1;
+//        while (nn != 0) {
+//            if (nn % 2 == 0) {
+//                x *= x;
+//                nn /= 2;
 //            } else {
-//                x = x * x;
-//                nn = nn / 2;
+//                ans *= x;
+//                nn = nn - 1;
 //            }
 //        }
 //
-//        if (n < 0) return 1.0 / ans;
-//        return ans;
+//        return (n < 0) ? 1.0 / ans : ans;
 //    }
 
     // Brute Force Approach

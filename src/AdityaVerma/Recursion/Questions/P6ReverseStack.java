@@ -1,5 +1,5 @@
 package AdityaVerma.Recursion.Questions;
-//Reverse a Stack by using Recursion
+// Reverse a Stack by using Recursion
 
 import java.util.Stack;
 

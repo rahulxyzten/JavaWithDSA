@@ -1,5 +1,5 @@
 package AdityaVerma.Recursion.Questions;
-//Delete the middle element of a stack by using Recursion
+// Delete the middle element of a stack by using Recursion
 
 import java.util.Stack;
 

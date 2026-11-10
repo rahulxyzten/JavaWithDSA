@@ -1,5 +1,5 @@
 package TakeYouforward.Recursion.CodeStudio.Easy;
-//problem
+// problem
 /*
 Reverse an Array
 
@@ -54,44 +54,29 @@ public class P5ReverseAnArray {
 
     // T(C) = O(N)
     // S(C) = O(N), stack space used for recursive calls.
-    public static void reverseArray(int n, int[] nums) {
+    public static int[] reverseArray(int n, int[] nums) {
         int start = 0;
         int end = n - 1;
         swap(nums, start, end);
+
+        return nums;
     }
 
     public static void swap(int[] nums, int start, int end) {
-        //Don't use while loop while(start < end) because if the start and end are changing inside
-        //while loop then while is good but here take if because it only checks
-        //if else for condition checking
-        //while loop for iteration
-        if (start < end) {
-            int temp = nums[start];
-            nums[start] = nums[end];
-            nums[end] = temp;
-            swap(nums, start + 1, end - 1);
-        }
+        // Don't use while loop while(start < end) because if the start and end are changing inside
+        // while loop then while is good but here take if because it only checks
+        // if else for condition checking
+        // while loop for iteration
+        if (start >= end) return;
+
+        int temp = nums[start];
+        nums[start] = nums[end];
+        nums[end] = temp;
+        swap(nums, start + 1, end - 1);
     }
 
-//    public static int[] reverseArray(int n, int[] nums) {
-//        int start = 0;
-//        int end = n - 1;
-//        swap(nums, start, end);
-//
-//        return nums;
-//    }
-//
-//    public static void swap(int[] nums, int start, int end) {
-//        if (start >= end) return;
-//
-//        int temp = nums[start];
-//        nums[start] = nums[end];
-//        nums[end] = temp;
-//        swap(nums, start + 1, end - 1);
-//    }
 
-
-    //Error
+    // Error
     /*
      public static void swap(int[] nums, int start, int end) {
         while (start < end) { //eta pura bhul code ayee k ki start < end  always true
@@ -107,7 +92,5 @@ public class P5ReverseAnArray {
         end--;
         swap(nums, start, end);
     }
-
      */
-
 }

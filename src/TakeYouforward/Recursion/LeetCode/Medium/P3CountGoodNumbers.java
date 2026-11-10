@@ -1,5 +1,5 @@
 package TakeYouforward.Recursion.LeetCode.Medium;
-//Problem
+// Problem
 /*
 1922. Count Good Numbers
 
@@ -36,15 +36,14 @@ public class P3CountGoodNumbers {
     public static long MOD = 1_000_000_007;
 
     public static void main(String[] args) {
-
 //        long n = 50;
         long n = 1924;
         System.out.println(countGoodNumbers(n));
     }
 
-    //Optimal Solution
-    //T(C) = O(logn)
-    //S(C) = O(logn) Recursive stack
+    // Optimal Solution
+    // T(C) = O(logn)
+    // S(C) = O(logn), Recursive stack
     public static int countGoodNumbers(long n) {
         long noOdd = n / 2;
         long noEven = (n / 2) + (n % 2);

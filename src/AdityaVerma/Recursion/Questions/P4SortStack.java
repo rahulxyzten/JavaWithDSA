@@ -1,5 +1,5 @@
 package AdityaVerma.Recursion.Questions;
-//Sort a Stack by using Recursion
+// Sort a Stack by using Recursion
 
 import java.util.Stack;
 

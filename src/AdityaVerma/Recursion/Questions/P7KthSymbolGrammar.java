@@ -1,5 +1,5 @@
 package AdityaVerma.Recursion.Questions;
-//Find the kth symbol in Grammar
+// Find the kth symbol in Grammar
 
 
 public class P7KthSymbolGrammar {
@@ -24,7 +24,7 @@ public class P7KthSymbolGrammar {
         }
     }
 
-    /*One more observation*/
+    /* One more observation */
 //    public static int solve(int n, int k) {
 //        if(n==1)
 //        {
