@@ -1,5 +1,5 @@
 package AdityaVerma.Recursion.Leetcode.Medium;
-//problem
+// problem
 /*
 78. Subsets
 
@@ -76,46 +76,4 @@ public class P2Subsets {
     all the references in result reflect these changes. By the time recursion completes,
     op is empty, so all entries in result appear as empty lists.
      */
-
-
-
-
-    /*This code takes long time and long space
-    Go for above code which is best (love babbar)
-     */
-
-//    public static List<List<Integer>> subsets(int[] nums) {
-//        List<List<Integer>> list = new ArrayList<>();
-//        List<Integer> ip = new ArrayList<>();
-//        for (int num : nums) {
-//            ip.add(num);
-//        }
-//        List<Integer> op = new ArrayList<>();
-//        findSubsets(list, ip, op);
-//        return list;
-//    }
-//
-//    /*
-//    when you pass a List to a method, the changes made to the list inside the method affect the original list outside the method
-//    basically when a list is called inside the method then it takes the reference
-//      ex=> List<Integer> op1 = op; // here op1 take the reference of the op list changes made to op1 directly effect the op list
-//                                   //That is going to be wrong in output so take a new list and append the op list to that new list
-//                    //like
-//                    List<Integer> op1 = new ArrayList<>(op);
-//    but in the string it takes the copy of the string
-//    ex=>  String op1 = op; //here op1 String take a copy of op string so the changes made op1 not reflected to op string
-//     */
-//    public static void findSubsets(List<List<Integer>> list, List<Integer> ip, List<Integer> op) {
-//        if (ip.size() == 0) {
-//            list.add(op);
-//            return;
-//        }
-//        List<Integer> op1 = new ArrayList<>(op);
-//        List<Integer> op2 = new ArrayList<>(op);
-//        op2.add(ip.get(0));
-//        ip.remove(0);
-//        findSubsets(list, new ArrayList<>(ip), op1); // Pass a copy of ip
-//        findSubsets(list, new ArrayList<>(ip), op2); // Pass a copy of ip
-//        return;
-//    }
 }

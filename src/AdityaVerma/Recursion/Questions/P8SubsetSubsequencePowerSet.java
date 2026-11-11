@@ -1,6 +1,6 @@
 package AdityaVerma.Recursion.Questions;
-//Print the Subset || Subsequences || PowersSet of a String
-//For above all the three cases print all the subset of a String
+// Print the Subset || Subsequences || PowersSet of a String
+// For above all the three cases print all the subset of a String
 
 public class P8SubsetSubsequencePowerSet {
     public static void main(String[] args) {

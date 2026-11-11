@@ -1,5 +1,5 @@
 package AdityaVerma.Recursion.Leetcode.Medium;
-//problem
+// problem
 /*
 90. Subsets II
 
@@ -26,9 +26,9 @@ Constraints:
 1 <= nums.length <= 10
 -10 <= nums[i] <= 10
  */
-//You can't use the code of find unique subset of string because
-// in case of String because in case of string 41 and 14 are not same
-//but in case of array [4,4,1] and [4,1,4] are same
+// You can't use the code of find unique subset of string because
+// in case of string 41 and 14 are not same
+// but in case of array [4,4,1] and [4,1,4] are same
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -42,26 +42,31 @@ public class P4SubsetsII {
         System.out.println(subsetsWithDup(nums));
     }
 
-    //Optimal Solution
-    //TUF Explanation
+    // Optimal Solution
+    // TUF Explanation
     // T(C) = O(NlogN) + O(2^N * N) = O(2^N * N)
     // S(C) = O(N) {recursion stack} + O(N) {op} + O(2^N * N) {result}
     //      = O(2^N * N)
     public static List<List<Integer>> subsetsWithDup(int[] nums) {
         Arrays.sort(nums);
         List<List<Integer>> result = new ArrayList<>();
+        List<Integer> op = new ArrayList<>();
 
-        solve(nums, 0, new ArrayList<>(), result);
+        solve(nums, 0, result, op);
         return result;
     }
 
-    public static void solve(int[] nums, int ind, List<Integer> op, List<List<Integer>> result) {
+    public static void solve(int[] nums, int index, List<List<Integer>> result, List<Integer> op) {
+        // if (index == nums.length) return;
+        // we can't write above line here because => do dry run of [1,2,2]
         result.add(new ArrayList<>(op));
+        if (index == nums.length) return; // we can write here but if we don't
+        // write this line then also it's okay
 
-        for (int i = ind; i < nums.length; i++) {
-            if (i != ind && nums[i] == nums[i - 1]) continue;
+        for (int i = index; i < nums.length; i++) {
+            if (i != index && nums[i] == nums[i - 1]) continue;
             op.add(nums[i]);
-            solve(nums, i + 1, op, result);
+            solve(nums, i + 1, result, op);
             op.remove(op.size() - 1);
         }
     }
