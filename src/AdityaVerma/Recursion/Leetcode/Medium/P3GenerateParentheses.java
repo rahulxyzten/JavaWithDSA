@@ -1,5 +1,5 @@
 package AdityaVerma.Recursion.Leetcode.Medium;
-//problem
+// problem
 /*
 22. Generate Parentheses
 
@@ -60,7 +60,5 @@ public class P3GenerateParentheses {
             op2 = op2 + ')';
             solve(ls, open, close - 1, op2);
         }
-
-        return;
     }
 }

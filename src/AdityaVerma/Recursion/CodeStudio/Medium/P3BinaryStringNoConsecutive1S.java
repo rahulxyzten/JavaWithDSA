@@ -1,5 +1,5 @@
 package AdityaVerma.Recursion.CodeStudio.Medium;
-//problem
+// problem
 /*
 Binary strings with no consecutive 1s.
 

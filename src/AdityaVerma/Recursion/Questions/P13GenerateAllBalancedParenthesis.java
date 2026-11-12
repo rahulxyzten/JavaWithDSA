@@ -37,7 +37,5 @@ public class P13GenerateAllBalancedParenthesis {
             op2 = op2 + ')';
             solve(result, open, close - 1, op2);
         }
-
-        return;
     }
 }

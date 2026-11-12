@@ -1,5 +1,5 @@
 package AdityaVerma.Recursion.Questions;
-//Find the permutation with case Change of a String
+// Find the permutation with case Change of a String
 
 public class P11PermutationWithCaseChange {
     public static void main(String[] args) {
@@ -26,6 +26,5 @@ public class P11PermutationWithCaseChange {
         ip = ip.substring(1);
         solve(ip, op1);
         solve(ip, op2);
-        return;
     }
 }
