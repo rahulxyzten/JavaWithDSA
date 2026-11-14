@@ -1,5 +1,5 @@
 package AdityaVerma.Backtracking.Leetcode.Medium;
-//Problem
+// Problem
 /*
 46. Permutations
 
@@ -65,8 +65,6 @@ public class P1Permutations {
             btPermute(nums, start + 1, n, result);
             swap(start, i, nums);
         }
-
-        return;
     }
 
     public static void swap(int i, int j, int[] nums) {
@@ -83,9 +81,9 @@ public class P1Permutations {
 //        return result;
 //    }
 //
-//    //time complexity of O(N * N!)
-//    //space complexity is O(N * N!)
-//    //Although the space complexity is same but here it take a extra space of check array
+//    // time complexity of O(N * N!)
+//    // space complexity is O(N * N!)
+//    // Although the space complexity is same but here it take a extra space of check array
 //    public static void btPermute(int[] nums, List<Integer> op, List<List<Integer>> result, boolean[] check) {
 //        if (op.size() == nums.length - 1) {
 //            result.add(new ArrayList<>(op));
@@ -100,7 +98,5 @@ public class P1Permutations {
 //                check[i] = false;
 //            }
 //        }
-//        return;
 //    }
-
 }

@@ -1,5 +1,5 @@
 package AdityaVerma.Recursion.CodeStudio.Medium;
-//problem
+// problem
 /*
 Josephus
 
@@ -45,7 +45,8 @@ import java.util.List;
 
 public class P4Josephus {
     public static void main(String[] args) {
-        int n = 40, k = 7;
+//        int n = 40, k = 7;
+        int n = 5, k = 3;
         System.out.println(josephus(n, k));
     }
 
@@ -59,21 +60,23 @@ public class P4Josephus {
             person.add(i);
         }
         k = k - 1;
-        int index = 0;
+        int start = 0;
         int[] result = {-1};
 
-        solve(person, k, index, result);
+        solve(person, k, start, result);
         return result[0];
     }
 
-    public static void solve(List<Integer> person, int k, int index, int[] result) {
-        if (person.size() == 1) {
+    public static void solve(List<Integer> person, int k, int start, int[] result) {
+        int n = person.size();
+        if (n == 1) {
             result[0] = person.get(0);
             return;
         }
 
-        int killIndex = (index + k) % person.size();
+        int killIndex = (start + k) % n;
         person.remove(killIndex);
-        solve(person, k, killIndex, result);
+        start = (killIndex == n - 1) ? 0 : killIndex;
+        solve(person, k, start, result);
     }
 }

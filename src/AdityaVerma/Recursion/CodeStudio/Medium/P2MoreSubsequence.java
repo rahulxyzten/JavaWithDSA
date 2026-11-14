@@ -1,5 +1,5 @@
 package AdityaVerma.Recursion.CodeStudio.Medium;
-//problem
+// problem
 /*
 More subsequence
 
@@ -84,6 +84,7 @@ public class P2MoreSubsequence {
             result.add(op);
             return;
         }
+
         String op1 = op;
         String op2 = op;
         op2 = op2 + ip.charAt(0);

@@ -16,7 +16,7 @@ public class P1PermutationsString {
         System.out.println(result.size());
     }
 
-    //Using Backtracking
+    // Using Backtracking
     // time complexity of O(N! * N)
     // space complexity is O(N! * N)
     // T(C) = O(N! * N)
@@ -39,8 +39,6 @@ public class P1PermutationsString {
                 s = swap(i, start, s);
             }
         }
-
-        return;
     }
 
     // You can do swap by converting teh string to char array also
@@ -53,7 +51,7 @@ public class P1PermutationsString {
         return s;
     }
 
-    //Using Recursion
+    // Using Recursion
     // T(C) in recursive tree = work done by a node * total number of node
     // T(C) = O(N! * N)
     // total number of node => O(N!)
@@ -75,7 +73,5 @@ public class P1PermutationsString {
 //                permute(newIp, newOp, result);
 //            }
 //        }
-//
-//        return;
 //    }
 }
