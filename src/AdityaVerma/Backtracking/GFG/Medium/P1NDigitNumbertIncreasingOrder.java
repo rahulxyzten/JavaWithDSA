@@ -1,5 +1,5 @@
 package AdityaVerma.Backtracking.GFG.Medium;
-//problem
+// problem
 /*
 N Digit numbers with digits in increasing order
 
@@ -49,14 +49,12 @@ public class P1NDigitNumbertIncreasingOrder {
     public static ArrayList<Integer> increasingNumbers(int n) {
         ArrayList<Integer> result = new ArrayList<>();
         if (n == 1) {
-            for (int i = 0; i <= 9; i++) {
-                result.add(i);
-            }
+            for (int i = 0; i <= 9; i++) result.add(i);
             return result;
         }
         // This base condition for n == 1 must need
         // If not written then in solve function it add [1->9] to result
-        // The answer is [0->9]
+        // but the answer for n == 1 is [0->9]
 
         ArrayList<Integer> op = new ArrayList<>();
         solve(n, op, result);
@@ -66,9 +64,7 @@ public class P1NDigitNumbertIncreasingOrder {
     public static void solve(int n, ArrayList<Integer> op, ArrayList<Integer> result) {
         if (n == 0) {
             int ans = 0;
-            for (int num : op) {
-                ans = ans * 10 + num;
-            }
+            for (int num : op) ans = ans * 10 + num;
             result.add(ans);
             return;
         }

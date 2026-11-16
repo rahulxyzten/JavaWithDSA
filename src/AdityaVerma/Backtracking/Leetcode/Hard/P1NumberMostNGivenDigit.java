@@ -1,5 +1,5 @@
 package AdityaVerma.Backtracking.Leetcode.Hard;
-//problem
+// problem
 /*
 902. Numbers At Most N Given Digit Set
 
@@ -61,34 +61,64 @@ public class P1NumberMostNGivenDigit {
     public static int atMostNGivenDigitSet(String[] digits, int n) {
         int m = digits.length;
         String nStr = Integer.toString(n);
-        int noOfDigits = nStr.length();
+        int nLength = nStr.length();
 
-        int ans = 0;
-        for (int i = 1; i < noOfDigits; i++) {
-            ans += (int) Math.pow(m, i);
+        int[] count = new int[1];
+        for (int i = 1; i < nLength; i++) {
+            count[0] += (int) Math.pow(m, i);
         }
 
-        ans += solve(digits, m, nStr, noOfDigits, 0);
-        return ans;
+        solve(digits, m, nStr, nLength, 0, count);
+        return count[0];
     }
 
-    public static int solve(String[] digits, int m, String nStr, int noOfDigits, int index) {
-        if (index >= noOfDigits) {
-            return 1;
+    public static void solve(String[] digits, int m, String nStr, int nLength, int i, int[] count) {
+        if (i == nStr.length()) {
+            count[0]++;
+            return;
         }
 
-        int ans = 0;
-        for (int i = 0; i < m; i++) {
-            char ch = digits[i].charAt(0);
-            if (ch == nStr.charAt(index)) {
-                ans += solve(digits, m, nStr, noOfDigits, index + 1);
-            } else if (ch < nStr.charAt(index)) {
-                ans += (int) Math.pow(m, noOfDigits - index - 1);
+        for (int j = 0; j < m; j++) {
+            char ch = digits[j].charAt(0);
+            if (ch < nStr.charAt(i)) {
+                count[0] += (int) Math.pow(m, nLength - i - 1);
+            } else if (ch == nStr.charAt(i)) {
+                solve(digits, m, nStr, nLength, i + 1, count);
             }
         }
-
-        return ans;
     }
+
+//    public static int atMostNGivenDigitSet(String[] digits, int n) {
+//        int m = digits.length;
+//        String nStr = Integer.toString(n);
+//        int noOfDigits = nStr.length();
+//
+//        int ans = 0;
+//        for (int i = 1; i < noOfDigits; i++) {
+//            ans += (int) Math.pow(m, i);
+//        }
+//
+//        ans += solve(digits, m, nStr, noOfDigits, 0);
+//        return ans;
+//    }
+//
+//    public static int solve(String[] digits, int m, String nStr, int noOfDigits, int index) {
+//        if (index >= noOfDigits) {
+//            return 1;
+//        }
+//
+//        int ans = 0;
+//        for (int i = 0; i < m; i++) {
+//            char ch = digits[i].charAt(0);
+//            if (ch == nStr.charAt(index)) {
+//                ans += solve(digits, m, nStr, noOfDigits, index + 1);
+//            } else if (ch < nStr.charAt(index)) {
+//                ans += (int) Math.pow(m, noOfDigits - index - 1);
+//            }
+//        }
+//
+//        return ans;
+//    }
 
     // The code is works for small n, because the code correctly generates all possible
     // combinations of the given digits (1 <= n <= 10^9)

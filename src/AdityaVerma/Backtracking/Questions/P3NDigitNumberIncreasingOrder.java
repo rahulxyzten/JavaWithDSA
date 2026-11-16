@@ -17,14 +17,12 @@ public class P3NDigitNumberIncreasingOrder {
     public static ArrayList<Integer> increasingNumbers(int n) {
         ArrayList<Integer> result = new ArrayList<>();
         if (n == 1) {
-            for (int i = 0; i < 10; i++) {
-                result.add(i);
-            }
+            for (int i = 0; i < 10; i++) result.add(i);
             return result;
         }
         // This base condition for n == 1 must need
         // If not written then in solve function it add [1->9] to result
-        // The answer is [0->9]
+        // but the answer for n == 1 is [0->9]
 
         ArrayList<Integer> v = new ArrayList<>();
         solve(n, v, result);
@@ -34,9 +32,7 @@ public class P3NDigitNumberIncreasingOrder {
     public static void solve(int n, ArrayList<Integer> v, ArrayList<Integer> result) {
         if (n == 0) {
             int ans = 0;
-            for (Integer num : v) {
-                ans = ans * 10 + num;
-            }
+            for (Integer num : v) ans = ans * 10 + num;
             result.add(ans);
             return;
         }
@@ -48,6 +44,5 @@ public class P3NDigitNumberIncreasingOrder {
                 v.remove(v.size() - 1);
             }
         }
-
     }
 }

@@ -38,7 +38,7 @@ public class P2LargestNumberKSwaps {
             }
         }
 
-        //Horizontal Drifting
+        // Horizontal Drifting
         solve(str, k, res, start + 1);
     }
 
@@ -50,15 +50,15 @@ public class P2LargestNumberKSwaps {
 }
 
 
-    // C++ Code
-    // In C++, strings are passed by reference,
-    // In Java, they are passed by value.
+// C++ Code
+// In C++, strings are passed by reference,
+// In Java, they are passed by value.
 
-    // T(C) = O(N! * N)
-    // Total number of node => O(N!)
-    // Work done by a node => finding max and comparing strings takes O(N)
-    // S(C) = O(N) + O(N) = O(N)
-    // string res + recursion stack (depth of the recursion)
+// T(C) = O(N! * N)
+// Total number of node => O(N!)
+// Work done by a node => finding max and comparing strings takes O(N)
+// S(C) = O(N) + O(N) = O(N)
+// string res + recursion stack (depth of the recursion)
 
 //    void swap(string& s, int i, int j){
 //        char temp = s[i];
