@@ -38,49 +38,14 @@ public class P2JumpGame {
     // T(C) = O(N)
     // S(C) = O(1)
     public static boolean canJump(int[] nums) {
+        int n = nums.length;
         int maxIndexCover = 0;
-        for (int i = 0; i < nums.length; i++) {
+        for (int i = 0; i < n; i++) {
             if (i > maxIndexCover) return false;
             maxIndexCover = Math.max(maxIndexCover, i + nums[i]);
-            if (maxIndexCover >= nums.length - 1) return true;
+            if (maxIndexCover >= n - 1) return true;
         }
 
         return true;
     }
-
-    // Not Good
-    /*
-    Wrong Answer
-    169 / 175 testcases passed
-    submitted at Jan 02, 2026 20:35
-
-    Editorial
-    Input
-    nums = [1,1,2,2,0,1,1]
-
-    Output
-    false
-    Expected
-    true
-    */
-//    public static boolean canJump(int[] nums) {
-//        for (int i = 0; i < nums.length - 1; i++) {
-//            if ((i + nums[i]) >= (nums.length - 1)) return true;
-//            int maxPoss = 0;
-//            int nextI = i;
-//            for (int j = i + 1; j <= (i + nums[i]); j++) {
-//                int temp = j + nums[j];
-//                if (temp >= nums.length - 1) return true;
-//                if ((nums[temp] != 0) && nums[j] > maxPoss) {
-//                    maxPoss = nums[j];
-//                    nextI = j;
-//                }
-//            }
-//
-//            if (nextI == i) return false;
-//            i = nextI - 1;
-//        }
-//
-//        return true;
-//    }
 }

@@ -61,16 +61,16 @@ public class P3JumpGameII {
     // T(C) = O(N^N)
     // S(C) = O(N), {Recursive stack}
 //    public static int jump(int[] nums) {
-//        return solve(nums, 0, 0);
+//        return solve(nums, nums.length, 0, 0);
 //    }
 //
-//    public static int solve(int[] nums, int index, int jumps) {
-//        if (index >= (nums.length - 1)) return jumps;
+//    public static int solve(int[] nums, int n, int index, int jumps) {
+//        if (index >= n - 1) return jumps;
 //        if (nums[index] == 0) return Integer.MAX_VALUE;
 //
 //        int minJumps = Integer.MAX_VALUE;
 //        for (int i = 1; i <= nums[index]; i++) {
-//            minJumps = Math.min(minJumps, solve(nums, index + i, jumps + 1));
+//            minJumps = Math.min(minJumps, solve(nums, n, index + i, jumps + 1));
 //            // see here index + i, not index + 1
 //        }
 //

@@ -51,10 +51,10 @@ public class P1ShortestJobFirst {
     static int solve(int[] bt) {
         Arrays.sort(bt);
 
-        int time = 0, wtTime = 0;
+        int lastProcessEnd = 0, wtTime = 0;
         for (int num : bt) {
-            wtTime += time;
-            time += num;
+            wtTime += lastProcessEnd;
+            lastProcessEnd += num;
         }
 
         return (wtTime / bt.length);
