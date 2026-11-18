@@ -62,31 +62,47 @@ public class P2JobSequencing {
         }
         ls.sort((a, b) -> b.profit - a.profit);
 
-        int maxDead = 0;
+        int maxDeadline = 0;
         for (int num : deadline) {
-            maxDead = Math.max(maxDead, num);
+            maxDeadline = Math.max(maxDeadline, num);
         }
-        int[] temp = new int[maxDead + 1];
+        int[] availableDays = new int[maxDeadline + 1];
 
-        int countProfit = 0, count = 0;
+        int maxProfit = 0, count = 0;
         for (Job job : ls) {
             int dead = job.deadline;
             while (dead > 0) {
                 // Not equal to zero according to GFG question
                 // there is nothing like Day 0
-                if (temp[dead] == 0) {
-                    temp[dead] = job.id;
-                    countProfit += job.profit;
+                if (availableDays[dead] == 0) {
+                    availableDays[dead] = job.id;
+                    maxProfit += job.profit;
                     count++;
                     break;
                 }
                 dead--;
             }
+//            if (availableDays[dead] == 0) {
+//                availableDays[dead] = job.id;
+//                maxProfit += job.profit;
+//                count++;
+//            } else {
+//                dead--;
+//                while (dead != 0) {
+//                    if (availableDays[dead] == 0) {
+//                        availableDays[dead] = job.id;
+//                        maxProfit += job.profit;
+//                        count++;
+//                        break;
+//                    }
+//                    dead--;
+//                }
+//            }
         }
 
         ArrayList<Integer> result = new ArrayList<>();
         result.add(count);
-        result.add(countProfit);
+        result.add(maxProfit);
         return result;
     }
 }

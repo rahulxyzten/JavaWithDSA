@@ -58,13 +58,15 @@ public class P1NMeetingsOneRoom {
             ls.add(new Meeting(start[i], end[i]));
         }
         ls.sort((a, b) -> a.end - b.end);
+        // a comes first becz -> sort in ascending order
 
-        int lastEnd = ls.get(0).end;
+        int lastMetingEnd = ls.get(0).end;
         int count = 1;
         for (int i = 1; i < n; i++) {
-            if (ls.get(i).start > lastEnd) {
+            Meeting meeting = ls.get(i);
+            if (meeting.start > lastMetingEnd) {
                 count++;
-                lastEnd = ls.get(i).end;
+                lastMetingEnd = meeting.end;
             }
         }
 

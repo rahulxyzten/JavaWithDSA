@@ -40,13 +40,15 @@ public class P3JumpGameII {
     // Optimal Approach (Using Greedy)
     // T(C) = O(N)
     // S(C) = O(1)
+
     public static int jump(int[] nums) {
         int n = nums.length;
-        int jumps = 0, l = 0, r = 0;
+        int l = 0, r = 0, jumps = 0;
+
         while (r < (n - 1)) {
             int farthest = 0;
             for (int i = l; i <= r; i++) {
-                farthest = Math.max(farthest, i + nums[i]);
+                farthest = Math.max(farthest, nums[i] + i);
             }
 
             l = r + 1;
