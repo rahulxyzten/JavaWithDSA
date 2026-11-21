@@ -41,7 +41,7 @@ import java.util.List;
 public class P5InsertInterval {
     public static void main(String[] args) {
         int[][] intervals = {{1, 3}, {6, 9}};
-        int[] newInterval = {2, 5};
+        int[] newInterval = {4, 5};
 //        int[][] intervals = {{1, 2}, {3, 5}, {6, 7}, {8, 10}, {12, 16}};
 //        int[] newInterval = {4, 8};
 
@@ -57,7 +57,7 @@ public class P5InsertInterval {
         int i = 0;
 
         // Left part
-        while (i < n && (intervals[i][1] < newInterval[0])) {
+        while (i < n && (intervals[i][1] < newInterval[0])) { // see the < here
             res.add(intervals[i]);
             i++;
         }

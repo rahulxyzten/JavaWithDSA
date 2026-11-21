@@ -40,7 +40,7 @@ public class P6MergeIntervals {
 //        int intervals[][] = {{1, 3}, {2, 6}, {8, 10}, {15, 18}};
 //        int intervals[][] = {{1, 4}, {4, 5}};
 //        int intervals[][] = {{4, 7}, {1, 4}};
-        int intervals[][] = {{2,3},{4,5},{6,7},{8,9},{1,10}};
+        int intervals[][] = {{2, 3}, {4, 5}, {6, 7}, {8, 9}, {1, 10}};
         System.out.println(Arrays.deepToString(merge(intervals)));
     }
 
@@ -48,25 +48,25 @@ public class P6MergeIntervals {
     // T(C) = O(N logN) + O(2N)
     // S(C) = O(N) + O(N)
     public static int[][] merge(int[][] intervals) {
-        Arrays.sort(intervals, ((a, b) -> a[0] - b[0]));
+        Arrays.sort(intervals, (a, b) -> a[0] - b[0]);
         List<int[]> ls = new ArrayList<>();
 
-        int min = intervals[0][0], max = intervals[0][1];
+        int start = intervals[0][0], end = intervals[0][1];
         for (int i = 1; i < intervals.length; i++) {
-            if (max >= intervals[i][0]) { // see the >= here
-                min = Math.min(min, intervals[i][0]);
-                max = Math.max(max, intervals[i][1]);
+            if (intervals[i][0] <= end) { // see the <= here
+                start = Math.min(start, intervals[i][0]);
+                end = Math.max(end, intervals[i][1]);
             } else {
-                ls.add(new int[]{min, max});
-                min = intervals[i][0];
-                max = intervals[i][1];
+                ls.add(new int[]{start, end});
+                start = intervals[i][0];
+                end = intervals[i][1];
             }
         }
-        ls.add(new int[]{min, max});
+        ls.add(new int[]{start, end});
 
         int[][] result = new int[ls.size()][2];
-        for (int i = 0; i < ls.size(); i++) {
-            result[i] = ls.get(i);
+        for (int j = 0; j < ls.size(); j++) {
+            result[j] = ls.get(j);
         }
 
         return result;

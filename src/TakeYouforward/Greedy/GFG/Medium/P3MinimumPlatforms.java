@@ -49,11 +49,12 @@ public class P3MinimumPlatforms {
         Arrays.sort(arr);
         Arrays.sort(dep);
 
-        int maxCount = 0, count = 0;
+        int count = 0, maxCount = 0;
         int i = 0, j = 0;
+
         // We will go till arr.length because for arrival array only the count is increase
         while (i < arr.length) {
-            if (arr[i] <= dep[j]) {
+            if (arr[i] <= dep[j]) { // see the == also
                 count++;
                 maxCount = Math.max(maxCount, count);
                 i++;
@@ -65,25 +66,4 @@ public class P3MinimumPlatforms {
 
         return maxCount;
     }
-
-
-    // Brute Force Approach (Wrong)
-    // Will do brute force letter
-    // T(C) = O(N^2)
-    // S(C) = O(1)
-//    public static int minPlatform(int arr[], int dep[]) {
-//        int maxCount = 0;
-//        for (int i = 0; i < arr.length; i++) {
-//            int count = 1;
-//            for (int j = 0; j < arr.length; j++) {
-//                if (j == i) continue;
-//                if (arr[j] <= dep[i] && dep[j] >= arr[i]) {
-//                    count++;
-//                }
-//            }
-//            maxCount = Math.max(maxCount, count);
-//        }
-//
-//        return maxCount;
-//    }
 }

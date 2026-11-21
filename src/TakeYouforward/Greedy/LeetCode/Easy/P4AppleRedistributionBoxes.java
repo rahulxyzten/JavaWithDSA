@@ -78,12 +78,12 @@ public class P4AppleRedistributionBoxes {
 //        }
 //        return m;
 
-        int need = 0;
+        int i = 0;
         while (totApple > 0) {
-            totApple -= capacity[need];
-            need += 1;
+            totApple -= capacity[i];
+            i += 1;
         }
 
-        return need;
+        return i;
     }
 }
