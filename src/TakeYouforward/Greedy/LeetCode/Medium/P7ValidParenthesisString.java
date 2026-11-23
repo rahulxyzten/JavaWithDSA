@@ -46,6 +46,7 @@ public class P7ValidParenthesisString {
     // S(C) = O(1)
     public static boolean checkValidString(String s) {
         int min = 0, max = 0;
+
         for (int i = 0; i < s.length(); i++) {
             if (s.charAt(i) == '(') {
                 min = min + 1;
