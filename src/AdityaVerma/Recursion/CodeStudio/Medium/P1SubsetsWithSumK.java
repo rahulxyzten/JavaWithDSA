@@ -76,8 +76,10 @@ Time limit: 1 sec
 
 public class P1SubsetsWithSumK {
     public static void main(String[] args) {
-        int[] num = {1, 4, 4, 5};
-        int tar = 5;
+//        int[] num = {1, 4, 4, 5};
+//        int tar = 5;
+        int[] num = {1, 2, 0, 0};
+        int tar = 3;
         System.out.println(findWays(num, tar));
     }
 
@@ -96,9 +98,15 @@ public class P1SubsetsWithSumK {
     }
 
     public static int solve(int[] num, int i, int n, int k) {
-        if (k == 0) return 1;
-        if (k < 0 || i == n) return 0;
+        if (i == n) {
+            return (k == 0) ? 1 : 0;
+        }
 
-        return solve(num, i + 1, n, k) + solve(num, i + 1, n, k - num[i]);
+        int pick = 0;
+        if (num[i] <= k) pick = solve(num, i + 1, n, k - num[i]);
+
+        int notPick = solve(num, i + 1, n, k);
+
+        return pick + notPick;
     }
 }
