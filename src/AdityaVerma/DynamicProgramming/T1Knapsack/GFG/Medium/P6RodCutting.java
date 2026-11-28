@@ -1,4 +1,4 @@
-package AdityaVerma.DynamicProgramming.GFG.Medium;
+package AdityaVerma.DynamicProgramming.T1Knapsack.GFG.Medium;
 // Problem
 /*
 Given a rod of length n inches and an array price[], where price[i] denotes the value of a piece of length i (1-based Index). Determine the maximum value obtainable by cutting up the rod and selling the pieces.

@@ -1,4 +1,4 @@
-package AdityaVerma.DynamicProgramming.GFG.Hard;
+package AdityaVerma.DynamicProgramming.T1Knapsack.GFG.Hard;
 // Problem
 /*
 Partition Into 2 Subsets with Min Sum Diff
@@ -29,9 +29,6 @@ Constraints:
 1 ≤ arr.size()*|sum of array elements| ≤ 10^5
 1 ≤ arr[i] ≤ 10^5
  */
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class P1PartitionSubsetsMinSumDiff {
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package AdityaVerma.DynamicProgramming.GFG.Medium;
+package AdityaVerma.DynamicProgramming.T1Knapsack.GFG.Medium;
 // Problem (Unbounded Knapsack)
 /*
 Knapsack with Duplicate Items

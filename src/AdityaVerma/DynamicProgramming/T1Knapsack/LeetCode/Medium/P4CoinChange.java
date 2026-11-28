@@ -1,4 +1,4 @@
-package AdityaVerma.DynamicProgramming.LeetCode.Medium;
+package AdityaVerma.DynamicProgramming.T1Knapsack.LeetCode.Medium;
 // Problem
 /*
 322. Coin Change

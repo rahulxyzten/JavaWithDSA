@@ -1,4 +1,4 @@
-package AdityaVerma.DynamicProgramming.LeetCode.Medium;
+package AdityaVerma.DynamicProgramming.T1Knapsack.LeetCode.Medium;
 // problem
 /*
 494. Target Sum

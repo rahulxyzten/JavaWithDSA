@@ -1,4 +1,4 @@
-package AdityaVerma.DynamicProgramming.Question.T1Knapsack01;
+package AdityaVerma.DynamicProgramming.T1Knapsack.Questions;
 // 0-1 Knapsack Problem
 
 public class P1Knapsack01 {
